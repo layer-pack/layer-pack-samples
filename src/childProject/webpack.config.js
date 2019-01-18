@@ -22,7 +22,8 @@ var autoprefixer  = require('autoprefixer');
 var production    = process.argv.indexOf("--production") > -1
 	|| process.argv.indexOf("-p") > -1;
 
-wpInherit.
+console.log(wpInherit.getAllWpiCfg())
+
 
 
 module.exports = []
