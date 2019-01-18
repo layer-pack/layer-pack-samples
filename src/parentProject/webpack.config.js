@@ -16,6 +16,7 @@ var fs      = require("fs");
 var webpack = require("webpack");
 var path    = require("path");
 
+var wpInherit     = require('webpack-inherit');
 var nodeExternals = require('webpack-node-externals');
 var autoprefixer  = require('autoprefixer');
 var production    = process.argv.indexOf("--production") > -1
@@ -55,6 +56,13 @@ module.exports = [
 		// Global build plugin & option
 		plugins: (
 			[
+				wpInherit(
+					{
+						root: 'App'
+						//root : allRoots, allCfg,
+						//alias: defaultAliases
+					}
+				),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				
 				new webpack.DefinePlugin({
