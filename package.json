@@ -1,0 +1,12 @@
+{
+  "name": "webpack-inherit-sample",
+  "version": "1.0.0",
+  "description": "webpack-inherit-sample ",
+  "license": "MIT",
+  "author": "Nathan Braun <caipilabs@gmail.com>",
+  "scripts": {
+  },
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
