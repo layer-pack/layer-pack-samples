@@ -27,12 +27,12 @@ module.exports = [
 	{
 		// The jsx App entry point
 		entry: {
-			App: './App/App.js'
+			App: 'App'
 		},
 		
 		// The resulting build
 		output: {
-			path      : __dirname + "/dist/",
+			path      : wpInherit.getHeadRoot() + "/dist/",
 			filename  : "[name].js",
 			publicPath: "/",
 		},
@@ -47,7 +47,7 @@ module.exports = [
 				".js",
 				".json",
 			],
-			modules   : [__dirname + '/node_modules', 'node_modules'],
+			modules   : ['node_modules'],
 			alias     : {
 				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
 				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
@@ -57,13 +57,7 @@ module.exports = [
 		// Global build plugin & option
 		plugins: (
 			[
-				wpInherit.plugin(
-					{
-						root: 'App'
-						//root : allRoots, allCfg,
-						//alias: defaultAliases
-					}
-				),
+				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				
 				new webpack.DefinePlugin({
@@ -93,7 +87,7 @@ module.exports = [
 			loaders: [
 				{
 					test   : /\.js$/,
-					exclude: /node_modules/,
+					exclude: wpInherit.isFileExcluded(),
 					loader : 'babel-loader',
 					query  : {
 						cacheDirectory: true, //important for performance
@@ -140,6 +134,7 @@ module.exports = [
 						{
 							loader : "sass-loader",
 							options: {
+								importer  : wpInherit.plugin().sassImporter,
 								sourceMaps: true
 							}
 						}
@@ -168,11 +163,11 @@ module.exports = [
 	},
 	{
 		entry    : {
-			App: './App/App.js'
+			App: 'App'
 		},
 		target   : 'node',
 		output   : {
-			path         : __dirname + "/dist/",
+			path         : wpInherit.getHeadRoot() + "/dist/",
 			filename     : "[name].server.js",
 			publicPath   : "/",
 			libraryTarget: "commonjs2"
@@ -198,12 +193,7 @@ module.exports = [
 			loaders: [
 				{
 					test   : /\.js$/,
-					exclude: {
-						test( str ) {
-							let filep = path.resolve(str).substr(0, __dirname.length) == __dirname;
-							return (!filep || filep && /node_modules/.test(str))
-						}
-					},
+					exclude: wpInherit.isFileExcluded(),
 					loader : 'babel-loader',
 					query  : {
 						cacheDirectory: true, //important for performance
@@ -233,6 +223,7 @@ module.exports = [
 		},
 		plugins: (
 			[
+				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				
 				new webpack.DefinePlugin({

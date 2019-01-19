@@ -11,8 +11,6 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
+import App from "App/App"
 
-var wpInherit = require('webpack-inherit');
-
-
-module.exports = wpInherit.getSuperWebpackCfg();
+export default App
