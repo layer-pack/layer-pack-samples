@@ -17,7 +17,6 @@ var webpack = require("webpack");
 var path    = require("path");
 
 var wpInherit     = require('webpack-inherit');
-var nodeExternals = require('webpack-node-externals');
 var autoprefixer  = require('autoprefixer');
 var production    = process.argv.indexOf("--production") > -1
 	|| process.argv.indexOf("-p") > -1;
