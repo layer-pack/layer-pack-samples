@@ -7,7 +7,6 @@
   "author": "Nathan Braun <caipilabs@gmail.com>",
   "wpInherit": {
     "default": {
-      "alias": "App",
       "rootFolder": "App",
       "extend": [
         "parentProject"
@@ -22,7 +21,8 @@
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
   "dependencies": {
-    "parentProject": "../parentProject"
+    "parentProject": "../parentProject",
+    "install-local": "^0.6.2"
   },
   "devDependencies": {
     "webpack-inherit": "^0.9.0",

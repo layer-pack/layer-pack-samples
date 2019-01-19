@@ -16,9 +16,9 @@ var fs      = require("fs");
 var webpack = require("webpack");
 var path    = require("path");
 
-var wpInherit     = require('webpack-inherit');
-var autoprefixer  = require('autoprefixer');
-var production    = process.argv.indexOf("--production") > -1
+var wpInherit    = require('webpack-inherit');
+var autoprefixer = require('autoprefixer');
+var production   = process.argv.indexOf("--production") > -1
 	|| process.argv.indexOf("-p") > -1;
 
 
@@ -46,7 +46,7 @@ module.exports = [
 				".js",
 				".json",
 			],
-			modules   : ['node_modules'],
+			modules   : wpInherit.getConfig().allModulePath,
 			alias     : {
 				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
 				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
@@ -80,6 +80,10 @@ module.exports = [
 			
 			]
 		),
+		
+		resolveLoader: {
+			modules: wpInherit.getConfig().allModulePath
+		},
 		
 		// the requirable files and what manage theirs parsing
 		module: {
@@ -161,26 +165,30 @@ module.exports = [
 		},
 	},
 	{
-		entry    : {
+		entry        : {
 			App: 'App'
 		},
-		target   : 'node',
-		output   : {
+		target       : 'node',
+		output       : {
 			path         : wpInherit.getHeadRoot() + "/dist/",
 			filename     : "[name].server.js",
 			publicPath   : "/",
 			libraryTarget: "commonjs2"
 		},
-		devtool  : 'source-map',
-		externals: ["superagent"],
-		resolve  : {
+		devtool      : 'source-map',
+		externals    : ["superagent"],
+		resolveLoader: {
+			modules: wpInherit.getConfig().allModulePath
+		},
+		
+		resolve: {
 			symlinks  : false,
 			extensions: [
 				".",
 				".js",
 				".json",
 			],
-			modules   : [__dirname + '/node_modules', 'node_modules'],
+			modules   : wpInherit.getConfig().allModulePath,
 			alias     : {
 				'inherits'  : 'inherits/inherits_browser.js',
 				'superagent': 'superagent/lib/node',
