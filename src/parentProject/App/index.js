@@ -11,6 +11,68 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-import App from "App/App"
+import App              from "App/App"
+import shortid          from 'shortid';
+import ReactDom         from 'react-dom';
+import AppScope         from 'App/AppScope';
+import React            from "react";
+import {renderToString} from "react-dom/server";
+import {Scope}          from "rscopes";
 
-export default App
+const indexTpl = require('./index.html.tpl');
+
+const ctrl = {
+	renderTo( node ) {
+		let cScope      = new Scope(AppScope, {
+			id         : "App",
+			autoDestroy: true
+		});
+		window.contexts = Scope.scopes;
+		window.__scopesState && cScope.restore(window.__scopesState)
+		cScope.mount(["appState", "someData"])
+		      .then(
+			      ( state ) => {
+				      ReactDom.render(<App __scope={ cScope }/>, node);
+			      }
+		      )
+	},
+	renderSSR( cfg, cb ) {
+		let rid    = shortid.generate(),
+		    cScope = new Scope(AppScope, {
+			    id         : rid,
+			    autoDestroy: false
+		    });
+		cfg.state && cScope.restore(cfg.state, { alias: "App" })
+		cScope.once('destroy', d => console.log('destroy ', rid, '; active ctx :', Object.keys(Scope.scopes)))
+		cScope.mount(["appState", "someData"])
+		      .then(
+			      ( state ) => {
+				      let html,
+				          appHtml = renderToString(<App __scope={ cScope }/>),
+				          nstate,
+				          stable  = cScope.isStableTree();
+				
+				      cScope.onceStableTree(state => {
+					      try {
+						      html = indexTpl.render(
+							      {
+								      app  : appHtml,
+								      state: JSON.stringify(nstate = cScope.serialize({ alias: "App" }))
+							      }
+						      );
+					      } catch ( e ) {
+						      return cb(e)
+					      }
+					      console.log('Was ', stable ? 'stable' : 'not stable', nstate);
+					      cb(null, html, !stable && nstate)
+					      cScope.destroy()
+				      })
+			      }
+		      );
+	}
+}
+
+if ( typeof window !== 'undefined' )
+	window.App = ctrl;
+
+export default ctrl;

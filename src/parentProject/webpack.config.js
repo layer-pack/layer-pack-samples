@@ -226,9 +226,14 @@ module.exports = [
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				
-				new webpack.DefinePlugin({
-					                         __PROD__: production
-				                         }),
+				new webpack.DefinePlugin(
+					{
+						__PROD__              : production,
+						"typeof window"       : '"undefined"',
+						'window'              : false,
+						'window.document'     : false,
+						'window.dispatchEvent': false
+					}),
 				production ? new webpack.optimize.UglifyJsPlugin(
 					{
 						compress: {
