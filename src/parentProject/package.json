@@ -5,6 +5,15 @@
   "license": "MIT",
   "main": "./Server.js",
   "author": "Nathan Braun <caipilabs@gmail.com>",
+  "wpInherit": {
+    "default": {
+      "alias": "App",
+      "rootFolder": "App",
+      "config": "./webpack.config.js",
+      "extend": [
+      ]
+    }
+  },
   "scripts": {
     "build": "webpack",
     "dev": "webpack -w",

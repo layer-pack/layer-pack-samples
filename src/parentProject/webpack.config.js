@@ -22,6 +22,7 @@ var autoprefixer  = require('autoprefixer');
 var production    = process.argv.indexOf("--production") > -1
 	|| process.argv.indexOf("-p") > -1;
 
+
 module.exports = [
 	{
 		// The jsx App entry point
@@ -56,7 +57,7 @@ module.exports = [
 		// Global build plugin & option
 		plugins: (
 			[
-				wpInherit(
+				wpInherit.plugin(
 					{
 						root: 'App'
 						//root : allRoots, allCfg,
