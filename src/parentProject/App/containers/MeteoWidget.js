@@ -23,7 +23,7 @@ import MeteoSearch from "../stores/MeteoSearch";
 
 @reScope(
 	{
-		...require('../stores/*.js')
+		MeteoSearch
 	}, { key: 'postIt' }
 )
 // map the record location as the default value in the MeteoSearch store state

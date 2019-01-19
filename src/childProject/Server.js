@@ -1,3 +1,5 @@
+require('webpack-inherit').loadModulePath()
+
 var express      = require("express"),
     path         = require("path"),
     App          = require('./dist/App.server'),
