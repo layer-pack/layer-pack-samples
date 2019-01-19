@@ -21,10 +21,9 @@
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
   "dependencies": {
-    "parentProject": "../parentProject"
+    "parentProject": "file:../parentProject"
   },
   "devDependencies": {
-    "webpack-inherit": "^0.9.0",
-    "webpack": "^2.7.0"
+    "webpack-inherit": "file:../../../webpack-inherit"
   }
 }
