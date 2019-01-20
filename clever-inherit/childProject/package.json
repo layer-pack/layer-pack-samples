@@ -9,6 +9,7 @@
     "default": {
       "rootFolder": "App",
       "extend": [
+        "webpack4-with-es6-and-sass",
         "parentProject"
       ]
     }
