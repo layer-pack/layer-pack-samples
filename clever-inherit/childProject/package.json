@@ -26,7 +26,7 @@
     "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass"
   },
   "devDependencies": {
-    "webpack-inherit": "^0.9.7",
+    "webpack-inherit": "^1.0.0",
     "mocha": "^3.5.1"
   }
 }

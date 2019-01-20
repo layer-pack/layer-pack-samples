@@ -41,7 +41,7 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "webpack-inherit": "^0.9.7",
+    "webpack-inherit": "^1.0.0",
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
