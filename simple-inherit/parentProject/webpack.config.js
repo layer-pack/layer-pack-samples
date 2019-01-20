@@ -46,7 +46,6 @@ module.exports = [
 				".js",
 				".json",
 			],
-			modules   : wpInherit.getConfig().allModulePath,
 			alias     : {
 				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
 				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
@@ -81,9 +80,6 @@ module.exports = [
 			]
 		),
 		
-		resolveLoader: {
-			modules: wpInherit.getConfig().allModulePath
-		},
 		
 		// the requirable files and what manage theirs parsing
 		module: {
