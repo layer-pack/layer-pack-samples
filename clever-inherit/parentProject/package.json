@@ -23,7 +23,6 @@
     "mocha": "^3.5.1"
   },
   "dependencies": {
-    "webpack3-with-es6-and-sass": "file:../webpack3-with-es6-and-sass",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "body-parser": "^1.18.2",
