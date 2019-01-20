@@ -1,0 +1,141 @@
+/*!
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : caipilabs@gmail.com
+ */
+
+.newBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-block;
+}
+
+.saveBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-block;
+}
+
+#app {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0;
+  user-select: none;
+}
+
+.button {
+  background-color: #3bb3e0;
+  padding: 10px;
+  //position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  color: #fff;
+  border: solid 1px #186f8f;
+  background-image: linear-gradient(bottom, rgb(44, 160, 202) 0%, rgb(62, 184, 229) 100%);
+  box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+  border-radius: 5px;
+
+  &:active {
+    padding-bottom: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 11px;
+    //top: 1px;
+    background-image: linear-gradient(bottom, rgb(62, 184, 229) 0%, rgb(44, 160, 202) 100%);
+  }
+}
+
+.postit {
+  line-height: 1;
+  text-align: center;
+  margin: -10px;
+  //padding-top: 35px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0;
+  font-size: 22px;
+  display: inline-block;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  background: white;
+
+  .text {
+    margin-top: 40px;
+
+    .edit {
+
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      //right: 5px;
+      //display: none;
+      //&:hover {
+      //  display: block;
+      //}
+    }
+
+    .delete {
+
+      position: absolute;
+      bottom: 5px;
+      //left: 5px;
+      right: 5px;
+      //display: none;
+      //&:hover {
+      //  display: block;
+      //}
+    }
+  }
+
+  .editor {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    top: 30px;
+    left: 10px;
+
+    textarea {
+
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+
+      position: absolute;
+      bottom: -25px;
+      left: 0px;
+      width: 100%;
+    }
+  }
+}
+
+//.postit:after {
+//  content: "";
+//  position: absolute;
+//  z-index: -1;
+//  right: -0px;
+//  bottom: 20px;
+//  width: 100px;
+//  height: 25px;
+//  background: rgba(0, 0, 0, 0.2);
+//  box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
+//  transform: matrix(-1, -0.1, 0, 1, 0, 0);
+//}
