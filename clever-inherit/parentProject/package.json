@@ -8,7 +8,9 @@
   "wpInherit": {
     "default": {
       "rootFolder": "App",
-      "extend": []
+      "extend": [
+        "webpack3-with-es6-and-sass"
+      ]
     }
   },
   "scripts": {
@@ -18,7 +20,11 @@
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
+  "devDependencies": {
+    "mocha": "^3.5.1"
+  },
   "dependencies": {
+    "webpack3-with-es6-and-sass": "file:../webpack3-with-es6-and-sass",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "body-parser": "^1.18.2",

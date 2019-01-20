@@ -9,8 +9,8 @@
     "default": {
       "rootFolder": "App",
       "extend": [
-        "parentProject",
-        "webpack4-with-es6-and-sass"
+        "webpack4-with-es6-and-sass",
+        "parentProject"
       ]
     }
   },
@@ -21,12 +21,12 @@
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "parentProject": "file:../parentProject",
-    "webpack3-with-es6-and-sass": "file:../webpack3-with-es6-and-sass",
-    "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass",
-    "webpack-inherit": "file:../../../webpack-inherit",
+    "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass"
+  },
+  "devDependencies": {
+    "webpack-inherit": "^0.9.6",
     "mocha": "^3.5.1"
   }
 }
