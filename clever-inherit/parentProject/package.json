@@ -9,7 +9,6 @@
     "default": {
       "rootFolder": "App",
       "extend": [
-        "webpack3-with-es6-and-sass"
       ]
     }
   },
