@@ -16,6 +16,11 @@ import React       from 'react';
 import MeteoWidget from 'App/containers/MeteoWidget';
 import $super      from '$super';
 
+import AllStores from 'App/stores/*.js';
+
+
+console.log(AllStores)
+
 class App extends $super {
 	render() {
 		let {
