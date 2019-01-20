@@ -12,7 +12,36 @@
  *  @contact : caipilabs@gmail.com
  */
 
-var wpInherit = require('webpack-inherit');
+import React       from 'react';
+import MeteoWidget from 'App/containers/MeteoWidget';
+import $super      from '$super';
 
+class App extends $super {
+	render() {
+		let {
+			    someData, appState
+		    } = this.state;
+		return <React.Fragment>
+			<h1>Really basic inherited RS SSR example</h1>
+			{
+				someData.items.map(
+					note => <MeteoWidget key={ note._id } record={ note }
+					                     onSelect={ e => this.$actions.selectPostIt(note._id) }
+					                     selected={ note._id == appState.selectedPostItId }/>
+				)
+			}
+			<div
+				className={ "newBtn button" }
+				onClick={ this.$actions.newPostIt }>
+				Add Post It
+			</div>
+			<div
+				className={ "saveBtn button" }
+				onClick={ this.$actions.saveState }>
+				Save state
+			</div>
+		</React.Fragment>
+	}
+}
 
-module.exports = wpInherit.getSuperWebpackCfg();
+export default App

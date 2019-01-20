@@ -1,9 +1,8 @@
 {
-  "name": "parentProject",
+  "name": "webpack3-with-es6-and-sass",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "main": "./Server.js",
   "author": "Nathan Braun <caipilabs@gmail.com>",
   "wpInherit": {
     "default": {
@@ -12,29 +11,9 @@
       "extend": []
     }
   },
-  "scripts": {
-    "build": "webpack",
-    "dev": "webpack -w",
-    "start": "node ./Server.js -p 9001",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
-  },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "dot-tpl-loader": "^1.2.1",
-    "express": "^4.16.3",
-    "minimist": "^1.2.0",
-    "moment": "^2.23.0",
-    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-rnd": "^9.0.4",
-    "request": "^2.85.0",
-    "rscopes": "^1.2.5",
-    "shortid": "^2.2.8",
-    "superagent": "^3.8.2",
-    "url-loader": "^1.1.2",
-    "webpack-inherit": "^0.9.2",
     "autoprefixer": "^8.2.0",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.3.17",
