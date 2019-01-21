@@ -31,8 +31,8 @@ const ctrl = {
 				<App/>
 			</Provider>, node);
 	},
-	renderSSR( initialState = initialState, cb ) {
-		const store = configureStore(initialState)
+	renderSSR( { state }, cb ) {
+		const store = configureStore(state || initialState)
 		let content, html, preloadedState;
 		
 		try {

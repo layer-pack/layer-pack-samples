@@ -20,8 +20,7 @@
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "wp4-react-redux": "file:../wp4-react-redux",
     "webpack-inherit": "^1.0.5"

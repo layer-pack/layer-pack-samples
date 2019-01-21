@@ -15,7 +15,6 @@
 import {combineReducers} from 'redux'
 import reducers          from './reducers/*.js';
 
-console.log(reducers);
 export default combineReducers(
 	Object.keys(reducers)
 	      .reduce(

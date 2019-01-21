@@ -11,12 +11,11 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-
 require('webpack-inherit').loadModulePath()
 
 var express      = require("express"),
     path         = require("path"),
-    App          = require('./dist/App.server'),
+    App          = require('./dist/App.server').default,
     fs           = require("fs"),
     server       = express(),
     currentState = null,
@@ -25,14 +24,6 @@ var express      = require("express"),
 
 server.use(express.json());       // to support JSON-encoded bodies
 server.use(express.urlencoded()); // to support URL-encoded bodies
-
-// server rendered home page
-app.get('/', (req, res) => {
-	const { preloadedState, content}  = ssr(initialState)
-	const response = template("Server Rendered Page", preloadedState, content)
-	res.setHeader('Cache-Control', 'assets, max-age=604800')
-	res.send(response);
-});
 
 server.get(
 	'/',
