@@ -12,11 +12,11 @@
  *  @contact : caipilabs@gmail.com
  */
 
-var fs      = require("fs");
-var webpack = require("webpack");
-var path    = require("path");
+var wpInherit = require('webpack-inherit');
+var fs        = require("fs");
+var webpack   = require("webpack");
+var path      = require("path");
 
-var wpInherit    = require('webpack-inherit');
 var autoprefixer = require('autoprefixer');
 var production   = process.argv.indexOf("--production") > -1
 	|| process.argv.indexOf("-p") > -1;
@@ -24,6 +24,7 @@ var production   = process.argv.indexOf("--production") > -1
 
 module.exports = [
 	{
+		mode : "development",
 		// The jsx App entry point
 		entry: {
 			App: 'App'
@@ -40,7 +41,7 @@ module.exports = [
 		devtool: 'source-map',
 		
 		// required files resolving options
-		resolve: {
+		resolve  : {
 			extensions: [
 				".",
 				".js",
@@ -48,7 +49,14 @@ module.exports = [
 				".scss",
 				".css",
 			],
-			alias     : {},
+			alias     : {
+				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
+				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
+			},
+		},
+		devServer: {
+			contentBase: './dist',
+			hot        : true
 		},
 		
 		// Global build plugin & option
@@ -56,61 +64,39 @@ module.exports = [
 			[
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				
-				new webpack.DefinePlugin({
-					                         __PROD__: production
-				                         }),
-				production ? new webpack.optimize.UglifyJsPlugin(
-					{
-						compress: {
-							screw_ie8   : true, // React doesn't support IE8
-							warnings    : false,
-							drop_console: true
-						},
-						mangle  : {
-							screw_ie8: true
-						},
-						output  : {
-							comments : false,
-							screw_ie8: true
-						}
-					}) : p => false,
-			
+				new webpack.HotModuleReplacementPlugin()
 			]
 		),
 		
 		
 		// the requirable files and what manage theirs parsing
 		module: {
-			loaders: [
+			rules: [
 				{
-					test   : /\.js$/,
+					test   : /\.jsx?$/,
 					exclude: wpInherit.isFileExcluded(),
-					loader : 'babel-loader',
-					query  : {
-						cacheDirectory: true, //important for performance
-						presets       : [
-							'babel-preset-react',
-							'babel-preset-es2015',
-							'babel-preset-stage-0'
-						].map(require.resolve),
-						plugins       : [
-							"babel-plugin-add-module-exports",
-							'babel-plugin-transform-decorators-legacy'
-						].map(require.resolve)
+					use    : {
+						loader : 'babel-loader',
+						options: {
+							cacheDirectory: true, //important for performance
+							presets       : [
+								'@babel/preset-env',
+								'@babel/preset-react',
+							].map(require.resolve),
+							plugins       : [
+								[require.resolve("@babel/plugin-proposal-decorators"), { "legacy": true }],
+								[require.resolve('@babel/plugin-proposal-class-properties'), {
+									"loose": true
+								}],
+								[require.resolve("@babel/plugin-transform-runtime"), {}]
+							]
+						}
 					}
-				},
-				{
-					test   : /\.json$/,
-					loaders: [
-						"json-loader",
-					],
 				},
 				{
 					test: /\.(scss|css)$/,
 					use : [
 						"style-loader",
-						
 						{ loader: 'css-loader', options: { importLoaders: 1 } },
 						{
 							loader : 'postcss-loader',
@@ -138,8 +124,10 @@ module.exports = [
 						}
 					]
 				},
-				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
-				
+				{
+					test: /\.tpl$/,
+					use : { loader: "dot-tpl-loader?append=true" }
+				},
 				{
 					test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
 					use : 'file-loader?limit=8192&name=assets/[hash].[ext]'
@@ -154,6 +142,7 @@ module.exports = [
 		},
 	},
 	{
+		mode     : "development",
 		entry    : {
 			App: 'App'
 		},
@@ -173,6 +162,8 @@ module.exports = [
 				".",
 				".js",
 				".json",
+				".scss",
+				".css",
 			],
 			alias     : {
 				'inherits'  : 'inherits/inherits_browser.js',
@@ -182,22 +173,26 @@ module.exports = [
 		},
 		
 		module : {
-			loaders: [
+			rules: [
 				{
-					test   : /\.js$/,
+					test   : /\.jsx?$/,
 					exclude: wpInherit.isFileExcluded(),
-					loader : 'babel-loader',
-					query  : {
-						cacheDirectory: true, //important for performance
-						presets       : [
-							'babel-preset-react',
-							'babel-preset-es2015',
-							'babel-preset-stage-0'
-						].map(require.resolve),
-						plugins       : [
-							"babel-plugin-add-module-exports",
-							'babel-plugin-transform-decorators-legacy'
-						].map(require.resolve)
+					use    : {
+						loader : 'babel-loader',
+						options: {
+							cacheDirectory: true, //important for performance
+							presets       : [
+								'@babel/preset-env',
+								'@babel/preset-react',
+							].map(require.resolve),
+							plugins       : [
+								[require.resolve("@babel/plugin-proposal-decorators"), { "legacy": true }],
+								[require.resolve('@babel/plugin-proposal-class-properties'), {
+									"loose": true
+								}],
+								[require.resolve("@babel/plugin-transform-runtime"), {}]
+							]
+						}
 					}
 				},
 				{
@@ -217,30 +212,6 @@ module.exports = [
 			[
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				
-				new webpack.DefinePlugin(
-					{
-						__PROD__              : production,
-						"typeof window"       : '"undefined"',
-						'window'              : false,
-						'window.document'     : false,
-						'window.dispatchEvent': false
-					}),
-				production ? new webpack.optimize.UglifyJsPlugin(
-					{
-						compress: {
-							screw_ie8   : true, // React doesn't support IE8
-							warnings    : false,
-							drop_console: true
-						},
-						mangle  : {
-							screw_ie8: true
-						},
-						output  : {
-							comments : false,
-							screw_ie8: true
-						}
-					}) : p => false,
 			
 			]
 		),
