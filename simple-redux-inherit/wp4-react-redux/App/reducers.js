@@ -13,7 +13,6 @@
  */
 
 import {combineReducers} from 'redux'
-import {rightChanged}    from './right-reducers';
 import reducers          from './reducers/*.js';
 
 console.log(reducers);
@@ -21,8 +20,8 @@ export default combineReducers(
 	Object.keys(reducers)
 	      .reduce(
 		      ( h, reducer ) => {
-			      let name = reducer.replace(/^.*\/([^\/\.]+)(?:\.[^\.]+)?$/, "$1");
-			      h[name]  = reducers[name]
+			      Object.keys(reducers[reducer]).forEach(act => (h[act] = reducers[reducer][act]))
+			      return h;
 		      },
 		      {}
 	      )

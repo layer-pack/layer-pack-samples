@@ -11,16 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-
-import { LEFT_CHANGED } from '../actions/left';
-
-export function leftChanged( state = { left: false }, action) {
-  switch (action.type) {
-    case LEFT_CHANGED:
-      return Object.assign({}, state, {
-        left: !state.left,
-      });
-    default:
-      return state
-  }
+export default {
+	rightChanged: { right: false },
+	leftChanged : { left: false }
 }

@@ -12,15 +12,10 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import { LEFT_CHANGED } from '../actions/left';
+export const LEFT_CHANGED = 'CHANGE_LEFT'
 
-export function leftChanged( state = { left: false }, action) {
-  switch (action.type) {
-    case LEFT_CHANGED:
-      return Object.assign({}, state, {
-        left: !state.left,
-      });
-    default:
-      return state
-  }
+export function leftChanged() {
+	return {
+		type: LEFT_CHANGED,
+	}
 }

@@ -30,7 +30,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Really basic drafty rescope + react component example</title>
-    <script>window.__scopesState ={{=it.state || "{}"}};</script>
+    <script>window.__STATE__  ={{=it.state || "{}"}};</script>
 </head>
 <body>
 <div id="app">{{=it.app || ''}}</div>

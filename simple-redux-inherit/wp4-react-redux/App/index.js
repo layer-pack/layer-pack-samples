@@ -18,6 +18,7 @@ import React            from "react";
 import {renderToString} from "react-dom/server";
 import {Provider}       from 'react-redux'
 import configureStore   from './configureStore'
+import initialState     from './initialState'
 
 const indexTpl = require('./index.html.tpl');
 
@@ -26,39 +27,27 @@ const ctrl = {
 	renderTo( node ) {
 		ReactDom.render(<App/>, node);
 	},
-	renderSSR( cfg, cb ) {
-		let rid    = shortid.generate(),
-		    cScope = new Scope(AppScope, {
-			    id         : rid,
-			    autoDestroy: false
-		    });
-		cfg.state && cScope.restore(cfg.state, { alias: "App" })
-		cScope.once('destroy', d => console.log('destroy ', rid, '; active ctx :', Object.keys(Scope.scopes)))
-		cScope.mount(["appState", "someData"])
-		      .then(
-			      ( state ) => {
-				      let html,
-				          appHtml = renderToString(<App __scope={ cScope }/>),
-				          nstate,
-				          stable  = cScope.isStableTree();
-				
-				      cScope.onceStableTree(state => {
-					      try {
-						      html = indexTpl.render(
-							      {
-								      app  : appHtml,
-								      state: JSON.stringify(nstate = cScope.serialize({ alias: "App" }))
-							      }
-						      );
-					      } catch ( e ) {
-						      return cb(e)
-					      }
-					      console.log('Was ', stable ? 'stable' : 'not stable', nstate);
-					      cb(null, html, !stable && nstate)
-					      cScope.destroy()
-				      })
-			      }
-		      );
+	renderSSR( initialState = initialState, cb ) {
+		const store = configureStore(initialState)
+		let content, html, preloadedState;
+		
+		try {
+			content        = renderToString(
+				<Provider store={ store }>
+					<App/>
+				</Provider>
+			);
+			preloadedState = store.getState();
+			html           = indexTpl.render(
+				{
+					app  : content,
+					state: JSON.stringify(preloadedState)
+				}
+			);
+		} catch ( e ) {
+			return cb(e)
+		}
+		cb(null, html, preloadedState)
 	}
 }
 
