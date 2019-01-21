@@ -18,7 +18,6 @@ import Card      from './components/card'
 import "./App.scss"
 
 class App extends React.Component {
-	
 	render() {
 		return <React.Fragment>
 			<h1>wp4-react-redux base</h1>

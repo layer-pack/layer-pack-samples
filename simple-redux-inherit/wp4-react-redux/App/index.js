@@ -51,7 +51,7 @@ const ctrl = {
 		} catch ( e ) {
 			return cb(e)
 		}
-		cb(null, html, preloadedState)
+		cb(null, html)
 	}
 }
 

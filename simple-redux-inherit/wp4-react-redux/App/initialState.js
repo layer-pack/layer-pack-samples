@@ -11,7 +11,4 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-export default {
-	rightChanged: { right: false },
-	leftChanged : { left: false }
-}
+export default {}
