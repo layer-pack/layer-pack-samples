@@ -14,16 +14,16 @@
     }
   },
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack -w",
+    "build": "wpi",
+    "dev": "wpi -w",
     "start": "node ./Server.js -p 9001",
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
   },
   "dependencies": {
-    "wp4-react-redux": "file:../wp4-react-redux"
   },
   "devDependencies": {
+    "wp4-react-redux": "file:../wp4-react-redux",
     "webpack-inherit": "^1.0.4"
   }
 }
