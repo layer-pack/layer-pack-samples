@@ -11,9 +11,22 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
+
 @import "$super";
-@import "App/styles/*.scss";
 
-body {
-
+.postit {
+  border: 2px solid green;
 }
+
+//.postit:after {
+//  content: "";
+//  position: absolute;
+//  z-index: -1;
+//  right: -0px;
+//  bottom: 20px;
+//  width: 100px;
+//  height: 25px;
+//  background: rgba(0, 0, 0, 0.2);
+//  box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
+//  transform: matrix(-1, -0.1, 0, 1, 0, 0);
+//}
