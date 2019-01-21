@@ -1,0 +1,28 @@
+{
+  "name": "childProject",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./Server.js",
+  "author": "Nathan Braun <caipilabs@gmail.com>",
+  "wpInherit": {
+    "default": {
+      "rootFolder": "App",
+      "extend": [
+        "wp4-react-redux"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "wpi",
+    "dev": "wpi -w",
+    "start": "node ./Server.js -p 9001",
+    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
+    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "wp4-react-redux": "file:../wp4-react-redux",
+    "webpack-inherit": "^1.0.5"
+  }
+}
