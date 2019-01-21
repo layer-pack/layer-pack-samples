@@ -13,6 +13,8 @@
  */
 @import "$super";
 
-body {
-
+h1:after{
+  content:'( overrided with webpack-inherit )';
+  font-size: 12px;
+  font-style:italic;
 }

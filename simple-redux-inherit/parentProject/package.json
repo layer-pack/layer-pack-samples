@@ -1,5 +1,5 @@
 {
-  "name": "childProject",
+  "name": "parentProject",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -9,8 +9,6 @@
     "default": {
       "rootFolder": "App",
       "extend": [
-        "parentProject",
-        "wp4-react-redux"
       ]
     }
   },
@@ -23,8 +21,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "wp4-react-redux": "file:../wp4-react-redux",
-    "parentProject": "file:../parentProject",
     "webpack-inherit": "^1.0.5"
   }
 }
