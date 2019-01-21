@@ -48,8 +48,6 @@ module.exports = [
 				".json",
 			],
 			alias     : {
-				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
-				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
 			},
 		},
 		devServer: {
@@ -153,9 +151,6 @@ module.exports = [
 		},
 		devtool  : 'source-map',
 		externals: ["superagent"],
-		//resolveLoader: {
-		//	modules: wpInherit.getConfig().allModulePath
-		//},
 		
 		resolve: {
 			symlinks  : false,
@@ -164,7 +159,6 @@ module.exports = [
 				".js",
 				".json",
 			],
-			//modules   : wpInherit.getConfig().allModulePath,
 			alias     : {
 				'inherits'  : 'inherits/inherits_browser.js',
 				'superagent': 'superagent/lib/node',

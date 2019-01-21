@@ -47,8 +47,6 @@ module.exports = [
 				".json",
 			],
 			alias     : {
-				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
-				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
 			},
 		},
 		
@@ -139,13 +137,6 @@ module.exports = [
 					]
 				},
 				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
-				//{
-				//    test   : /.*/,
-				//    loaders: [
-				//        "file-loader?name=assets/[name].[ext]&context=./src",
-				//    ],
-				//}
-				
 				{
 					test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
 					use : 'file-loader?limit=8192&name=assets/[hash].[ext]'

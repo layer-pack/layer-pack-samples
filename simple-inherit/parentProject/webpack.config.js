@@ -47,8 +47,6 @@ module.exports = [
 				".json",
 			],
 			alias     : {
-				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
-				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
 			},
 		},
 		
@@ -140,12 +138,6 @@ module.exports = [
 					]
 				},
 				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
-				//{
-				//    test   : /.*/,
-				//    loaders: [
-				//        "file-loader?name=assets/[name].[ext]&context=./src",
-				//    ],
-				//}
 				
 				{
 					test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
@@ -173,9 +165,6 @@ module.exports = [
 		},
 		devtool      : 'source-map',
 		externals    : ["superagent"],
-		resolveLoader: {
-			modules: wpInherit.getConfig().allModulePath
-		},
 		
 		resolve: {
 			symlinks  : false,
@@ -184,7 +173,6 @@ module.exports = [
 				".js",
 				".json",
 			],
-			modules   : wpInherit.getConfig().allModulePath,
 			alias     : {
 				'inherits'  : 'inherits/inherits_browser.js',
 				'superagent': 'superagent/lib/node',
