@@ -1,4 +1,4 @@
-/*!
+/*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
  *
@@ -11,12 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-
-#app {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0;
-  user-select: none;
+export default {
+	rightChanged: { right: false },
+	leftChanged : { left: true }
 }

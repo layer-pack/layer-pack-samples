@@ -20,7 +20,7 @@ import "./App.scss"
 class App extends React.Component {
 	render() {
 		return <React.Fragment>
-			<h1>wp4-react-redux base</h1>
+			<h1>Minimal drafty redux sample</h1>
 			<Card/>
 		</React.Fragment>
 	}
