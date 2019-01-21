@@ -24,8 +24,12 @@ const indexTpl = require('./index.html.tpl');
 
 
 const ctrl = {
-	renderTo( node ) {
-		ReactDom.render(<App/>, node);
+	renderTo( node, initialState = {} ) {
+		const store = configureStore(initialState)
+		ReactDom.render(
+			<Provider store={ store }>
+				<App/>
+			</Provider>, node);
 	},
 	renderSSR( initialState = initialState, cb ) {
 		const store = configureStore(initialState)

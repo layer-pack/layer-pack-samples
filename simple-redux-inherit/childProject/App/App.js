@@ -12,17 +12,19 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React  from 'react';
-import $super from '$super';
+import React     from 'react';
+import {connect} from 'react-redux'
+import Card      from './components/card'
+import "./App.scss"
 
-
-
-class App extends $super {
+class App extends React.Component {
+	
 	render() {
 		return <React.Fragment>
-			<h1>Really basic inherited redux SSR example</h1>
+			<h1>wp4-react-redux base</h1>
+			<Card/>
 		</React.Fragment>
 	}
 }
 
-export default App
+export default connect()(App)

@@ -24,6 +24,6 @@
     "wp4-react-redux": "file:../wp4-react-redux"
   },
   "devDependencies": {
-    "webpack-inherit": "^1.0.0"
+    "webpack-inherit": "^1.0.4"
   }
 }
