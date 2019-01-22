@@ -11,7 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
-import {hot} from 'react-hot-loader/root'
+import {hot}            from 'react-hot-loader/root'
 import App              from "App/App"
 import ReactDom         from 'react-dom';
 import React            from "react";
@@ -34,6 +34,10 @@ const ctrl = {
 				<HMRApp/>
 			</Provider>
 			, node);
+		
+		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+			module.hot.accept('./App', m => renderTo(node, initialState))
+		}
 	},
 	renderSSR( { state }, cb ) {
 		const store = configureStore(state || initialState)
@@ -58,26 +62,30 @@ const ctrl = {
 		cb(null, html)
 	}
 }
-if (module.hot) {
-	module.hot.accept();
-}
-//
-//if(module.hot) {
-//	// Support hot reloading of components
-//	// and display an overlay for runtime errors
-//	const renderApp = render;
-//
-//	render = () => {
-//			renderApp();
-//	};
-//
-//	module.hot.accept("./App", () => {
-//		setTimeout(render);
-//	});
+//if (module.hot) {
+//	module.hot.accept();
 //}
+//
 // add these lines
 //if (module.hot && process.env.NODE_ENV !== 'production') {
 //	module.hot.accept();
+//}
+
+//if ( module.hot ) {
+//	// Support hot reloading of components
+//	// and display an overlay for runtime errors
+//	//const renderApp = render;
+//	//
+//	//render = () => {
+//	//		renderApp();
+//	//};
+//
+//	module.hot.accept("./reducers/*.js", () => {
+//		//setTimeout(render);
+//		const nextRootReducer = combineReducers(preCombine(Object.keys(reducers)))
+//		store.replaceReducer(nextRootReducer)
+//		console.log('do reload on store change')
+//	});
 //}
 if ( typeof window !== 'undefined' )
 	window.App = ctrl;

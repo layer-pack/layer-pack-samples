@@ -15,13 +15,13 @@
 import {combineReducers} from 'redux'
 import reducers          from './reducers/*.js';
 
-export default combineReducers(
-	Object.keys(reducers)
-	      .reduce(
-		      ( h, reducer ) => {
-			      Object.keys(reducers[reducer]).forEach(act => (h[act] = reducers[reducer][act]))
-			      return h;
-		      },
-		      {}
-	      )
-)
+let preCombine = items => items.reduce(
+	( h, reducer ) => {
+		Object.keys(reducers[reducer]).forEach(act => (h[act] = reducers[reducer][act]))
+		return h;
+	}, {}),
+    store      = combineReducers(
+	    preCombine(Object.keys(reducers))
+    );
+
+export default store

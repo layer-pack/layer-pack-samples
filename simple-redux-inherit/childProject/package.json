@@ -10,14 +10,14 @@
       "rootFolder": "App",
       "extend": [
         "parentProject",
-        "wp4-react-redux"
+        "wp4-react-redux-sass-hmr"
       ]
     },
     "api": {
       "rootFolder": "App",
       "extend": [
         "parentProject",
-        "wp4-react-redux"
+        "wp4-react-redux-sass-hmr"
       ]
     }
   },
@@ -33,7 +33,7 @@
     "nodemon": "^1.18.7"
   },
   "devDependencies": {
-    "wp4-react-redux": "file:../wp4-react-redux",
+    "wp4-react-redux": "file:../wp4-react-redux-sass-hmr",
     "parentProject": "file:../parentProject",
     "webpack-inherit": "^1.0.9"
   }

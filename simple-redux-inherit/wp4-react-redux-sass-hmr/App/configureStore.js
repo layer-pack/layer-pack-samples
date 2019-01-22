@@ -19,12 +19,16 @@ import reducers                       from './reducers'
 
 
 export default function configureStore( preloadedState ) {
-	return createStore(
+	let store = createStore(
 		reducers,
 		preloadedState,
 		composeWithDevTools(
 			applyMiddleware(
 				thunkMiddleware
 			))
-	)
+	);
+	if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+		module.hot.accept('./reducers', () => store.replaceReducer(reducers))
+	}
+	return store;
 }
