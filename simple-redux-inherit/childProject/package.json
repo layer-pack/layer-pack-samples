@@ -22,14 +22,14 @@
     }
   },
   "scripts": {
-    "build": "wpi&wpi :api",
-    "dev": "wpi-dev-server --hot",
+    "build": "wpi& wpi :api",
     "dev-api": "wpi :api -w",
-    "start": "nodemon ./Server.js -p 9001",
-    "runDebug": "nodemon --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&nodemon ./Server.js -p 9001"
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
+    "start": "node ./Server.js -p 9001",
+    "runBrowser": "start http://localhost:9001"
   },
   "dependencies": {
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
   },
   "devDependencies": {

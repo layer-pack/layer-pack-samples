@@ -31,18 +31,18 @@ module.exports = [
 			]
 		},
 		devServer: {
-			//index             : '', //needed to enable root proxying
-			contentBase       : "./dist/",
+			index             : '', //needed to enable root proxying
+			contentBase       : wpInherit.getHeadRoot() + "/dist/",
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
-			//publicPath        : wpInherit.getHeadRoot() + "/dist/",
+			publicPath        : wpInherit.getHeadRoot() + "/dist/",
 			
 			host : 'localhost', // Defaults to `localhost`
-			port : 8080, // Defaults to 8080
+			port : 9001, // Defaults to 8080
 			proxy: {
 				'/': {
-					target: 'http://localhost:9001',
+					target: 'http://localhost:9501',
 					secure: false
 				}
 			}
@@ -75,9 +75,6 @@ module.exports = [
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				new webpack.NamedModulesPlugin(),
-				new webpack.HotModuleReplacementPlugin({
-					                                       //multiStep: true
-				                                       })
 			]
 		),
 		
@@ -88,23 +85,33 @@ module.exports = [
 				{
 					test   : /\.jsx?$/,
 					exclude: wpInherit.isFileExcluded(),
-					use    : {
-						loader : 'babel-loader',
-						options: {
-							cacheDirectory: true, //important for performance
-							presets       : [
-								'@babel/preset-env',
-								'@babel/preset-react',
-							].map(require.resolve),
-							plugins       : [
-								[require.resolve("@babel/plugin-proposal-decorators"), { "legacy": true }],
-								[require.resolve('@babel/plugin-proposal-class-properties'), {
-									"loose": true
-								}],
-								[require.resolve("@babel/plugin-transform-runtime"), {}],
-							]
-						}
-					}
+					use    : [
+						require.resolve('react-hot-loader/webpack')
+					]
+				},
+				{
+					test   : /\.jsx?$/,
+					exclude: wpInherit.isFileExcluded(),
+					use    : [
+						{
+							loader : 'babel-loader',
+							options: {
+								cacheDirectory: true, //important for performance
+								presets       : [
+									'@babel/preset-env',
+									'@babel/preset-react',
+								].map(require.resolve),
+								plugins       : [
+									[require.resolve("@babel/plugin-proposal-decorators"), { "legacy": true }],
+									[require.resolve('@babel/plugin-proposal-class-properties'), {
+										"loose": true
+									}],
+									[require.resolve("@babel/plugin-transform-runtime"), {}],
+									[require.resolve("react-hot-loader/babel"), {}],
+								]
+							}
+						},
+					]
 				},
 				{
 					test: /\.(scss|css)$/,

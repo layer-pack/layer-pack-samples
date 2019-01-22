@@ -18,11 +18,11 @@
     }
   },
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack -w",
+    "build": "wpi& wpi :api",
+    "dev-api": "wpi :api -w",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
     "start": "node ./Server.js -p 9001",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
+    "runBrowser": "start http://localhost:9001"
   },
   "dependencies": {
     "@babel/core": "^7.2.0",
@@ -39,6 +39,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
     "clean-webpack-plugin": "^1.0.0",
+    "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "dot-tpl-loader": "^1.2.1",

@@ -12,8 +12,7 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React     from 'react';
-import {connect} from 'react-redux'
+import React from 'react';
 
 class App extends React.Component {
 	
@@ -24,4 +23,4 @@ class App extends React.Component {
 	}
 }
 
-export default connect()(App)
+export default App

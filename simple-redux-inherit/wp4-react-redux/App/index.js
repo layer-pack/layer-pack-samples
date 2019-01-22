@@ -11,6 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
+import {hot} from 'react-hot-loader/root'
 import App              from "App/App"
 import ReactDom         from 'react-dom';
 import React            from "react";
@@ -21,16 +22,18 @@ import initialState     from './initialState'
 
 const indexTpl = require('./index.html.tpl');
 
-//import {hot} from 'react-hot-loader/root'
 
 const ctrl = {
 	renderTo( node, initialState = {} ) {
-		const store   = configureStore(initialState),
-		      RealApp = App;//process.env.NODE_ENV !== 'production' ? hot(module)(App) : App;
+		const store  = configureStore(initialState),
+		      isDev  = process.env.NODE_ENV !== 'production'
+			,
+			  HMRApp = isDev ? hot(App) : App;
 		ReactDom.render(
 			<Provider store={ store }>
-				<RealApp/>
-			</Provider>, node);
+				<HMRApp/>
+			</Provider>
+			, node);
 	},
 	renderSSR( { state }, cb ) {
 		const store = configureStore(state || initialState)
@@ -55,8 +58,29 @@ const ctrl = {
 		cb(null, html)
 	}
 }
-
+if (module.hot) {
+	module.hot.accept();
+}
+//
+//if(module.hot) {
+//	// Support hot reloading of components
+//	// and display an overlay for runtime errors
+//	const renderApp = render;
+//
+//	render = () => {
+//			renderApp();
+//	};
+//
+//	module.hot.accept("./App", () => {
+//		setTimeout(render);
+//	});
+//}
+// add these lines
+//if (module.hot && process.env.NODE_ENV !== 'production') {
+//	module.hot.accept();
+//}
 if ( typeof window !== 'undefined' )
 	window.App = ctrl;
 
 export default ctrl;
+
