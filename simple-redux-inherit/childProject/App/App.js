@@ -15,12 +15,11 @@
 import React     from 'react';
 import {connect} from 'react-redux'
 import Card      from './components/card'
-import "./App.scss"
 
 class App extends React.Component {
 	render() {
 		return <React.Fragment>
-			<h1>Minimal drafty redux sample</h1>
+			{/*<h1>Minimal drafty redux sample</h1>*/ }
 			<Card/>
 		</React.Fragment>
 	}

@@ -14,7 +14,6 @@
 
 import React     from 'react';
 import {connect} from 'react-redux'
-import "./App.scss"
 
 class App extends React.Component {
 	

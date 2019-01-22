@@ -12,7 +12,6 @@
  *  @contact : caipilabs@gmail.com
  */
 import App              from "App/App"
-import shortid          from 'shortid';
 import ReactDom         from 'react-dom';
 import React            from "react";
 import {renderToString} from "react-dom/server";
@@ -22,13 +21,15 @@ import initialState     from './initialState'
 
 const indexTpl = require('./index.html.tpl');
 
+import {hot} from 'react-hot-loader/root'
 
 const ctrl = {
 	renderTo( node, initialState = {} ) {
-		const store = configureStore(initialState)
+		const store   = configureStore(initialState),
+		      RealApp = process.env.NODE_ENV !== 'production' ? hot(module)(App) : App;
 		ReactDom.render(
 			<Provider store={ store }>
-				<App/>
+				<RealApp/>
 			</Provider>, node);
 	},
 	renderSSR( { state }, cb ) {

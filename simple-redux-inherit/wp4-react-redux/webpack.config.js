@@ -18,20 +18,38 @@ var webpack   = require("webpack");
 var path      = require("path");
 
 var autoprefixer = require('autoprefixer');
-var production   = process.argv.indexOf("--production") > -1
-	|| process.argv.indexOf("-p") > -1;
 
+var host = (process.env.HOST || 'localhost');
+var port = (+process.env.PORT + 1) || 9001;
 
 module.exports = [
 	{
-		mode : "development",
-		// The jsx App entry point
-		entry: {
-			App: 'App'
-		},
+		mode: "development",
 		
+		// The jsx App entry point
+		entry    : {
+			App: [
+				'webpack/hot/dev-server',
+				'App'
+			]
+		},
+		devServer: {
+			contentBase       : './dist',
+			historyApiFallback: true,
+			hot               : true,
+			inline            : true,
+			
+			host : 'localhost', // Defaults to `localhost`
+			port : 9001, // Defaults to 8080
+			proxy: {
+				'^/api/*': {
+					target: 'http://localhost:8080/api/',
+					secure: false
+				}
+			}
+		},
 		// The resulting build
-		output: {
+		output   : {
 			path      : wpInherit.getHeadRoot() + "/dist/",
 			filename  : "[name].js",
 			publicPath: "/",
@@ -41,7 +59,7 @@ module.exports = [
 		devtool: 'source-map',
 		
 		// required files resolving options
-		resolve  : {
+		resolve: {
 			extensions: [
 				".",
 				".js",
@@ -49,14 +67,7 @@ module.exports = [
 				".scss",
 				".css",
 			],
-			alias     : {
-				// webpack bug : all modules deps can be duplicated if there are required in sub dir modules :(
-				//'rescope': path.join(__dirname, 'node_modules', 'rescope'),
-			},
-		},
-		devServer: {
-			contentBase: './dist',
-			hot        : true
+			alias     : {},
 		},
 		
 		// Global build plugin & option
@@ -64,7 +75,10 @@ module.exports = [
 			[
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				new webpack.HotModuleReplacementPlugin()
+				new webpack.NamedModulesPlugin(),
+				new webpack.HotModuleReplacementPlugin({
+					                                       multiStep: true
+				                                       })
 			]
 		),
 		
@@ -88,7 +102,8 @@ module.exports = [
 								[require.resolve('@babel/plugin-proposal-class-properties'), {
 									"loose": true
 								}],
-								[require.resolve("@babel/plugin-transform-runtime"), {}]
+								[require.resolve("@babel/plugin-transform-runtime"), {}],
+								[require.resolve("react-hot-loader/babel"), {}]
 							]
 						}
 					}

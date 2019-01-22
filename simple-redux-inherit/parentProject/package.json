@@ -21,6 +21,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "webpack-inherit": "^1.0.5"
+    "webpack-inherit": "file:../../../webpack-inherit"
   }
 }

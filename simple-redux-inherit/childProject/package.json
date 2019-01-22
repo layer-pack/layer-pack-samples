@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "wpi",
-    "dev": "wpi -w",
+    "dev": "wpi-dev-server --hot",
     "start": "node ./Server.js -p 9001",
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
@@ -25,6 +25,6 @@
   "devDependencies": {
     "wp4-react-redux": "file:../wp4-react-redux",
     "parentProject": "file:../parentProject",
-    "webpack-inherit": "^1.0.5"
+    "webpack-inherit": "file:../../../webpack-inherit"
   }
 }
