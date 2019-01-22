@@ -33,7 +33,7 @@
     "nodemon": "^1.18.7"
   },
   "devDependencies": {
-    "wp4-react-redux": "file:../wp4-react-redux-sass-hmr",
+    "wp4-react-redux-sass-hmr": "file:../wp4-react-redux-sass-hmr",
     "parentProject": "file:../parentProject",
     "webpack-inherit": "^1.0.9"
   }
