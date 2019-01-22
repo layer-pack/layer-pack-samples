@@ -31,16 +31,18 @@ module.exports = [
 			]
 		},
 		devServer: {
-			contentBase       : wpInherit.getHeadRoot() + "/dist/",
+			//index             : '', //needed to enable root proxying
+			contentBase       : "./dist/",
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
+			//publicPath        : wpInherit.getHeadRoot() + "/dist/",
 			
 			host : 'localhost', // Defaults to `localhost`
 			port : 8080, // Defaults to 8080
 			proxy: {
-				'^/': {
-					target: 'http://localhost:9001/',
+				'/': {
+					target: 'http://localhost:9001',
 					secure: false
 				}
 			}
@@ -74,7 +76,7 @@ module.exports = [
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				new webpack.NamedModulesPlugin(),
 				new webpack.HotModuleReplacementPlugin({
-					                                       multiStep: true
+					                                       //multiStep: true
 				                                       })
 			]
 		),
