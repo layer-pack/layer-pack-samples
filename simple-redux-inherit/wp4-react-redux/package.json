@@ -8,7 +8,12 @@
   "wpInherit": {
     "default": {
       "rootFolder": "App",
-      "config": "./webpack.config.js",
+      "config": "./webpack.config.www.js",
+      "extend": []
+    },
+    "api": {
+      "rootFolder": "App",
+      "config": "./webpack.config.api.js",
       "extend": []
     }
   },
@@ -40,6 +45,7 @@
     "file-loader": "^2.0.0",
     "hoist-non-react-methods": "^1.1.0",
     "hoist-non-react-statics": "^3.2.1",
+    "http-proxy": "^1.17.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.8.3",
     "nodemon": "^1.18.7",
@@ -72,9 +78,10 @@
     "webpack": "^4.27.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.0",
+    "webpack-dev-middleware": "^3.5.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-inherit": "file:../../../webpack-inherit",
+    "webpack-inherit": "^1.0.6",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }

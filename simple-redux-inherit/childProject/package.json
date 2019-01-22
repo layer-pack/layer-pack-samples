@@ -12,11 +12,19 @@
         "parentProject",
         "wp4-react-redux"
       ]
+    },
+    "api": {
+      "rootFolder": "App",
+      "extend": [
+        "parentProject",
+        "wp4-react-redux"
+      ]
     }
   },
   "scripts": {
     "build": "wpi",
     "dev": "wpi-dev-server --hot",
+    "dev-api": "wpi-dev-server --hot",
     "start": "node ./Server.js -p 9001",
     "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
     "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"

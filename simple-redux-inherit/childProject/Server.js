@@ -20,7 +20,8 @@ var express      = require("express"),
     server       = express(),
     currentState = null,
     http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2));
+    argz         = require('minimist')(process.argv.slice(2)),
+    httpProxy    = require('http-proxy');
 
 server.use(express.json());       // to support JSON-encoded bodies
 server.use(express.urlencoded()); // to support URL-encoded bodies

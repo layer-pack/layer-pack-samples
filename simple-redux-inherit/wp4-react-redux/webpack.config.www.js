@@ -19,9 +19,6 @@ var path      = require("path");
 
 var autoprefixer = require('autoprefixer');
 
-var host = (process.env.HOST || 'localhost');
-var port = (+process.env.PORT + 1) || 9001;
-
 module.exports = [
 	{
 		mode: "development",
@@ -34,16 +31,16 @@ module.exports = [
 			]
 		},
 		devServer: {
-			contentBase       : './dist',
+			contentBase       : wpInherit.getHeadRoot() + "/dist/",
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
 			
 			host : 'localhost', // Defaults to `localhost`
-			port : 9001, // Defaults to 8080
+			port : 8080, // Defaults to 8080
 			proxy: {
-				'^/api/*': {
-					target: 'http://localhost:8080/api/',
+				'^/': {
+					target: 'http://localhost:9001/',
 					secure: false
 				}
 			}
@@ -103,7 +100,6 @@ module.exports = [
 									"loose": true
 								}],
 								[require.resolve("@babel/plugin-transform-runtime"), {}],
-								[require.resolve("react-hot-loader/babel"), {}]
 							]
 						}
 					}
@@ -156,79 +152,4 @@ module.exports = [
 			],
 		},
 	},
-	{
-		mode     : "development",
-		entry    : {
-			App: 'App'
-		},
-		target   : 'node',
-		output   : {
-			path         : wpInherit.getHeadRoot() + "/dist/",
-			filename     : "[name].server.js",
-			publicPath   : "/",
-			libraryTarget: "commonjs2"
-		},
-		devtool  : 'source-map',
-		externals: ["superagent"],
-		
-		resolve: {
-			symlinks  : false,
-			extensions: [
-				".",
-				".js",
-				".json",
-				".scss",
-				".css",
-			],
-			alias     : {
-				'inherits'  : 'inherits/inherits_browser.js',
-				'superagent': 'superagent/lib/node',
-				'emitter'   : 'component-emitter',
-			},
-		},
-		
-		module : {
-			rules: [
-				{
-					test   : /\.jsx?$/,
-					exclude: wpInherit.isFileExcluded(),
-					use    : {
-						loader : 'babel-loader',
-						options: {
-							cacheDirectory: true, //important for performance
-							presets       : [
-								'@babel/preset-env',
-								'@babel/preset-react',
-							].map(require.resolve),
-							plugins       : [
-								[require.resolve("@babel/plugin-proposal-decorators"), { "legacy": true }],
-								[require.resolve('@babel/plugin-proposal-class-properties'), {
-									"loose": true
-								}],
-								[require.resolve("@babel/plugin-transform-runtime"), {}]
-							]
-						}
-					}
-				},
-				{
-					test   : /\.json$/,
-					loaders: [
-						"json-loader",
-					],
-				},
-				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
-				{
-					test  : /\.(scss|css|less|woff2|ttf|eot)(\?.*$|$)$/,
-					loader: 'null-loader'
-				},
-			],
-		},
-		plugins: (
-			[
-				wpInherit.plugin(),
-				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-			
-			]
-		),
-	}
 ]
