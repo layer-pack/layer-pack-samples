@@ -44,7 +44,7 @@
   text-decoration: none;
   color: #fff;
   border: solid 1px #186f8f;
-  background-image: linear-gradient(bottom, rgb(44, 160, 202) 0%, rgb(62, 184, 229) 100%);
+  background-image: linear-gradient(to bottom, rgb(44, 160, 202) 0%, rgb(62, 184, 229) 100%);
   box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
   border-radius: 5px;
 
@@ -54,7 +54,7 @@
     padding-right: 10px;
     padding-top: 11px;
     //top: 1px;
-    background-image: linear-gradient(bottom, rgb(62, 184, 229) 0%, rgb(44, 160, 202) 100%);
+    background-image: linear-gradient(to bottom, rgb(62, 184, 229) 0%, rgb(44, 160, 202) 100%);
   }
 }
 

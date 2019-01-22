@@ -9,24 +9,32 @@
     "default": {
       "rootFolder": "App",
       "extend": [
-        "webpack4-with-es6-and-sass",
-        "parentProject"
+        "parentProject",
+        "webpack4-with-es6-and-sass"
+      ]
+    },
+    "api": {
+      "rootFolder": "App",
+      "extend": [
+        "parentProject",
+        "webpack4-with-es6-and-sass"
       ]
     }
   },
   "scripts": {
-    "build": "wpi",
-    "dev": "wpi -w",
+    "build": "wpi& wpi :api",
+    "dev-api": "wpi :api -w",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
     "start": "node ./Server.js -p 9001",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
+    "runBrowser": "start http://localhost:9001"
   },
   "dependencies": {
-    "parentProject": "file:../parentProject",
-    "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass"
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7",
+    "parentProject": "file:../parentProject"
   },
   "devDependencies": {
-    "webpack-inherit": "^1.0.0",
-    "mocha": "^3.5.1"
+    "webpack-inherit": "^1.0.9",
+    "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass"
   }
 }

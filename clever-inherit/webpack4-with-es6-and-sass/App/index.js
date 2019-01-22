@@ -35,6 +35,16 @@ const ctrl = {
 				      ReactDom.render(<App __scope={ cScope }/>, node);
 			      }
 		      )
+		
+		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+			module.hot.accept('App/App', () => {
+				console.log('hot  app ', App)
+				ReactDom.render(<App __scope={ cScope }/>, node)
+			});
+			module.hot.accept('App/AppScope', () => {
+				cScope.register(AppScope)
+			});
+		}
 	},
 	renderSSR( cfg, cb ) {
 		let rid    = shortid.generate(),
