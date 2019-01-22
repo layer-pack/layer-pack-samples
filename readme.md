@@ -4,7 +4,7 @@ Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
 
 ## Available :
 
--  [simple-redux-inherit](.\simple-redux-inherit) ( React Redux with SSR, sass, hot reload & inheriting )
+-  [simple-redux-inherit](simple-redux-inherit) ( React Redux with SSR, sass, hot reload & inheriting )
 
     Contain 3 packages :
 
@@ -19,7 +19,7 @@ To test go in the [childProject](simple-redux-inherit/childProject) package and 
 
 then open http://localhost:9501 or use 'npm run runBrowser'
 
--  [simple-rs-inherit](.\simple-rs-inherit) ( React rScopes with SSR, sass, hot reload & inheriting )
+-  [simple-rs-inherit](simple-rs-inherit) ( React rScopes with SSR, sass, hot reload & inheriting )
 
     Contain 3 packages :
 
@@ -34,7 +34,7 @@ To test go in the [childProject](simple-rs-inherit/childProject) package and exe
 
 then open http://localhost:9501 or use 'npm run runBrowser'
 
--  [ultra-basic-inherit](.\ultra-basic-inherit)
+-  [ultra-basic-inherit](ultra-basic-inherit)
 
     Contain 2 packages :
 
