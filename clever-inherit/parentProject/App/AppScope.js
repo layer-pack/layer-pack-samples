@@ -10,7 +10,7 @@ let { asStore, asScope } = spells;
 export default {
 	@asStore
 	appState: {
-		selectedPostItId: null,
+		selectedPostItId: "rkUQHZrqM",
 		selectPostIt( selectedPostItId ) {
 			return { selectedPostItId };
 		}
@@ -47,12 +47,12 @@ export default {
 		},
 		updatePostIt( postIt ) {
 			return {
-				//items: this.nextState.items
-				//           .map(
-				//	           it => (it._id === postIt._id)
-				//	                 ? postIt
-				//	                 : it
-				//           )
+				items: this.nextState.items
+				           .map(
+					           it => (it._id === postIt._id)
+					                 ? postIt
+					                 : it
+				           )
 			}
 		},
 		rmPostIt( postIt ) {

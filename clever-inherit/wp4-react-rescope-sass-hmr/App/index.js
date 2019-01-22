@@ -38,7 +38,6 @@ const ctrl = {
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
 			module.hot.accept('App/App', () => {
-				console.log('hot  app ', App)
 				ReactDom.render(<App __scope={ cScope }/>, node)
 			});
 			module.hot.accept('App/AppScope', () => {

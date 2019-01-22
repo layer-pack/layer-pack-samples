@@ -10,14 +10,14 @@
       "rootFolder": "App",
       "extend": [
         "parentProject",
-        "webpack4-with-es6-and-sass"
+        "wp4-react-rescope-sass-hmr"
       ]
     },
     "api": {
       "rootFolder": "App",
       "extend": [
         "parentProject",
-        "webpack4-with-es6-and-sass"
+        "wp4-react-rescope-sass-hmr"
       ]
     }
   },
@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "webpack-inherit": "^1.0.9",
-    "webpack4-with-es6-and-sass": "file:../webpack4-with-es6-and-sass"
+    "wp4-react-rescope-sass-hmr": "file:../wp4-react-rescope-sass-hmr"
   }
 }
