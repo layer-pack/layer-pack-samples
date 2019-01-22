@@ -1,6 +1,6 @@
 # webpack-inherit-sample
 
-Simple sample for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
+Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
 
 ## Available :
 
@@ -8,7 +8,7 @@ Simple sample for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
 
     Contain 3 packages :
 
-    - wp4-react-redux-sass-hmr : A boilerplate with webpack4, react, redux, sass, hmr
+    - wp4-react-redux-sass-hmr : A draft boilerplate with webpack4, react, redux, sass, hmr
     - parentProject : The example parent project
     - childProject : The example child project with some tiny overrides
 
@@ -23,7 +23,7 @@ then open http://localhost:9501 or use 'npm run runBrowser'
 
     Contain 3 packages :
 
-    - wp4-react-rs-sass-hmr : A boilerplate with webpack4, react, rScopes, sass, hmr
+    - wp4-react-rs-sass-hmr : A draft boilerplate with webpack4, react, rScopes, sass, hmr
     - parentProject : The example parent project
     - childProject : The example child project with some tiny overrides
 
