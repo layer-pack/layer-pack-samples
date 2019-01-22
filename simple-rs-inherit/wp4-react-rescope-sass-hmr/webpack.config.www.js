@@ -39,10 +39,10 @@ module.exports = [
 			publicPath        : wpInherit.getHeadRoot() + "/dist/",
 			
 			host : 'localhost', // Defaults to `localhost`
-			port : 9001, // Defaults to 8080
+			port : 9501, // Defaults to 8080
 			proxy: {
 				'/': {
-					target: 'http://localhost:9501',
+					target: 'http://localhost:9701',
 					secure: false
 				}
 			}

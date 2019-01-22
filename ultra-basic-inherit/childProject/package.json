@@ -9,21 +9,14 @@
     "default": {
       "rootFolder": "App",
       "extend": [
-        "parentProject",
-        "wp4-react-redux-sass-hmr"
-      ]
-    },
-    "api": {
-      "rootFolder": "App",
-      "extend": [
-        "parentProject",
-        "wp4-react-redux-sass-hmr"
+        "parentProject"
       ]
     }
   },
   "scripts": {
-    "build": "wpi",
-    "start-dev": "concurrently \"wpi -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
+    "build": "wpi& wpi :api",
+    "dev-api": "wpi :api -w",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9701\"",
     "start": "node ./Server.js -p 9501",
     "runBrowser": "start http://localhost:9501"
   },
@@ -32,8 +25,8 @@
     "nodemon": "^1.18.7"
   },
   "devDependencies": {
-    "wp4-react-redux-sass-hmr": "file:../wp4-react-redux-sass-hmr",
-    "parentProject": "file:../parentProject",
-    "webpack-inherit": "^1.0.9"
+    "webpack": "^2.7.0",
+    "webpack-inherit": "^1.0.0",
+    "parentProject": "file:../parentProject"
   }
 }

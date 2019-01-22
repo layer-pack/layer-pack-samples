@@ -20,9 +20,9 @@
   "scripts": {
     "build": "wpi",
     "dev": "wpi -w",
-    "start": "node ./Server.js -p 9001",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
+    "start": "node ./Server.js -p 9501",
+    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9501",
+    "runBrowser": "start http://localhost:9501&node ./Server.js -p 9501"
   },
   "dependencies": {},
   "devDependencies": {
