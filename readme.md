@@ -23,7 +23,7 @@ then open http://localhost:9501 or use 'npm run runBrowser'
 
     Contain 3 packages :
 
-    - wp4-react-redux-sass-hmr : A boilerplate with webpack4, react, rScopes, sass, hmr
+    - wp4-react-rs-sass-hmr : A boilerplate with webpack4, react, rScopes, sass, hmr
     - parentProject : The example parent project
     - childProject : The example child project with some tiny overrides
 
