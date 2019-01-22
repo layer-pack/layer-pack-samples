@@ -22,17 +22,19 @@
     }
   },
   "scripts": {
-    "build": "wpi",
+    "build": "wpi&wpi :api",
     "dev": "wpi-dev-server --hot",
-    "dev-api": "wpi-dev-server --hot",
-    "start": "node ./Server.js -p 9001",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9001",
-    "runBrowser": "start http://localhost:9001&node ./Server.js -p 9001"
+    "dev-api": "wpi :api -w",
+    "start": "nodemon ./Server.js -p 9001",
+    "runDebug": "nodemon --inspect=[::]:9229 ./Server.js -p 9001",
+    "runBrowser": "start http://localhost:9001&nodemon ./Server.js -p 9001"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nodemon": "^1.18.7"
+  },
   "devDependencies": {
     "wp4-react-redux": "file:../wp4-react-redux",
     "parentProject": "file:../parentProject",
-    "webpack-inherit": "file:../../../webpack-inherit"
+    "webpack-inherit": "^1.0.9"
   }
 }
