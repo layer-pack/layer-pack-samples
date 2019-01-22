@@ -24,7 +24,4 @@ class App extends React.Component {
 		</React.Fragment>
 	}
 }
-if (module.hot) {
-	module.hot.accept();
-}
 export default App
