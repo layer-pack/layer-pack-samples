@@ -30,6 +30,7 @@ export default {
 			"size"    : { "width": 350, "height": 200 },
 			"position": { "x": 260, "y": 576 }
 		}],
+		
 		// actions
 		newPostIt() {
 			return {

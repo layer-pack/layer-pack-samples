@@ -26,10 +26,10 @@ export default class MeteoSearch extends Store {
 	};
 	static actions = {
 		updateSearch( location ) {
-			if ( location.length < 4 )
-				return { location };
-			
-			return { location };
+			//if ( location.length < 4 )
+			//	return { location };
+			//
+			//return { location };
 		}
 		
 	};
