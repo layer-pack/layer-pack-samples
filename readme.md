@@ -12,7 +12,7 @@ Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
     - parentProject : The example parent project
     - childProject : The example child project with some tiny overrides
 
-To test go in the [childProject](./simple-redux-inherit/childProject) package and exec :
+To test go in the [childProject](simple-redux-inherit/childProject) package and exec :
 
     npm i
     npm run start-dev
@@ -27,7 +27,7 @@ then open http://localhost:9501 or use 'npm run runBrowser'
     - parentProject : The example parent project
     - childProject : The example child project with some tiny overrides
 
-To test go in the [childProject](./simple-rs-inherit/childProject) package and exec :
+To test go in the [childProject](simple-rs-inherit/childProject) package and exec :
 
     npm i
     npm run start-dev
@@ -41,7 +41,7 @@ then open http://localhost:9501 or use 'npm run runBrowser'
     - parentProject : The example parent project with wp conf included
     - childProject : The example child project with some tiny overrides
 
-To test go in the [childProject](./ultra-basic-inherit/childProject) package and exec :
+To test go in the [childProject](ultra-basic-inherit/childProject) package and exec :
 
     npm i
     npm run start-dev
