@@ -83,7 +83,7 @@ export default class MeteoWidget extends React.Component {
 						<div className={ "text" }>
 							{
 								MeteoSearch.fetching && "Loading...."
-								|| MeteoSearch.results && <MeteoInfos meteoData={ MeteoSearch.results }/>
+								|| MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
 								|| "Edit me !"
 							}
 							<button onClick={ e => this.setState({ editing: true }) }
@@ -108,7 +108,7 @@ export default class MeteoWidget extends React.Component {
 							}
 							{
 								MeteoSearch.fetching && "Loading...." ||
-								MeteoSearch.results && <MeteoInfos meteoData={ MeteoSearch.results }/>
+								MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
 							}
 							<button
 								disabled={ MeteoSearch.fetching }

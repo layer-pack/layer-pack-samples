@@ -13,8 +13,7 @@
  */
 export default {
 	someData: {
-		// initial state
-		src  : "/api/hello",
+		src  : "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
 		items: [{
 			"_id"     : "rkUQHZrqM",
 			"location": "paris",

@@ -16,9 +16,9 @@ import React     from "react";
 import {Rnd}     from "react-rnd";
 import {connect} from 'react-redux'
 
-import {selectPostIt}            from "App/actions/updateAppState";
-import {newPostIt, updateWidget} from "App/actions/updateWidget";
-import MeteoInfos                from "../components/MeteoInfos";
+import {selectPostIt}                                      from "App/actions/updateAppState";
+import {newPostIt, updateWidget, weatherSearch, weatherResult} from "App/actions/updateWidget";
+import MeteoInfos                                          from "../components/MeteoInfos";
 
 export default connect()(class MeteoWidget extends React.Component {
 	
@@ -73,7 +73,7 @@ export default connect()(class MeteoWidget extends React.Component {
 						<div className={ "text" }>
 							{
 								MeteoSearch.fetching && "Loading...."
-								|| MeteoSearch.results && <MeteoInfos meteoData={ MeteoSearch.results }/>
+								|| MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
 								|| "Edit me !"
 							}
 							<button onClick={ e => this.setState({ editing: true }) }
@@ -90,7 +90,7 @@ export default connect()(class MeteoWidget extends React.Component {
 									<input type="text"
 									       onChange={ e => {
 										       this.setState({ searching: e.target.value });
-										       $actions.updateSearch(e.target.value);
+										       dispatch(weatherSearch(record._id, e.target.value));
 									       } }
 									       value={ state.searching !== undefined ? state.searching : record.location }
 									       onMouseDown={ e => e.stopPropagation() }/>
@@ -98,7 +98,7 @@ export default connect()(class MeteoWidget extends React.Component {
 							}
 							{
 								MeteoSearch.fetching && "Loading...." ||
-								MeteoSearch.results && <MeteoInfos meteoData={ MeteoSearch.results }/>
+								MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
 							}
 							<button
 								disabled={ MeteoSearch.fetching }

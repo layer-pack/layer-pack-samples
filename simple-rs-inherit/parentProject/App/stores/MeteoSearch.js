@@ -26,10 +26,10 @@ export default class MeteoSearch extends Store {
 	};
 	static actions = {
 		updateSearch( location ) {
-			//if ( location.length < 4 )
-			//	return { location };
-			//
-			//return { location };
+			if ( location.length < 4 )
+				return { location };
+
+			return { location };
 		}
 		
 	};
@@ -40,7 +40,7 @@ export default class MeteoSearch extends Store {
 		if ( location == data.location && data.results )
 			return data;
 		
-		// do query meteo if needed
+		// do query weather if needed
 		if ( location ) {
 			
 			this.wait();// so the whole scope tree will wait for SSR

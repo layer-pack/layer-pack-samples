@@ -1,6 +1,8 @@
-export const WIDGET_CHANGED = 'WIDGET_CHANGED'
-export const WIDGET_NEW     = 'WIDGET_NEW'
-export const WIDGET_RM      = 'WIDGET_NEW'
+export const WIDGET_CHANGED        = 'WIDGET_CHANGED'
+export const WIDGET_NEW            = 'WIDGET_NEW'
+export const WIDGET_RM             = 'WIDGET_NEW'
+export const METEO_SEARCHING       = 'METEO_SEARCHING'
+export const METEO_SEARCH_COMPLETE = 'METEO_SEARCH_COMPLETE'
 import superagent from "superagent";
 import shortid    from "shortid";
 
@@ -32,4 +34,29 @@ export function rmPostIt( wid ) {
 		type: WIDGET_RM,
 		wid
 	}
+}
+
+export function weatherSearch( record, location, then ) {
+	return ( dispatch, getState ) => {
+		dispatch(updateWidget(
+			{
+				...record,
+				fetching: true
+			}));
+		return superagent
+			.get(getState().src + location)
+			.then(( res ) => {
+				
+				if ( location !== getState().location )
+					return;
+				
+				dispatch(updateWidget(
+					{
+						...record,
+						fetching: false,
+						results : res.body,
+						location
+					}));
+			})
+	};
 }

@@ -40,7 +40,7 @@ export default class test extends Store {
 		if ( location == data.location && data.results )
 			return data;
 		
-		// do query meteo if needed
+		// do query weather if needed
 		if ( location ) {
 			
 			this.wait();// so the whole scope tree will wait for SSR

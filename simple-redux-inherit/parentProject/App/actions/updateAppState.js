@@ -25,11 +25,9 @@ export function selectPostIt( wid ) {
 	}
 }
 
-export function saveState() {
-	//superagent.post('/', this.scopeObj.serialize())
-	//          .then(( e, r ) => {
-	//	          console.log(e, r)
-	//          })
+export function saveState( then ) {
+	superagent.post('/', this.scopeObj.serialize())
+	          .then(then)
 	return {
 		type: SAVING_STATE,
 	}
