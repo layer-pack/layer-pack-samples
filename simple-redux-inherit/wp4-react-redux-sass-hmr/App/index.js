@@ -26,9 +26,9 @@ const indexTpl = require('./index.html.tpl');
 const ctrl = {
 	renderTo( node, initialState = {} ) {
 		const store  = configureStore(initialState),
-		      isDev  = process.env.NODE_ENV !== 'production'
-			,
-			  HMRApp = isDev ? hot(App) : App;
+		      isDev  = process.env.NODE_ENV !== 'production',
+		      HMRApp = isDev ? hot(App) : App;
+		
 		ReactDom.render(
 			<Provider store={ store }>
 				<HMRApp/>
