@@ -44,11 +44,11 @@ const ctrl = {
 		let content = "", html, preloadedState;
 		
 		try {
-			//content        = renderToString(
-			//	<Provider store={ store }>
-			//		<App/>
-			//	</Provider>
-			//);
+			content        = renderToString(
+				<Provider store={ store }>
+					<App/>
+				</Provider>
+			);
 			preloadedState = store.getState();
 			html           = indexTpl.render(
 				{

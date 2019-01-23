@@ -12,34 +12,40 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React     from "react";
-import {Rnd}     from "react-rnd";
-import {connect} from 'react-redux'
+import React          from "react";
+import {Rnd}          from "react-rnd";
+import {connect}      from 'react-redux'
+import WeatherInfos   from "../components/WeatherInfos.js";
+import {selectPostIt} from "App/actions/updateAppState";
+import {
+	rmPostIt, newPostIt, updateWidget, weatherSearch, weatherResult
+}                     from "App/actions/updateWidget";
 
-import {selectPostIt}                                      from "App/actions/updateAppState";
-import {newPostIt, updateWidget, weatherSearch, weatherResult} from "App/actions/updateWidget";
-import MeteoInfos                                          from "../components/MeteoInfos";
-
-export default connect()(class MeteoWidget extends React.Component {
+@connect()
+export default class WeatherWidget extends React.Component {
 	
 	state = {};
 	
 	saveState = ( e, d ) => {
-		let { dispatch, MeteoSearch = {}, record } = this.props;
+		let { dispatch, record } = this.props;
 		dispatch(updateWidget(
 			{
 				...record,
-				location: MeteoSearch.location,
 				size    : this.state.size || record.size,
 				position: this.state.position || record.position
 			}));
 	};
 	
+	componentWillMount() {
+		let { dispatch, record } = this.props;
+		if ( record.location && !record.results )
+			dispatch(weatherSearch(record, record.location))
+	}
+	
 	render() {
 		let {
 			    record: { position, size } = {},
 			    record,
-			    MeteoSearch                = {},
 			    dispatch, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
@@ -72,14 +78,14 @@ export default connect()(class MeteoWidget extends React.Component {
 						!this.state.editing &&
 						<div className={ "text" }>
 							{
-								MeteoSearch.fetching && "Loading...."
-								|| MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
+								record.fetching && "Loading...."
+								|| record.results && <WeatherInfos weatherData={ record.results }/>
 								|| "Edit me !"
 							}
 							<button onClick={ e => this.setState({ editing: true }) }
 							        className={ "edit" }>🖋
 							</button>
-							<button onClick={ e => $actions.rmPostIt(record) }
+							<button onClick={ e => dispatch(rmPostIt(record._id)) }
 							        className={ "delete" }>🖾
 							</button>
 						</div>
@@ -90,18 +96,19 @@ export default connect()(class MeteoWidget extends React.Component {
 									<input type="text"
 									       onChange={ e => {
 										       this.setState({ searching: e.target.value });
-										       dispatch(weatherSearch(record._id, e.target.value));
+										       if ( e.target.value.length > 2 )
+											       dispatch(weatherSearch(record, e.target.value));
 									       } }
 									       value={ state.searching !== undefined ? state.searching : record.location }
 									       onMouseDown={ e => e.stopPropagation() }/>
 								</div>
 							}
 							{
-								MeteoSearch.fetching && "Loading...." ||
-								MeteoSearch.results && <MeteoInfos weatherData={ MeteoSearch.results }/>
+								record.fetching && "Loading...." ||
+								record.results && <WeatherInfos weatherData={ record.results }/>
 							}
 							<button
-								disabled={ MeteoSearch.fetching }
+								disabled={ record.fetching }
 								onClick={ e => this.setState({ editing: false }) }>💾
 							</button>
 						</div>
@@ -110,4 +117,4 @@ export default connect()(class MeteoWidget extends React.Component {
 			</Rnd>
 		);
 	}
-})
+};

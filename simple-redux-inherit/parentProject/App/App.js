@@ -16,19 +16,20 @@ import React                     from 'react';
 import {connect}                 from 'react-redux'
 import {selectPostIt, saveState} from "App/actions/updateAppState";
 import {newPostIt}               from "App/actions/updateWidget";
-import MeteoWidget               from 'App/containers/MeteoWidget';
+import WeatherWidget             from 'App/containers/WeatherWidget.js';
 import "./App.scss"
 
-class App extends React.Component {
+@connect(( { someData, appState } ) => ({ someData, appState }))
+export default class App extends React.Component {
 	render() {
 		let { someData = { items: [] }, appState, dispatch } = this.props;
 		return <React.Fragment>
 			<h1>Minimal drafty redux sample</h1>
 			{
 				someData.items.map(
-					note => <MeteoWidget key={ note._id } record={ note }
-					                     onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                     selected={ note._id == appState.selectedPostItId }/>
+					note => <WeatherWidget key={ note._id } record={ note }
+					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
+					                       selected={ note._id == appState.selectedPostItId }/>
 				)
 			}
 			<div
@@ -45,8 +46,3 @@ class App extends React.Component {
 	}
 }
 
-export default connect(( { someData, appState } ) => {
-	return {
-		someData, appState
-	}
-})(App)

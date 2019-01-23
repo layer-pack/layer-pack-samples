@@ -28,6 +28,8 @@ export default {
 		}]
 	},
 	appState: {
+		src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+		
 		selectedPostItId: "rkUQHZrqM"
 	},
 }

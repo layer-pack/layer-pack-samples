@@ -13,7 +13,8 @@
  */
 
 
-import superagent from "superagent";
+import superagent     from "superagent";
+import {updateWidget} from "./updateWidget";
 
 export const SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED'
 export const SAVING_STATE            = 'SAVING_STATE'
@@ -26,9 +27,14 @@ export function selectPostIt( wid ) {
 }
 
 export function saveState( then ) {
-	superagent.post('/', this.scopeObj.serialize())
-	          .then(then)
-	return {
-		type: SAVING_STATE,
-	}
+	return ( dispatch, getState ) => {
+		return superagent
+			.post('/', getState())
+			.then(( res ) => {
+				console.log('Saved')
+			})
+			.catch(e => {
+				console.log('Not Saved')
+			})
+	};
 }

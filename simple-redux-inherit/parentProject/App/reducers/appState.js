@@ -14,7 +14,7 @@
 import {SELECTED_WIDGET_CHANGED} from '../actions/updateAppState';
 
 
-export function appState( state = { left: false }, action ) {
+export function appState( state = {}, action ) {
 	switch ( action.type ) {
 		case SELECTED_WIDGET_CHANGED:
 			return {

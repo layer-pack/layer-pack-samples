@@ -32,7 +32,7 @@ export function someData( state = { right: false }, action ) {
 		case WIDGET_RM:
 			return {
 				items: state.items.filter(
-					it => (it._id !== action._id)
+					it => (it._id !== action.wid)
 				)
 			}
 		default:
