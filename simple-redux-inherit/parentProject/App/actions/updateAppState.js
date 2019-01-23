@@ -12,15 +12,25 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import { LEFT_CHANGED } from '../actions/left';
 
-export function leftChanged( state = { left: false }, action) {
-  switch (action.type) {
-    case LEFT_CHANGED:
-      return Object.assign({}, state, {
-        left: !state.left,
-      });
-    default:
-      return state
-  }
+import superagent from "superagent";
+
+export const SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED'
+export const SAVING_STATE            = 'SAVING_STATE'
+
+export function selectPostIt( wid ) {
+	return {
+		type: SELECTED_WIDGET_CHANGED,
+		wid
+	}
+}
+
+export function saveState() {
+	//superagent.post('/', this.scopeObj.serialize())
+	//          .then(( e, r ) => {
+	//	          console.log(e, r)
+	//          })
+	return {
+		type: SAVING_STATE,
+	}
 }

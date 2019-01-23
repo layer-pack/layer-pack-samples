@@ -12,41 +12,30 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React, {Component} from 'react';
-import {connect}          from 'react-redux'
-import {rightChanged}     from '../actions/right'
+import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM} from '../actions/updateWidget';
 
-class CardRight extends Component {
-	
-	render() {
-		const { dispatch, right, left } = this.props
-		return (
-			<div className="col-right">
-				<div className="app-link">
-					<span>Right is: { String(right) }</span>
-					<hr/>
-					<span>Left is: { String(left) }</span>
-					<hr/>
-					<a href="/#" className="btn"
-					   onClick={ (( e ) => {
-						   dispatch(rightChanged())
-					   }) }>
-						Revert right to { String(!right) }
-					</a>
-				</div>
-			</div>
-		);
+export function someData( state = { right: false }, action ) {
+	switch ( action.type ) {
+		case WIDGET_CHANGED:
+			return {
+				items: state.items
+				            .map(
+					            it => (it._id === action.record._id)
+					                  ? action.record
+					                  : it
+				            )
+			}
+		case WIDGET_NEW:
+			return {
+				items: [...state.items, action.record]
+			}
+		case WIDGET_RM:
+			return {
+				items: state.items.filter(
+					it => (it._id !== action._id)
+				)
+			}
+		default:
+			return state
 	}
 }
-
-function mapStateToProps( state ) {
-	const { right } = state.rightChanged;
-	const { left }  = state.leftChanged;
-	
-	return {
-		right,
-		left
-	}
-}
-
-export default connect(mapStateToProps)(CardRight)

@@ -12,18 +12,41 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React     from 'react';
-import {connect} from 'react-redux'
-import Card      from './components/card'
+import React                     from 'react';
+import {connect}                 from 'react-redux'
+import {selectPostIt, saveState} from "App/actions/updateAppState";
+import {newPostIt}               from "App/actions/updateWidget";
+import MeteoWidget               from 'App/containers/MeteoWidget';
 import "./App.scss"
 
 class App extends React.Component {
 	render() {
+		let { someData = { items: [] }, appState, dispatch } = this.props;
 		return <React.Fragment>
 			<h1>Minimal drafty redux sample</h1>
-			<Card/>
+			{
+				someData.items.map(
+					note => <MeteoWidget key={ note._id } record={ note }
+					                     onSelect={ e => dispatch(selectPostIt(note._id)) }
+					                     selected={ note._id == appState.selectedPostItId }/>
+				)
+			}
+			<div
+				className={ "newBtn button" }
+				onClick={ e => dispatch(newPostIt()) }>
+				Add Post It
+			</div>
+			<div
+				className={ "saveBtn button" }
+				onClick={ e => dispatch(saveState()) }>
+				Save state
+			</div>
 		</React.Fragment>
 	}
 }
 
-export default connect()(App)
+export default connect(( { someData, appState } ) => {
+	return {
+		someData, appState
+	}
+})(App)

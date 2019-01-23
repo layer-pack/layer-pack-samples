@@ -18,7 +18,7 @@ import React            from "react";
 import {renderToString} from "react-dom/server";
 import {Provider}       from 'react-redux'
 import configureStore   from './configureStore'
-import initialState     from './initialState'
+import initialState     from 'App/initialState'
 
 const indexTpl = require('./index.html.tpl');
 
@@ -41,14 +41,14 @@ const ctrl = {
 	},
 	renderSSR( { state }, cb ) {
 		const store = configureStore(state || initialState)
-		let content, html, preloadedState;
+		let content = "", html, preloadedState;
 		
 		try {
-			content        = renderToString(
-				<Provider store={ store }>
-					<App/>
-				</Provider>
-			);
+			//content        = renderToString(
+			//	<Provider store={ store }>
+			//		<App/>
+			//	</Provider>
+			//);
 			preloadedState = store.getState();
 			html           = indexTpl.render(
 				{

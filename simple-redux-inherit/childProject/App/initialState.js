@@ -12,6 +12,22 @@
  *  @contact : caipilabs@gmail.com
  */
 export default {
-	rightChanged: { right: false },
-	leftChanged : { left: false }
+	someData: {
+		// initial state
+		src  : "/api/hello",
+		items: [{
+			"_id"     : "rkUQHZrqM",
+			"location": "paris",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 321, "y": 167 }
+		}, {
+			"_id"     : "r1bcuMrcM",
+			"location": "rio",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 260, "y": 576 }
+		}]
+	},
+	appState: {
+		selectedPostItId: "rkUQHZrqM"
+	},
 }

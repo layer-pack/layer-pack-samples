@@ -12,38 +12,32 @@
  *  @contact : caipilabs@gmail.com
  */
 
-import React, {Component} from 'react';
-import {connect}          from 'react-redux'
-import {leftChanged}      from '../actions/left'
+import React                   from "react";
+import moment                  from "moment";
 
-class CardLeft extends Component {
-	render() {
-		const { dispatch, left, right } = this.props
-		return (
-			<div className="col-left">
-				<span>Left is: { String(left) }</span>
-				<hr/>
-				<span>Right is: { String(right) }</span>
-				<hr/>
-				<a href="#" className="btn"
-				   onClick={ (( e ) => {
-					   dispatch(leftChanged())
-				   }) }>
-					Revert left to { String(!left) }</a>
+
+export default ( { meteoData } ) =>
+	<div className={ "MeteoInfos" }>
+		<div className={ "location" }>
+			{ meteoData.name }&nbsp;
+			(&nbsp;
+			{
+				meteoData.weather[0] &&
+				meteoData.weather[0].description
+			}
+			&nbsp;)
+		</div>
+		<div className={ "picto" }>
+			{
+				meteoData.weather[0] &&
+				<img
+					src={ "http://openweathermap.org/img/w/" + meteoData.weather[0].icon + '.png' }></img>
+			}
+		</div>
+		<div className={ "infos" }>
+			<div className={ "dt" }>
 			</div>
-		);
-	}
-	
-}
-
-function mapStateToProps( state ) {
-	const { right } = state.rightChanged;
-	const { left }  = state.leftChanged;
-	
-	return {
-		right,
-		left
-	}
-}
-
-export default connect(mapStateToProps)(CardLeft)
+			<div className={ "dt" }>{ moment(meteoData.dt * 1000).format('MMMM Do YYYY, h:mm:ss a') }</div>
+			<div className={ "wind" }>{ meteoData.wind.speed }mh</div>
+		</div>
+	</div>;

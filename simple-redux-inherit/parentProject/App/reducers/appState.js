@@ -11,22 +11,17 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
+import {SELECTED_WIDGET_CHANGED} from '../actions/updateAppState';
 
-import React, {Component} from 'react';
-import CardLeft           from 'App/containers/card-left';
-import CardRight          from 'App/containers/card-right';
 
-class Card extends Component {
-	render() {
-		return (
-			<div className="app-card">
-				<CardLeft/>
-				<br/>
-				<br/>
-				<CardRight/>
-			</div>
-		);
+export function appState( state = { left: false }, action ) {
+	switch ( action.type ) {
+		case SELECTED_WIDGET_CHANGED:
+			return {
+				...state,
+				selectedPostItId: action.wid
+			};
+		default:
+			return state
 	}
 }
-
-export default Card;

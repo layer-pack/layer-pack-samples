@@ -12,10 +12,11 @@
  *  @contact : caipilabs@gmail.com
  */
 
-export const LEFT_CHANGED = 'CHANGE_LEFT'
+import {combineactions} from 'redux'
+import actions          from './actions/*.js';
 
-export function leftChanged() {
-	return {
-		type: LEFT_CHANGED,
-	}
-}
+export default Object.keys(actions).reduce(
+	( h, group ) => {
+		Object.keys(actions[group]).forEach(act => (h[act] = actions[group][act]))
+		return h;
+	}, {})
