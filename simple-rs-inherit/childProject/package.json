@@ -22,8 +22,9 @@
     }
   },
   "scripts": {
-    "build": "wpi",
-    "start-dev": "concurrently \"wpi -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
+    "build": "wpi&&wpi :api -w",
+    "dev-api": "wpi :api -w",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"nodemon --watch dist --inspect=[::]:9229 ./Server.js -p 9701\"",
     "start": "node ./Server.js -p 9501",
     "runBrowser": "start http://localhost:9501"
   },

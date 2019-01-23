@@ -28,7 +28,7 @@ export default class MeteoSearch extends Store {
 		updateSearch( location ) {
 			if ( location.length < 4 )
 				return { location };
-
+			
 			return { location };
 		}
 		
