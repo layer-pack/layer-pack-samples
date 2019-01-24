@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "react": "^16.2.0",
-    "webpack-inherit": "^1.2.0",
+    "webpack-inherit": "^1.2.2",
     "react-dom": "^16.2.0",
     "autoprefixer": "^8.2.0",
     "babel-cli": "^6.14.0",
