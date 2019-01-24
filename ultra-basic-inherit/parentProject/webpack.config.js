@@ -132,7 +132,7 @@ module.exports = [
 						{
 							loader : "sass-loader",
 							options: {
-								importer  : wpInherit.plugin().sassImporter,
+								importer  : wpInherit.plugin().sassImporter(),
 								sourceMaps: true
 							}
 						}
