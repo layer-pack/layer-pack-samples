@@ -19,6 +19,9 @@ import {renderToString}      from "react-dom/server"
 
 import "./App.scss"
 
+import stores from "App/stores/te*.js"
+
+console.log(stores)
 
 @scopeToState(["appState", "someData"])
 class App extends React.Component {

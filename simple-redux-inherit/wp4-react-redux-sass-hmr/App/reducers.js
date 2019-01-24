@@ -20,8 +20,9 @@ let preCombine = items => items.reduce(
 		Object.keys(reducers[reducer]).forEach(act => (h[act] = reducers[reducer][act]))
 		return h;
 	}, {}),
+    combined   = preCombine(Object.keys(reducers)),
     store      = combineReducers(
-	    preCombine(Object.keys(reducers))
+	    combined
     );
 
 export default store
