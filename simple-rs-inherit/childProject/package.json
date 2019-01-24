@@ -34,7 +34,7 @@
     "parentProject": "file:../parentProject"
   },
   "devDependencies": {
-    "webpack-inherit": "^1.1.0",
+    "webpack-inherit": "^1.2.0",
     "wp4-react-rescope-sass-hmr": "file:../wp4-react-rescope-sass-hmr"
   }
 }
