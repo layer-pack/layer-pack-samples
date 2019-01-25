@@ -21,8 +21,8 @@ export default class MeteoSearch extends Store {
 	static state   = {
 		
 		// initial state value
-		src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-		
+		src       : "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+		autoUpdate: 1000 * 10
 	};
 	static actions = {
 		updateSearch( location ) {
