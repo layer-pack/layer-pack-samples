@@ -6,7 +6,6 @@
   "author": "Nathan Braun <caipilabs@gmail.com>",
   "wpInherit": {
     "default": {
-      "rootFolder": "App",
       "config": "./webpack.config.www.js",
       "extend": []
     },
