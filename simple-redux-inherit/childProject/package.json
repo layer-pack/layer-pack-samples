@@ -16,7 +16,6 @@
     "api": {
       "rootFolder": "App",
       "vars": {
-        "externals": true
       },
       "extend": [
         "parentProject",
