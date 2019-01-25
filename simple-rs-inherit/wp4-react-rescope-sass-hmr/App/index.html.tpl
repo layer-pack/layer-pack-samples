@@ -29,15 +29,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Really basic drafty rescope + react component example</title>
-    <script>window.__scopesState ={{=it.state || "{}"}};</script>
+    <title>Really basic drafty rescope + react webpack-inherit example</title>
+    <script>window.__STATE__ ={{=it.state || "{}"}};</script>
 </head>
 <body>
 <div id="app">{{=it.app || ''}}</div>
 
 <script src="./App.js"></script>
 <script>
-    App.renderTo(document.getElementById('app'));
+    App.renderTo(document.getElementById('app'), __STATE__);
 </script>
 </body>
 </html>

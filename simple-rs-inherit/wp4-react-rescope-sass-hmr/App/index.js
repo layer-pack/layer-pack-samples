@@ -22,13 +22,13 @@ import {Scope}          from "rscopes";
 const indexTpl = require('./index.html.tpl');
 
 const ctrl = {
-	renderTo( node ) {
+	renderTo( node, state ) {
 		let cScope      = new Scope(AppScope, {
 			id         : "App",
 			autoDestroy: true
 		});
 		window.contexts = Scope.scopes;
-		window.__scopesState && cScope.restore(window.__scopesState)
+		state && cScope.restore(state)
 		cScope.mount(["appState", "someData"])
 		      .then(
 			      ( state ) => {

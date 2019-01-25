@@ -29,7 +29,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Really basic drafty rescope + react component example</title>
+    <title>Really basic drafty redux + react webpack-inherit example</title>
     <script>window.__STATE__  ={{=it.state || "{}"}};</script>
 </head>
 <body>
