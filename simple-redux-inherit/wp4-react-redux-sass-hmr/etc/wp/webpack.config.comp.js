@@ -12,50 +12,51 @@
  *  @contact : caipilabs@gmail.com
  */
 
-var wpInherit = require('webpack-inherit');
-var fs        = require("fs");
-var webpack   = require("webpack");
-var path      = require("path");
+var wpInherit         = require('webpack-inherit');
+var fs                = require("fs");
+var webpack           = require("webpack");
+var path              = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var autoprefixer = require('autoprefixer');
 
+const wpiCfg = wpInherit.getConfig()
+
 module.exports = [
 	{
-		mode: "development",
+		mode: wpiCfg.vars.production ? "production" : "development",
 		
 		// The jsx App entry point
 		entry    : {
-			App: [
+			[wpiCfg.vars.rootAlias]:
+			!wpiCfg.vars.production && [
 				'webpack/hot/dev-server',
-				'App'
+				wpiCfg.vars.rootAlias, // default to 'App'
+				wpiCfg.vars.rootAlias + '/samples'
 			]
+			|| wpiCfg.vars.rootAlias
 		},
-		devServer: {
-			index             : '', //needed to enable root proxying
-			contentBase       : wpInherit.getHeadRoot() + "/dist/",
+		devServer: !wpiCfg.vars.production && {
+			//index             : '', //needed to enable root proxying
+			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
-			publicPath        : wpInherit.getHeadRoot() + "/dist/",
+			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			
-			host : 'localhost', // Defaults to `localhost`
-			port : 9501, // Defaults to 8080
-			proxy: {
-				'/': {
-					target: 'http://localhost:9701',
-					secure: false
-				}
-			}
-		},
+			host: 'localhost', // Defaults to `localhost`
+			port: 9501, // Defaults to 8080
+		} || undefined,
+		
 		// The resulting build
-		output   : {
-			path      : wpInherit.getHeadRoot() + "/dist/",
+		output: {
+			path      : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			filename  : "[name].js",
 			publicPath: "/",
 		},
 		
 		// add sourcemap in a dedicated file (.map)
-		devtool: 'source-map',
+		devtool: !wpiCfg.vars.production && 'source-map',
 		
 		// required files resolving options
 		resolve: {
@@ -75,6 +76,13 @@ module.exports = [
 				wpInherit.plugin(),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				new webpack.NamedModulesPlugin(),
+				...(!wpiCfg.vars.production && [
+					new HtmlWebpackPlugin({
+						                      template: __dirname + '/../tpl/indexComp.html',
+						                      //inject  : false
+					                      })
+				] || [])
+			
 			]
 		),
 		
@@ -107,7 +115,7 @@ module.exports = [
 										"loose": true
 									}],
 									[require.resolve("@babel/plugin-transform-runtime"), {}],
-									[require.resolve("react-hot-loader/babel"), {}],
+									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},

@@ -16,24 +16,24 @@ var wpInherit = require('webpack-inherit');
 var fs        = require("fs");
 var webpack   = require("webpack");
 var path      = require("path");
+const wpiCfg  = wpInherit.getConfig()
 
 var autoprefixer = require('autoprefixer');
 
 module.exports = [
 	{
-		mode     : "development",
-		entry    : {
-			App: 'App'
+		mode   : wpiCfg.vars.production ? "production" : "development",
+		entry  : {
+			App: wpiCfg.vars.rootAlias // default to 'App'
 		},
-		target   : 'node',
-		output   : {
-			path         : wpInherit.getHeadRoot() + "/dist/",
+		target : 'node',
+		output : {
+			path         : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			filename     : "[name].server.js",
 			publicPath   : "/",
 			libraryTarget: "commonjs2"
 		},
-		devtool  : 'source-map',
-		externals: ["superagent"],
+		devtool: 'source-map',
 		
 		resolve: {
 			symlinks  : false,
@@ -44,11 +44,7 @@ module.exports = [
 				".scss",
 				".css",
 			],
-			alias     : {
-				'inherits'  : 'inherits/inherits_browser.js',
-				'superagent': 'superagent/lib/node',
-				'emitter'   : 'component-emitter',
-			},
+			alias     : {},
 		},
 		
 		module : {

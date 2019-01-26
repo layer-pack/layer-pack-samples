@@ -1,26 +1,35 @@
 {
   "name": "wp4-react-redux-sass-hmr",
   "version": "1.0.0",
-  "private": true,
+  "description": "An inheritable boilerplate with webpack 4, react, redux, sass, hmr, SSR, etc",
   "license": "MIT",
   "main": "./Server.js",
   "author": "Nathan Braun <caipilabs@gmail.com>",
   "wpInherit": {
     "default": {
       "rootFolder": "App",
-      "config": "./webpack.config.www.js",
+      "config": "./etc/wp/webpack.config.www.js",
       "extend": []
     },
     "api": {
       "rootFolder": "App",
-      "config": "./webpack.config.api.js",
+      "config": "./etc/wp/webpack.config.api.js",
+      "extend": []
+    },
+    "Comp": {
+      "rootFolder": "Comp",
+      "config": "./etc/wp/webpack.config.comp.js",
+      "vars": {
+        "rootAlias": "Comp",
+        "webpackPatch": {}
+      },
       "extend": []
     }
   },
   "scripts": {
     "build": "wpi& wpi :api",
     "dev-api": "wpi :api -w",
-    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9701\"",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./Server.js -p 9701\"",
     "start": "node ./Server.js -p 9501",
     "runBrowser": "start http://localhost:9501"
   },
@@ -33,8 +42,8 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.3.1",
     "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
     "autoprefixer": "^9.4.1",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
@@ -47,6 +56,7 @@
     "file-loader": "^2.0.0",
     "hoist-non-react-methods": "^1.1.0",
     "hoist-non-react-statics": "^3.2.1",
+    "html-webpack-plugin": "^3.2.0",
     "http-proxy": "^1.17.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.8.3",
@@ -66,10 +76,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.6.3",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.7",
-    "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "source-map-support": "^0.5.9",
     "style-loader": "^0.23.1",
@@ -83,7 +89,7 @@
     "webpack-dev-middleware": "^3.5.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-inherit": "^1.3.4",
+    "webpack-inherit": "^1.2.2",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }
