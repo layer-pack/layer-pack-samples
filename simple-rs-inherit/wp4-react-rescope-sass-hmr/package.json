@@ -74,6 +74,7 @@
     "postcss-nested": "^4.1.0",
     "postcss-simple-vars": "^5.0.1",
     "react": "^16.2.0",
+    "rscopes": "^1.2.5",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.6.3",
     "sass-loader": "^7.1.0",

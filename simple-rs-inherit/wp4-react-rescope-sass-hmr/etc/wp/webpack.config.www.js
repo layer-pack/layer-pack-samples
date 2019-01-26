@@ -12,15 +12,15 @@
  *  @contact : caipilabs@gmail.com
  */
 
-var wpInherit = require('webpack-inherit');
-var fs        = require("fs");
-var webpack   = require("webpack");
-var path      = require("path");
+var wpInherit  = require('webpack-inherit');
+var fs         = require("fs");
+var webpack    = require("webpack");
+var path       = require("path");
+var Visualizer = require('webpack-visualizer-plugin');
 
 var autoprefixer = require('autoprefixer');
 
 const wpiCfg = wpInherit.getConfig()
-
 module.exports = [
 	{
 		mode: wpiCfg.vars.production ? "production" : "development",
@@ -72,12 +72,38 @@ module.exports = [
 			alias     : {},
 		},
 		
+		optimization: {
+			splitChunks: {
+				cacheGroups: {
+					default: false,
+					vendors: {
+						// sync + async chunks
+						chunks  : 'all',
+						filename: wpiCfg.vars.rootAlias + ".vendors.js",
+						test    : ( f ) => {
+							return f.resource && wpInherit.isFileExcluded().test(f.resource)
+						},
+					},
+				}
+			}
+		},
 		// Global build plugin & option
-		plugins: (
+		plugins     : (
 			[
 				wpInherit.plugin(),
+				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
 				new webpack.NamedModulesPlugin(),
+				...(wpiCfg.vars.production && [
+					new webpack.DefinePlugin({
+						                         'process.env': {
+							                         'NODE_ENV': JSON.stringify('production')
+						                         }
+					                         }),
+					new Visualizer({
+						               filename: './' + wpiCfg.vars.rootAlias + '.stats.html'
+					               })
+				] || [])
 			]
 		),
 		

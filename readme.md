@@ -19,6 +19,8 @@ To test go in the [childProject](simple-redux-inherit/childProject) package and 
 
 then open http://localhost:9501 or use 'npm run runBrowser'
 
+Check the build stats [here](simple-redux-inherit/childProject/dist/App.stats.html
+
 -  [simple-rs-inherit](simple-rs-inherit) ( React rScopes with SSR, sass, hot reload & inheriting )
 
     Contain 3 packages :
@@ -33,6 +35,8 @@ To test go in the [childProject](simple-rs-inherit/childProject) package and exe
     npm run start-dev
 
 then open http://localhost:9501 or use 'npm run runBrowser'
+
+Check the build stats [here](simple-rs-inherit/childProject/dist/App.stats.html
 
 -  [ultra-basic-inherit](ultra-basic-inherit)
 
