@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7",
-    "parentProject": "file:../parentProject"
+    "nodemon": "^1.18.7"
   },
   "devDependencies": {
     "webpack-inherit": "^1.3.3",
-    "wp4-react-rescope-sass-hmr": "file:../wp4-react-rescope-sass-hmr"
+    "wp4-react-rescope-sass-hmr": "file:../wp4-react-rescope-sass-hmr",
+    "parentProject": "file:../parentProject"
   }
 }
