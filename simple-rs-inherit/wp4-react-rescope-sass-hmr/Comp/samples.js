@@ -11,47 +11,24 @@
  *  @author : Nathanael Braun
  *  @contact : caipilabs@gmail.com
  */
+import React    from "react";
+import ReactDom from "react-dom";
 
-var express      = require("express"),
-    path         = require("path"),
-    App          = require('./dist/App.server').default,
-    fs           = require("fs"),
-    server       = express(),
-    currentState = null,
-    http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2));
+import Comp  from "Comp"
+import {hot} from "react-hot-loader/root";
 
-server.use(express.json());       // to support JSON-encoded bodies
-server.use(express.urlencoded()); // to support URL-encoded bodies
+console.log("Dev !")
 
-server.get(
-	'/',
-	function ( req, res, next ) {
-		App.renderSSR(
-			{
-				url  : req.url,
-				state: currentState
-			},
-			( err, html, nstate ) => {
-				if ( nstate )
-					currentState = nstate;
-				!err ?
-				res.send(200, html)
-				     :
-				res.send(500, err + '')
-			}
-		)
-	}
-);
+const isDev   = process.env.NODE_ENV !== 'production',
+      HMRComp = isDev ? hot(Comp) : Comp;
 
-server.post('/', function ( req, res, next ) {
-	console.log("New state pushed")
-	currentState = req.body;
-	res.send(200, 'ok')
-});
+ReactDom.render(
+	<HMRComp/>
+	, document.getElementById('app'));
 
-server.use(express.static('./dist'))
-
-var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
-	console.warn('Running on ', server_instance.address().port)
-});
+if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+	module.hot.accept('Comp',
+	                  m => ReactDom.render(
+		                  <HMRComp/>
+		                  , document.body));
+}

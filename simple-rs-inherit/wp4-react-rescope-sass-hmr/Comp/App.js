@@ -12,46 +12,15 @@
  *  @contact : caipilabs@gmail.com
  */
 
-var express      = require("express"),
-    path         = require("path"),
-    App          = require('./dist/App.server').default,
-    fs           = require("fs"),
-    server       = express(),
-    currentState = null,
-    http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2));
+import React from 'react';
 
-server.use(express.json());       // to support JSON-encoded bodies
-server.use(express.urlencoded()); // to support URL-encoded bodies
-
-server.get(
-	'/',
-	function ( req, res, next ) {
-		App.renderSSR(
-			{
-				url  : req.url,
-				state: currentState
-			},
-			( err, html, nstate ) => {
-				if ( nstate )
-					currentState = nstate;
-				!err ?
-				res.send(200, html)
-				     :
-				res.send(500, err + '')
-			}
-		)
+class App extends React.Component {
+	
+	render() {
+		return <React.Fragment>
+			<h1>wp4-react-hmr comp base</h1>
+		</React.Fragment>
 	}
-);
+}
 
-server.post('/', function ( req, res, next ) {
-	console.log("New state pushed")
-	currentState = req.body;
-	res.send(200, 'ok')
-});
-
-server.use(express.static('./dist'))
-
-var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
-	console.warn('Running on ', server_instance.address().port)
-});
+export default App
