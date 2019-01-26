@@ -76,7 +76,7 @@
     "universal-webpack": "^0.6.6",
     "url-loader": "^1.1.2",
     "webpack": "^4.27.0",
-    "webpack-inherit": "^1.3.3",
+    "webpack-inherit": "^1.3.4",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.0",
     "webpack-dev-middleware": "^3.5.1",
