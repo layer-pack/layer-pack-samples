@@ -1,6 +1,6 @@
 {
   "name": "wp4-react-rescope-sass-hmr",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "An inheritable boilerplate with webpack 4, react, rs, sass, hmr, SSR, etc",
   "license": "MIT",
   "main": "./Server.js",
