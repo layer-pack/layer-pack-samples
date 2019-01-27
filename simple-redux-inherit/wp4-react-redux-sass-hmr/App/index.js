@@ -26,9 +26,9 @@ const indexTpl = require('./index.html.tpl');
 const ctrl = {
 	renderTo( node, initialState = {} ) {
 		const store  = configureStore(initialState),
-		      isDev  = process.env.NODE_ENV !== 'production'
-			,
-			  HMRApp = isDev ? hot(App) : App;
+		      isDev  = process.env.NODE_ENV !== 'production',
+		      HMRApp = isDev ? hot(App) : App;
+		
 		ReactDom.render(
 			<Provider store={ store }>
 				<HMRApp/>
@@ -41,7 +41,7 @@ const ctrl = {
 	},
 	renderSSR( { state }, cb ) {
 		const store = configureStore(state || initialState)
-		let content, html, preloadedState;
+		let content = "", html, preloadedState;
 		
 		try {
 			content        = renderToString(
@@ -62,31 +62,6 @@ const ctrl = {
 		cb(null, html)
 	}
 }
-//if (module.hot) {
-//	module.hot.accept();
-//}
-//
-// add these lines
-//if (module.hot && process.env.NODE_ENV !== 'production') {
-//	module.hot.accept();
-//}
-
-//if ( module.hot ) {
-//	// Support hot reloading of components
-//	// and display an overlay for runtime errors
-//	//const renderApp = render;
-//	//
-//	//render = () => {
-//	//		renderApp();
-//	//};
-//
-//	module.hot.accept("./reducers/*.js", () => {
-//		//setTimeout(render);
-//		const nextRootReducer = combineReducers(preCombine(Object.keys(reducers)))
-//		store.replaceReducer(nextRootReducer)
-//		console.log('do reload on store change')
-//	});
-//}
 if ( typeof window !== 'undefined' )
 	window.App = ctrl;
 

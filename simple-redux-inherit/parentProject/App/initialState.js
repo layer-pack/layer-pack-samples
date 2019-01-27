@@ -12,6 +12,22 @@
  *  @contact : caipilabs@gmail.com
  */
 export default {
-	rightChanged: { right: false },
-	leftChanged : { left: true }
+	someData: {
+		items: [{
+			"_id"     : "rkUQHZrqM",
+			"location": "paris",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 321, "y": 167 }
+		}, {
+			"_id"     : "r1bcuMrcM",
+			"location": "rio",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 260, "y": 576 }
+		}]
+	},
+	appState: {
+		src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+		
+		selectedPostItId: null
+	},
 }

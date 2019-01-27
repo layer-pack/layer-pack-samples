@@ -29,12 +29,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Really basic drafty rescope + react component example</title>
+    <title>Really basic drafty redux + react webpack-inherit example</title>
     <script>window.__STATE__  ={{=it.state || "{}"}};</script>
 </head>
 <body>
 <div id="app">{{=it.app || ''}}</div>
 
+<script src="./App.vendors.js"></script>
 <script src="./App.js"></script>
 <script>
     App.renderTo(document.getElementById('app'), window.__STATE__);
