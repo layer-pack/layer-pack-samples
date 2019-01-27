@@ -23,7 +23,7 @@
   ~  SOFTWARE.
   ~
   ~ @author : Nathanael Braun
-  ~ @contact : caipilabs@gmail.com
+  ~ @contact : n8tz.js@gmail.com
   -->
 
 <html lang="en">

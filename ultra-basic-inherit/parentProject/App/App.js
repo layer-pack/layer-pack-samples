@@ -22,7 +22,7 @@
  *  SOFTWARE.
  *
  * @author : Nathanael Braun
- * @contact : caipilabs@gmail.com
+ * @contact : n8tz.js@gmail.com
  */
 
 import React                 from 'react';

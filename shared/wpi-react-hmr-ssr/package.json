@@ -4,7 +4,7 @@
   "description": "An inheritable boilerplate with webpack 4, react, sass, hmr, SSR, etc",
   "license": "MIT",
   "main": "./Server.js",
-  "author": "Nathan Braun <caipilabs@gmail.com>",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
   "wpInherit": {
     "default": {
       "rootFolder": "App",
