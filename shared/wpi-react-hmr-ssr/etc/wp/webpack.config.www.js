@@ -93,7 +93,6 @@ module.exports = [
 				wpInherit.plugin(),
 				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				new webpack.NamedModulesPlugin(),
 				...(wpiCfg.vars.production && [
 					new webpack.DefinePlugin({
 						                         'process.env': {
@@ -103,7 +102,7 @@ module.exports = [
 					new Visualizer({
 						               filename: './' + wpiCfg.vars.rootAlias + '.stats.html'
 					               })
-				] || [])
+				] || [new webpack.NamedModulesPlugin()])
 			]
 		),
 		

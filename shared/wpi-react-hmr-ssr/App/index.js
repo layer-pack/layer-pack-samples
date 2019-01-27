@@ -16,23 +16,17 @@ import App              from "App/App"
 import ReactDom         from 'react-dom';
 import React            from "react";
 import {renderToString} from "react-dom/server";
-import {Provider}       from 'react-redux'
-import configureStore   from './configureStore'
-import initialState     from './initialState'
 
 const indexTpl = require('./index.html.tpl');
 
 
 const ctrl = {
 	renderTo( node, initialState = {} ) {
-		const store  = configureStore(initialState),
-		      isDev  = process.env.NODE_ENV !== 'production',
+		const isDev  = process.env.NODE_ENV !== 'production',
 		      HMRApp = isDev ? hot(App) : App;
 		
 		ReactDom.render(
-			<Provider store={ store }>
-				<HMRApp/>
-			</Provider>
+			<HMRApp/>
 			, node);
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
@@ -40,20 +34,16 @@ const ctrl = {
 		}
 	},
 	renderSSR( { state }, cb ) {
-		const store = configureStore(state || initialState)
-		let content = "", html, preloadedState;
+		let content = "", html;
 		
 		try {
-			content        = renderToString(
-				<Provider store={ store }>
-					<App/>
-				</Provider>
+			content = renderToString(
+				<App/>
 			);
-			preloadedState = store.getState();
-			html           = indexTpl.render(
+			html    = indexTpl.render(
 				{
 					app  : content,
-					state: JSON.stringify(preloadedState)
+					state: {}
 				}
 			);
 		} catch ( e ) {
@@ -62,8 +52,6 @@ const ctrl = {
 		cb(null, html)
 	}
 }
-if ( typeof window !== 'undefined' )
-	window.App = ctrl;
 
 export default ctrl;
 

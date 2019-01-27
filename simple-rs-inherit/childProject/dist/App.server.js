@@ -110,6 +110,32 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_stores_te__js.gen.js":
+/*!******************************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_stores_te__js.gen.js ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var req,
+    _exports = {},
+    root;
+req = __webpack_require__("./App/stores sync recursive ^\\.\\/te[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var name = key.substr(2);
+  _exports[name] = _exports[name] || req(key);
+});
+req = __webpack_require__("../parentProject/App/stores sync recursive ^\\.\\/te[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var name = key.substr(2);
+  _exports[name] = _exports[name] || req(key);
+});
+/* harmony default export */ __webpack_exports__["default"] = (_exports);
+
+/***/ }),
+
 /***/ "../parentProject/App/App.js":
 /*!***********************************!*\
   !*** ../parentProject/App/App.js ***!
@@ -138,7 +164,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App.scss */ "./App/App.scss");
 /* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_App_scss__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var App_stores_te_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/stores/te*.js */ "../wp4-react-rescope-sass-hmr/App/MapOf.App_stores_te__js.gen.js");
+/* harmony import */ var App_stores_te_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/stores/te*.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_stores_te__js.gen.js");
 
 
 
@@ -728,32 +754,6 @@ MeteoSearch.actions = {
   }
 };
 
-
-/***/ }),
-
-/***/ "../wp4-react-rescope-sass-hmr/App/MapOf.App_stores_te__js.gen.js":
-/*!************************************************************************!*\
-  !*** ../wp4-react-rescope-sass-hmr/App/MapOf.App_stores_te__js.gen.js ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var req,
-    _exports = {},
-    root;
-req = __webpack_require__("./App/stores sync recursive ^\\.\\/te[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-req = __webpack_require__("../parentProject/App/stores sync recursive ^\\.\\/te[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-/* harmony default export */ __webpack_exports__["default"] = (_exports);
 
 /***/ }),
 
