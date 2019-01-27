@@ -27,6 +27,7 @@
     }
   },
   "scripts": {
+    "install": "npm rebuild node-sass||0",
     "build": "wpi& wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./Server.js -p 9701\"",
