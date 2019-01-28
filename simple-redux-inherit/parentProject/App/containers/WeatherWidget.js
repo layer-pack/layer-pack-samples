@@ -11,6 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
+import ContextMenu from "react-inheritable-contextmenu";
 
 import React          from "react";
 import {Rnd}          from "react-rnd";
@@ -49,6 +50,8 @@ export default class WeatherWidget extends React.Component {
 			    dispatch, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
+		ContextMenu;
+		debugger;
 		return (
 			<Rnd
 				z={ selected ? 2000 : 1 }
@@ -74,6 +77,9 @@ export default class WeatherWidget extends React.Component {
 						});
 				} }>
 				<div className={ "postit handle" }>
+					<ContextMenu>
+						<div>Menu root</div>
+					</ContextMenu>
 					{
 						!this.state.editing &&
 						<div className={ "text" }>
