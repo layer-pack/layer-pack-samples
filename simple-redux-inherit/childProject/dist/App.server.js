@@ -455,17 +455,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_inheritable_contextmenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-inheritable-contextmenu */ "undefined?88b5");
-/* harmony import */ var react_inheritable_contextmenu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_inheritable_contextmenu__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "undefined?588e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-rnd */ "undefined?84ab");
-/* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_rnd__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/WeatherInfos.js */ "../parentProject/App/components/WeatherInfos.js");
-/* harmony import */ var App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! App/actions/updateAppState */ "../parentProject/App/actions/updateAppState.js");
-/* harmony import */ var App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! App/actions/updateWidget */ "../parentProject/App/actions/updateWidget.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "undefined?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-rnd */ "undefined?84ab");
+/* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_rnd__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/WeatherInfos.js */ "../parentProject/App/components/WeatherInfos.js");
+/* harmony import */ var App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/actions/updateAppState */ "../parentProject/App/actions/updateAppState.js");
+/* harmony import */ var App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! App/actions/updateWidget */ "../parentProject/App/actions/updateWidget.js");
 
 
 
@@ -494,8 +492,7 @@ var _dec, _class, _temp;
 
 
 
-
-var WeatherWidget = (_dec = Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(), _dec(_class = (_temp =
+var WeatherWidget = (_dec = Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(), _dec(_class = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(WeatherWidget, _React$Component);
@@ -518,7 +515,7 @@ function (_React$Component) {
       var _this$props = _this.props,
           dispatch = _this$props.dispatch,
           record = _this$props.record;
-      dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_12__["updateWidget"])(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+      dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["updateWidget"])(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
         size: _this.state.size || record.size,
         position: _this.state.position || record.position
       })));
@@ -533,7 +530,7 @@ function (_React$Component) {
       var _this$props2 = this.props,
           dispatch = _this$props2.dispatch,
           record = _this$props2.record;
-      if (record.location && !record.results) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_12__["weatherSearch"])(record, record.location));
+      if (record.location && !record.results) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, record.location));
     }
   }, {
     key: "render",
@@ -550,9 +547,7 @@ function (_React$Component) {
           onSelect = _this$props3.onSelect,
           selected = _this$props3.selected,
           state = this.state;
-      react_inheritable_contextmenu__WEBPACK_IMPORTED_MODULE_6___default.a;
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_rnd__WEBPACK_IMPORTED_MODULE_8__["Rnd"], {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_rnd__WEBPACK_IMPORTED_MODULE_7__["Rnd"], {
         z: selected ? 2000 : 1,
         size: state.size || size,
         position: state.position || position,
@@ -577,44 +572,44 @@ function (_React$Component) {
             }
           });
         }
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "postit handle"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_inheritable_contextmenu__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, "Menu root")), !this.state.editing && react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      }, !this.state.editing && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "text"
-      }, record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
         weatherData: record.results
-      }) || "Edit me !", react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }) || "Edit me !", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick(e) {
           return _this2.setState({
             editing: true
           });
         },
         className: "edit"
-      }, "\uD83D\uDD8B"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }, "\uD83D\uDD8B"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick(e) {
-          return dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_12__["rmPostIt"])(record._id));
+          return dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["rmPostIt"])(record._id));
         },
         className: "delete"
-      }, "\uD83D\uDDBE")) || react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      }, "\uD83D\uDDBE")) || react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "editor"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "search"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
         type: "text",
         onChange: function onChange(e) {
           _this2.setState({
             searching: e.target.value
           });
 
-          if (e.target.value.length > 2) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_12__["weatherSearch"])(record, e.target.value));
+          if (e.target.value.length > 2) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, e.target.value));
         },
         value: state.searching !== undefined ? state.searching : record.location,
         onMouseDown: function onMouseDown(e) {
           return e.stopPropagation();
         }
-      })), record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      })), record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
         weatherData: record.results
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         disabled: record.fetching,
         onClick: function onClick(e) {
           return _this2.setState({
@@ -626,7 +621,7 @@ function (_React$Component) {
   }]);
 
   return WeatherWidget;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component), _temp)) || _class);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _temp)) || _class);
 
 ;
 
@@ -1204,17 +1199,6 @@ module.exports = require("react-rnd");
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
-
-/***/ }),
-
-/***/ "undefined?88b5":
-/*!************************************************!*\
-  !*** external "react-inheritable-contextmenu" ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-inheritable-contextmenu");
 
 /***/ }),
 
