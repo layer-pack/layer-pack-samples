@@ -37,8 +37,5 @@
 
 <script src="./App.vendors.js"></script>
 <script src="./App.js"></script>
-<script>
-    App.renderTo(document.getElementById('app'), window.__STATE__);
-</script>
 </body>
 </html>

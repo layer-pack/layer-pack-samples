@@ -1,3 +1,8 @@
+/** wpi externals - add module path **/
+{
+let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\parentProject\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\wp4-react-redux-sass-hmr\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\shared\\wpi-react-hmr-ssr\\node_modules","node_modules"]);
+}
+
 /*!
  * MIT License
  * 
@@ -105,10 +110,31 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "../wp4-react-redux-sass-hmr/App/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js":
+/*!**************************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var req,
+    _exports = {},
+    root;
+req = __webpack_require__("../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var name = key.substr(2);
+  _exports[name] = _exports[name] || req(key);
+});
+/* harmony default export */ __webpack_exports__["default"] = (_exports);
+
+/***/ }),
 
 /***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_reducers___js.gen.js":
 /*!******************************************************************************************************!*\
@@ -133,6 +159,374 @@ req.keys().forEach(function (key) {
   _exports[name] = _exports[name] || req(key);
 });
 /* harmony default export */ __webpack_exports__["default"] = (_exports);
+
+/***/ }),
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
+/*!*******************************************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./renderService.js": "../../shared/wpi-react-hmr-ssr/App/api/renderService.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$";
+
+/***/ }),
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/api.js":
+/*!******************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api/**.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js");
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (function (server, http) {
+  return Object.keys(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"]).forEach(function (group) {
+    if (_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default) server.use(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default);
+  });
+});
+
+/***/ }),
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/api/renderService.js":
+/*!********************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api/renderService.js ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var App_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/index.js */ "../wp4-react-redux-sass-hmr/App/index.js");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+var path = __webpack_require__(/*! path */ "path"),
+    express = __webpack_require__(/*! express */ "undefined?22fe"),
+    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    server = express(),
+    currentState;
+
+server.get('/', function (req, res, next) {
+  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
+    url: req.url,
+    state: currentState
+  }, function (err, html, nstate) {
+    res.send(200, html);
+  });
+});
+server.use(express.static(wpiConf.projectRoot + '/dist'));
+/* harmony default export */ __webpack_exports__["default"] = (server);
+
+/***/ }),
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/console.js":
+/*!**********************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/console.js ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "undefined?4d9b");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "undefined?0db5");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+var cfg = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    debug = __webpack_require__(/*! debug-logger */ "undefined?63f7"),
+    isFunction = __webpack_require__(/*! is */ "undefined?63a5").function,
+    isBrowserSide = new Function("try {return this===window;}catch(e){ return false;}")(),
+    debounce = __webpack_require__(/*! debounce */ "undefined?508e"),
+    _console = !isBrowserSide && function _console(ns) {
+  var c = debug(ns),
+      fn = function fn(ns2) {
+    return new _console(ns + "::" + ns2);
+  };
+
+  for (var k in c) {
+    if (c.hasOwnProperty(k) && !this[k]) fn[k] = c[k];
+  }
+
+  fn.beep = function () {
+    process.stdout.write('\x07'); // do a beep
+
+    this.error.apply(this, arguments);
+  };
+
+  return fn;
+} || function _console(ns) {
+  var c = console,
+      fn = function fn(ns2) {
+    return new _console(ns + "::" + ns2);
+  };
+
+  for (var k in c) {
+    if (c.hasOwnProperty(k) && !this[k] && isFunction(c[k])) fn[k] = c[k].bind(console, ns);
+  }
+
+  return fn;
+};
+
+debug.inspectOptions = {
+  colors: true
+};
+debug.debug.enable(cfg.project.name + '*');
+
+console.watch = console.watch || function (oObj, sProp) {
+  var sPrivateProp = "$_" + sProp + "_$"; // to minimize the name clash risk
+
+  oObj[sPrivateProp] = oObj[sProp]; // overwrite with accessor
+
+  Object.defineProperty(oObj, sProp, {
+    get: function get() {
+      return oObj[sPrivateProp];
+    },
+    set: function set(value) {
+      console.log("setting " + sProp + " to " + value);
+      debugger; // sets breakpoint
+
+      oObj[sPrivateProp] = value;
+    }
+  });
+}; // well group the react/vendors warns as they abuse of it each minors versions
+
+
+isBrowserSide && !window.consoleHookDone && function () {
+  window.consoleHookDone = true;
+
+  function truncate(string, ln) {
+    if (string.length > ln) return string.substring(0, ln) + '...';else return string;
+  }
+
+  ;
+  var hookedWarn = console.warn,
+      hookedError = console.error,
+      recentWarn = [],
+      recentErrors = [],
+      warn = debounce(function () {
+    console.groupCollapsed(" %d %cvendors warns happen%c (%s)", recentWarn.length, "color: orange; text-decoration: underline", "color: gray; font-style: italic;font-size:.8em", truncate(recentWarn.map(function (v) {
+      return v.join(', ');
+    }).join('\t'), 50));
+    recentWarn.forEach(function (_ref) {
+      var _console2;
+
+      var _ref2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_ref, 2),
+          argz = _ref2[0],
+          trace = _ref2[1];
+
+      (_console2 = console).groupCollapsed.apply(_console2, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(argz));
+
+      hookedWarn.call(console, trace);
+      console.groupEnd();
+    });
+    recentWarn = [];
+    console.groupEnd();
+  }, 2000),
+      error = debounce(function () {
+    console.groupCollapsed(" %d %cvendors errors happen%c (%s)", recentErrors.length, "color: red; text-decoration: underline", "color: gray; font-style: italic;font-size:.8em", truncate(recentErrors.map(function (v) {
+      return v.join(', ');
+    }).join('\t'), 50)); // recentErrors.forEach(argz => hookedWarn.apply(console, argz));
+
+    recentErrors.forEach(function (_ref3) {
+      var _console3;
+
+      var _ref4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_ref3, 2),
+          argz = _ref4[0],
+          trace = _ref4[1];
+
+      (_console3 = console).groupCollapsed.apply(_console3, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(argz));
+
+      hookedError.call(console, trace);
+      console.groupEnd();
+    });
+    recentErrors = [];
+    console.groupEnd();
+  }, 2000);
+
+  console.warn = function () {
+    for (var _len = arguments.length, argz = new Array(_len), _key = 0; _key < _len; _key++) {
+      argz[_key] = arguments[_key];
+    }
+
+    if (argz[0].startWith(cfg.project.name)) return hookedWarn.apply(void 0, argz);
+    recentWarn.push([argz, new Error().stack]);
+    warn();
+  };
+
+  console.trace = function () {//if ( /^Caipi/.test(argz[0]) )
+    //    return hookedWarn(...argz);
+    //recentWarn.push([argz, (new Error()).stack]);
+    //warn();
+  };
+
+  console.error = function () {
+    for (var _len2 = arguments.length, argz = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      argz[_key2] = arguments[_key2];
+    }
+
+    if (argz[0].startWith(cfg.project.name)) return hookedWarn.apply(void 0, argz);
+    recentErrors.push([argz, new Error().stack]);
+    error();
+  };
+}();
+/* harmony default export */ __webpack_exports__["default"] = (new _console(cfg.project.name));
+
+/***/ }),
+
+/***/ "../../shared/wpi-react-hmr-ssr/App/index.server.js":
+/*!***************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/index.server.js ***!
+  \***************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var App_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/App */ "../parentProject/App/App.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "undefined?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api */ "../../shared/wpi-react-hmr-ssr/App/api.js");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+
+
+
+var express = __webpack_require__(/*! express */ "undefined?22fe"),
+    path = __webpack_require__(/*! path */ "path"),
+    fs = __webpack_require__(/*! fs */ "fs"),
+    server = express(),
+    currentState = null,
+    http = __webpack_require__(/*! http */ "http").Server(server),
+    argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
+    httpProxy = __webpack_require__(/*! http-proxy */ "undefined?2290"),
+    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
+  pingTimeout: 30000,
+  pingInterval: 10000
+}),
+    nsp = io.of('/' + wpiConf.project.name);
+
+var debug = __webpack_require__(/*! App/console */ "../../shared/wpi-react-hmr-ssr/App/console.js").default("server");
+
+process.title = wpiConf.project.name + '::server';
+console.log("process.env.DEBUG : ", process.env.DEBUG);
+server.use(express.json()); // to support JSON-encoded bodies
+
+server.use(express.urlencoded()); // to support URL-encoded bodies
+
+Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http);
+nsp.on('connection', function (socket) {
+  debug.log("new io connect !!!"); //server(socket.request, {
+  //	setHeader() {
+  //	}
+  //}, function ( err ) {
+  //	debug.log("new io connect !!!", socket.request.user);
+  //
+  //	App.db.registerIoSocket(socket);
+  //});
+
+  socket.on('event', function (datas) {
+    debug.log("new io event !!!", (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db)._id);
+
+    (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db)._processIoSyncEvent(socket, datas);
+  });
+  socket.on('disconnect', function (data) {
+    (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db).clearIoSocket(socket);
+  });
+});
+var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
+  debug.info('Running on ', server_instance.address().port);
+});
 
 /***/ }),
 
@@ -220,7 +614,7 @@ function (_React$Component) {
       } : _this$props$someData,
           appState = _this$props.appState,
           dispatch = _this$props.dispatch;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, "Minimal drafty redux sample"), someData.items.map(function (note) {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, someData.items.map(function (note) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: note._id,
           record: note,
@@ -824,7 +1218,7 @@ function configureStore(preloadedState) {
 module.exports = (function () {
   var fn = function anonymous(it
 /*``*/) {
-var out='<!DOCTYPE html><!-- ~ Copyright (c)  2018 Wise Wild Web . ~ ~  MIT License ~ ~  Permission is hereby granted, free of charge, to any person obtaining a copy ~  of this software and associated documentation files (the "Software"), to deal ~  in the Software without restriction, including without limitation the rights ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell ~  copies of the Software, and to permit persons to whom the Software is ~  furnished to do so, subject to the following conditions: ~ ~  The above copyright notice and this permission notice shall be included in all ~  copies or substantial portions of the Software. ~ ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE ~  SOFTWARE. ~ ~ @author : Nathanael Braun ~ @contact : n8tz.js@gmail.com --><html lang="en"><head> <meta charset="UTF-8"> <title>Really basic drafty redux + react webpack-inherit example</title> <script>window.__STATE__  ='+(it.state || "{}")+';</script></head><body><div id="app">'+(it.app || '')+'</div><script src="./App.vendors.js"></script><script src="./App.js"></script><script> App.renderTo(document.getElementById(\'app\'), window.__STATE__);</script></body></html>';return out;
+var out='<!DOCTYPE html><!-- ~ Copyright (c)  2018 Wise Wild Web . ~ ~  MIT License ~ ~  Permission is hereby granted, free of charge, to any person obtaining a copy ~  of this software and associated documentation files (the "Software"), to deal ~  in the Software without restriction, including without limitation the rights ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell ~  copies of the Software, and to permit persons to whom the Software is ~  furnished to do so, subject to the following conditions: ~ ~  The above copyright notice and this permission notice shall be included in all ~  copies or substantial portions of the Software. ~ ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE ~  SOFTWARE. ~ ~ @author : Nathanael Braun ~ @contact : n8tz.js@gmail.com --><html lang="en"><head> <meta charset="UTF-8"> <title>Really basic drafty redux + react webpack-inherit example</title> <script>window.__STATE__  ='+(it.state || "{}")+';</script></head><body><div id="app">'+(it.app || '')+'</div><script src="./App.vendors.js"></script><script src="./App.js"></script></body></html>';return out;
 };
   fn.render = fn;
   return fn;
@@ -879,17 +1273,7 @@ __webpack_require__.r(__webpack_exports__);
 var indexTpl = __webpack_require__(/*! ./index.html.tpl */ "../wp4-react-redux-sass-hmr/App/index.html.tpl");
 
 var ctrl = {
-  renderTo: function (_renderTo) {
-    function renderTo(_x) {
-      return _renderTo.apply(this, arguments);
-    }
-
-    renderTo.toString = function () {
-      return _renderTo.toString();
-    };
-
-    return renderTo;
-  }(function (node) {
+  renderTo: function renderTo(node) {
     var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var store = Object(_configureStore__WEBPACK_IMPORTED_MODULE_6__["default"])(initialState),
         isDev = "development" !== 'production',
@@ -899,7 +1283,7 @@ var ctrl = {
     }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(HMRApp, null)), node);
 
     if (false) {}
-  }),
+  },
   renderSSR: function renderSSR(_ref, cb) {
     var state = _ref.state;
     var store = Object(_configureStore__WEBPACK_IMPORTED_MODULE_6__["default"])(state || _initialState__WEBPACK_IMPORTED_MODULE_7__["default"]);
@@ -990,6 +1374,17 @@ var preCombine = function preCombine(items) {
 
 /***/ }),
 
+/***/ "./App/.wpiConfig.json":
+/*!*****************************!*\
+  !*** ./App/.wpiConfig.json ***!
+  \*****************************/
+/*! exports provided: project, projectRoot, vars, allCfg, allModId, default */
+/***/ (function(module) {
+
+module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["parentProject","wp4-react-redux-sass-hmr"]},{"rootFolder":"App","extend":[]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["parentProject","wp4-react-redux-sass-hmr","wpi-react-hmr-ssr"]};
+
+/***/ }),
+
 /***/ "./App/initialState.js":
 /*!*****************************!*\
   !*** ./App/initialState.js ***!
@@ -1059,6 +1454,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 0:
+/*!******************************!*\
+  !*** multi App/index.server ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! App/index.server */"../../shared/wpi-react-hmr-ssr/App/index.server.js");
+
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+
 /***/ "undefined?03c7":
 /*!*******************************************************************!*\
   !*** external "@babel/runtime/helpers/possibleConstructorReturn" ***!
@@ -1067,6 +1507,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/possibleConstructorReturn");
+
+/***/ }),
+
+/***/ "undefined?0db5":
+/*!*******************************************************!*\
+  !*** external "@babel/runtime/helpers/slicedToArray" ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/helpers/slicedToArray");
 
 /***/ }),
 
@@ -1081,6 +1532,28 @@ module.exports = require("@babel/runtime/helpers/getPrototypeOf");
 
 /***/ }),
 
+/***/ "undefined?2290":
+/*!*****************************!*\
+  !*** external "http-proxy" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("http-proxy");
+
+/***/ }),
+
+/***/ "undefined?22fe":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+
 /***/ "undefined?24b3":
 /*!********************************************************!*\
   !*** external "@babel/runtime/helpers/classCallCheck" ***!
@@ -1089,6 +1562,17 @@ module.exports = require("@babel/runtime/helpers/getPrototypeOf");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/classCallCheck");
+
+/***/ }),
+
+/***/ "undefined?2efa":
+/*!***************************!*\
+  !*** external "minimist" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("minimist");
 
 /***/ }),
 
@@ -1125,6 +1609,17 @@ module.exports = require("@babel/runtime/helpers/toConsumableArray");
 
 /***/ }),
 
+/***/ "undefined?508e":
+/*!***************************!*\
+  !*** external "debounce" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("debounce");
+
+/***/ }),
+
 /***/ "undefined?588e":
 /*!************************!*\
   !*** external "react" ***!
@@ -1155,6 +1650,28 @@ module.exports = require("redux-devtools-extension");
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom");
+
+/***/ }),
+
+/***/ "undefined?63a5":
+/*!*********************!*\
+  !*** external "is" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("is");
+
+/***/ }),
+
+/***/ "undefined?63f7":
+/*!*******************************!*\
+  !*** external "debug-logger" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("debug-logger");
 
 /***/ }),
 
@@ -1243,6 +1760,17 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("shortid");
+
+/***/ }),
+
+/***/ "undefined?cb34":
+/*!****************************!*\
+  !*** external "socket.io" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("socket.io");
 
 /***/ }),
 

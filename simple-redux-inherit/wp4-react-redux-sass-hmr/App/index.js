@@ -36,7 +36,12 @@ const ctrl = {
 			, node);
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('./App', m => renderTo(node, initialState))
+			module.hot.accept('./App', m => ReactDom.render(
+				<Provider store={ store }>
+					<HMRApp/>
+				</Provider>
+				, node)
+			)
 		}
 	},
 	renderSSR( { state }, cb ) {

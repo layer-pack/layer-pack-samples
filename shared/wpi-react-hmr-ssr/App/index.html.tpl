@@ -36,8 +36,5 @@
 <div id="app">{{=it.app || ''}}</div>
 
 <script src="./App.js"></script>
-<script>
-    App.renderTo(document.getElementById('app'), window.__STATE__);
-</script>
 </body>
 </html>
