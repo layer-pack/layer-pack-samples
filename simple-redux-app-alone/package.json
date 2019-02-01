@@ -33,7 +33,7 @@
     }
   },
   "scripts": {
-    "build": "wpi",
+    "build": "wpi&&wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "concurrently \"wpi-dev-server :devClient --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
     "start": "node ./dist/App.server.js  -p 9501",
@@ -61,6 +61,6 @@
   },
   "devDependencies": {
     "wpi-react-redux-sass-ssr": "^0.1.3",
-    "webpack-inherit": "^1.4.4"
+    "webpack-inherit": "^1.4.5"
   }
 }
