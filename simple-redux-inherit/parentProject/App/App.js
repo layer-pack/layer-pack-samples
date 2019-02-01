@@ -24,7 +24,7 @@ export default class App extends React.Component {
 	render() {
 		let { someData = { items: [] }, appState, dispatch } = this.props;
 		return <React.Fragment>
-			{/*<h1>Minimal drafty redux sample</h1>*/}
+			<h1>Minimal drafty redux sample</h1>
 			{
 				someData.items.map(
 					note => <WeatherWidget key={ note._id } record={ note }

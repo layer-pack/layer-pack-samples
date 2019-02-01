@@ -437,13 +437,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var express = __webpack_require__(/*! express */ "undefined?22fe"),
-    path = __webpack_require__(/*! path */ "path"),
-    fs = __webpack_require__(/*! fs */ "fs"),
     server = express(),
-    currentState = null,
     http = __webpack_require__(/*! http */ "http").Server(server),
     argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
-    httpProxy = __webpack_require__(/*! http-proxy */ "undefined?2290"),
     wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
     io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
   pingTimeout: 30000,
@@ -573,7 +569,7 @@ function (_React$Component) {
       } : _this$props$someData,
           appState = _this$props.appState,
           dispatch = _this$props.dispatch;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, someData.items.map(function (note) {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, "Minimal drafty redux sample"), someData.items.map(function (note) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: note._id,
           record: note,
@@ -1066,62 +1062,6 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "../parentProject/App/initialState.js":
-/*!********************************************!*\
-  !*** ../parentProject/App/initialState.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-/* harmony default export */ __webpack_exports__["default"] = ({
-  someData: {
-    items: [{
-      "_id": "rkUQHZrqM",
-      "location": "paris",
-      "size": {
-        "width": 350,
-        "height": 200
-      },
-      "position": {
-        "x": 321,
-        "y": 167
-      }
-    }, {
-      "_id": "r1bcuMrcM",
-      "location": "rio",
-      "size": {
-        "width": 350,
-        "height": 200
-      },
-      "position": {
-        "x": 260,
-        "y": 576
-      }
-    }]
-  },
-  appState: {
-    src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-    selectedPostItId: null
-  }
-});
-
-/***/ }),
-
 /***/ "../parentProject/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
 /*!*************************************************************!*\
   !*** ../parentProject/App/reducers sync ^\.\/[^\\\/]+\.js$ ***!
@@ -1348,7 +1288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _configureStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./configureStore */ "../wp4-react-redux-sass-hmr/App/configureStore.js");
-/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initialState */ "../parentProject/App/initialState.js");
+/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initialState */ "./App/initialState.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -1486,6 +1426,64 @@ module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.
 
 /***/ }),
 
+/***/ "./App/initialState.js":
+/*!*****************************!*\
+  !*** ./App/initialState.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+/* harmony default export */ __webpack_exports__["default"] = ({
+  someData: {
+    // initial state
+    src: "/api/hello",
+    items: [{
+      "_id": "rkUQHZrqM",
+      "location": "paris",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 321,
+        "y": 167
+      }
+    }, {
+      "_id": "r1bcuMrcM",
+      "location": "rio",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 260,
+        "y": 576
+      }
+    }]
+  },
+  appState: {
+    src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+    selectedPostItId: "rkUQHZrqM"
+  }
+});
+
+/***/ }),
+
 /***/ "./App/styles/index.scss":
 /*!*******************************!*\
   !*** ./App/styles/index.scss ***!
@@ -1506,17 +1504,6 @@ module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.
 
 module.exports = __webpack_require__(/*! App/index.server */"../../shared/wpi-react-hmr-ssr/App/index.server.js");
 
-
-/***/ }),
-
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
 
 /***/ }),
 
@@ -1572,17 +1559,6 @@ module.exports = require("@babel/runtime/helpers/slicedToArray");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/getPrototypeOf");
-
-/***/ }),
-
-/***/ "undefined?2290":
-/*!*****************************!*\
-  !*** external "http-proxy" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("http-proxy");
 
 /***/ }),
 

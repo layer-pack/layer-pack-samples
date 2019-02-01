@@ -17,13 +17,9 @@ import api              from "./api";
 import {renderToString} from "react-dom/server";
 
 var express      = require("express"),
-    path         = require("path"),
-    fs           = require("fs"),
     server       = express(),
-    currentState = null,
     http         = require('http').Server(server),
     argz         = require('minimist')(process.argv.slice(2)),
-    httpProxy    = require('http-proxy'),
     wpiConf      = require('App/.wpiConfig.json'),
     io           = require('socket.io')(http, {
 	    pingTimeout : 30000,
