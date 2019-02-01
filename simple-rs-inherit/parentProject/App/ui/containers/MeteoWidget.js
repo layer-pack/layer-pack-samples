@@ -55,7 +55,7 @@ export default class MeteoWidget extends React.Component {
 		    state = this.state;
 		return (
 			<Rnd
-				z={ selected ? 2000 : 1 }
+				style={ selected && { zIndex: 2000 } }
 				size={ state.size || size }
 				position={ state.position || position }
 				onDragStop={ this.saveState }

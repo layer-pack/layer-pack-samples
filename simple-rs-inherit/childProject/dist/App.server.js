@@ -1116,7 +1116,9 @@ function (_React$Component) {
           selected = _this$props2.selected,
           state = this.state;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_rnd__WEBPACK_IMPORTED_MODULE_7__["Rnd"], {
-        z: selected ? 2000 : 1,
+        style: selected && {
+          zIndex: 2000
+        },
         size: state.size || size,
         position: state.position || position,
         onDragStop: this.saveState,
