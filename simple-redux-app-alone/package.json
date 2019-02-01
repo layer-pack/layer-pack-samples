@@ -60,7 +60,7 @@
     "url-loader": "^1.1.2"
   },
   "devDependencies": {
-    "wpi-react-redux-sass-ssr": "^0.1.3",
+    "wpi-react-redux-sass-ssr": "^1.0.0",
     "webpack-inherit": "^1.4.5"
   }
 }

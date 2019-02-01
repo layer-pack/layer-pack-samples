@@ -16,21 +16,20 @@ import React            from "react";
 import api              from "./api";
 import {renderToString} from "react-dom/server";
 
-var express      = require("express"),
-    server       = express(),
-    http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2)),
-    wpiConf      = require('App/.wpiConfig.json'),
-    io           = require('socket.io')(http, {
+var express = require("express"),
+    server  = express(),
+    http    = require('http').Server(server),
+    argz    = require('minimist')(process.argv.slice(2)),
+    wpiConf = require('App/.wpiConfig.json'),
+    io      = require('socket.io')(http, {
 	    pingTimeout : 30000,
 	    pingInterval: 10000
     }),
-    nsp          = io.of(
+    nsp     = io.of(
 	    '/' + wpiConf.project.name
-    );
+    ),
+    debug   = require('App/console').default("server");
 
-
-let debug     = require('App/console').default("server");
 process.title = wpiConf.project.name + '::server';
 
 console.log("process.env.DEBUG : ", process.env.DEBUG);
