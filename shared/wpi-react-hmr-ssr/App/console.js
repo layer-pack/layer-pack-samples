@@ -50,6 +50,7 @@ debug.inspectOptions = {
 	colors: true
 };
 debug.debug.enable(cfg.project.name + '*')
+
 console.watch = console.watch || function ( oObj, sProp ) {
 	let sPrivateProp   = "$_" + sProp + "_$"; // to minimize the name clash risk
 	oObj[sPrivateProp] = oObj[sProp];

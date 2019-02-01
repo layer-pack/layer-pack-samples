@@ -18,13 +18,14 @@
     }
   },
   "scripts": {
-    "build": "wpi",
-    "dev": "wpi -w",
-    "start": "node ./Server.js -p 9501",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9501",
-    "runBrowser": "start http://localhost:9501&node ./Server.js -p 9501"
+    "build": "wpi&&wpi :api",
+    "dev-api": "wpi :api -w",
+    "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
+    "start": "node ./dist/App.server.js  -p 9501",
+    "runBrowser": "start http://localhost:9501"
   },
   "devDependencies": {
+    "wp4-react-rescope-sass-hmr": "file:../wp4-react-rescope-sass-hmr",
     "mocha": "^3.5.1"
   },
   "dependencies": {

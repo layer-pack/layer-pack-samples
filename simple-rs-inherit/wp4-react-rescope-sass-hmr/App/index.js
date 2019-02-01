@@ -28,7 +28,7 @@ const ctrl = {
 			autoDestroy: true
 		});
 		window.contexts = Scope.scopes;
-		state && cScope.restore(state)
+		state && cScope.restore(state);
 		cScope.mount(["appState", "someData"])
 		      .then(
 			      ( state ) => {
@@ -80,8 +80,5 @@ const ctrl = {
 		      );
 	}
 }
-
-if ( typeof window !== 'undefined' )
-	window.App = ctrl;
 
 export default ctrl;

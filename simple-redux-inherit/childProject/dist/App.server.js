@@ -267,6 +267,7 @@ server.get('/', function (req, res, next) {
     url: req.url,
     state: currentState
   }, function (err, html, nstate) {
+    console.log("fgdgfd");
     res.send(200, html);
   });
 });
@@ -460,8 +461,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api */ "../../shared/wpi-react-hmr-ssr/App/api.js");
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -475,7 +474,6 @@ __webpack_require__.r(__webpack_exports__);
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-
 
 
 
@@ -504,26 +502,30 @@ server.use(express.json()); // to support JSON-encoded bodies
 
 server.use(express.urlencoded()); // to support URL-encoded bodies
 
-Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http);
-nsp.on('connection', function (socket) {
-  debug.log("new io connect !!!"); //server(socket.request, {
-  //	setHeader() {
-  //	}
-  //}, function ( err ) {
-  //	debug.log("new io connect !!!", socket.request.user);
-  //
-  //	App.db.registerIoSocket(socket);
-  //});
+Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http); //
+//nsp.on('connection', function ( socket ) {
+//	debug.log("new io connect !!!");
+//
+//	//server(socket.request, {
+//	//	setHeader() {
+//	//	}
+//	//}, function ( err ) {
+//	//	debug.log("new io connect !!!", socket.request.user);
+//	//
+//	//	App.db.registerIoSocket(socket);
+//	//});
+//
+//	socket.on(
+//		'event',
+//		function ( datas ) {
+//			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
+//			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
+//		});
+//	socket.on('disconnect', function ( data ) {
+//		(socket.request.AppDB || App.db).clearIoSocket(socket);
+//	});
+//});
 
-  socket.on('event', function (datas) {
-    debug.log("new io event !!!", (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db)._id);
-
-    (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db)._processIoSyncEvent(socket, datas);
-  });
-  socket.on('disconnect', function (data) {
-    (socket.request.AppDB || App_App__WEBPACK_IMPORTED_MODULE_0__["default"].db).clearIoSocket(socket);
-  });
-});
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
   debug.info('Running on ', server_instance.address().port);
 });

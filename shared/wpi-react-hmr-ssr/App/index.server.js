@@ -15,7 +15,6 @@ import App              from "App/App"
 import React            from "react";
 import api              from "./api";
 import {renderToString} from "react-dom/server";
-import {Provider}       from 'react-redux'
 
 var express      = require("express"),
     path         = require("path"),
@@ -43,29 +42,29 @@ server.use(express.json());       // to support JSON-encoded bodies
 server.use(express.urlencoded()); // to support URL-encoded bodies
 
 api(server, http);
-
-nsp.on('connection', function ( socket ) {
-	debug.log("new io connect !!!");
-	
-	//server(socket.request, {
-	//	setHeader() {
-	//	}
-	//}, function ( err ) {
-	//	debug.log("new io connect !!!", socket.request.user);
-	//
-	//	App.db.registerIoSocket(socket);
-	//});
-	
-	socket.on(
-		'event',
-		function ( datas ) {
-			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
-			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
-		});
-	socket.on('disconnect', function ( data ) {
-		(socket.request.AppDB || App.db).clearIoSocket(socket);
-	});
-});
+//
+//nsp.on('connection', function ( socket ) {
+//	debug.log("new io connect !!!");
+//
+//	//server(socket.request, {
+//	//	setHeader() {
+//	//	}
+//	//}, function ( err ) {
+//	//	debug.log("new io connect !!!", socket.request.user);
+//	//
+//	//	App.db.registerIoSocket(socket);
+//	//});
+//
+//	socket.on(
+//		'event',
+//		function ( datas ) {
+//			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
+//			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
+//		});
+//	socket.on('disconnect', function ( data ) {
+//		(socket.request.AppDB || App.db).clearIoSocket(socket);
+//	});
+//});
 
 
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {

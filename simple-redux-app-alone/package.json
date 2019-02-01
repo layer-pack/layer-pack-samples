@@ -61,6 +61,6 @@
   },
   "devDependencies": {
     "wpi-react-redux-sass-ssr": "^0.1.1",
-    "webpack-inherit": "file:../../../webpack-inherit"
+    "webpack-inherit": "^1.4.2"
   }
 }
