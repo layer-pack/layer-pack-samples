@@ -12,37 +12,29 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                     from 'react';
-import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "App/actions/updateAppState";
-import {newPostIt}               from "App/actions/updateWidget";
-import WeatherWidget             from 'App/containers/WeatherWidget.js';
-import "./styles/index.scss"
 
-@connect(( { someData, appState } ) => ({ someData, appState }))
-export default class App extends React.Component {
-	render() {
-		let { someData = { items: [] }, appState, dispatch } = this.props;
-		return <React.Fragment>
-			{/*<h1>Minimal drafty redux sample</h1>*/}
-			{
-				someData.items.map(
-					note => <WeatherWidget key={ note._id } record={ note }
-					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                       selected={ note._id == appState.selectedPostItId }/>
-				)
-			}
-			<div
-				className={ "newBtn button" }
-				onClick={ e => dispatch(newPostIt()) }>
-				Add Post It
-			</div>
-			<div
-				className={ "saveBtn button" }
-				onClick={ e => dispatch(saveState()) }>
-				Save state
-			</div>
-		</React.Fragment>
+import superagent     from "superagent";
+import {updateWidget} from "./updateWidget";
+
+export const SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED'
+export const SAVING_STATE            = 'SAVING_STATE'
+
+export function selectPostIt( wid ) {
+	return {
+		type: SELECTED_WIDGET_CHANGED,
+		wid
 	}
 }
 
+export function saveState( then ) {
+	return ( dispatch, getState ) => {
+		return superagent
+			.post('/', getState())
+			.then(( res ) => {
+				console.log('Saved')
+			})
+			.catch(e => {
+				console.log('Not Saved')
+			})
+	};
+}

@@ -11,20 +11,15 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-require('webpack-inherit').loadModulePath()
 
-var express      = require("express"),
-    path         = require("path"),
-    App          = require('./dist/App.server').default,
-    fs           = require("fs"),
-    server       = express(),
-    currentState = null,
-    http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2)),
-    httpProxy    = require('http-proxy');
 
-server.use(express.json());       // to support JSON-encoded bodies
-server.use(express.urlencoded()); // to support URL-encoded bodies
+import App              from "App/index.js";
+import {renderToString} from "react-dom/server";
+
+var path    = require("path"),
+    express = require("express"),
+    wpiConf = require('App/.wpiConfig.json'),
+    server  = express(), currentState;
 
 server.get(
 	'/',
@@ -35,16 +30,12 @@ server.get(
 				state: currentState
 			},
 			( err, html, nstate ) => {
-				if ( nstate )
-					currentState = nstate;
-				!err ?
 				res.send(200, html)
-				     :
-				res.send(500, err + '')
 			}
 		)
 	}
 );
+server.use(express.static(wpiConf.projectRoot + '/dist'));
 
 server.post('/', function ( req, res, next ) {
 	console.log("New state pushed")
@@ -52,8 +43,4 @@ server.post('/', function ( req, res, next ) {
 	res.send(200, 'ok')
 });
 
-server.use(express.static('./dist'))
-
-var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
-	console.warn('Running on ', server_instance.address().port)
-});
+export default server;

@@ -9,45 +9,42 @@
  * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *  @contact : caipilabs@gmail.com
  */
 
-var wpInherit  = require('webpack-inherit');
-var fs         = require("fs");
-var webpack    = require("webpack");
-var path       = require("path");
-var Visualizer = require('webpack-visualizer-plugin');
+var wpInherit         = require('webpack-inherit');
+var fs                = require("fs");
+var webpack           = require("webpack");
+var path              = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var autoprefixer = require('autoprefixer');
 
-const wpiCfg   = wpInherit.getConfig()
+const wpiCfg = wpInherit.getConfig()
+
 module.exports = [
 	{
 		mode: wpiCfg.vars.production ? "production" : "development",
 		
 		// The jsx App entry point
 		entry    : {
-			App: !wpiCfg.vars.production && [
+			[wpiCfg.vars.rootAlias]: wpiCfg.vars.rootAlias // default to 'App'
+			
+			, samples: wpiCfg.vars.production ? [
 				'webpack/hot/dev-server',
-				wpiCfg.vars.rootAlias + "/index.client" // default to 'App'
-			] || (wpiCfg.vars.rootAlias + "/index.client")
+				wpiCfg.vars.rootAlias // default to 'App'
+			] : wpiCfg.vars.rootAlias + '/samples'
 		},
 		devServer: !wpiCfg.vars.production && {
-			index             : '', //needed to enable root proxying
+			//index             : '', //needed to enable root proxying
 			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
-			//publicPath        : wpInherit.getHeadRoot() + "/dist/",
+			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			
-			host : 'localhost', // Defaults to `localhost`
-			port : 9501, // Defaults to 8080
-			proxy: {
-				'/': {
-					target: 'http://localhost:9701',
-					secure: false
-				}
-			}
+			host: 'localhost', // Defaults to `localhost`
+			port: 9501, // Defaults to 8080
 		} || undefined,
 		
 		// The resulting build
@@ -65,7 +62,6 @@ module.exports = [
 			extensions: [
 				".",
 				".js",
-				".jsx",
 				".json",
 				".scss",
 				".css",
@@ -73,37 +69,17 @@ module.exports = [
 			alias     : {},
 		},
 		
-		optimization: {
-			splitChunks: {
-				cacheGroups: {
-					default: false,
-					vendors: {
-						// sync + async chunks
-						chunks  : 'all',
-						filename: wpiCfg.vars.rootAlias + ".vendors.js",
-						test    : ( f ) => {
-							return f.resource && wpInherit.isFileExcluded().test(f.resource)
-						},
-					},
-				}
-			}
-		},
 		// Global build plugin & option
-		plugins     : (
+		plugins: (
 			[
 				wpInherit.plugin(),
-				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				...(wpiCfg.vars.production && [
-					new webpack.DefinePlugin({
-						                         'process.env': {
-							                         'NODE_ENV': JSON.stringify('production')
-						                         }
-					                         }),
-					new Visualizer({
-						               filename: './' + wpiCfg.vars.rootAlias + '.stats.html'
-					               })
-				] || [new webpack.NamedModulesPlugin()])
+				new webpack.NamedModulesPlugin(),
+				new HtmlWebpackPlugin({
+					                      template: __dirname + '/../tpl/indexComp.html',
+					                      inject  : false
+				                      })
+			
 			]
 		),
 		
@@ -174,6 +150,10 @@ module.exports = [
 					]
 				},
 				{
+					test: /\.tpl$/,
+					use : { loader: "dot-tpl-loader?append=true" }
+				},
+				{
 					test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
 					use : 'file-loader?limit=8192&name=assets/[hash].[ext]'
 				},
@@ -183,8 +163,6 @@ module.exports = [
 				},
 				{ test: /\.ttf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
 				{ test: /\.eot(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
-				{ test: /\.html$/, use: "file-loader?name=[name].[ext]" },
-				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" }
 			],
 		},
 	},

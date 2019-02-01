@@ -40,6 +40,6 @@
     "url-loader": "^1.1.2"
   },
   "devDependencies": {
-    "webpack-inherit": "^1.4.0"
+    "webpack-inherit": "^1.4.2"
   }
 }

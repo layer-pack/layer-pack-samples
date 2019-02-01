@@ -11,47 +11,23 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-
-var express      = require("express"),
-    path         = require("path"),
-    App          = require('./dist/App.server').default,
-    fs           = require("fs"),
-    server       = express(),
-    currentState = null,
-    http         = require('http').Server(server),
-    argz         = require('minimist')(process.argv.slice(2));
-
-server.use(express.json());       // to support JSON-encoded bodies
-server.use(express.urlencoded()); // to support URL-encoded bodies
-
-server.get(
-	'/',
-	function ( req, res, next ) {
-		App.renderSSR(
-			{
-				url  : req.url,
-				state: currentState
-			},
-			( err, html, nstate ) => {
-				if ( nstate )
-					currentState = nstate;
-				!err ?
-				res.send(200, html)
-				     :
-				res.send(500, err + '')
-			}
-		)
-	}
-);
-
-server.post('/', function ( req, res, next ) {
-	console.log("New state pushed")
-	currentState = req.body;
-	res.send(200, 'ok')
-});
-
-server.use(express.static('./dist'))
-
-var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
-	console.warn('Running on ', server_instance.address().port)
-});
+export default {
+	someData: {
+		items: [{
+			"_id"     : "rkUQHZrqM",
+			"location": "paris",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 321, "y": 167 }
+		}, {
+			"_id"     : "r1bcuMrcM",
+			"location": "rio",
+			"size"    : { "width": 350, "height": 200 },
+			"position": { "x": 260, "y": 576 }
+		}]
+	},
+	appState: {
+		src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+		
+		selectedPostItId: null
+	},
+}

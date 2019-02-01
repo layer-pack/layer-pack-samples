@@ -12,37 +12,32 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                     from 'react';
-import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "App/actions/updateAppState";
-import {newPostIt}               from "App/actions/updateWidget";
-import WeatherWidget             from 'App/containers/WeatherWidget.js';
-import "./styles/index.scss"
+import React                   from "react";
+import moment                  from "moment";
 
-@connect(( { someData, appState } ) => ({ someData, appState }))
-export default class App extends React.Component {
-	render() {
-		let { someData = { items: [] }, appState, dispatch } = this.props;
-		return <React.Fragment>
-			{/*<h1>Minimal drafty redux sample</h1>*/}
+
+export default ( { weatherData } ) =>
+	<div className={ "MeteoInfos" }>
+		<div className={ "location" }>
+			{ weatherData.name }&nbsp;
+			(&nbsp;
 			{
-				someData.items.map(
-					note => <WeatherWidget key={ note._id } record={ note }
-					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                       selected={ note._id == appState.selectedPostItId }/>
-				)
+				weatherData.weather[0] &&
+				weatherData.weather[0].description
 			}
-			<div
-				className={ "newBtn button" }
-				onClick={ e => dispatch(newPostIt()) }>
-				Add Post It
+			&nbsp;)
+		</div>
+		<div className={ "picto" }>
+			{
+				weatherData.weather[0] &&
+				<img
+					src={ "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + '.png' }></img>
+			}
+		</div>
+		<div className={ "infos" }>
+			<div className={ "dt" }>
 			</div>
-			<div
-				className={ "saveBtn button" }
-				onClick={ e => dispatch(saveState()) }>
-				Save state
-			</div>
-		</React.Fragment>
-	}
-}
-
+			<div className={ "dt" }>{ moment(weatherData.dt * 1000).format('MMMM Do YYYY, h:mm:ss a') }</div>
+			<div className={ "wind" }>{ weatherData.wind.speed }mh</div>
+		</div>
+	</div>;

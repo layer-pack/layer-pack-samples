@@ -24,9 +24,11 @@ module.exports = [
 	{
 		mode   : wpiCfg.vars.production ? "production" : "development",
 		entry  : {
-			App: wpiCfg.vars.rootAlias // default to 'App'
+			App: [
+				wpiCfg.vars.rootAlias + '/index.server'
+			] // default to 'App'
 		},
-		target : 'node',
+		target : 'async-node',
 		output : {
 			path         : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			filename     : "[name].server.js",
@@ -39,12 +41,14 @@ module.exports = [
 			symlinks  : false,
 			extensions: [
 				".",
+				".api.js",
+				".api.jsx",
 				".js",
+				".jsx",
 				".json",
 				".scss",
 				".css",
 			],
-			alias     : {},
 		},
 		
 		module : {
@@ -70,25 +74,18 @@ module.exports = [
 						}
 					}
 				},
-				{
-					test   : /\.json$/,
-					loaders: [
-						"json-loader",
-					],
-				},
+				{ test: /\.html$/, use: "file-loader?name=[name].[ext]" },
 				{ test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
 				{
 					test  : /\.(scss|css|less|woff2|ttf|eot)(\?.*$|$)$/,
 					loader: 'null-loader'
-				},
+				}
 			],
 		},
-		plugins: (
+		plugins:
 			[
 				wpInherit.plugin(),
-				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-			
-			]
-		),
+				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
+			],
 	}
 ]

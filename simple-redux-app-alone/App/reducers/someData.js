@@ -12,37 +12,30 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                     from 'react';
-import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "App/actions/updateAppState";
-import {newPostIt}               from "App/actions/updateWidget";
-import WeatherWidget             from 'App/containers/WeatherWidget.js';
-import "./styles/index.scss"
+import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM} from '../actions/updateWidget';
 
-@connect(( { someData, appState } ) => ({ someData, appState }))
-export default class App extends React.Component {
-	render() {
-		let { someData = { items: [] }, appState, dispatch } = this.props;
-		return <React.Fragment>
-			{/*<h1>Minimal drafty redux sample</h1>*/}
-			{
-				someData.items.map(
-					note => <WeatherWidget key={ note._id } record={ note }
-					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                       selected={ note._id == appState.selectedPostItId }/>
+export function someData( state = { right: false }, action ) {
+	switch ( action.type ) {
+		case WIDGET_CHANGED:
+			return {
+				items: state.items
+				            .map(
+					            it => (it._id === action.record._id)
+					                  ? action.record
+					                  : it
+				            )
+			}
+		case WIDGET_NEW:
+			return {
+				items: [...state.items, action.record]
+			}
+		case WIDGET_RM:
+			return {
+				items: state.items.filter(
+					it => (it._id !== action.wid)
 				)
 			}
-			<div
-				className={ "newBtn button" }
-				onClick={ e => dispatch(newPostIt()) }>
-				Add Post It
-			</div>
-			<div
-				className={ "saveBtn button" }
-				onClick={ e => dispatch(saveState()) }>
-				Save state
-			</div>
-		</React.Fragment>
+		default:
+			return state
 	}
 }
-

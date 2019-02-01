@@ -21,7 +21,7 @@ const indexTpl = require('./index.html.tpl');
 
 
 const ctrl = {
-	renderTo( node, initialState = {} ) {
+	renderTo( node, initialState = {}, socket ) {
 		const isDev  = process.env.NODE_ENV !== 'production',
 		      HMRApp = isDev ? hot(App) : App;
 		
@@ -30,7 +30,7 @@ const ctrl = {
 			, node);
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('./App', m => renderTo(node, initialState))
+			module.hot.accept('./App', m => ctrl.renderTo(node, initialState))
 		}
 	},
 	renderSSR( { state }, cb ) {

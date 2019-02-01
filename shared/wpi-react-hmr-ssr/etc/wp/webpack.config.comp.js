@@ -9,7 +9,7 @@
  * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *  @contact : caipilabs@gmail.com
  */
 
 var wpInherit         = require('webpack-inherit');
@@ -27,32 +27,16 @@ module.exports = [
 		mode: wpiCfg.vars.production ? "production" : "development",
 		
 		// The jsx App entry point
-		entry    : {
-			[wpiCfg.vars.rootAlias]:
-			!wpiCfg.vars.production && [
-				'webpack/hot/dev-server',
-				wpiCfg.vars.rootAlias, // default to 'App'
-				wpiCfg.vars.rootAlias + '/samples'
-			]
-			|| wpiCfg.vars.rootAlias
+		entry: {
+			[wpiCfg.vars.rootAlias]: wpiCfg.vars.rootAlias // default to 'App'
 		},
-		devServer: !wpiCfg.vars.production && {
-			//index             : '', //needed to enable root proxying
-			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
-			historyApiFallback: true,
-			hot               : true,
-			inline            : true,
-			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
-			
-			host: 'localhost', // Defaults to `localhost`
-			port: 9501, // Defaults to 8080
-		} || undefined,
 		
 		// The resulting build
 		output: {
-			path      : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
-			filename  : "[name].js",
-			publicPath: "/",
+			path           : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			filename       : "[name].js",
+			publicPath     : "/",
+			"libraryTarget": "commonjs-module"
 		},
 		
 		// add sourcemap in a dedicated file (.map)
@@ -74,15 +58,7 @@ module.exports = [
 		plugins: (
 			[
 				wpInherit.plugin(),
-				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString()),
-				new webpack.NamedModulesPlugin(),
-				...(!wpiCfg.vars.production && [
-					new HtmlWebpackPlugin({
-						                      template: __dirname + '/../tpl/indexComp.html',
-						                      //inject  : false
-					                      })
-				] || [])
-			
+				new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
 			]
 		),
 		
@@ -90,13 +66,6 @@ module.exports = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
-				{
-					test   : /\.jsx?$/,
-					exclude: wpInherit.isFileExcluded(),
-					use    : [
-						require.resolve('react-hot-loader/webpack')
-					]
-				},
 				{
 					test   : /\.jsx?$/,
 					exclude: wpInherit.isFileExcluded(),
@@ -114,8 +83,7 @@ module.exports = [
 									[require.resolve('@babel/plugin-proposal-class-properties'), {
 										"loose": true
 									}],
-									[require.resolve("@babel/plugin-transform-runtime"), {}],
-									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
+									[require.resolve("@babel/plugin-transform-runtime"), {}]
 								]
 							}
 						},

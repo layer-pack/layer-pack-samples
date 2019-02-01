@@ -34,7 +34,7 @@
     "shortid": "^2.2.8",
     "superagent": "^3.8.2",
     "url-loader": "^1.1.2",
-    "webpack-inherit": "^1.4.0",
+    "webpack-inherit": "^1.4.2",
     "autoprefixer": "^8.2.0",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.3.17",
