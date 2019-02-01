@@ -15,10 +15,10 @@ import React          from "react";
 import {Rnd}          from "react-rnd";
 import {connect}      from 'react-redux'
 import WeatherInfos   from "../components/WeatherInfos.js";
-import {selectPostIt} from "App/actions/updateAppState";
+import {selectPostIt} from "App/store/actions/updateAppState";
 import {
 	rmPostIt, newPostIt, updateWidget, weatherSearch, weatherResult
-}                     from "App/actions/updateWidget";
+}                     from "App/store/actions/updateWidget";
 
 @connect()
 export default class WeatherWidget extends React.Component {

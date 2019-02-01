@@ -141,10 +141,10 @@ req.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_reducers___js.gen.js":
-/*!******************************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_reducers___js.gen.js ***!
-  \******************************************************************************************************/
+/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js":
+/*!************************************************************************************************************!*\
+  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js ***!
+  \************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -153,12 +153,12 @@ __webpack_require__.r(__webpack_exports__);
 var req,
     _exports = {},
     root;
-req = __webpack_require__("../parentProject/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
+req = __webpack_require__("../parentProject/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
 req.keys().forEach(function (key) {
   var name = key.substr(2);
   _exports[name] = _exports[name] || req(key);
 });
-req = __webpack_require__("../wp4-react-redux-sass-hmr/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
+req = __webpack_require__("../wp4-react-redux-sass-hmr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
 req.keys().forEach(function (key) {
   var name = key.substr(2);
   _exports[name] = _exports[name] || req(key);
@@ -445,9 +445,8 @@ var express = __webpack_require__(/*! express */ "undefined?22fe"),
   pingTimeout: 30000,
   pingInterval: 10000
 }),
-    nsp = io.of('/' + wpiConf.project.name);
-
-var debug = __webpack_require__(/*! App/console */ "../../shared/wpi-react-hmr-ssr/App/console.js").default("server");
+    nsp = io.of('/' + wpiConf.project.name),
+    debug = __webpack_require__(/*! App/console */ "../../shared/wpi-react-hmr-ssr/App/console.js").default("server");
 
 process.title = wpiConf.project.name + '::server';
 console.log("process.env.DEBUG : ", process.env.DEBUG);
@@ -509,11 +508,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! App/actions/updateAppState */ "../parentProject/App/actions/updateAppState.js");
-/* harmony import */ var App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! App/actions/updateWidget */ "../parentProject/App/actions/updateWidget.js");
-/* harmony import */ var App_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! App/containers/WeatherWidget.js */ "../parentProject/App/containers/WeatherWidget.js");
-/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/index.scss */ "./App/styles/index.scss");
-/* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_index_scss__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _store_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/actions/updateAppState */ "../parentProject/App/store/actions/updateAppState.js");
+/* harmony import */ var _store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store/actions/updateWidget */ "../parentProject/App/store/actions/updateWidget.js");
+/* harmony import */ var _ui_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ui/containers/WeatherWidget.js */ "../parentProject/App/ui/containers/WeatherWidget.js");
+/* harmony import */ var _ui_styles_index_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ui/styles/index.scss */ "./App/ui/styles/index.scss");
+/* harmony import */ var _ui_styles_index_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_ui_styles_index_scss__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -570,23 +569,23 @@ function (_React$Component) {
           appState = _this$props.appState,
           dispatch = _this$props.dispatch;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, "Minimal drafty redux sample"), someData.items.map(function (note) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_ui_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: note._id,
           record: note,
           onSelect: function onSelect(e) {
-            return dispatch(Object(App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__["selectPostIt"])(note._id));
+            return dispatch(Object(_store_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__["selectPostIt"])(note._id));
           },
           selected: note._id == appState.selectedPostItId
         });
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "newBtn button",
         onClick: function onClick(e) {
-          return dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__["newPostIt"])());
+          return dispatch(Object(_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__["newPostIt"])());
         }
       }, "Add Post It"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "saveBtn button",
         onClick: function onClick(e) {
-          return dispatch(Object(App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__["saveState"])());
+          return dispatch(Object(_store_actions_updateAppState__WEBPACK_IMPORTED_MODULE_7__["saveState"])());
         }
       }, "Save state"));
     }
@@ -595,139 +594,6 @@ function (_React$Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component)) || _class);
 
-
-/***/ }),
-
-/***/ "../parentProject/App/actions/updateAppState.js":
-/*!******************************************************!*\
-  !*** ../parentProject/App/actions/updateAppState.js ***!
-  \******************************************************/
-/*! exports provided: SELECTED_WIDGET_CHANGED, SAVING_STATE, selectPostIt, saveState */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECTED_WIDGET_CHANGED", function() { return SELECTED_WIDGET_CHANGED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SAVING_STATE", function() { return SAVING_STATE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPostIt", function() { return selectPostIt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveState", function() { return saveState; });
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _updateWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./updateWidget */ "../parentProject/App/actions/updateWidget.js");
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-var SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED';
-var SAVING_STATE = 'SAVING_STATE';
-function selectPostIt(wid) {
-  return {
-    type: SELECTED_WIDGET_CHANGED,
-    wid: wid
-  };
-}
-function saveState(then) {
-  return function (dispatch, getState) {
-    return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post('/', getState()).then(function (res) {
-      console.log('Saved');
-    }).catch(function (e) {
-      console.log('Not Saved');
-    });
-  };
-}
-
-/***/ }),
-
-/***/ "../parentProject/App/actions/updateWidget.js":
-/*!****************************************************!*\
-  !*** ../parentProject/App/actions/updateWidget.js ***!
-  \****************************************************/
-/*! exports provided: WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, METEO_SEARCHING, METEO_SEARCH_COMPLETE, newPostIt, updateWidget, rmPostIt, weatherSearch */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_CHANGED", function() { return WIDGET_CHANGED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_NEW", function() { return WIDGET_NEW; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_RM", function() { return WIDGET_RM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "METEO_SEARCHING", function() { return METEO_SEARCHING; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "METEO_SEARCH_COMPLETE", function() { return METEO_SEARCH_COMPLETE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newPostIt", function() { return newPostIt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateWidget", function() { return updateWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rmPostIt", function() { return rmPostIt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "weatherSearch", function() { return weatherSearch; });
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! shortid */ "undefined?beec");
-/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-var WIDGET_CHANGED = 'WIDGET_CHANGED';
-var WIDGET_NEW = 'WIDGET_NEW';
-var WIDGET_RM = 'WIDGET_RM';
-var METEO_SEARCHING = 'METEO_SEARCHING';
-var METEO_SEARCH_COMPLETE = 'METEO_SEARCH_COMPLETE'; // actions
-
-function newPostIt() {
-  return {
-    type: WIDGET_NEW,
-    record: {
-      _id: shortid__WEBPACK_IMPORTED_MODULE_2___default.a.generate(),
-      size: {
-        width: 350,
-        height: 200
-      },
-      position: {
-        x: 100 + ~~(Math.random() * 600),
-        y: 100 + ~~(Math.random() * 600)
-      }
-    }
-  };
-}
-function updateWidget(record) {
-  return {
-    type: WIDGET_CHANGED,
-    record: record
-  };
-}
-function rmPostIt(wid) {
-  return {
-    type: WIDGET_RM,
-    wid: wid
-  };
-}
-function weatherSearch(record, location, then) {
-  return function (dispatch, getState) {
-    dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-      fetching: location
-    })));
-    return superagent__WEBPACK_IMPORTED_MODULE_1___default.a.get(getState().appState.src + location).then(function (res) {
-      dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-        fetching: false,
-        results: res.body,
-        location: location
-      })));
-    }).catch(function (e) {
-      dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-        fetching: false
-      })));
-    });
-  };
-}
 
 /***/ }),
 
@@ -817,10 +683,286 @@ server.post('/', function (req, res, next) {
 
 /***/ }),
 
-/***/ "../parentProject/App/components/WeatherInfos.js":
+/***/ "../parentProject/App/store/actions/updateAppState.js":
+/*!************************************************************!*\
+  !*** ../parentProject/App/store/actions/updateAppState.js ***!
+  \************************************************************/
+/*! exports provided: SELECTED_WIDGET_CHANGED, SAVING_STATE, selectPostIt, saveState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECTED_WIDGET_CHANGED", function() { return SELECTED_WIDGET_CHANGED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SAVING_STATE", function() { return SAVING_STATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPostIt", function() { return selectPostIt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveState", function() { return saveState; });
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _updateWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./updateWidget */ "../parentProject/App/store/actions/updateWidget.js");
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+var SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED';
+var SAVING_STATE = 'SAVING_STATE';
+function selectPostIt(wid) {
+  return {
+    type: SELECTED_WIDGET_CHANGED,
+    wid: wid
+  };
+}
+function saveState(then) {
+  return function (dispatch, getState) {
+    return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post('/', getState()).then(function (res) {
+      console.log('Saved');
+    }).catch(function (e) {
+      console.log('Not Saved');
+    });
+  };
+}
+
+/***/ }),
+
+/***/ "../parentProject/App/store/actions/updateWidget.js":
+/*!**********************************************************!*\
+  !*** ../parentProject/App/store/actions/updateWidget.js ***!
+  \**********************************************************/
+/*! exports provided: WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, METEO_SEARCHING, METEO_SEARCH_COMPLETE, newPostIt, updateWidget, rmPostIt, weatherSearch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_CHANGED", function() { return WIDGET_CHANGED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_NEW", function() { return WIDGET_NEW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_RM", function() { return WIDGET_RM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "METEO_SEARCHING", function() { return METEO_SEARCHING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "METEO_SEARCH_COMPLETE", function() { return METEO_SEARCH_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newPostIt", function() { return newPostIt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateWidget", function() { return updateWidget; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rmPostIt", function() { return rmPostIt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "weatherSearch", function() { return weatherSearch; });
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! shortid */ "undefined?beec");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var WIDGET_CHANGED = 'WIDGET_CHANGED';
+var WIDGET_NEW = 'WIDGET_NEW';
+var WIDGET_RM = 'WIDGET_RM';
+var METEO_SEARCHING = 'METEO_SEARCHING';
+var METEO_SEARCH_COMPLETE = 'METEO_SEARCH_COMPLETE'; // actions
+
+function newPostIt() {
+  return {
+    type: WIDGET_NEW,
+    record: {
+      _id: shortid__WEBPACK_IMPORTED_MODULE_2___default.a.generate(),
+      size: {
+        width: 350,
+        height: 200
+      },
+      position: {
+        x: 100 + ~~(Math.random() * 600),
+        y: 100 + ~~(Math.random() * 600)
+      }
+    }
+  };
+}
+function updateWidget(record) {
+  return {
+    type: WIDGET_CHANGED,
+    record: record
+  };
+}
+function rmPostIt(wid) {
+  return {
+    type: WIDGET_RM,
+    wid: wid
+  };
+}
+function weatherSearch(record, location, then) {
+  return function (dispatch, getState) {
+    dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+      fetching: location
+    })));
+    return superagent__WEBPACK_IMPORTED_MODULE_1___default.a.get(getState().appState.src + location).then(function (res) {
+      dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+        fetching: false,
+        results: res.body,
+        location: location
+      })));
+    }).catch(function (e) {
+      dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+        fetching: false
+      })));
+    });
+  };
+}
+
+/***/ }),
+
+/***/ "../parentProject/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
+/*!*******************************************************************!*\
+  !*** ../parentProject/App/store/reducers sync ^\.\/[^\\\/]+\.js$ ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./appState.js": "../parentProject/App/store/reducers/appState.js",
+	"./someData.js": "../parentProject/App/store/reducers/someData.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../parentProject/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
+
+/***/ }),
+
+/***/ "../parentProject/App/store/reducers/appState.js":
 /*!*******************************************************!*\
-  !*** ../parentProject/App/components/WeatherInfos.js ***!
+  !*** ../parentProject/App/store/reducers/appState.js ***!
   \*******************************************************/
+/*! exports provided: appState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appState", function() { return appState; });
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/updateAppState */ "../parentProject/App/store/actions/updateAppState.js");
+
+
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+function appState() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__["SELECTED_WIDGET_CHANGED"]:
+      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state, {
+        selectedPostItId: action.wid
+      });
+
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
+/***/ "../parentProject/App/store/reducers/someData.js":
+/*!*******************************************************!*\
+  !*** ../parentProject/App/store/reducers/someData.js ***!
+  \*******************************************************/
+/*! exports provided: someData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "someData", function() { return someData; });
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "undefined?4d9b");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/updateWidget */ "../parentProject/App/store/actions/updateWidget.js");
+
+
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+function someData() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    right: false
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_CHANGED"]:
+      return {
+        items: state.items.map(function (it) {
+          return it._id === action.record._id ? action.record : it;
+        })
+      };
+
+    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_NEW"]:
+      return {
+        items: [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(state.items), [action.record])
+      };
+
+    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_RM"]:
+      return {
+        items: state.items.filter(function (it) {
+          return it._id !== action.wid;
+        })
+      };
+
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
+/***/ "../parentProject/App/ui/components/WeatherInfos.js":
+/*!**********************************************************!*\
+  !*** ../parentProject/App/ui/components/WeatherInfos.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -868,10 +1010,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../parentProject/App/containers/WeatherWidget.js":
-/*!********************************************************!*\
-  !*** ../parentProject/App/containers/WeatherWidget.js ***!
-  \********************************************************/
+/***/ "../parentProject/App/ui/containers/WeatherWidget.js":
+/*!***********************************************************!*\
+  !*** ../parentProject/App/ui/containers/WeatherWidget.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -896,9 +1038,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_rnd__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/WeatherInfos.js */ "../parentProject/App/components/WeatherInfos.js");
-/* harmony import */ var App_actions_updateAppState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/actions/updateAppState */ "../parentProject/App/actions/updateAppState.js");
-/* harmony import */ var App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! App/actions/updateWidget */ "../parentProject/App/actions/updateWidget.js");
+/* harmony import */ var _components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/WeatherInfos.js */ "../parentProject/App/ui/components/WeatherInfos.js");
+/* harmony import */ var App_store_actions_updateAppState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/store/actions/updateAppState */ "../parentProject/App/store/actions/updateAppState.js");
+/* harmony import */ var App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! App/store/actions/updateWidget */ "../parentProject/App/store/actions/updateWidget.js");
 
 
 
@@ -950,7 +1092,7 @@ function (_React$Component) {
       var _this$props = _this.props,
           dispatch = _this$props.dispatch,
           record = _this$props.record;
-      dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["updateWidget"])(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+      dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["updateWidget"])(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
         size: _this.state.size || record.size,
         position: _this.state.position || record.position
       })));
@@ -965,7 +1107,7 @@ function (_React$Component) {
       var _this$props2 = this.props,
           dispatch = _this$props2.dispatch,
           record = _this$props2.record;
-      if (record.location && !record.results) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, record.location));
+      if (record.location && !record.results) dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, record.location));
     }
   }, {
     key: "render",
@@ -1022,7 +1164,7 @@ function (_React$Component) {
         className: "edit"
       }, "\uD83D\uDD8B"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick(e) {
-          return dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["rmPostIt"])(record._id));
+          return dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["rmPostIt"])(record._id));
         },
         className: "delete"
       }, "\uD83D\uDDBE")) || react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1036,7 +1178,7 @@ function (_React$Component) {
             searching: e.target.value
           });
 
-          if (e.target.value.length > 2) dispatch(Object(App_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, e.target.value));
+          if (e.target.value.length > 2) dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_11__["weatherSearch"])(record, e.target.value));
         },
         value: state.searching !== undefined ? state.searching : record.location,
         onMouseDown: function onMouseDown(e) {
@@ -1059,193 +1201,6 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _temp)) || _class);
 
 ;
-
-/***/ }),
-
-/***/ "../parentProject/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
-/*!*************************************************************!*\
-  !*** ../parentProject/App/reducers sync ^\.\/[^\\\/]+\.js$ ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./appState.js": "../parentProject/App/reducers/appState.js",
-	"./someData.js": "../parentProject/App/reducers/someData.js"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) { // check for number or string
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return id;
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "../parentProject/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
-
-/***/ }),
-
-/***/ "../parentProject/App/reducers/appState.js":
-/*!*************************************************!*\
-  !*** ../parentProject/App/reducers/appState.js ***!
-  \*************************************************/
-/*! exports provided: appState */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appState", function() { return appState; });
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/updateAppState */ "../parentProject/App/actions/updateAppState.js");
-
-
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-function appState() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__["SELECTED_WIDGET_CHANGED"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state, {
-        selectedPostItId: action.wid
-      });
-
-    default:
-      return state;
-  }
-}
-
-/***/ }),
-
-/***/ "../parentProject/App/reducers/someData.js":
-/*!*************************************************!*\
-  !*** ../parentProject/App/reducers/someData.js ***!
-  \*************************************************/
-/*! exports provided: someData */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "someData", function() { return someData; });
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "undefined?4d9b");
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/updateWidget */ "../parentProject/App/actions/updateWidget.js");
-
-
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-function someData() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    right: false
-  };
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_CHANGED"]:
-      return {
-        items: state.items.map(function (it) {
-          return it._id === action.record._id ? action.record : it;
-        })
-      };
-
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_NEW"]:
-      return {
-        items: [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(state.items), [action.record])
-      };
-
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_1__["WIDGET_RM"]:
-      return {
-        items: state.items.filter(function (it) {
-          return it._id !== action.wid;
-        })
-      };
-
-    default:
-      return state;
-  }
-}
-
-/***/ }),
-
-/***/ "../wp4-react-redux-sass-hmr/App/configureStore.js":
-/*!*********************************************************!*\
-  !*** ../wp4-react-redux-sass-hmr/App/configureStore.js ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return configureStore; });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "undefined?5aa9");
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "undefined?8808");
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers */ "../wp4-react-redux-sass-hmr/App/reducers.js");
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-
-
-function configureStore(preloadedState) {
-  var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
-
-  if (false) {}
-
-  return store;
-}
 
 /***/ }),
 
@@ -1287,8 +1242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _configureStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./configureStore */ "../wp4-react-redux-sass-hmr/App/configureStore.js");
-/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initialState */ "./App/initialState.js");
+/* harmony import */ var _store_configure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/configure */ "../wp4-react-redux-sass-hmr/App/store/configure.js");
+/* harmony import */ var _store_initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/initialState */ "./App/store/initialState.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -1316,7 +1271,7 @@ var indexTpl = __webpack_require__(/*! ./index.html.tpl */ "../wp4-react-redux-s
 var ctrl = {
   renderTo: function renderTo(node) {
     var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var store = Object(_configureStore__WEBPACK_IMPORTED_MODULE_6__["default"])(initialState),
+    var store = Object(_store_configure__WEBPACK_IMPORTED_MODULE_6__["default"])(initialState),
         isDev = "development" !== 'production',
         HMRApp = isDev ? Object(react_hot_loader_root__WEBPACK_IMPORTED_MODULE_0__["hot"])(App_App__WEBPACK_IMPORTED_MODULE_1__["default"]) : App_App__WEBPACK_IMPORTED_MODULE_1__["default"];
     react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
@@ -1327,7 +1282,7 @@ var ctrl = {
   },
   renderSSR: function renderSSR(_ref, cb) {
     var state = _ref.state;
-    var store = Object(_configureStore__WEBPACK_IMPORTED_MODULE_6__["default"])(state || _initialState__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    var store = Object(_store_configure__WEBPACK_IMPORTED_MODULE_6__["default"])(state || _store_initialState__WEBPACK_IMPORTED_MODULE_7__["default"]);
     var content = "",
         html,
         preloadedState;
@@ -1353,10 +1308,54 @@ if (typeof window !== 'undefined') window.App = ctrl;
 
 /***/ }),
 
-/***/ "../wp4-react-redux-sass-hmr/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
-/*!************************************************************************!*\
-  !*** ../wp4-react-redux-sass-hmr/App/reducers sync ^\.\/[^\\\/]+\.js$ ***!
-  \************************************************************************/
+/***/ "../wp4-react-redux-sass-hmr/App/store/configure.js":
+/*!**********************************************************!*\
+  !*** ../wp4-react-redux-sass-hmr/App/store/configure.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return configureStore; });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "undefined?5aa9");
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "undefined?8808");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers */ "../wp4-react-redux-sass-hmr/App/store/reducers.js");
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+
+function configureStore(preloadedState) {
+  var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
+
+  if (false) {}
+
+  return store;
+}
+
+/***/ }),
+
+/***/ "../wp4-react-redux-sass-hmr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
+/*!******************************************************************************!*\
+  !*** ../wp4-react-redux-sass-hmr/App/store/reducers sync ^\.\/[^\\\/]+\.js$ ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1368,14 +1367,14 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = "../wp4-react-redux-sass-hmr/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
+webpackEmptyContext.id = "../wp4-react-redux-sass-hmr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
 
 /***/ }),
 
-/***/ "../wp4-react-redux-sass-hmr/App/reducers.js":
-/*!***************************************************!*\
-  !*** ../wp4-react-redux-sass-hmr/App/reducers.js ***!
-  \***************************************************/
+/***/ "../wp4-react-redux-sass-hmr/App/store/reducers.js":
+/*!*********************************************************!*\
+  !*** ../wp4-react-redux-sass-hmr/App/store/reducers.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1383,7 +1382,7 @@ webpackEmptyContext.id = "../wp4-react-redux-sass-hmr/App/reducers sync recursiv
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/*.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_reducers___js.gen.js");
+/* harmony import */ var _reducers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/*.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -1426,10 +1425,10 @@ module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.
 
 /***/ }),
 
-/***/ "./App/initialState.js":
-/*!*****************************!*\
-  !*** ./App/initialState.js ***!
-  \*****************************/
+/***/ "./App/store/initialState.js":
+/*!***********************************!*\
+  !*** ./App/store/initialState.js ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1484,10 +1483,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./App/styles/index.scss":
-/*!*******************************!*\
-  !*** ./App/styles/index.scss ***!
-  \*******************************/
+/***/ "./App/ui/styles/index.scss":
+/*!**********************************!*\
+  !*** ./App/ui/styles/index.scss ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

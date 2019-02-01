@@ -14,10 +14,10 @@
 
 import React                     from 'react';
 import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "App/actions/updateAppState";
-import {newPostIt}               from "App/actions/updateWidget";
-import WeatherWidget             from 'App/containers/WeatherWidget.js';
-import "./styles/index.scss"
+import {selectPostIt, saveState} from "./store/actions/updateAppState";
+import {newPostIt}               from "./store/actions/updateWidget";
+import WeatherWidget             from './ui/containers/WeatherWidget.js';
+import "./ui/styles/index.scss"
 
 @connect(( { someData, appState } ) => ({ someData, appState }))
 export default class App extends React.Component {

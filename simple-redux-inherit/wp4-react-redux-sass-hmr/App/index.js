@@ -17,8 +17,8 @@ import ReactDom         from 'react-dom';
 import React            from "react";
 import {renderToString} from "react-dom/server";
 import {Provider}       from 'react-redux'
-import configureStore   from './configureStore'
-import initialState     from './initialState'
+import configureStore   from './store/configure'
+import initialState     from './store/initialState'
 
 const indexTpl = require('./index.html.tpl');
 
