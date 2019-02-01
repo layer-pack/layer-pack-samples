@@ -13,11 +13,11 @@
  */
 
 import React                 from 'react';
-import MeteoWidget           from 'App/containers/MeteoWidget';
+import MeteoWidget           from 'App/ui/containers/MeteoWidget';
 import {scopeToState, Scope} from "rscopes";
 import {renderToString}      from "react-dom/server"
 
-import "./App.scss"
+import "App/ui/styles"
 
 import stores from "App/stores/te*.js"
 
