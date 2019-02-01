@@ -437,13 +437,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var express = __webpack_require__(/*! express */ "undefined?22fe"),
-    path = __webpack_require__(/*! path */ "path"),
-    fs = __webpack_require__(/*! fs */ "fs"),
     server = express(),
-    currentState = null,
     http = __webpack_require__(/*! http */ "http").Server(server),
     argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
-    httpProxy = __webpack_require__(/*! http-proxy */ "undefined?2290"),
     wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
     io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
   pingTimeout: 30000,
@@ -1515,17 +1511,6 @@ module.exports = __webpack_require__(/*! App/index.server */"../../shared/wpi-re
 
 /***/ }),
 
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-
 /***/ "http":
 /*!***********************!*\
   !*** external "http" ***!
@@ -1600,17 +1585,6 @@ module.exports = require("@babel/runtime/helpers/slicedToArray");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/getPrototypeOf");
-
-/***/ }),
-
-/***/ "undefined?2290":
-/*!*****************************!*\
-  !*** external "http-proxy" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("http-proxy");
 
 /***/ }),
 
