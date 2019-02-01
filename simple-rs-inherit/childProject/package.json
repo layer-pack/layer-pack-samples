@@ -8,7 +8,9 @@
   "wpInherit": {
     "default": {
       "rootFolder": "App",
-      "vars": {},
+      "vars": {
+        "production": true
+      },
       "extend": [
         "parentProject",
         "wp4-react-rescope-sass-hmr"

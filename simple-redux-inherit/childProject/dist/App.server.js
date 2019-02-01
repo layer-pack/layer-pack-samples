@@ -127,6 +127,11 @@ __webpack_require__.r(__webpack_exports__);
 var req,
     _exports = {},
     root;
+req = __webpack_require__("../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var name = key.substr(2);
+  _exports[name] = _exports[name] || req(key);
+});
 req = __webpack_require__("../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
 req.keys().forEach(function (key) {
   var name = key.substr(2);
@@ -170,7 +175,7 @@ req.keys().forEach(function (key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./renderService.js": "../../shared/wpi-react-hmr-ssr/App/api/renderService.js"
+	"./renderService.js": "../parentProject/App/api/renderService.js"
 };
 
 
@@ -225,54 +230,6 @@ __webpack_require__.r(__webpack_exports__);
     if (_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default) server.use(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default);
   });
 });
-
-/***/ }),
-
-/***/ "../../shared/wpi-react-hmr-ssr/App/api/renderService.js":
-/*!********************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api/renderService.js ***!
-  \********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var App_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/index.js */ "../wp4-react-redux-sass-hmr/App/index.js");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-
-var path = __webpack_require__(/*! path */ "path"),
-    express = __webpack_require__(/*! express */ "undefined?22fe"),
-    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
-    server = express(),
-    currentState;
-
-server.get('/', function (req, res, next) {
-  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
-    url: req.url,
-    state: currentState
-  }, function (err, html, nstate) {
-    console.log("fgdgfd");
-    res.send(200, html);
-  });
-});
-server.use(express.static(wpiConf.projectRoot + '/dist'));
-/* harmony default export */ __webpack_exports__["default"] = (server);
 
 /***/ }),
 
@@ -778,6 +735,92 @@ function weatherSearch(record, location, then) {
 
 /***/ }),
 
+/***/ "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
+/*!************************************************************************!*\
+  !*** ../parentProject/App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./renderService.js": "../parentProject/App/api/renderService.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$";
+
+/***/ }),
+
+/***/ "../parentProject/App/api/renderService.js":
+/*!*************************************************!*\
+  !*** ../parentProject/App/api/renderService.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var App_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/index.js */ "../wp4-react-redux-sass-hmr/App/index.js");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+var path = __webpack_require__(/*! path */ "path"),
+    express = __webpack_require__(/*! express */ "undefined?22fe"),
+    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    server = express(),
+    currentState;
+
+server.get('/', function (req, res, next) {
+  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
+    url: req.url,
+    state: currentState
+  }, function (err, html, nstate) {
+    res.send(200, html);
+  });
+});
+server.use(express.static(wpiConf.projectRoot + '/dist'));
+server.post('/', function (req, res, next) {
+  console.log("New state pushed");
+  currentState = req.body;
+  res.send(200, 'ok');
+});
+/* harmony default export */ __webpack_exports__["default"] = (server);
+
+/***/ }),
+
 /***/ "../parentProject/App/components/WeatherInfos.js":
 /*!*******************************************************!*\
   !*** ../parentProject/App/components/WeatherInfos.js ***!
@@ -1023,6 +1066,62 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "../parentProject/App/initialState.js":
+/*!********************************************!*\
+  !*** ../parentProject/App/initialState.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+/* harmony default export */ __webpack_exports__["default"] = ({
+  someData: {
+    items: [{
+      "_id": "rkUQHZrqM",
+      "location": "paris",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 321,
+        "y": 167
+      }
+    }, {
+      "_id": "r1bcuMrcM",
+      "location": "rio",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 260,
+        "y": 576
+      }
+    }]
+  },
+  appState: {
+    src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+    selectedPostItId: null
+  }
+});
+
+/***/ }),
+
 /***/ "../parentProject/App/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
 /*!*************************************************************!*\
   !*** ../parentProject/App/reducers sync ^\.\/[^\\\/]+\.js$ ***!
@@ -1249,7 +1348,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _configureStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./configureStore */ "../wp4-react-redux-sass-hmr/App/configureStore.js");
-/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initialState */ "./App/initialState.js");
+/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initialState */ "../parentProject/App/initialState.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -1384,64 +1483,6 @@ var preCombine = function preCombine(items) {
 /***/ (function(module) {
 
 module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["parentProject","wp4-react-redux-sass-hmr"]},{"rootFolder":"App","extend":[]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["parentProject","wp4-react-redux-sass-hmr","wpi-react-hmr-ssr"]};
-
-/***/ }),
-
-/***/ "./App/initialState.js":
-/*!*****************************!*\
-  !*** ./App/initialState.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-/* harmony default export */ __webpack_exports__["default"] = ({
-  someData: {
-    // initial state
-    src: "/api/hello",
-    items: [{
-      "_id": "rkUQHZrqM",
-      "location": "paris",
-      "size": {
-        "width": 350,
-        "height": 200
-      },
-      "position": {
-        "x": 321,
-        "y": 167
-      }
-    }, {
-      "_id": "r1bcuMrcM",
-      "location": "rio",
-      "size": {
-        "width": 350,
-        "height": 200
-      },
-      "position": {
-        "x": 260,
-        "y": 576
-      }
-    }]
-  },
-  appState: {
-    src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-    selectedPostItId: "rkUQHZrqM"
-  }
-});
 
 /***/ }),
 
