@@ -18,7 +18,6 @@ import {renderToString} from "react-dom/server";
 
 var wpiConf = require('App/.wpiConfig.json'), currentState;
 
-let currentState;
 
 export default ( server ) => {
 	
