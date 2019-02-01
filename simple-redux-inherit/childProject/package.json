@@ -49,6 +49,6 @@
   "devDependencies": {
     "wp4-react-redux-sass-hmr": "file:../wp4-react-redux-sass-hmr",
     "parentProject": "file:../parentProject",
-    "webpack-inherit": "^1.4.2"
+    "webpack-inherit": "^1.4.4"
   }
 }

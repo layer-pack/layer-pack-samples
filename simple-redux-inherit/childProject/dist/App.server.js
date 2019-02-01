@@ -127,6 +127,11 @@ __webpack_require__.r(__webpack_exports__);
 var req,
     _exports = {},
     root;
+req = __webpack_require__("../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var name = key.substr(2);
+  _exports[name] = _exports[name] || req(key);
+});
 req = __webpack_require__("../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
 req.keys().forEach(function (key) {
   var name = key.substr(2);
@@ -170,7 +175,7 @@ req.keys().forEach(function (key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./renderService.js": "../../shared/wpi-react-hmr-ssr/App/api/renderService.js"
+	"./renderService.js": "../parentProject/App/api/renderService.js"
 };
 
 
@@ -225,54 +230,6 @@ __webpack_require__.r(__webpack_exports__);
     if (_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default) server.use(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default);
   });
 });
-
-/***/ }),
-
-/***/ "../../shared/wpi-react-hmr-ssr/App/api/renderService.js":
-/*!********************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api/renderService.js ***!
-  \********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var App_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/index.js */ "../wp4-react-redux-sass-hmr/App/index.js");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
-/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-
-var path = __webpack_require__(/*! path */ "path"),
-    express = __webpack_require__(/*! express */ "undefined?22fe"),
-    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
-    server = express(),
-    currentState;
-
-server.get('/', function (req, res, next) {
-  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
-    url: req.url,
-    state: currentState
-  }, function (err, html, nstate) {
-    console.log("fgdgfd");
-    res.send(200, html);
-  });
-});
-server.use(express.static(wpiConf.projectRoot + '/dist'));
-/* harmony default export */ __webpack_exports__["default"] = (server);
 
 /***/ }),
 
@@ -480,13 +437,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var express = __webpack_require__(/*! express */ "undefined?22fe"),
-    path = __webpack_require__(/*! path */ "path"),
-    fs = __webpack_require__(/*! fs */ "fs"),
     server = express(),
-    currentState = null,
     http = __webpack_require__(/*! http */ "http").Server(server),
     argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
-    httpProxy = __webpack_require__(/*! http-proxy */ "undefined?2290"),
     wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
     io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
   pingTimeout: 30000,
@@ -616,7 +569,7 @@ function (_React$Component) {
       } : _this$props$someData,
           appState = _this$props.appState,
           dispatch = _this$props.dispatch;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, someData.items.map(function (note) {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, "Minimal drafty redux sample"), someData.items.map(function (note) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_containers_WeatherWidget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: note._id,
           record: note,
@@ -775,6 +728,92 @@ function weatherSearch(record, location, then) {
     });
   };
 }
+
+/***/ }),
+
+/***/ "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
+/*!************************************************************************!*\
+  !*** ../parentProject/App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./renderService.js": "../parentProject/App/api/renderService.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$";
+
+/***/ }),
+
+/***/ "../parentProject/App/api/renderService.js":
+/*!*************************************************!*\
+  !*** ../parentProject/App/api/renderService.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var App_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/index.js */ "../wp4-react-redux-sass-hmr/App/index.js");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
+/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_1__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+var path = __webpack_require__(/*! path */ "path"),
+    express = __webpack_require__(/*! express */ "undefined?22fe"),
+    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    server = express(),
+    currentState;
+
+server.get('/', function (req, res, next) {
+  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
+    url: req.url,
+    state: currentState
+  }, function (err, html, nstate) {
+    res.send(200, html);
+  });
+});
+server.use(express.static(wpiConf.projectRoot + '/dist'));
+server.post('/', function (req, res, next) {
+  console.log("New state pushed");
+  currentState = req.body;
+  res.send(200, 'ok');
+});
+/* harmony default export */ __webpack_exports__["default"] = (server);
 
 /***/ }),
 
@@ -1468,17 +1507,6 @@ module.exports = __webpack_require__(/*! App/index.server */"../../shared/wpi-re
 
 /***/ }),
 
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-
 /***/ "http":
 /*!***********************!*\
   !*** external "http" ***!
@@ -1531,17 +1559,6 @@ module.exports = require("@babel/runtime/helpers/slicedToArray");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/getPrototypeOf");
-
-/***/ }),
-
-/***/ "undefined?2290":
-/*!*****************************!*\
-  !*** external "http-proxy" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("http-proxy");
 
 /***/ }),
 
