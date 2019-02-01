@@ -12,11 +12,8 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                   from "react";
-import moment                  from "moment";
-import {reScope, scopeToProps} from "rscopes";
-import {asRef, asStore}        from "rscopes/spells";
-
+import React  from "react";
+import moment from "moment";
 
 export default ( { weatherData } ) =>
 	<div className={ "MeteoInfos" }>

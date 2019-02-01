@@ -17,13 +17,13 @@ import {Rnd}                                 from "react-rnd";
 import {reScope, scopeToProps, propsToScope} from "rscopes";
 import {asRef, asStore}                      from "rscopes/spells";
 
-import MeteoInfos  from "./MeteoInfos";
-import MeteoSearch from "../stores/MeteoSearch";
+import MeteoInfos  from "../components/MeteoInfos";
+import MeteoSearch from "App/stores/MeteoSearch";
 
 
 @reScope(
 	{
-		MeteoSearch
+		MeteoSearch // will keep separate instances for each instance of MeteoWidget
 	}, { key: 'postIt' }
 )
 // map the record location as the default value in the MeteoSearch store state
