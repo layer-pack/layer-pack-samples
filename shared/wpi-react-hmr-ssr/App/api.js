@@ -12,10 +12,10 @@
  *  @contact : n8tz.js@gmail.com
  */
 
+import is  from 'is';
 import api from './api/**.js';
 
 export default ( server, http ) => Object.keys(api).forEach(
 	( group ) => {
-		if ( api[group].default )
-			server.use(api[group].default);
+		api[group].default(server, http);
 	})

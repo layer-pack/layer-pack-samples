@@ -16,31 +16,31 @@
 import App              from "App/index.js";
 import {renderToString} from "react-dom/server";
 
-var path    = require("path"),
-    express = require("express"),
-    wpiConf = require('App/.wpiConfig.json'),
-    server  = express(), currentState;
+var wpiConf = require('App/.wpiConfig.json'), currentState,
+    express = require('express');
 
-server.get(
-	'/',
-	function ( req, res, next ) {
-		App.renderSSR(
-			{
-				url  : req.url,
-				state: currentState
-			},
-			( err, html, nstate ) => {
-				res.send(200, html)
-			}
-		)
-	}
-);
-server.use(express.static(wpiConf.projectRoot + '/dist'));
 
-server.post('/', function ( req, res, next ) {
-	console.log("New state pushed")
-	currentState = req.body;
-	res.send(200, 'ok')
-});
-
-export default server;
+export default ( server ) => {
+	
+	server.get(
+		'/',
+		function ( req, res, next ) {
+			App.renderSSR(
+				{
+					url  : req.url,
+					state: currentState
+				},
+				( err, html, nstate ) => {
+					res.send(200, html)
+				}
+			)
+		}
+	);
+	server.use(express.static(wpiConf.projectRoot + '/dist'));
+	
+	server.post('/', function ( req, res, next ) {
+		console.log("New state pushed")
+		currentState = req.body;
+		res.send(200, 'ok')
+	});
+};
