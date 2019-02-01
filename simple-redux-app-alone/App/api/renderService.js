@@ -16,7 +16,8 @@
 import App              from "App/index.js";
 import {renderToString} from "react-dom/server";
 
-var wpiConf = require('App/.wpiConfig.json'), currentState;
+var wpiConf = require('App/.wpiConfig.json'), currentState,
+    express = require('express');
 
 
 export default ( server ) => {
