@@ -20,10 +20,11 @@ import {asRef, asStore}                      from "rscopes/spells";
 import MeteoInfos  from "../components/MeteoInfos";
 import MeteoSearch from "App/stores/MeteoSearch";
 
-
 @reScope(
 	{
-		MeteoSearch // will keep separate instances for each instance of MeteoWidget
+		// will keep separate instances for each instance of MeteoWidget
+		// MeteoSearch can still require stores in the parents scopes
+		MeteoSearch
 	}, { key: 'postIt' }
 )
 // map the record location as the default value in the MeteoSearch store state
