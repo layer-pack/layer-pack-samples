@@ -39,8 +39,8 @@
     "build": "wpi& wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "concurrently \"wpi-dev-server :devClient --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
-    "start": "node ./dist/App.server.js  -p 9501",
-    "runBrowser": "start http://localhost:9501"
+    "start": "node ./dist/App.server.js  -p 8080",
+    "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
     "concurrently": "^4.1.0",
