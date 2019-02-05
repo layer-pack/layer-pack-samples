@@ -21,13 +21,6 @@ var express = require("express"),
     http    = require('http').Server(server),
     argz    = require('minimist')(process.argv.slice(2)),
     wpiConf = require('App/.wpiConfig.json'),
-    io      = require('socket.io')(http, {
-	    pingTimeout : 30000,
-	    pingInterval: 10000
-    }),
-    nsp     = io.of(
-	    '/' + wpiConf.project.name
-    ),
     debug   = require('App/console').default("server");
 
 process.title = wpiConf.project.name + '::server';
@@ -37,30 +30,6 @@ server.use(express.json());       // to support JSON-encoded bodies
 server.use(express.urlencoded()); // to support URL-encoded bodies
 
 api(server, http);
-//
-//nsp.on('connection', function ( socket ) {
-//	debug.log("new io connect !!!");
-//
-//	//server(socket.request, {
-//	//	setHeader() {
-//	//	}
-//	//}, function ( err ) {
-//	//	debug.log("new io connect !!!", socket.request.user);
-//	//
-//	//	App.db.registerIoSocket(socket);
-//	//});
-//
-//	socket.on(
-//		'event',
-//		function ( datas ) {
-//			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
-//			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
-//		});
-//	socket.on('disconnect', function ( data ) {
-//		(socket.request.AppDB || App.db).clearIoSocket(socket);
-//	});
-//});
-
 
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
 	debug.info('Running on ', server_instance.address().port)

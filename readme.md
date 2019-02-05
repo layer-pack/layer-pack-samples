@@ -17,7 +17,7 @@ To test go in the [childProject](simple-redux-inherit/childProject) package and 
     npm i
     npm run start-dev
 
-then open http://localhost:9501 or use 'npm run runBrowser'
+then open http://localhost:8080 or use 'npm run runBrowser'
 
 Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/simple-redux-inherit/childProject/dist/App.stats.html)
 
@@ -34,7 +34,7 @@ To test go in the [childProject](simple-rs-inherit/childProject) package and exe
     npm i
     npm run start-dev
 
-then open http://localhost:9501 or use 'npm run runBrowser'
+then open http://localhost:8080 or use 'npm run runBrowser'
 
 Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/simple-rs-inherit/childProject/dist/App.stats.html)
 
@@ -50,7 +50,7 @@ To test go in the [childProject](ultra-basic-inherit/childProject) package and e
     npm i
     npm run start-dev
 
-then open http://localhost:9501 or use 'npm run runBrowser'
+then open http://localhost:8080 or use 'npm run runBrowser'
 
 
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VWKR3TWQ2U2AC" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>

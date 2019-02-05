@@ -31,8 +31,8 @@
     "build": "wpi& wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "concurrently \"wpi-dev-server --hot\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./Server.js -p 9701\"",
-    "start": "node ./Server.js -p 9501",
-    "runBrowser": "start http://localhost:9501"
+    "start": "node ./Server.js -p 8080",
+    "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

@@ -16,9 +16,9 @@
   },
   "scripts": {
     "build": "wpi",
-    "start-dev": "concurrently \"wpi -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 9501\"",
-    "start": "node ./Server.js -p 9501",
-    "runBrowser": "start http://localhost:9501"
+    "start-dev": "concurrently \"wpi -w\" \"sleep 1&&nodemon --watch App --inspect=[::]:9229 ./Server.js -p 8080\"",
+    "start": "node ./Server.js -p 8080",
+    "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
     "concurrently": "^4.1.0",

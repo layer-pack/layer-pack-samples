@@ -20,9 +20,9 @@
   "scripts": {
     "build": "wpi",
     "dev": "wpi -w",
-    "start": "node ./Server.js -p 9501",
-    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 9501",
-    "runBrowser": "start http://localhost:9501&node ./Server.js -p 9501"
+    "start": "node ./Server.js -p 8080",
+    "runDebug": "node --inspect=[::]:9229 ./Server.js -p 8080",
+    "runBrowser": "start http://localhost:8080&node ./Server.js -p 8080"
   },
   "dependencies": {
     "react": "^16.2.0",

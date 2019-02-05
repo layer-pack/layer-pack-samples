@@ -449,11 +449,6 @@ var express = __webpack_require__(/*! express */ "undefined?22fe"),
     http = __webpack_require__(/*! http */ "http").Server(server),
     argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
     wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
-    io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
-  pingTimeout: 30000,
-  pingInterval: 10000
-}),
-    nsp = io.of('/' + wpiConf.project.name),
     debug = __webpack_require__(/*! App/console */ "../../shared/wpi-react-hmr-ssr/App/console.js").default("server");
 
 process.title = wpiConf.project.name + '::server';
@@ -462,30 +457,7 @@ server.use(express.json()); // to support JSON-encoded bodies
 
 server.use(express.urlencoded()); // to support URL-encoded bodies
 
-Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http); //
-//nsp.on('connection', function ( socket ) {
-//	debug.log("new io connect !!!");
-//
-//	//server(socket.request, {
-//	//	setHeader() {
-//	//	}
-//	//}, function ( err ) {
-//	//	debug.log("new io connect !!!", socket.request.user);
-//	//
-//	//	App.db.registerIoSocket(socket);
-//	//});
-//
-//	socket.on(
-//		'event',
-//		function ( datas ) {
-//			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
-//			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
-//		});
-//	socket.on('disconnect', function ( data ) {
-//		(socket.request.AppDB || App.db).clearIoSocket(socket);
-//	});
-//});
-
+Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http);
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
   debug.info('Running on ', server_instance.address().port);
 });
@@ -1061,8 +1033,9 @@ var _dec, _dec2, _dec3, _class, _temp;
 
 
 var MeteoWidget = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["reScope"])({
-  MeteoSearch: App_stores_MeteoSearch__WEBPACK_IMPORTED_MODULE_11__["default"] // will keep separate instances for each instance of MeteoWidget
-
+  // will keep separate instances for each instance of MeteoWidget
+  // MeteoSearch can still require stores in the parents scopes
+  MeteoSearch: App_stores_MeteoSearch__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   key: 'postIt'
 }), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["propsToScope"])(["record.location:MeteoSearch.defaultLocation"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["scopeToProps"])(["MeteoSearch"]), _dec(_class = _dec2(_class = _dec3(_class = (_temp =
@@ -1784,17 +1757,6 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("shortid");
-
-/***/ }),
-
-/***/ "undefined?cb34":
-/*!****************************!*\
-  !*** external "socket.io" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("socket.io");
 
 /***/ }),
 

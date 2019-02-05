@@ -45,7 +45,7 @@ module.exports = [
 			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			
 			host: 'localhost', // Defaults to `localhost`
-			port: 9501, // Defaults to 8080
+			port: 8080, // Defaults to 8080
 		} || undefined,
 		
 		// The resulting build
