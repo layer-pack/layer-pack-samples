@@ -12,30 +12,4 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM} from '../actions/updateWidget';
-
-export function someData( state = { right: false }, action ) {
-	switch ( action.type ) {
-		case WIDGET_CHANGED:
-			return {
-				items: state.items
-				            .map(
-					            it => (it._id === action.record._id)
-					                  ? action.record
-					                  : it
-				            )
-			}
-		case WIDGET_NEW:
-			return {
-				items: [...state.items, action.record]
-			}
-		case WIDGET_RM:
-			return {
-				items: state.items.filter(
-					it => (it._id !== action.wid)
-				)
-			}
-		default:
-			return state
-	}
-}
+export default require('App/.wpiConfig.json');

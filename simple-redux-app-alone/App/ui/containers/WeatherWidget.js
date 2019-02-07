@@ -15,9 +15,9 @@ import React          from "react";
 import {Rnd}          from "react-rnd";
 import {connect}      from 'react-redux'
 import WeatherInfos   from "../components/WeatherInfos.js";
-import {selectPostIt} from "App/store/actions/updateAppState";
+import {selectWidget} from "App/store/actions/updateAppState";
 import {
-	rmPostIt, newPostIt, updateWidget, weatherSearch, weatherResult
+	rmWidget, newWidget, updateWidget, weatherSearch, weatherResult
 }                     from "App/store/actions/updateWidget";
 
 @connect()
@@ -72,7 +72,7 @@ export default class WeatherWidget extends React.Component {
 							}
 						});
 				} }>
-				<div className={ "postit handle" }>
+				<div className={ "widget handle" }>
 					{
 						!this.state.editing &&
 						<div className={ "text" }>
@@ -84,7 +84,7 @@ export default class WeatherWidget extends React.Component {
 							<button onClick={ e => this.setState({ editing: true }) }
 							        className={ "edit" }>🖋
 							</button>
-							<button onClick={ e => dispatch(rmPostIt(record._id)) }
+							<button onClick={ e => dispatch(rmWidget(record._id)) }
 							        className={ "delete" }>🖾
 							</button>
 						</div>

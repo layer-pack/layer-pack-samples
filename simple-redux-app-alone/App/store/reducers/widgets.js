@@ -11,23 +11,31 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-export default {
-	widgets: {
-		items: [{
-			"_id"     : "rkUQHZrqM",
-			"location": "paris",
-			"size"    : { "width": 350, "height": 200 },
-			"position": { "x": 321, "y": 167 }
-		}, {
-			"_id"     : "r1bcuMrcM",
-			"location": "rio",
-			"size"    : { "width": 350, "height": 200 },
-			"position": { "x": 260, "y": 576 }
-		}]
-	},
-	appState: {
-		src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-		
-		selectedWidgetId: null
-	},
+
+import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM} from '../actions/updateWidget';
+
+export function widgets( state = { right: false }, action ) {
+	switch ( action.type ) {
+		case WIDGET_CHANGED:
+			return {
+				items: state.items
+				            .map(
+					            it => (it._id === action.record._id)
+					                  ? action.record
+					                  : it
+				            )
+			}
+		case WIDGET_NEW:
+			return {
+				items: [...state.items, action.record]
+			}
+		case WIDGET_RM:
+			return {
+				items: state.items.filter(
+					it => (it._id !== action.wid)
+				)
+			}
+		default:
+			return state
+	}
 }

@@ -19,7 +19,7 @@ export function appState( state = {}, action ) {
 		case SELECTED_WIDGET_CHANGED:
 			return {
 				...state,
-				selectedPostItId: action.wid
+				selectedWidgetId: action.wid
 			};
 		default:
 			return state

@@ -14,8 +14,8 @@
 
 import React                     from 'react';
 import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "./store/actions/updateAppState";
-import {newPostIt}               from "./store/actions/updateWidget";
+import {selectWidget, saveState} from "./store/actions/updateAppState";
+import {newWidget}               from "./store/actions/updateWidget";
 import WeatherWidget             from './ui/containers/WeatherWidget.js';
 import "./ui/styles/index.scss"
 
@@ -28,13 +28,13 @@ export default class App extends React.Component {
 			{
 				someData.items.map(
 					note => <WeatherWidget key={ note._id } record={ note }
-					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                       selected={ note._id == appState.selectedPostItId }/>
+					                       onSelect={ e => dispatch(selectWidget(note._id)) }
+					                       selected={ note._id == appState.selectedWidgetId }/>
 				)
 			}
 			<div
 				className={ "newBtn button" }
-				onClick={ e => dispatch(newPostIt()) }>
+				onClick={ e => dispatch(newWidget()) }>
 				Add Post It
 			</div>
 			<div

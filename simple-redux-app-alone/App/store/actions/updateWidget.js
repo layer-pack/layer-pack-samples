@@ -1,14 +1,12 @@
 import superagent from "superagent";
 import shortid    from "shortid";
 
-export const WIDGET_CHANGED        = 'WIDGET_CHANGED'
-export const WIDGET_NEW            = 'WIDGET_NEW'
-export const WIDGET_RM             = 'WIDGET_RM'
-export const METEO_SEARCHING       = 'METEO_SEARCHING'
-export const METEO_SEARCH_COMPLETE = 'METEO_SEARCH_COMPLETE'
+export const WIDGET_CHANGED = 'WIDGET_CHANGED'
+export const WIDGET_NEW     = 'WIDGET_NEW'
+export const WIDGET_RM      = 'WIDGET_RM'
 
 // actions
-export function newPostIt() {
+export function newWidget() {
 	return {
 		type  : WIDGET_NEW,
 		record: {
@@ -29,7 +27,7 @@ export function updateWidget( record ) {
 	}
 }
 
-export function rmPostIt( wid ) {
+export function rmWidget( wid ) {
 	return {
 		type: WIDGET_RM,
 		wid
