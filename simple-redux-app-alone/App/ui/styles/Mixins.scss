@@ -1,4 +1,4 @@
-/*
+/*!
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
  *
@@ -11,17 +11,43 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import {SELECTED_WIDGET_CHANGED} from '../actions/updateAppState';
 
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+  &:before {
+    content: '';
+    float: left;
+    padding-bottom: $padding;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
 
-export function appState( state = {}, action ) {
-	switch ( action.type ) {
-		case SELECTED_WIDGET_CHANGED:
-			return {
-				...state,
-				selectedWidgetId: action.wid
-			};
-		default:
-			return state
-	}
+@mixin use_hvCenteredAbs() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin use_hvCenteredContent() {
+
+  &:before {
+    content: ' ';
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+    margin-right: -1px;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  text-align: center;
+  > * {
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+  }
 }

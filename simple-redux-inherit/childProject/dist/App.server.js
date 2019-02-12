@@ -210,7 +210,9 @@ webpackContext.id = "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api/**.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js");
+/* harmony import */ var is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is */ "undefined?63a5");
+/* harmony import */ var is__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(is__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api/**.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -225,9 +227,10 @@ __webpack_require__.r(__webpack_exports__);
  *  @contact : n8tz.js@gmail.com
  */
 
+
 /* harmony default export */ __webpack_exports__["default"] = (function (server, http) {
-  return Object.keys(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"]).forEach(function (group) {
-    if (_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default) server.use(_api_js__WEBPACK_IMPORTED_MODULE_0__["default"][group].default);
+  return Object.keys(_api_js__WEBPACK_IMPORTED_MODULE_1__["default"]).forEach(function (group) {
+    _api_js__WEBPACK_IMPORTED_MODULE_1__["default"][group].default(server, http);
   });
 });
 
@@ -441,11 +444,6 @@ var express = __webpack_require__(/*! express */ "undefined?22fe"),
     http = __webpack_require__(/*! http */ "http").Server(server),
     argz = __webpack_require__(/*! minimist */ "undefined?2efa")(process.argv.slice(2)),
     wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
-    io = __webpack_require__(/*! socket.io */ "undefined?cb34")(http, {
-  pingTimeout: 30000,
-  pingInterval: 10000
-}),
-    nsp = io.of('/' + wpiConf.project.name),
     debug = __webpack_require__(/*! App/console */ "../../shared/wpi-react-hmr-ssr/App/console.js").default("server");
 
 process.title = wpiConf.project.name + '::server';
@@ -454,30 +452,7 @@ server.use(express.json()); // to support JSON-encoded bodies
 
 server.use(express.urlencoded()); // to support URL-encoded bodies
 
-Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http); //
-//nsp.on('connection', function ( socket ) {
-//	debug.log("new io connect !!!");
-//
-//	//server(socket.request, {
-//	//	setHeader() {
-//	//	}
-//	//}, function ( err ) {
-//	//	debug.log("new io connect !!!", socket.request.user);
-//	//
-//	//	App.db.registerIoSocket(socket);
-//	//});
-//
-//	socket.on(
-//		'event',
-//		function ( datas ) {
-//			debug.log("new io event !!!", (socket.request.AppDB || App.db)._id);
-//			(socket.request.AppDB || App.db)._processIoSyncEvent(socket, datas);
-//		});
-//	socket.on('disconnect', function ( data ) {
-//		(socket.request.AppDB || App.db).clearIoSocket(socket);
-//	});
-//});
-
+Object(_api__WEBPACK_IMPORTED_MODULE_2__["default"])(server, http);
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
   debug.info('Running on ', server_instance.address().port);
 });
@@ -659,27 +634,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var path = __webpack_require__(/*! path */ "path"),
-    express = __webpack_require__(/*! express */ "undefined?22fe"),
-    wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
-    server = express(),
-    currentState;
+var wpiConf = __webpack_require__(/*! App/.wpiConfig.json */ "./App/.wpiConfig.json"),
+    currentState,
+    express = __webpack_require__(/*! express */ "undefined?22fe");
 
-server.get('/', function (req, res, next) {
-  App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
-    url: req.url,
-    state: currentState
-  }, function (err, html, nstate) {
-    res.send(200, html);
+/* harmony default export */ __webpack_exports__["default"] = (function (server) {
+  server.get('/', function (req, res, next) {
+    App_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderSSR({
+      url: req.url,
+      state: currentState
+    }, function (err, html, nstate) {
+      res.send(200, html);
+    });
+  });
+  server.use(express.static(wpiConf.projectRoot + '/dist'));
+  server.post('/', function (req, res, next) {
+    console.log("New state pushed");
+    currentState = req.body;
+    res.send(200, 'ok');
   });
 });
-server.use(express.static(wpiConf.projectRoot + '/dist'));
-server.post('/', function (req, res, next) {
-  console.log("New state pushed");
-  currentState = req.body;
-  res.send(200, 'ok');
-});
-/* harmony default export */ __webpack_exports__["default"] = (server);
 
 /***/ }),
 
@@ -1125,7 +1099,9 @@ function (_React$Component) {
           selected = _this$props3.selected,
           state = this.state;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_rnd__WEBPACK_IMPORTED_MODULE_7__["Rnd"], {
-        z: selected ? 2000 : 1,
+        style: selected && {
+          zIndex: 2000
+        },
         size: state.size || size,
         position: state.position || position,
         onDragStop: this.saveState,
@@ -1517,17 +1493,6 @@ module.exports = require("http");
 
 /***/ }),
 
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-
 /***/ "undefined?03c7":
 /*!*******************************************************************!*\
   !*** external "@babel/runtime/helpers/possibleConstructorReturn" ***!
@@ -1778,17 +1743,6 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("shortid");
-
-/***/ }),
-
-/***/ "undefined?cb34":
-/*!****************************!*\
-  !*** external "socket.io" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("socket.io");
 
 /***/ }),
 

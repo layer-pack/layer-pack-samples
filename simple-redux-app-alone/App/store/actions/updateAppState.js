@@ -19,7 +19,7 @@ import {updateWidget} from "./updateWidget";
 export const SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED'
 export const SAVING_STATE            = 'SAVING_STATE'
 
-export function selectPostIt( wid ) {
+export function selectWidget( wid ) {
 	return {
 		type: SELECTED_WIDGET_CHANGED,
 		wid

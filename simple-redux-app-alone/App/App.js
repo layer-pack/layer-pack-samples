@@ -12,37 +12,54 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                     from 'react';
-import {connect}                 from 'react-redux'
-import {selectPostIt, saveState} from "./store/actions/updateAppState";
-import {newPostIt}               from "./store/actions/updateWidget";
-import WeatherWidget             from './ui/containers/WeatherWidget.js';
+import React                                      from 'react';
+import Home                                       from './ui/pages/Home';
+import Settings                                   from './ui/pages/Settings';
+import {BrowserRouter, StaticRouter, Route, Link} from "react-router-dom";
+import AppBar                                     from '@material-ui/core/AppBar';
+import Toolbar                                    from '@material-ui/core/Toolbar';
+import IconButton                                 from '@material-ui/core/IconButton';
+import Typography                                 from '@material-ui/core/Typography';
+import SettingsIcon                               from '@material-ui/icons/Settings';
+import HomeIcon                                   from '@material-ui/icons/Home';
 import "./ui/styles/index.scss"
 
-@connect(( { someData, appState } ) => ({ someData, appState }))
 export default class App extends React.Component {
+	state = {};
+	
 	render() {
-		let { someData = { items: [] }, appState, dispatch } = this.props;
-		return <React.Fragment>
-			<h1>Minimal drafty redux sample</h1>
-			{
-				someData.items.map(
-					note => <WeatherWidget key={ note._id } record={ note }
-					                       onSelect={ e => dispatch(selectPostIt(note._id)) }
-					                       selected={ note._id == appState.selectedPostItId }/>
-				)
-			}
-			<div
-				className={ "newBtn button" }
-				onClick={ e => dispatch(newPostIt()) }>
-				Add Post It
-			</div>
-			<div
-				className={ "saveBtn button" }
-				onClick={ e => dispatch(saveState()) }>
-				Save state
-			</div>
-		</React.Fragment>
+		let Router = BrowserRouter;
+		if ( this.props.location )
+			Router = StaticRouter;
+		return <Router location={ this.props.location }>
+			<React.Fragment>
+				<AppBar position="static" className={ "AppBar" }>
+					<Toolbar>
+						<Typography cvariant="h6" color="inherit" noWrap>
+							Weather desk
+						</Typography>
+						<div className={ "tools" }>
+							<Link to={ "/" } className={ "homeBtn" }>
+								<IconButton aria-label="home"
+								            color="inherit">
+									<HomeIcon/>
+								</IconButton>
+							</Link>
+							
+							<Link to={ "/settings" } className={ "settingsBtn" }>
+								<IconButton aria-label="settings"
+								            color="inherit">
+									<SettingsIcon/>
+								</IconButton>
+							</Link>
+						</div>
+					</Toolbar>
+				</AppBar>
+				
+				
+				<Route path="/" component={ Home }/>
+				<Route path="/Settings" component={ Settings }/>
+			</React.Fragment>
+		</Router>
 	}
 }
-

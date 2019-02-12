@@ -11,17 +11,34 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import {SELECTED_WIDGET_CHANGED} from '../actions/updateAppState';
+
+import React                                from 'react';
+import {connect}                            from 'react-redux'
+import {selectWidget, saveState, newWidget} from "App/store/actions/updateWidget";
+import Widget                               from 'App/ui/containers/Widget.js';
+import WeatherBlock                         from 'App/ui/containers/WeatherBlock';
 
 
-export function appState( state = {}, action ) {
-	switch ( action.type ) {
-		case SELECTED_WIDGET_CHANGED:
-			return {
-				...state,
-				selectedWidgetId: action.wid
-			};
-		default:
-			return state
+export default connect(( { widgets } ) => ({ widgets }))(
+	class App extends React.Component {
+		state = {};
+		
+		render() {
+			let { widgets = { items: [] }, dispatch } = this.props;
+			return <div>
+				<div className={ "desk" }>
+					{
+						widgets.items.map(
+							widget => <Widget key={ widget._id } record={ widget }
+							                  disabled={ true }
+							                  selected={ widget._id == widgets.selectedWidgetId }>
+								<WeatherBlock record={ widget }
+								              disabled={ true }/>
+							</Widget>
+						)
+					}
+				</div>
+			</div>
+		}
 	}
-}
+)

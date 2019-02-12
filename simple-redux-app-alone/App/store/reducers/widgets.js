@@ -11,16 +11,38 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import {SELECTED_WIDGET_CHANGED} from '../actions/updateAppState';
 
+import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, SELECTED_WIDGET_CHANGED} from '../actions/updateWidget';
 
-export function appState( state = {}, action ) {
+export function widgets( state = { right: false }, action ) {
 	switch ( action.type ) {
 		case SELECTED_WIDGET_CHANGED:
 			return {
 				...state,
 				selectedWidgetId: action.wid
 			};
+		case WIDGET_CHANGED:
+			return {
+				...state,
+				items: state.items
+				            .map(
+					            it => (it._id === action.record._id)
+					                  ? action.record
+					                  : it
+				            )
+			}
+		case WIDGET_NEW:
+			return {
+				...state,
+				items: [...state.items, action.record]
+			}
+		case WIDGET_RM:
+			return {
+				...state,
+				items: state.items.filter(
+					it => (it._id !== action.wid)
+				)
+			}
 		default:
 			return state
 	}
