@@ -12,32 +12,31 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                   from "react";
-import moment                  from "moment";
+import React  from "react";
+import moment from "moment";
 
 
-export default ( { weatherData } ) =>
+export default ( { weatherData, lastQuery } ) =>
 	<div className={ "MeteoInfos" }>
 		<div className={ "location" }>
-			{ weatherData.name }&nbsp;
-			(&nbsp;
-			{
-				weatherData.weather[0] &&
-				weatherData.weather[0].description
-			}
-			&nbsp;)
+			{ weatherData.name }&nbsp;<sub>({ moment(weatherData.dt * 1000).fromNow() })</sub>
+		</div>
+		<div className={ "background" }>
+			<img src={ "https://source.unsplash.com/600x400/?day,sky," + (weatherData.name) }/>
 		</div>
 		<div className={ "picto" }>
 			{
 				weatherData.weather[0] &&
 				<img
 					src={ "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + '.png' }></img>
+			}<br/>
+			{
+				weatherData.weather[0] &&
+				weatherData.weather[0].description
 			}
 		</div>
 		<div className={ "infos" }>
-			<div className={ "dt" }>
-			</div>
-			<div className={ "dt" }>{ moment(weatherData.dt * 1000).format('MMMM Do YYYY, h:mm:ss a') }</div>
-			<div className={ "wind" }>{ weatherData.wind.speed }mh</div>
+			<div className={ "temp" }>{ weatherData.main.temp }°</div>
+			<div className={ "wind" }>{ weatherData.wind.speed } mh</div>
 		</div>
 	</div>;

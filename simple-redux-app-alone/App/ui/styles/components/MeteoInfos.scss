@@ -1,4 +1,4 @@
-/*
+/*!
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
  *
@@ -11,38 +11,68 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-export default {
-	
-	appState: {
-		src             : "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-		selectedWidgetId: null
-	},
-	widgets : {
-		items: [{
-			"_id"     : "rkUQHZrqM",
-			"location": "Lisbonne",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 403, "y": 111 },
-		}, {
-			"_id"     : "YDNiVOf1j",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 21, "y": 108 },
-			"location": "paris"
-		}, {
-			"_id"     : "FkQ3V9Hcb",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 771, "y": 108 },
-			"location": "rome"
-		}, {
-			"_id"     : "bYNiMYG_0",
-			"size"    : { "width": 514, "height": 329 },
-			"position": { "x": 28, "y": 525 },
-			"location": "marseille"
-		}, {
-			"_id"     : "5SJehewl2",
-			"size"    : { "width": 563, "height": 328 },
-			"position": { "x": 558, "y": 526 },
-			"location": "montpellier"
-		}]
-	},
+
+.MeteoInfos {
+  @include use_hvCenteredContent();
+  height: 100%;
+  width: 100%;
+  padding-top: 20px;
+
+  .location {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgba(255, 255, 255, 0.83);
+
+    sub {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 2px;
+      font-style: italic;
+      color: darkgray;
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      min-height: 100%;
+      @include use_hvCenteredAbs();
+    }
+  }
+
+  .picto {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.83);
+    height: 100px;
+
+    img {
+      margin: 5px;
+    }
+  }
+
+  .infos {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.83);
+    width: 50%;
+    height: 100px;
+
+    div {
+      margin: 17px;
+    }
+  }
 }

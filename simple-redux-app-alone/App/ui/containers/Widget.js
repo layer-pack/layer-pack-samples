@@ -11,19 +11,25 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
+import PropTypes      from "prop-types";
 import React          from "react";
 import {Rnd}          from "react-rnd";
 import {connect}      from 'react-redux'
-import WeatherInfos   from "../components/WeatherInfos.js";
-import {selectWidget} from "App/store/actions/updateAppState";
+import {selectWidget} from "App/store/actions/updateWidget";
 import {
-	rmWidget, newWidget, updateWidget, weatherSearch, weatherResult
+	rmWidget, newWidget, updateWidget
 }                     from "App/store/actions/updateWidget";
 
+
 @connect()
-export default class WeatherWidget extends React.Component {
-	
-	state = {};
+export default class Widget extends React.Component {
+	static propTypes = {
+		selected: PropTypes.bool,
+		disabled: PropTypes.bool,
+		record  : PropTypes.object.isRequired,
+		onSelect: PropTypes.func
+	};
+	state            = {};
 	
 	saveState = ( e, d ) => {
 		let { dispatch, record } = this.props;
@@ -35,22 +41,20 @@ export default class WeatherWidget extends React.Component {
 			}));
 	};
 	
-	componentWillMount() {
-		let { dispatch, record } = this.props;
-		if ( record.location && !record.results )
-			dispatch(weatherSearch(record, record.location))
-	}
-	
 	render() {
 		let {
 			    record: { position, size } = {},
-			    record,
+			    record, children, disabled,
 			    dispatch, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
 		return (
 			<Rnd
-				style={ selected && { zIndex: 2000 } }
+				className={ "Widget" }
+				disableDragging={ !!disabled }
+				enableResizing={ disabled }
+				//dragHandleClassName={ "handle" }
+				style={ selected ? { zIndex: 2000 } : undefined }
 				size={ state.size || size }
 				position={ state.position || position }
 				onDragStop={ this.saveState }
@@ -72,46 +76,8 @@ export default class WeatherWidget extends React.Component {
 							}
 						});
 				} }>
-				<div className={ "widget handle" }>
-					{
-						!this.state.editing &&
-						<div className={ "text" }>
-							{
-								record.fetching && "Loading...."
-								|| record.results && <WeatherInfos weatherData={ record.results }/>
-								|| "Edit me !"
-							}
-							<button onClick={ e => this.setState({ editing: true }) }
-							        className={ "edit" }>🖋
-							</button>
-							<button onClick={ e => dispatch(rmWidget(record._id)) }
-							        className={ "delete" }>🖾
-							</button>
-						</div>
-						||
-						<div className={ "editor" }>
-							{
-								<div className={ "search" }>
-									<input type="text"
-									       onChange={ e => {
-										       this.setState({ searching: e.target.value });
-										       if ( e.target.value.length > 2 )
-											       dispatch(weatherSearch(record, e.target.value));
-									       } }
-									       value={ state.searching !== undefined ? state.searching : record.location }
-									       onMouseDown={ e => e.stopPropagation() }/>
-								</div>
-							}
-							{
-								record.fetching && "Loading...." ||
-								record.results && <WeatherInfos weatherData={ record.results }/>
-							}
-							<button
-								disabled={ record.fetching }
-								onClick={ e => this.setState({ editing: false }) }>💾
-							</button>
-						</div>
-					}
+				<div className={ " content" }>
+					{ children }
 				</div>
 			</Rnd>
 		);

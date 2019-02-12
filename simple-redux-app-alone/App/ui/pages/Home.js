@@ -11,38 +11,34 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-export default {
-	
-	appState: {
-		src             : "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-		selectedWidgetId: null
-	},
-	widgets : {
-		items: [{
-			"_id"     : "rkUQHZrqM",
-			"location": "Lisbonne",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 403, "y": 111 },
-		}, {
-			"_id"     : "YDNiVOf1j",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 21, "y": 108 },
-			"location": "paris"
-		}, {
-			"_id"     : "FkQ3V9Hcb",
-			"size"    : { "width": 350, "height": 400 },
-			"position": { "x": 771, "y": 108 },
-			"location": "rome"
-		}, {
-			"_id"     : "bYNiMYG_0",
-			"size"    : { "width": 514, "height": 329 },
-			"position": { "x": 28, "y": 525 },
-			"location": "marseille"
-		}, {
-			"_id"     : "5SJehewl2",
-			"size"    : { "width": 563, "height": 328 },
-			"position": { "x": 558, "y": 526 },
-			"location": "montpellier"
-		}]
-	},
-}
+
+import React                                from 'react';
+import {connect}                            from 'react-redux'
+import {selectWidget, saveState, newWidget} from "App/store/actions/updateWidget";
+import Widget                               from 'App/ui/containers/Widget.js';
+import WeatherBlock                         from 'App/ui/containers/WeatherBlock';
+
+
+export default connect(( { widgets } ) => ({ widgets }))(
+	class App extends React.Component {
+		state = {};
+		
+		render() {
+			let { widgets = { items: [] }, dispatch } = this.props;
+			return <div>
+				<div className={ "desk" }>
+					{
+						widgets.items.map(
+							widget => <Widget key={ widget._id } record={ widget }
+							                  disabled={ true }
+							                  selected={ widget._id == widgets.selectedWidgetId }>
+								<WeatherBlock record={ widget }
+								              disabled={ true }/>
+							</Widget>
+						)
+					}
+				</div>
+			</div>
+		}
+	}
+)

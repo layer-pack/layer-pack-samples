@@ -16,9 +16,17 @@
 import App              from "App/index.js";
 import {renderToString} from "react-dom/server";
 
-var wpiConf = require('App/config'), currentState,
+var wpiConf = require('App/.wpiConfig.json'),
+    currentState,
+    fs      = require('fs'),
     express = require('express');
 
+try {
+	currentState = fs.readFileSync('./lastAppState.json');
+	currentState = JSON.parse(currentState);
+} catch ( e ) {
+	currentState = undefined;
+}
 
 export default ( server ) => {
 	
@@ -27,8 +35,22 @@ export default ( server ) => {
 		function ( req, res, next ) {
 			App.renderSSR(
 				{
-					url  : req.url,
-					state: currentState
+					location: req.url,
+					state   : currentState
+				},
+				( err, html, nstate ) => {
+					res.send(200, html)
+				}
+			)
+		}
+	);
+	server.get(
+		'/settings',
+		function ( req, res, next ) {
+			App.renderSSR(
+				{
+					location: req.url,
+					state   : currentState
 				},
 				( err, html, nstate ) => {
 					res.send(200, html)
@@ -38,9 +60,16 @@ export default ( server ) => {
 	);
 	server.use(express.static(wpiConf.projectRoot + '/dist'));
 	
+	server.use("/medias", express.static(wpiConf.projectRoot + '/public'));
+	
 	server.post('/', function ( req, res, next ) {
 		console.log("New state pushed")
 		currentState = req.body;
+		try {
+			fs.writeFileSync('./lastAppState.json', JSON.stringify(req.body));
+		} catch ( e ) {
+		
+		}
 		res.send(200, 'ok')
 	});
 };
