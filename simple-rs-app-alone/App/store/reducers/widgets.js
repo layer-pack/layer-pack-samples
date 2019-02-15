@@ -1,4 +1,4 @@
-/*!
+/*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
  *
@@ -12,67 +12,38 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-.MeteoInfos {
-  @include use_hvCenteredContent();
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
+import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, SELECTED_WIDGET_CHANGED} from '../actions/updateWidget';
 
-  .location {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: rgba(255, 255, 255, 0.83);
-
-    sub {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 2px;
-      font-style: italic;
-      color: darkgray;
-    }
-  }
-
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    z-index: -1;
-
-    img {
-      min-width: 100%;
-      min-height: 100%;
-      @include use_hvCenteredAbs();
-    }
-  }
-
-  .picto {
-    display: inline-block;
-    text-align: center;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.83);
-    height: 100px;
-
-    img {
-      margin: 5px;
-    }
-  }
-
-  .infos {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.83);
-    width: 50%;
-    height: 100px;
-
-    div {
-      margin: 17px;
-    }
-  }
+export function widgets( state = { right: false }, action ) {
+	switch ( action.type ) {
+		case SELECTED_WIDGET_CHANGED:
+			return {
+				...state,
+				selectedWidgetId: action.wid
+			};
+		case WIDGET_CHANGED:
+			return {
+				...state,
+				items: state.items
+				            .map(
+					            it => (it._id === action.record._id)
+					                  ? action.record
+					                  : it
+				            )
+			}
+		case WIDGET_NEW:
+			return {
+				...state,
+				items: [...state.items, action.record]
+			}
+		case WIDGET_RM:
+			return {
+				...state,
+				items: state.items.filter(
+					it => (it._id !== action.wid)
+				)
+			}
+		default:
+			return state
+	}
 }

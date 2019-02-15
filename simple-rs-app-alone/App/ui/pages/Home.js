@@ -1,4 +1,4 @@
-/*!
+/*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
  *
@@ -12,67 +12,33 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-.MeteoInfos {
-  @include use_hvCenteredContent();
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
+import React                                from 'react';
+import {connect}                            from 'react-redux'
+import {selectWidget, saveState, newWidget} from "App/store/actions/updateWidget";
+import Widget                               from 'App/ui/containers/Widget.js';
+import WeatherBlock                         from 'App/ui/containers/WeatherBlock';
 
-  .location {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: rgba(255, 255, 255, 0.83);
 
-    sub {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 2px;
-      font-style: italic;
-      color: darkgray;
-    }
-  }
-
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    z-index: -1;
-
-    img {
-      min-width: 100%;
-      min-height: 100%;
-      @include use_hvCenteredAbs();
-    }
-  }
-
-  .picto {
-    display: inline-block;
-    text-align: center;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.83);
-    height: 100px;
-
-    img {
-      margin: 5px;
-    }
-  }
-
-  .infos {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.83);
-    width: 50%;
-    height: 100px;
-
-    div {
-      margin: 17px;
-    }
-  }
-}
+export default connect(( { widgets } ) => ({ widgets }))(
+	class App extends React.Component {
+		state = {};
+		
+		render() {
+			let { widgets = { items: [] }, dispatch } = this.props;
+			return <div>
+				<div className={ "desk" }>
+					{
+						widgets.items.map(
+							widget => <Widget key={ widget._id } record={ widget }
+							                  disabled={ true }
+							                  selected={ widget._id == widgets.selectedWidgetId }>
+								<WeatherBlock record={ widget }
+								              disabled={ true }/>
+							</Widget>
+						)
+					}
+				</div>
+			</div>
+		}
+	}
+)

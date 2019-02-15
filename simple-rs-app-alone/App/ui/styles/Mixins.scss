@@ -12,67 +12,42 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-.MeteoInfos {
-  @include use_hvCenteredContent();
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
-
-  .location {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: rgba(255, 255, 255, 0.83);
-
-    sub {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 2px;
-      font-style: italic;
-      color: darkgray;
-    }
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+  &:before {
+    content: '';
+    float: left;
+    padding-bottom: $padding;
   }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
 
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+@mixin use_hvCenteredAbs() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin use_hvCenteredContent() {
+
+  &:before {
+    content: ' ';
+    display: inline-block;
     height: 100%;
-    text-align: center;
-    z-index: -1;
-
-    img {
-      min-width: 100%;
-      min-height: 100%;
-      @include use_hvCenteredAbs();
-    }
+    width: 1px;
+    margin-right: -1px;
+    vertical-align: middle;
+    overflow: hidden;
   }
-
-  .picto {
+  text-align: center;
+  > * {
+    text-align: left;
+    vertical-align: middle;
     display: inline-block;
-    text-align: center;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.83);
-    height: 100px;
-
-    img {
-      margin: 5px;
-    }
-  }
-
-  .infos {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.83);
-    width: 50%;
-    height: 100px;
-
-    div {
-      margin: 17px;
-    }
   }
 }
