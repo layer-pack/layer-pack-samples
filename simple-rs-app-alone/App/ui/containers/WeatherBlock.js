@@ -11,19 +11,27 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import PropTypes    from "prop-types";
-import React        from "react";
-import Fab          from '@material-ui/core/Fab';
-import DeleteIcon   from '@material-ui/icons/Delete';
-import EditIcon     from '@material-ui/icons/Edit';
-import SaveIcon     from '@material-ui/icons/Save';
-import {connect}    from 'react-redux'
-import WeatherInfos from "../components/WeatherInfos.js";
-import {
-	weatherSearch, rmWidget
-}                   from "App/store/actions/updateWidget";
+import PropTypes                             from "prop-types";
+import React                                 from "react";
+import Fab                                   from '@material-ui/core/Fab';
+import DeleteIcon                            from '@material-ui/icons/Delete';
+import EditIcon                              from '@material-ui/icons/Edit';
+import SaveIcon                              from '@material-ui/icons/Save';
+import {reScope, scopeToProps, propsToScope} from "rscopes";
+import WeatherSearch                           from "App/stores/WeatherSearch";
 
-@connect()
+
+@reScope(
+	{
+		// will keep separate instances for each instance of WeatherWidget
+		// WeatherSearch can still require stores in the parents scopes
+		WeatherSearch
+	}
+)
+// map the record location as the default value in the WeatherSearch store state
+@propsToScope(["record.location:WeatherSearch.defaultLocation"])
+// finally inject the stores
+@scopeToProps(["WeatherSearch"])
 export default class WeatherBlock extends React.Component {
 	static propTypes = {
 		record  : PropTypes.object.isRequired,
@@ -34,7 +42,7 @@ export default class WeatherBlock extends React.Component {
 	componentWillMount() {
 		let { dispatch, record } = this.props;
 		if ( record.location && !record.results )
-			dispatch(weatherSearch(record, record.location))
+			$actions.updateWeatherSearch(record, record.location)
 		
 		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
 	}
@@ -44,14 +52,14 @@ export default class WeatherBlock extends React.Component {
 	}
 	
 	checkUpdate = () => {
-		let { dispatch, record } = this.props;
+		let { $actions, record } = this.props;
 		if ( record.location && record.fetched < (Date.now() - 1000 * 60) )
-			dispatch(weatherSearch(record, record.location))
+			$actions.updateWeatherSearch(record, record.location)
 	}
 	
 	render() {
 		let {
-			    record, dispatch, disabled
+			    record, $actions, disabled
 		    }     = this.props,
 		    state = this.state;
 		
@@ -73,7 +81,7 @@ export default class WeatherBlock extends React.Component {
 									<EditIcon/>
 								</Fab>
 								<Fab aria-label="Delete" className={ "delete" }
-								     onClick={ e => dispatch(rmWidget(record._id)) }>
+								     onClick={ e => $actions.rmWidget(record._id) }>
 									<DeleteIcon/>
 								</Fab>
 							</React.Fragment>
@@ -87,7 +95,7 @@ export default class WeatherBlock extends React.Component {
 								       onChange={ e => {
 									       this.setState({ searching: e.target.value });
 									       if ( e.target.value.length > 2 )
-										       dispatch(weatherSearch(record, e.target.value));
+										       $actions.updateWeatherSearch(record, e.target.value);
 								       } }
 								       value={ state.searching !== undefined ? state.searching : record.location }
 								       onMouseDown={ e => e.stopPropagation() }/>

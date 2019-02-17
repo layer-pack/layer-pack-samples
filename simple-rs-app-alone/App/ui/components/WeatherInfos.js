@@ -17,7 +17,7 @@ import moment from "moment";
 
 
 export default ( { weatherData, lastQuery } ) =>
-	<div className={ "MeteoInfos" }>
+	<div className={ "WeatherInfos" }>
 		<div className={ "location" }>
 			{ weatherData.name }&nbsp;<sub>({ moment(weatherData.dt * 1000).fromNow() })</sub>
 		</div>

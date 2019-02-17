@@ -1,6 +1,6 @@
 /** wpi externals - add module path **/
 {
-let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-app-alone\\node_modules","node_modules"]);
+let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["/home/app/node_modules","node_modules"]);
 }
 
 /*!
@@ -122,7 +122,7 @@ module.exports =
 /*! exports provided: project, projectRoot, vars, allCfg, allModId, default */
 /***/ (function(module) {
 
-module.exports = {"project":{"name":"parentProject","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-app-alone","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["wpi-react-redux-sass-ssr"]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["wpi-react-redux-sass-ssr","wpi-react-hmr-ssr"]};
+module.exports = {"project":{"name":"simple-rs-app-alone","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"/home/app","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["wpi-react-rs-sass-ssr"]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["wpi-react-rs-sass-ssr","wpi-react-hmr-ssr"]};
 
 /***/ }),
 
@@ -264,6 +264,136 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./App/App.scope.js":
+/*!**************************!*\
+  !*** ./App/App.scope.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "undefined?4d9b");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/applyDecoratedDescriptor */ "undefined?0422");
+/* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! shortid */ "undefined?beec");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+var _obj, _init, _init2;
+
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+
+var asStore = rscopes__WEBPACK_IMPORTED_MODULE_4__["spells"].asStore,
+    asScope = rscopes__WEBPACK_IMPORTED_MODULE_4__["spells"].asScope;
+/* harmony default export */ __webpack_exports__["default"] = (_obj = {
+  appState: {
+    selectedWidgetId: "rkUQHZrqM",
+    selectWidget: function selectWidget(selectedWidgetId) {
+      return {
+        selectedWidgetId: selectedWidgetId
+      };
+    }
+  },
+  widgets: {
+    // initial state
+    items: [{
+      "_id": "rkUQHZrqM",
+      "location": "paris",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 321,
+        "y": 167
+      }
+    }, {
+      "_id": "r1bcuMrcM",
+      "location": "rio",
+      "size": {
+        "width": 350,
+        "height": 200
+      },
+      "position": {
+        "x": 260,
+        "y": 576
+      }
+    }],
+    // actions
+    newWidget: function newWidget() {
+      return {
+        items: [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(this.nextState.items), [{
+          _id: shortid__WEBPACK_IMPORTED_MODULE_3___default.a.generate(),
+          size: {
+            width: 350,
+            height: 200
+          },
+          position: {
+            x: 100 + ~~(Math.random() * 600),
+            y: 100 + ~~(Math.random() * 600)
+          }
+        }])
+      };
+    },
+    updateWidget: function updateWidget(widget) {
+      return {
+        items: this.nextState.items.map(function (it) {
+          return it._id === widget._id ? widget : it;
+        })
+      };
+    },
+    rmWidget: function rmWidget(widget) {
+      return {
+        items: this.nextState.items.filter(function (it) {
+          return it._id !== widget._id;
+        })
+      };
+    },
+    saveState: function saveState() {
+      superagent__WEBPACK_IMPORTED_MODULE_2___default.a.post('/', this.scopeObj.serialize()).then(function (e, r) {
+        console.log(e, r);
+      });
+    }
+  }
+}, (_babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_1___default()(_obj, "appState", [asStore], (_init = Object.getOwnPropertyDescriptor(_obj, "appState"), _init = _init ? _init.value : undefined, {
+  enumerable: true,
+  configurable: true,
+  writable: true,
+  initializer: function initializer() {
+    return _init;
+  }
+}), _obj), _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_1___default()(_obj, "widgets", [asStore], (_init2 = Object.getOwnPropertyDescriptor(_obj, "widgets"), _init2 = _init2 ? _init2.value : undefined, {
+  enumerable: true,
+  configurable: true,
+  writable: true,
+  initializer: function initializer() {
+    return _init2;
+  }
+}), _obj)), _obj);
+
+/***/ }),
+
 /***/ "./App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
 /*!*********************************************************!*\
   !*** ./App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
@@ -401,19 +531,17 @@ var out='<!DOCTYPE html><!-- ~ Copyright (c)  2018 Wise Wild Web . ~ ~  MIT Lice
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_hot_loader_root__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-hot-loader/root */ "undefined?328e");
-/* harmony import */ var react_hot_loader_root__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader_root__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var App_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! App/App */ "./App/App.js");
+/* harmony import */ var _App_scope__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.scope */ "./App/App.scope.js");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! shortid */ "undefined?beec");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "undefined?5e9a");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "undefined?588e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_configure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/configure */ "./node_modules/wpi-react-redux-sass-ssr/App/store/configure.js");
-/* harmony import */ var _store_initialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/initialState */ "./App/store/initialState.js");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_5__);
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -427,8 +555,6 @@ __webpack_require__.r(__webpack_exports__);
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-
-
 
 
 
@@ -436,353 +562,96 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ctrl = {
-  renderTo: function renderTo(node) {
-    var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var store = Object(_store_configure__WEBPACK_IMPORTED_MODULE_6__["default"])(initialState),
-        isDev = "development" !== 'production',
-        HMRApp = isDev ? Object(react_hot_loader_root__WEBPACK_IMPORTED_MODULE_0__["hot"])(App_App__WEBPACK_IMPORTED_MODULE_1__["default"]) : App_App__WEBPACK_IMPORTED_MODULE_1__["default"];
-    react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
-      store: store
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(HMRApp, null)), node);
+  renderTo: function renderTo(node, state) {
+    var cScope = new rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      id: "App",
+      autoDestroy: true
+    }),
+        App = Object(rscopes__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
+    window.contexts = rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"].scopes;
+    state && cScope.restore(state);
+    react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(App, null), node);
 
     if (false) {}
   },
-  renderSSR: function renderSSR(_ref, cb) {
-    var state = _ref.state,
-        location = _ref.location,
-        tpl = _ref.tpl;
-    var store = Object(_store_configure__WEBPACK_IMPORTED_MODULE_6__["default"])(state || _store_initialState__WEBPACK_IMPORTED_MODULE_7__["default"]);
-    var content = "",
-        html,
-        preloadedState; //try {
-    //content        = renderToString(
-    //	<Provider store={ store }>
-    //		<App location={ location }/>
-    //	</Provider>
-    //);
+  renderSSR: function renderSSR(cfg, cb) {
+    var _attempts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
-    preloadedState = store.getState();
-    html = tpl.render({
-      app: content,
-      state: JSON.stringify(preloadedState)
-    }); //} catch ( e ) {
-    //	return cb(e)
-    //}
+    var rid = shortid__WEBPACK_IMPORTED_MODULE_1___default.a.generate(),
+        cScope = new rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      id: rid,
+      autoDestroy: false
+    }),
+        App = Object(rscopes__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
+    cfg.state && cScope.restore(cfg.state, {
+      alias: "App"
+    });
+    var html,
+        appHtml = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_4__["renderToString"])(react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(App, {
+      location: cfg.location
+    })),
+        stable = cScope.isStableTree();
+    cScope.onceStableTree(function (state) {
+      var nstate = cScope.serialize({
+        alias: "App"
+      });
 
-    cb(null, html);
+      if (!stable && _attempts < 3) {
+        ctrl.renderSSR({}, cb, ++_attempts);
+      } else {
+        try {
+          html = cfg.tpl.render({
+            app: appHtml,
+            state: JSON.stringify(nstate)
+          });
+        } catch (e) {
+          return cb(e);
+        }
+
+        cb(null, html, !stable && nstate);
+      }
+
+      cScope.destroy();
+    });
   }
 };
-if (typeof window !== 'undefined') window.App = ctrl;
 /* harmony default export */ __webpack_exports__["default"] = (ctrl);
 
 /***/ }),
 
-/***/ "./App/store/actions/updateAppState.js":
-/*!*********************************************!*\
-  !*** ./App/store/actions/updateAppState.js ***!
-  \*********************************************/
-/*! exports provided: SELECTED_WIDGET_CHANGED, SAVING_STATE, selectWidget, saveState */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECTED_WIDGET_CHANGED", function() { return SELECTED_WIDGET_CHANGED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SAVING_STATE", function() { return SAVING_STATE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectWidget", function() { return selectWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveState", function() { return saveState; });
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _updateWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./updateWidget */ "./App/store/actions/updateWidget.js");
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-var SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED';
-var SAVING_STATE = 'SAVING_STATE';
-function selectWidget(wid) {
-  return {
-    type: SELECTED_WIDGET_CHANGED,
-    wid: wid
-  };
-}
-function saveState(then) {
-  return function (dispatch, getState) {
-    return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.post('/', getState()).then(function (res) {
-      console.log('Saved');
-    }).catch(function (e) {
-      console.log('Not Saved');
-    });
-  };
-}
-
-/***/ }),
-
-/***/ "./App/store/actions/updateWidget.js":
-/*!*******************************************!*\
-  !*** ./App/store/actions/updateWidget.js ***!
-  \*******************************************/
-/*! exports provided: WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, SELECTED_WIDGET_CHANGED, newWidget, updateWidget, rmWidget, selectWidget, saveState, weatherSearch */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_CHANGED", function() { return WIDGET_CHANGED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_NEW", function() { return WIDGET_NEW; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_RM", function() { return WIDGET_RM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECTED_WIDGET_CHANGED", function() { return SELECTED_WIDGET_CHANGED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newWidget", function() { return newWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateWidget", function() { return updateWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rmWidget", function() { return rmWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectWidget", function() { return selectWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveState", function() { return saveState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "weatherSearch", function() { return weatherSearch; });
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! shortid */ "undefined?beec");
-/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_2__);
-
-
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-var WIDGET_CHANGED = 'WIDGET_CHANGED';
-var WIDGET_NEW = 'WIDGET_NEW';
-var WIDGET_RM = 'WIDGET_RM';
-var SELECTED_WIDGET_CHANGED = 'SELECTED_WIDGET_CHANGED'; // actions
-
-function newWidget(record) {
-  return {
-    type: WIDGET_NEW,
-    record: _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({
-      _id: shortid__WEBPACK_IMPORTED_MODULE_2___default.a.generate(),
-      size: {
-        width: 350,
-        height: 400
-      },
-      position: {
-        x: 100 + ~~(Math.random() * 600),
-        y: 100 + ~~(Math.random() * 600)
-      }
-    }, record)
-  };
-}
-function updateWidget(record) {
-  return {
-    type: WIDGET_CHANGED,
-    record: record
-  };
-}
-function rmWidget(wid) {
-  return {
-    type: WIDGET_RM,
-    wid: wid
-  };
-}
-function selectWidget(wid) {
-  return {
-    type: SELECTED_WIDGET_CHANGED,
-    wid: wid
-  };
-}
-function saveState(then) {
-  return function (dispatch, getState) {
-    return superagent__WEBPACK_IMPORTED_MODULE_1___default.a.post('/', getState()).then(function (res) {
-      console.log('Saved');
-    }).catch(function (e) {
-      console.log('Not Saved');
-    });
-  };
-}
-function weatherSearch(record, location, then) {
-  return function (dispatch, getState) {
-    dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-      fetching: location
-    }))); // should use hashmap
-
-    return superagent__WEBPACK_IMPORTED_MODULE_1___default.a.get(getState().appState.src + location).then(function (res) {
-      var current = getState().widgets.items.find(function (item) {
-        return item._id === record._id;
-      });
-      if (current && current.fetching === location) dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-        fetching: false,
-        fetched: Date.now(),
-        results: res.body,
-        location: location
-      })));
-    }).catch(function (e) {
-      var current = getState().widgets.items.find(function (item) {
-        return item._id === record._id;
-      });
-      if (current && current.fetching === location) dispatch(updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
-        fetching: false
-      })));
-    });
-  };
-}
-
-/***/ }),
-
-/***/ "./App/store/initialState.js":
-/*!***********************************!*\
-  !*** ./App/store/initialState.js ***!
-  \***********************************/
+/***/ "./App/stores/WeatherSearch.js":
+/*!*************************************!*\
+  !*** ./App/stores/WeatherSearch.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-/* harmony default export */ __webpack_exports__["default"] = ({
-  appState: {
-    src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
-    selectedWidgetId: null
-  },
-  widgets: {
-    items: [{
-      "_id": "rkUQHZrqM",
-      "location": "Lisbonne",
-      "size": {
-        "width": 350,
-        "height": 400
-      },
-      "position": {
-        "x": 403,
-        "y": 111
-      }
-    }, {
-      "_id": "YDNiVOf1j",
-      "size": {
-        "width": 350,
-        "height": 400
-      },
-      "position": {
-        "x": 21,
-        "y": 108
-      },
-      "location": "paris"
-    }, {
-      "_id": "FkQ3V9Hcb",
-      "size": {
-        "width": 350,
-        "height": 400
-      },
-      "position": {
-        "x": 771,
-        "y": 108
-      },
-      "location": "rome"
-    }, {
-      "_id": "bYNiMYG_0",
-      "size": {
-        "width": 514,
-        "height": 329
-      },
-      "position": {
-        "x": 28,
-        "y": 525
-      },
-      "location": "marseille"
-    }, {
-      "_id": "5SJehewl2",
-      "size": {
-        "width": 563,
-        "height": 328
-      },
-      "position": {
-        "x": 558,
-        "y": 526
-      },
-      "location": "montpellier"
-    }]
-  }
-});
-
-/***/ }),
-
-/***/ "./App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
-/*!****************************************************!*\
-  !*** ./App/store/reducers sync ^\.\/[^\\\/]+\.js$ ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./appState.js": "./App/store/reducers/appState.js",
-	"./widgets.js": "./App/store/reducers/widgets.js"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
-
-/***/ }),
-
-/***/ "./App/store/reducers/appState.js":
-/*!****************************************!*\
-  !*** ./App/store/reducers/appState.js ***!
-  \****************************************/
-/*! exports provided: appState */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appState", function() { return appState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WeatherSearch; });
 /* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
 /* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/updateAppState */ "./App/store/actions/updateAppState.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "undefined?03c7");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "undefined?20a8");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rscopes/spells */ "undefined?8ec2");
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rscopes_spells__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_8__);
+
+
+
+
+
 
 
 /*
@@ -799,144 +668,86 @@ __webpack_require__.r(__webpack_exports__);
  *  @contact : n8tz.js@gmail.com
  */
 
-function appState() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  switch (action.type) {
-    case _actions_updateAppState__WEBPACK_IMPORTED_MODULE_1__["SELECTED_WIDGET_CHANGED"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state, {
-        selectedWidgetId: action.wid
-      });
 
-    default:
-      return state;
+
+var WeatherSearch =
+/*#__PURE__*/
+function (_Store) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(WeatherSearch, _Store);
+
+  function WeatherSearch() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, WeatherSearch);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch).apply(this, arguments));
   }
-}
 
-/***/ }),
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(WeatherSearch, [{
+    key: "apply",
+    value: function apply() {
+      var _this = this;
 
-/***/ "./App/store/reducers/widgets.js":
-/*!***************************************!*\
-  !*** ./App/store/reducers/widgets.js ***!
-  \***************************************/
-/*! exports provided: widgets */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var state = arguments.length > 1 ? arguments[1] : undefined;
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "widgets", function() { return widgets; });
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "undefined?4d9b");
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions_updateWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/updateWidget */ "./App/store/actions/updateWidget.js");
+      var _ref = arguments.length > 2 ? arguments[2] : undefined,
+          location = _ref.location,
+          results = _ref.results,
+          record = _ref.record;
+
+      location = location || state.defaultLocation;
+      if (location == data.location && data.results) return data; // do query weather if needed
+
+      if (location) {
+        this.wait(); // so the whole scope tree will wait for SSR
+
+        superagent__WEBPACK_IMPORTED_MODULE_8___default.a.get(state.src + location).then(function (res) {
+          if (location !== _this.data.location) return; // update the store data
+
+          _this.push({
+            results: res.body,
+            location: location
+          }); // update the record location
 
 
+          _this.$actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state.record, {
+            location: location
+          }));
+        }) // release anyway
+        .then(function (e) {
+          return _this.release();
+        }).catch(function (e) {
+          return _this.release();
+        });
+        return {
+          location: location,
+          fetching: true
+        };
+      }
 
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
+      return data;
+    }
+  }]);
 
-function widgets() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    right: false
-  };
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+  return WeatherSearch;
+}(rscopes__WEBPACK_IMPORTED_MODULE_6__["Store"]);
 
-  switch (action.type) {
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_2__["SELECTED_WIDGET_CHANGED"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        selectedWidgetId: action.wid
-      });
-
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_2__["WIDGET_CHANGED"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        items: state.items.map(function (it) {
-          return it._id === action.record._id ? action.record : it;
-        })
-      });
-
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_2__["WIDGET_NEW"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        items: [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(state.items), [action.record])
-      });
-
-    case _actions_updateWidget__WEBPACK_IMPORTED_MODULE_2__["WIDGET_RM"]:
-      return _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        items: state.items.filter(function (it) {
-          return it._id !== action.wid;
-        })
-      });
-
-    default:
-      return state;
+WeatherSearch.state = {
+  // initial state value
+  src: "http://api.openweathermap.org/data/2.5/weather?&APPID=ecff7b21b7305a6f88ca6c9bc4f07027&q=",
+  autoUpdate: 1000 * 10
+};
+WeatherSearch.actions = {
+  updateWeatherSearch: function updateWeatherSearch(location) {
+    if (location.length < 4) return {
+      location: location
+    };
+    return {
+      location: location
+    };
   }
-}
+};
 
-/***/ }),
-
-/***/ "./App/ui/components/WeatherInfos.js":
-/*!*******************************************!*\
-  !*** ./App/ui/components/WeatherInfos.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "undefined?588e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "undefined?bd76");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var weatherData = _ref.weatherData,
-      lastQuery = _ref.lastQuery;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "MeteoInfos"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "location"
-  }, weatherData.name, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "(", moment__WEBPACK_IMPORTED_MODULE_1___default()(weatherData.dt * 1000).fromNow(), ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "background"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "https://source.unsplash.com/600x400/?day,sky," + weatherData.name
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "picto"
-  }, weatherData.weather[0] && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + '.png'
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), weatherData.weather[0] && weatherData.weather[0].description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "infos"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "temp"
-  }, weatherData.main.temp, "\xB0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "wind"
-  }, weatherData.wind.speed, " mh")));
-});
 
 /***/ }),
 
@@ -972,17 +783,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/Save */ "undefined?128e");
 /* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/WeatherInfos.js */ "./App/ui/components/WeatherInfos.js");
-/* harmony import */ var App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! App/store/actions/updateWidget */ "./App/store/actions/updateWidget.js");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var App_stores_WeatherSearch__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! App/stores/WeatherSearch */ "./App/stores/WeatherSearch.js");
 
 
 
 
 
 
-var _dec, _class, _class2, _temp;
+var _dec, _dec2, _dec3, _class, _class2, _temp;
 
 /*
  * The MIT License (MIT)
@@ -1005,8 +815,11 @@ var _dec, _class, _class2, _temp;
 
 
 
-
-var WeatherBlock = (_dec = Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(), _dec(_class = (_temp = _class2 =
+var WeatherBlock = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["reScope"])({
+  // will keep separate instances for each instance of WeatherWidget
+  // WeatherSearch can still require stores in the parents scopes
+  WeatherSearch: App_stores_WeatherSearch__WEBPACK_IMPORTED_MODULE_12__["default"]
+}), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["propsToScope"])(["record.location:WeatherSearch.defaultLocation"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["scopeToProps"])(["WeatherSearch"]), _dec(_class = _dec2(_class = _dec3(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherBlock, _React$Component);
@@ -1027,9 +840,9 @@ function (_React$Component) {
 
     _this.checkUpdate = function () {
       var _this$props = _this.props,
-          dispatch = _this$props.dispatch,
+          $actions = _this$props.$actions,
           record = _this$props.record;
-      if (record.location && record.fetched < Date.now() - 1000 * 60) dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_13__["weatherSearch"])(record, record.location));
+      if (record.location && record.fetched < Date.now() - 1000 * 60) $actions.updateWeatherSearch(record, record.location);
     };
 
     return _this;
@@ -1041,7 +854,7 @@ function (_React$Component) {
       var _this$props2 = this.props,
           dispatch = _this$props2.dispatch,
           record = _this$props2.record;
-      if (record.location && !record.results) dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_13__["weatherSearch"])(record, record.location));
+      if (record.location && !record.results) $actions.updateWeatherSearch(record, record.location);
       this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
     }
   }, {
@@ -1056,12 +869,12 @@ function (_React$Component) {
 
       var _this$props3 = this.props,
           record = _this$props3.record,
-          dispatch = _this$props3.dispatch,
+          $actions = _this$props3.$actions,
           disabled = _this$props3.disabled,
           state = this.state;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "WeatherBlock"
-      }, !this.state.editing && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, !this.state.editing && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(WeatherInfos, {
         weatherData: record.results
       }) || record.fetching && "Loading...." || "Edit me !", !disabled && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_7___default.a, {
         "aria-label": "edit",
@@ -1075,7 +888,7 @@ function (_React$Component) {
         "aria-label": "Delete",
         className: "delete",
         onClick: function onClick(e) {
-          return dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_13__["rmWidget"])(record._id));
+          return $actions.rmWidget(record._id);
         }
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_8___default.a, null)))) || react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "search"
@@ -1086,13 +899,13 @@ function (_React$Component) {
             searching: e.target.value
           });
 
-          if (e.target.value.length > 2) dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_13__["weatherSearch"])(record, e.target.value));
+          if (e.target.value.length > 2) $actions.updateWeatherSearch(record, e.target.value);
         },
         value: state.searching !== undefined ? state.searching : record.location,
         onMouseDown: function onMouseDown(e) {
           return e.stopPropagation();
         }
-      })), record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_WeatherInfos_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      })), record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(WeatherInfos, {
         weatherData: record.results
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_7___default.a, {
         "aria-label": "Save",
@@ -1111,7 +924,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _class2.propTypes = {
   record: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.object.isRequired,
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool
-}, _temp)) || _class);
+}, _temp)) || _class) || _class) || _class);
 
 ;
 
@@ -1145,9 +958,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-rnd */ "undefined?84ab");
 /* harmony import */ var react_rnd__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_rnd__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/store/actions/updateWidget */ "./App/store/actions/updateWidget.js");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -1174,9 +986,7 @@ var _dec, _class, _class2, _temp;
 
 
 
-
-
-var Widget = (_dec = Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(), _dec(_class = (_temp = _class2 =
+var Widget = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_9__["reScope"])(), _dec(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Widget, _React$Component);
@@ -1197,12 +1007,12 @@ function (_React$Component) {
 
     _this.saveState = function (e, d) {
       var _this$props = _this.props,
-          dispatch = _this$props.dispatch,
+          $action = _this$props.$action,
           record = _this$props.record;
-      dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_10__["updateWidget"])(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+      $action.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
         size: _this.state.size || record.size,
         position: _this.state.position || record.position
-      })));
+      }));
     };
 
     return _this;
@@ -1221,7 +1031,7 @@ function (_React$Component) {
           record = _this$props2.record,
           children = _this$props2.children,
           disabled = _this$props2.disabled,
-          dispatch = _this$props2.dispatch,
+          $action = _this$props2.$action,
           onSelect = _this$props2.onSelect,
           selected = _this$props2.selected,
           state = this.state;
@@ -1283,6 +1093,7 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
@@ -1295,18 +1106,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "undefined?588e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! App/store/actions/updateWidget */ "./App/store/actions/updateWidget.js");
-/* harmony import */ var App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! App/ui/containers/Widget.js */ "./App/ui/containers/Widget.js");
-/* harmony import */ var App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! App/ui/containers/WeatherBlock */ "./App/ui/containers/WeatherBlock.js");
+/* harmony import */ var App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! App/ui/containers/Widget.js */ "./App/ui/containers/Widget.js");
+/* harmony import */ var App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! App/ui/containers/WeatherBlock */ "./App/ui/containers/WeatherBlock.js");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
 
 
 
-var _temp;
+var _dec, _class, _temp;
 
 /*
  * The MIT License (MIT)
@@ -1325,13 +1135,7 @@ var _temp;
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(function (_ref) {
-  var widgets = _ref.widgets;
-  return {
-    widgets: widgets
-  };
-})((_temp =
+var App = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["scopeToProps"])(["widgets"]), _dec(_class = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(App, _React$Component);
@@ -1364,12 +1168,12 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "desk"
       }, widgets.items.map(function (widget) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
           key: widget._id,
           record: widget,
           disabled: true,
           selected: widget._id == widgets.selectedWidgetId
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_7__["default"], {
           record: widget,
           disabled: true
         }));
@@ -1378,7 +1182,8 @@ function (_React$Component) {
   }]);
 
   return App;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component), _temp)));
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component), _temp)) || _class);
+
 
 /***/ }),
 
@@ -1391,6 +1196,7 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "undefined?9283");
 /* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
@@ -1405,17 +1211,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "undefined?588e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "undefined?78cd");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! App/store/actions/updateWidget */ "./App/store/actions/updateWidget.js");
-/* harmony import */ var App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! App/ui/containers/Widget.js */ "./App/ui/containers/Widget.js");
-/* harmony import */ var App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! App/ui/containers/WeatherBlock */ "./App/ui/containers/WeatherBlock.js");
-/* harmony import */ var _material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Fab */ "undefined?8406");
-/* harmony import */ var _material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/icons/Add */ "undefined?3b94");
-/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Save */ "undefined?128e");
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! App/ui/containers/Widget.js */ "./App/ui/containers/Widget.js");
+/* harmony import */ var App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! App/ui/containers/WeatherBlock */ "./App/ui/containers/WeatherBlock.js");
+/* harmony import */ var _material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Fab */ "undefined?8406");
+/* harmony import */ var _material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/Add */ "undefined?3b94");
+/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/icons/Save */ "undefined?128e");
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -1423,7 +1228,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _temp;
+var _dec, _class, _temp;
 
 /*
  * The MIT License (MIT)
@@ -1445,15 +1250,7 @@ var _temp;
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(function (_ref) {
-  var widgets = _ref.widgets,
-      appState = _ref.appState;
-  return {
-    widgets: widgets,
-    appState: appState
-  };
-})((_temp =
+var App = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_12__["scopeToProps"])(["widgets"]), _dec(_class = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(App, _React$Component);
@@ -1489,34 +1286,35 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "desk"
       }, widgets.items.map(function (widget) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_containers_Widget_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
           key: widget._id,
           record: widget,
           onSelect: function onSelect(e) {
-            return dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__["selectWidget"])(widget._id));
+            return dispatch(selectWidget(widget._id));
           },
           selected: widget._id == widgets.selectedWidgetId
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_8__["default"], {
           record: widget
         }));
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9___default.a, {
         "aria-label": "edit",
         className: "newBtn button",
         onClick: function onClick(e) {
-          return dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__["newWidget"])());
+          return dispatch(newWidget());
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_12___default.a, null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9___default.a, {
         "aria-label": "Delete",
         className: "saveBtn button",
         onClick: function onClick(e) {
-          return dispatch(Object(App_store_actions_updateWidget__WEBPACK_IMPORTED_MODULE_8__["saveState"])());
+          return dispatch(saveState());
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_13___default.a, null)));
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_11___default.a, null)));
     }
   }]);
 
   return App;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _temp)));
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _temp)) || _class);
+
 
 /***/ }),
 
@@ -1549,32 +1347,6 @@ req.keys().forEach(function (key) {
   _exports[name] = _exports[name] || req(key);
 });
 req = __webpack_require__("./node_modules/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-/* harmony default export */ __webpack_exports__["default"] = (_exports);
-
-/***/ }),
-
-/***/ "./node_modules/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var req,
-    _exports = {},
-    root;
-req = __webpack_require__("./App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-req = __webpack_require__("./node_modules/wpi-react-redux-sass-ssr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
 req.keys().forEach(function (key) {
   var name = key.substr(2);
   _exports[name] = _exports[name] || req(key);
@@ -1900,112 +1672,6 @@ var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), functio
 
 /***/ }),
 
-/***/ "./node_modules/wpi-react-redux-sass-ssr/App/store/configure.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/wpi-react-redux-sass-ssr/App/store/configure.js ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return configureStore; });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "undefined?5aa9");
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "undefined?8808");
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers */ "./node_modules/wpi-react-redux-sass-ssr/App/store/reducers.js");
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-
-
-function configureStore(preloadedState) {
-  var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
-
-  if (false) {}
-
-  return store;
-}
-
-/***/ }),
-
-/***/ "./node_modules/wpi-react-redux-sass-ssr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/wpi-react-redux-sass-ssr/App/store/reducers sync ^\.\/[^\\\/]+\.js$ ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = "./node_modules/wpi-react-redux-sass-ssr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$";
-
-/***/ }),
-
-/***/ "./node_modules/wpi-react-redux-sass-ssr/App/store/reducers.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/wpi-react-redux-sass-ssr/App/store/reducers.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/*.js */ "./node_modules/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js");
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
-
-
-var preCombine = function preCombine(items) {
-  return items.reduce(function (h, reducer) {
-    Object.keys(_reducers_js__WEBPACK_IMPORTED_MODULE_1__["default"][reducer]).forEach(function (act) {
-      return h[act] = _reducers_js__WEBPACK_IMPORTED_MODULE_1__["default"][reducer][act];
-    });
-    return h;
-  }, {});
-},
-    combined = preCombine(Object.keys(_reducers_js__WEBPACK_IMPORTED_MODULE_1__["default"])),
-    store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(combined);
-
-/* harmony default export */ __webpack_exports__["default"] = (store);
-
-/***/ }),
-
 /***/ 0:
 /*!******************************!*\
   !*** multi App/index.server ***!
@@ -2048,6 +1714,28 @@ module.exports = require("http");
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/possibleConstructorReturn");
+
+/***/ }),
+
+/***/ "undefined?0422":
+/*!******************************************************************!*\
+  !*** external "@babel/runtime/helpers/applyDecoratedDescriptor" ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/helpers/applyDecoratedDescriptor");
+
+/***/ }),
+
+/***/ "undefined?05b7":
+/*!**************************!*\
+  !*** external "rscopes" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("rscopes");
 
 /***/ }),
 
@@ -2136,17 +1824,6 @@ module.exports = require("@material-ui/icons/Home");
 /***/ (function(module, exports) {
 
 module.exports = require("minimist");
-
-/***/ }),
-
-/***/ "undefined?328e":
-/*!****************************************!*\
-  !*** external "react-hot-loader/root" ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-hot-loader/root");
 
 /***/ }),
 
@@ -2249,17 +1926,6 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "undefined?5aa9":
-/*!*******************************************!*\
-  !*** external "redux-devtools-extension" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-devtools-extension");
-
-/***/ }),
-
 /***/ "undefined?5e9a":
 /*!****************************!*\
   !*** external "react-dom" ***!
@@ -2315,17 +1981,6 @@ module.exports = require("@babel/runtime/helpers/inherits");
 
 /***/ }),
 
-/***/ "undefined?78cd":
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-
 /***/ "undefined?7ff1":
 /*!***********************************************!*\
   !*** external "@material-ui/core/IconButton" ***!
@@ -2359,14 +2014,14 @@ module.exports = require("react-rnd");
 
 /***/ }),
 
-/***/ "undefined?8808":
-/*!******************************!*\
-  !*** external "redux-thunk" ***!
-  \******************************/
+/***/ "undefined?8ec2":
+/*!*********************************!*\
+  !*** external "rscopes/spells" ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-thunk");
+module.exports = require("rscopes/spells");
 
 /***/ }),
 
@@ -2425,17 +2080,6 @@ module.exports = require("@material-ui/icons/Delete");
 
 /***/ }),
 
-/***/ "undefined?bd76":
-/*!*************************!*\
-  !*** external "moment" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("moment");
-
-/***/ }),
-
 /***/ "undefined?beec":
 /*!**************************!*\
   !*** external "shortid" ***!
@@ -2444,17 +2088,6 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("shortid");
-
-/***/ }),
-
-/***/ "undefined?d325":
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
 
 /***/ }),
 

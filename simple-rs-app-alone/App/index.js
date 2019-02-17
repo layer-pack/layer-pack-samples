@@ -11,68 +11,69 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import {hot}            from 'react-hot-loader/root'
-import App              from "App/App"
+import AppScope         from './App.scope';
+import shortid          from 'shortid';
 import ReactDom         from 'react-dom';
 import React            from "react";
 import {renderToString} from "react-dom/server";
-import {Provider}       from 'react-redux'
-import configureStore   from './store/configure'
-import initialState     from './store/initialState'
+import {Scope, reScope} from "rscopes";
 
 
 const ctrl = {
-	renderTo( node, initialState = {} ) {
-		const store  = configureStore(initialState),
-		      isDev  = process.env.NODE_ENV !== 'production',
-		      HMRApp = isDev ? hot(App) : App;
-		
-		ReactDom.render(
-			<Provider store={ store }>
-				<HMRApp/>
-			</Provider>
-			, node);
+	renderTo( node, state ) {
+		let cScope      = new Scope(AppScope, {
+			    id         : "App",
+			    autoDestroy: true
+		    }),
+		    App         = reScope(cScope)(require('./App').default);
+		window.contexts = Scope.scopes;
+		state && cScope.restore(state);
+		ReactDom.render(<App/>, node);
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept(
-				'App/App',
-				m => {
-					var NextApp = hot(require('App/App.js').default);
-					
-					ReactDom.render(
-						<Provider store={ store }>
-							<NextApp/>
-						</Provider>
-						, node);
-				}
-			)
+			module.hot.accept('App/App', () => {
+				ReactDom.render(<App/>, node)
+				ctrl.renderTo(node, state)
+			});
+			module.hot.accept('App/App.scope', () => {
+				cScope.register(AppScope)
+			});
 		}
 	},
-	renderSSR( { state, location, tpl }, cb ) {
-		const store = configureStore(state || initialState)
-		let content = "", html, preloadedState;
+	renderSSR( cfg, cb, _attempts = 0 ) {
+		let rid     = shortid.generate(),
+		    cScope  = new Scope(AppScope, {
+			    id         : rid,
+			    autoDestroy: false
+		    }), App = reScope(cScope)(require('./App').default);
 		
-		//try {
-			//content        = renderToString(
-			//	<Provider store={ store }>
-			//		<App location={ location }/>
-			//	</Provider>
-			//);
-			preloadedState = store.getState();
-			html           = tpl.render(
-				{
-					app  : content,
-					state: JSON.stringify(preloadedState)
+		cfg.state && cScope.restore(cfg.state, { alias: "App" });
+		
+		let html,
+		    appHtml = renderToString(<App location={ cfg.location }/>),
+		    stable  = cScope.isStableTree();
+		
+		cScope.onceStableTree(state => {
+			let nstate = cScope.serialize({ alias: "App" });
+			if ( !stable && _attempts < 3 ) {
+				ctrl.renderSSR({}, cb, ++_attempts);
+			}
+			else {
+				try {
+					html = cfg.tpl.render(
+						{
+							app  : appHtml,
+							state: JSON.stringify(nstate)
+						}
+					);
+				} catch ( e ) {
+					return cb(e)
 				}
-			);
-		//} catch ( e ) {
-		//	return cb(e)
-		//}
-		cb(null, html)
+				cb(null, html, !stable && nstate)
+			}
+			cScope.destroy()
+		})
 	}
 }
-if ( typeof window !== 'undefined' )
-	window.App = ctrl;
 
 export default ctrl;
-

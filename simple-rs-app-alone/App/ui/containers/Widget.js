@@ -11,17 +11,13 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import PropTypes      from "prop-types";
-import React          from "react";
-import {Rnd}          from "react-rnd";
-import {connect}      from 'react-redux'
-import {selectWidget} from "App/store/actions/updateWidget";
-import {
-	rmWidget, newWidget, updateWidget
-}                     from "App/store/actions/updateWidget";
+import PropTypes                             from "prop-types";
+import React                                 from "react";
+import {Rnd}                                 from "react-rnd";
+import {reScope, scopeToProps, propsToScope} from "rscopes";
 
 
-@connect()
+@reScope()
 export default class Widget extends React.Component {
 	static propTypes = {
 		selected: PropTypes.bool,
@@ -32,20 +28,20 @@ export default class Widget extends React.Component {
 	state            = {};
 	
 	saveState = ( e, d ) => {
-		let { dispatch, record } = this.props;
-		dispatch(updateWidget(
+		let { $action, record } = this.props;
+		$action.updateWidget(
 			{
 				...record,
 				size    : this.state.size || record.size,
 				position: this.state.position || record.position
-			}));
+			});
 	};
 	
 	render() {
 		let {
 			    record: { position, size } = {},
 			    record, children, disabled,
-			    dispatch, onSelect, selected
+			    $action, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
 		return (

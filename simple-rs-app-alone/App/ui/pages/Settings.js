@@ -12,44 +12,43 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                                from 'react';
-import {connect}                            from 'react-redux'
-import {selectWidget, saveState, newWidget} from "App/store/actions/updateWidget";
-import Widget                               from 'App/ui/containers/Widget.js';
-import WeatherBlock                         from 'App/ui/containers/WeatherBlock';
-import Fab                                  from '@material-ui/core/Fab';
-import CreateIcon                           from '@material-ui/icons/Add';
-import SaveIcon                             from '@material-ui/icons/Save';
+import React                                 from 'react';
+import Widget                                from 'App/ui/containers/Widget.js';
+import WeatherBlock                          from 'App/ui/containers/WeatherBlock';
+import Fab                                   from '@material-ui/core/Fab';
+import CreateIcon                            from '@material-ui/icons/Add';
+import SaveIcon                              from '@material-ui/icons/Save';
+import {reScope, scopeToProps, propsToScope} from "rscopes";
 
-export default connect(( { widgets, appState } ) => ({ widgets, appState }))(
-	class App extends React.Component {
-		state = {};
-		
-		render() {
-			let { widgets = { items: [] }, dispatch } = this.props,
-			    {}                                    = this.state;
-			return <div>
-				<div className={ "desk" }>
-					{
-						widgets.items.map(
-							widget => <Widget key={ widget._id } record={ widget }
-							                  onSelect={ e => dispatch(selectWidget(widget._id)) }
-							                  selected={ widget._id == widgets.selectedWidgetId }>
-								<WeatherBlock record={ widget }/>
-							</Widget>
-						)
-					}
-				</div>
-				
-				<Fab aria-label="edit" className={ "newBtn button" }
-				     onClick={ e => dispatch(newWidget()) }>
-					<CreateIcon/>
-				</Fab>
-				<Fab aria-label="Delete" className={ "saveBtn button" }
-				     onClick={ e => dispatch(saveState()) }>
-					<SaveIcon/>
-				</Fab>
+
+@scopeToProps(["widgets"])
+export default class App extends React.Component {
+	state = {};
+	
+	render() {
+		let { widgets = { items: [] }, dispatch } = this.props,
+		    {}                                    = this.state;
+		return <div>
+			<div className={ "desk" }>
+				{
+					widgets.items.map(
+						widget => <Widget key={ widget._id } record={ widget }
+						                  onSelect={ e => dispatch(selectWidget(widget._id)) }
+						                  selected={ widget._id == widgets.selectedWidgetId }>
+							<WeatherBlock record={ widget }/>
+						</Widget>
+					)
+				}
 			</div>
-		}
+			
+			<Fab aria-label="edit" className={ "newBtn button" }
+			     onClick={ e => dispatch(newWidget()) }>
+				<CreateIcon/>
+			</Fab>
+			<Fab aria-label="Delete" className={ "saveBtn button" }
+			     onClick={ e => dispatch(saveState()) }>
+				<SaveIcon/>
+			</Fab>
+		</div>
 	}
-)
+}
