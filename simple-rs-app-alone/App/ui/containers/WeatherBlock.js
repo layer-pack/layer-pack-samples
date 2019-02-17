@@ -18,7 +18,8 @@ import DeleteIcon                            from '@material-ui/icons/Delete';
 import EditIcon                              from '@material-ui/icons/Edit';
 import SaveIcon                              from '@material-ui/icons/Save';
 import {reScope, scopeToProps, propsToScope} from "rscopes";
-import WeatherSearch                           from "App/stores/WeatherSearch";
+import WeatherSearch                         from "App/stores/WeatherSearch";
+import WeatherInfos                          from "App/ui/components/WeatherInfos";
 
 
 @reScope(
@@ -31,7 +32,7 @@ import WeatherSearch                           from "App/stores/WeatherSearch";
 // map the record location as the default value in the WeatherSearch store state
 @propsToScope(["record.location:WeatherSearch.defaultLocation"])
 // finally inject the stores
-@scopeToProps(["WeatherSearch"])
+@scopeToProps("WeatherSearch")
 export default class WeatherBlock extends React.Component {
 	static propTypes = {
 		record  : PropTypes.object.isRequired,
@@ -40,9 +41,9 @@ export default class WeatherBlock extends React.Component {
 	state            = {};
 	
 	componentWillMount() {
-		let { dispatch, record } = this.props;
-		if ( record.location && !record.results )
-			$actions.updateWeatherSearch(record, record.location)
+		let { $actions, record } = this.props;
+		//if ( record.location && !record.results )
+		//	$actions.updateWeatherSearch(record, record.location)
 		
 		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
 	}
@@ -59,7 +60,7 @@ export default class WeatherBlock extends React.Component {
 	
 	render() {
 		let {
-			    record, $actions, disabled
+			    record, $actions, disabled, WeatherSearch
 		    }     = this.props,
 		    state = this.state;
 		
@@ -69,8 +70,8 @@ export default class WeatherBlock extends React.Component {
 					!this.state.editing &&
 					<React.Fragment>
 						{
-							record.results && <WeatherInfos weatherData={ record.results }/>
-							|| record.fetching && "Loading...."
+							WeatherSearch.results && <WeatherInfos weatherData={ WeatherSearch.results }/>
+							|| WeatherSearch.fetching && "Loading...."
 							|| "Edit me !"
 						}
 						{
@@ -95,15 +96,15 @@ export default class WeatherBlock extends React.Component {
 								       onChange={ e => {
 									       this.setState({ searching: e.target.value });
 									       if ( e.target.value.length > 2 )
-										       $actions.updateWeatherSearch(record, e.target.value);
+										       $actions.updateWeatherSearch(e.target.value);
 								       } }
 								       value={ state.searching !== undefined ? state.searching : record.location }
 								       onMouseDown={ e => e.stopPropagation() }/>
 							</div>
 						}
 						{
-							record.fetching && "Loading...." ||
-							record.results && <WeatherInfos weatherData={ record.results }/>
+							WeatherSearch.fetching && "Loading...." ||
+							WeatherSearch.results && <WeatherInfos weatherData={ WeatherSearch.results }/>
 						}
 						
 						<Fab aria-label="Save" className={ "save" }

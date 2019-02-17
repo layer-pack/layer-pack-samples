@@ -31,7 +31,6 @@ export default class WeatherSearch extends Store {
 			
 			return { location };
 		}
-		
 	};
 	
 	apply( data = {}, state, { location, results, record } ) {
@@ -56,11 +55,11 @@ export default class WeatherSearch extends Store {
 					this.push({ results: res.body, location });
 					
 					// update the record location
-					this.$actions.updateWidget(
-						{
-							...state.record,
-							location
-						});
+					//this.$actions.updateWidget(
+					//	{
+					//		...state.record,
+					//		location
+					//	});
 				})
 				// release anyway
 				.then(e => this.release())

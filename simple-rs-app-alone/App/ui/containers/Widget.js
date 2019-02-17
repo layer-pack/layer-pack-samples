@@ -17,7 +17,7 @@ import {Rnd}                                 from "react-rnd";
 import {reScope, scopeToProps, propsToScope} from "rscopes";
 
 
-@reScope()
+@reScope
 export default class Widget extends React.Component {
 	static propTypes = {
 		selected: PropTypes.bool,
@@ -28,8 +28,8 @@ export default class Widget extends React.Component {
 	state            = {};
 	
 	saveState = ( e, d ) => {
-		let { $action, record } = this.props;
-		$action.updateWidget(
+		let { $actions, record } = this.props;
+		$actions.updateWidget(
 			{
 				...record,
 				size    : this.state.size || record.size,
@@ -41,7 +41,7 @@ export default class Widget extends React.Component {
 		let {
 			    record: { position, size } = {},
 			    record, children, disabled,
-			    $action, onSelect, selected
+			    $actions, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
 		return (

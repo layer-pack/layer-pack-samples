@@ -1,6 +1,6 @@
 /** wpi externals - add module path **/
 {
-let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["/home/app/node_modules","node_modules"]);
+let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-rs-app-alone\\node_modules","node_modules"]);
 }
 
 /*!
@@ -122,7 +122,7 @@ module.exports =
 /*! exports provided: project, projectRoot, vars, allCfg, allModId, default */
 /***/ (function(module) {
 
-module.exports = {"project":{"name":"simple-rs-app-alone","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"/home/app","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["wpi-react-rs-sass-ssr"]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["wpi-react-rs-sass-ssr","wpi-react-hmr-ssr"]};
+module.exports = {"project":{"name":"simple-rs-app-alone","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-rs-app-alone","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["wpi-react-rs-sass-ssr"]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["wpi-react-rs-sass-ssr","wpi-react-hmr-ssr"]};
 
 /***/ }),
 
@@ -319,26 +319,59 @@ var asStore = rscopes__WEBPACK_IMPORTED_MODULE_4__["spells"].asStore,
     // initial state
     items: [{
       "_id": "rkUQHZrqM",
-      "location": "paris",
+      "location": "Lisbonne",
       "size": {
         "width": 350,
-        "height": 200
+        "height": 400
       },
       "position": {
-        "x": 321,
-        "y": 167
+        "x": 403,
+        "y": 111
       }
     }, {
-      "_id": "r1bcuMrcM",
-      "location": "rio",
+      "_id": "YDNiVOf1j",
       "size": {
         "width": 350,
-        "height": 200
+        "height": 400
       },
       "position": {
-        "x": 260,
-        "y": 576
-      }
+        "x": 21,
+        "y": 108
+      },
+      "location": "paris"
+    }, {
+      "_id": "FkQ3V9Hcb",
+      "size": {
+        "width": 350,
+        "height": 400
+      },
+      "position": {
+        "x": 771,
+        "y": 108
+      },
+      "location": "rome"
+    }, {
+      "_id": "bYNiMYG_0",
+      "size": {
+        "width": 514,
+        "height": 329
+      },
+      "position": {
+        "x": 28,
+        "y": 525
+      },
+      "location": "marseille"
+    }, {
+      "_id": "5SJehewl2",
+      "size": {
+        "width": 563,
+        "height": 328
+      },
+      "position": {
+        "x": 558,
+        "y": 526
+      },
+      "location": "montpellier"
     }],
     // actions
     newWidget: function newWidget() {
@@ -540,8 +573,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom/server */ "undefined?9439");
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_rescope__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-rescope */ "undefined?492a");
+/* harmony import */ var react_rescope__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_rescope__WEBPACK_IMPORTED_MODULE_5__);
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -563,12 +596,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var ctrl = {
   renderTo: function renderTo(node, state) {
-    var cScope = new rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    var cScope = new react_rescope__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
       id: "App",
       autoDestroy: true
     }),
-        App = Object(rscopes__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
-    window.contexts = rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"].scopes;
+        App = Object(react_rescope__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
+    window.contexts = react_rescope__WEBPACK_IMPORTED_MODULE_5__["Scope"].scopes;
     state && cScope.restore(state);
     react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(App, null), node);
 
@@ -578,11 +611,11 @@ var ctrl = {
     var _attempts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
     var rid = shortid__WEBPACK_IMPORTED_MODULE_1___default.a.generate(),
-        cScope = new rscopes__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        cScope = new react_rescope__WEBPACK_IMPORTED_MODULE_5__["Scope"](_App_scope__WEBPACK_IMPORTED_MODULE_0__["default"], {
       id: rid,
       autoDestroy: false
     }),
-        App = Object(rscopes__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
+        App = Object(react_rescope__WEBPACK_IMPORTED_MODULE_5__["reScope"])(cScope)(__webpack_require__(/*! ./App */ "./App/App.js").default);
     cfg.state && cScope.restore(cfg.state, {
       alias: "App"
     });
@@ -629,25 +662,22 @@ var ctrl = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WeatherSearch; });
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
-/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "undefined?03c7");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "undefined?20a8");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rscopes/spells */ "undefined?8ec2");
-/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rscopes_spells__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_8__);
-
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "undefined?03c7");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "undefined?20a8");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rscopes/spells */ "undefined?8ec2");
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rscopes_spells__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -674,15 +704,15 @@ __webpack_require__.r(__webpack_exports__);
 var WeatherSearch =
 /*#__PURE__*/
 function (_Store) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(WeatherSearch, _Store);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch, _Store);
 
   function WeatherSearch() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, WeatherSearch);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WeatherSearch);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch).apply(this, arguments));
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WeatherSearch).apply(this, arguments));
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(WeatherSearch, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WeatherSearch, [{
     key: "apply",
     value: function apply() {
       var _this = this;
@@ -701,18 +731,19 @@ function (_Store) {
       if (location) {
         this.wait(); // so the whole scope tree will wait for SSR
 
-        superagent__WEBPACK_IMPORTED_MODULE_8___default.a.get(state.src + location).then(function (res) {
+        superagent__WEBPACK_IMPORTED_MODULE_7___default.a.get(state.src + location).then(function (res) {
           if (location !== _this.data.location) return; // update the store data
 
           _this.push({
             results: res.body,
             location: location
           }); // update the record location
+          //this.$actions.updateWidget(
+          //	{
+          //		...state.record,
+          //		location
+          //	});
 
-
-          _this.$actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state.record, {
-            location: location
-          }));
         }) // release anyway
         .then(function (e) {
           return _this.release();
@@ -730,7 +761,7 @@ function (_Store) {
   }]);
 
   return WeatherSearch;
-}(rscopes__WEBPACK_IMPORTED_MODULE_6__["Store"]);
+}(rscopes__WEBPACK_IMPORTED_MODULE_5__["Store"]);
 
 WeatherSearch.state = {
   // initial state value
@@ -748,6 +779,60 @@ WeatherSearch.actions = {
   }
 };
 
+
+/***/ }),
+
+/***/ "./App/ui/components/WeatherInfos.js":
+/*!*******************************************!*\
+  !*** ./App/ui/components/WeatherInfos.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "undefined?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "undefined?bd76");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var weatherData = _ref.weatherData,
+      lastQuery = _ref.lastQuery;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "WeatherInfos"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "location"
+  }, weatherData.name, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "(", moment__WEBPACK_IMPORTED_MODULE_1___default()(weatherData.dt * 1000).fromNow(), ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://source.unsplash.com/600x400/?day,sky," + weatherData.name
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "picto"
+  }, weatherData.weather[0] && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + '.png'
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), weatherData.weather[0] && weatherData.weather[0].description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "infos"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "temp"
+  }, weatherData.main.temp, "\xB0"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wind"
+  }, weatherData.wind.speed, " mh")));
+});
 
 /***/ }),
 
@@ -786,6 +871,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
 /* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var App_stores_WeatherSearch__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! App/stores/WeatherSearch */ "./App/stores/WeatherSearch.js");
+/* harmony import */ var App_ui_components_WeatherInfos__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! App/ui/components/WeatherInfos */ "./App/ui/components/WeatherInfos.js");
 
 
 
@@ -815,11 +901,12 @@ var _dec, _dec2, _dec3, _class, _class2, _temp;
 
 
 
+
 var WeatherBlock = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["reScope"])({
   // will keep separate instances for each instance of WeatherWidget
   // WeatherSearch can still require stores in the parents scopes
   WeatherSearch: App_stores_WeatherSearch__WEBPACK_IMPORTED_MODULE_12__["default"]
-}), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["propsToScope"])(["record.location:WeatherSearch.defaultLocation"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["scopeToProps"])(["WeatherSearch"]), _dec(_class = _dec2(_class = _dec3(_class = (_temp = _class2 =
+}), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["propsToScope"])(["record.location:WeatherSearch.defaultLocation"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["scopeToProps"])("WeatherSearch"), _dec(_class = _dec2(_class = _dec3(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherBlock, _React$Component);
@@ -852,9 +939,10 @@ function (_React$Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       var _this$props2 = this.props,
-          dispatch = _this$props2.dispatch,
-          record = _this$props2.record;
-      if (record.location && !record.results) $actions.updateWeatherSearch(record, record.location);
+          $actions = _this$props2.$actions,
+          record = _this$props2.record; //if ( record.location && !record.results )
+      //	$actions.updateWeatherSearch(record, record.location)
+
       this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
     }
   }, {
@@ -871,12 +959,13 @@ function (_React$Component) {
           record = _this$props3.record,
           $actions = _this$props3.$actions,
           disabled = _this$props3.disabled,
+          WeatherSearch = _this$props3.WeatherSearch,
           state = this.state;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "WeatherBlock"
-      }, !this.state.editing && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(WeatherInfos, {
-        weatherData: record.results
-      }) || record.fetching && "Loading...." || "Edit me !", !disabled && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      }, !this.state.editing && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, WeatherSearch.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_components_WeatherInfos__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        weatherData: WeatherSearch.results
+      }) || WeatherSearch.fetching && "Loading...." || "Edit me !", !disabled && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_7___default.a, {
         "aria-label": "edit",
         className: "edit",
         onClick: function onClick(e) {
@@ -899,14 +988,14 @@ function (_React$Component) {
             searching: e.target.value
           });
 
-          if (e.target.value.length > 2) $actions.updateWeatherSearch(record, e.target.value);
+          if (e.target.value.length > 2) $actions.updateWeatherSearch(e.target.value);
         },
         value: state.searching !== undefined ? state.searching : record.location,
         onMouseDown: function onMouseDown(e) {
           return e.stopPropagation();
         }
-      })), record.fetching && "Loading...." || record.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(WeatherInfos, {
-        weatherData: record.results
+      })), WeatherSearch.fetching && "Loading...." || WeatherSearch.results && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_components_WeatherInfos__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        weatherData: WeatherSearch.results
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_7___default.a, {
         "aria-label": "Save",
         className: "save",
@@ -967,7 +1056,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _dec, _class, _class2, _temp;
+var _class, _class2, _temp;
 
 /*
  * The MIT License (MIT)
@@ -986,7 +1075,8 @@ var _dec, _class, _class2, _temp;
 
 
 
-var Widget = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_9__["reScope"])(), _dec(_class = (_temp = _class2 =
+
+var Widget = Object(rscopes__WEBPACK_IMPORTED_MODULE_9__["reScope"])(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Widget, _React$Component);
@@ -1007,9 +1097,9 @@ function (_React$Component) {
 
     _this.saveState = function (e, d) {
       var _this$props = _this.props,
-          $action = _this$props.$action,
+          $actions = _this$props.$actions,
           record = _this$props.record;
-      $action.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
+      $actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, record, {
         size: _this.state.size || record.size,
         position: _this.state.position || record.position
       }));
@@ -1031,7 +1121,7 @@ function (_React$Component) {
           record = _this$props2.record,
           children = _this$props2.children,
           disabled = _this$props2.disabled,
-          $action = _this$props2.$action,
+          $actions = _this$props2.$actions,
           onSelect = _this$props2.onSelect,
           selected = _this$props2.selected,
           state = this.state;
@@ -1078,7 +1168,8 @@ function (_React$Component) {
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
   record: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.object.isRequired,
   onSelect: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func
-}, _temp)) || _class);
+}, _temp)) || _class;
+
 
 ;
 
@@ -1093,7 +1184,7 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
@@ -1135,28 +1226,28 @@ var _dec, _class, _temp;
 
 
 
-var App = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["scopeToProps"])(["widgets"]), _dec(_class = (_temp =
+var Home = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_8__["scopeToProps"])("widgets", "appState"), _dec(_class = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(App, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Home, _React$Component);
 
-  function App() {
+  function Home() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, App);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Home);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Home)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {};
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(App, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Home, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -1164,7 +1255,7 @@ function (_React$Component) {
           widgets = _this$props$widgets === void 0 ? {
         items: []
       } : _this$props$widgets,
-          dispatch = _this$props.dispatch;
+          appState = _this$props.appState;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "desk"
       }, widgets.items.map(function (widget) {
@@ -1172,7 +1263,7 @@ function (_React$Component) {
           key: widget._id,
           record: widget,
           disabled: true,
-          selected: widget._id == widgets.selectedWidgetId
+          selected: widget._id == appState.selectedWidgetId
         }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_7__["default"], {
           record: widget,
           disabled: true
@@ -1181,7 +1272,7 @@ function (_React$Component) {
     }
   }]);
 
-  return App;
+  return Home;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component), _temp)) || _class);
 
 
@@ -1196,7 +1287,7 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Settings; });
 /* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "undefined?9283");
 /* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
@@ -1250,28 +1341,28 @@ var _dec, _class, _temp;
 
 
 
-var App = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_12__["scopeToProps"])(["widgets"]), _dec(_class = (_temp =
+var Settings = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_12__["scopeToProps"])("widgets", "appState"), _dec(_class = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(App, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Settings, _React$Component);
 
-  function App() {
+  function Settings() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, App);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Settings);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(Settings)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {};
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(App, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Settings, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -1279,7 +1370,8 @@ function (_React$Component) {
           widgets = _this$props$widgets === void 0 ? {
         items: []
       } : _this$props$widgets,
-          dispatch = _this$props.dispatch;
+          $actions = _this$props.$actions,
+          appState = _this$props.appState;
 
       _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0___default()(this.state);
 
@@ -1290,9 +1382,9 @@ function (_React$Component) {
           key: widget._id,
           record: widget,
           onSelect: function onSelect(e) {
-            return dispatch(selectWidget(widget._id));
+            return $actions.selectWidget(widget._id);
           },
-          selected: widget._id == widgets.selectedWidgetId
+          selected: widget._id == appState.selectedWidgetId
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(App_ui_containers_WeatherBlock__WEBPACK_IMPORTED_MODULE_8__["default"], {
           record: widget
         }));
@@ -1300,19 +1392,19 @@ function (_React$Component) {
         "aria-label": "edit",
         className: "newBtn button",
         onClick: function onClick(e) {
-          return dispatch(newWidget());
+          return $actions.newWidget();
         }
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_9___default.a, {
         "aria-label": "Delete",
         className: "saveBtn button",
         onClick: function onClick(e) {
-          return dispatch(saveState());
+          return $actions.saveState();
         }
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_11___default.a, null)));
     }
   }]);
 
-  return App;
+  return Settings;
 }(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component), _temp)) || _class);
 
 
@@ -1871,6 +1963,17 @@ module.exports = require("@material-ui/icons/Add");
 
 /***/ }),
 
+/***/ "undefined?492a":
+/*!********************************!*\
+  !*** external "react-rescope" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-rescope");
+
+/***/ }),
+
 /***/ "undefined?4d9b":
 /*!***********************************************************!*\
   !*** external "@babel/runtime/helpers/toConsumableArray" ***!
@@ -2077,6 +2180,17 @@ module.exports = require("superagent");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/Delete");
+
+/***/ }),
+
+/***/ "undefined?bd76":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 

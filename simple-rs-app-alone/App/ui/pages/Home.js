@@ -18,19 +18,19 @@ import WeatherBlock                          from 'App/ui/containers/WeatherBloc
 import {reScope, scopeToProps, propsToScope} from "rscopes";
 
 
-@scopeToProps(["widgets"])
-export default class App extends React.Component {
+@scopeToProps("widgets", "appState")
+export default class Home extends React.Component {
 	state = {};
 	
 	render() {
-		let { widgets = { items: [] }, dispatch } = this.props;
+		let { widgets = { items: [] }, appState } = this.props;
 		return <div>
 			<div className={ "desk" }>
 				{
 					widgets.items.map(
 						widget => <Widget key={ widget._id } record={ widget }
 						                  disabled={ true }
-						                  selected={ widget._id == widgets.selectedWidgetId }>
+						                  selected={ widget._id == appState.selectedWidgetId }>
 							<WeatherBlock record={ widget }
 							              disabled={ true }/>
 						</Widget>

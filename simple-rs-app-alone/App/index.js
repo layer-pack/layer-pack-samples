@@ -16,7 +16,7 @@ import shortid          from 'shortid';
 import ReactDom         from 'react-dom';
 import React            from "react";
 import {renderToString} from "react-dom/server";
-import {Scope, reScope} from "rscopes";
+import {Scope, reScope} from "react-rescope";
 
 
 const ctrl = {
@@ -32,7 +32,7 @@ const ctrl = {
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
 			module.hot.accept('App/App', () => {
-				ReactDom.render(<App/>, node)
+				//ReactDom.render(<App/>, node)
 				ctrl.renderTo(node, state)
 			});
 			module.hot.accept('App/App.scope', () => {

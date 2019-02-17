@@ -34,14 +34,29 @@ export default {
 		// initial state
 		items: [{
 			"_id"     : "rkUQHZrqM",
-			"location": "paris",
-			"size"    : { "width": 350, "height": 200 },
-			"position": { "x": 321, "y": 167 }
+			"location": "Lisbonne",
+			"size"    : { "width": 350, "height": 400 },
+			"position": { "x": 403, "y": 111 },
 		}, {
-			"_id"     : "r1bcuMrcM",
-			"location": "rio",
-			"size"    : { "width": 350, "height": 200 },
-			"position": { "x": 260, "y": 576 }
+			"_id"     : "YDNiVOf1j",
+			"size"    : { "width": 350, "height": 400 },
+			"position": { "x": 21, "y": 108 },
+			"location": "paris"
+		}, {
+			"_id"     : "FkQ3V9Hcb",
+			"size"    : { "width": 350, "height": 400 },
+			"position": { "x": 771, "y": 108 },
+			"location": "rome"
+		}, {
+			"_id"     : "bYNiMYG_0",
+			"size"    : { "width": 514, "height": 329 },
+			"position": { "x": 28, "y": 525 },
+			"location": "marseille"
+		}, {
+			"_id"     : "5SJehewl2",
+			"size"    : { "width": 563, "height": 328 },
+			"position": { "x": 558, "y": 526 },
+			"location": "montpellier"
 		}],
 		
 		// actions

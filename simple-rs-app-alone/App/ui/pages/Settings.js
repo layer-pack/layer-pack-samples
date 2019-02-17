@@ -21,20 +21,20 @@ import SaveIcon                              from '@material-ui/icons/Save';
 import {reScope, scopeToProps, propsToScope} from "rscopes";
 
 
-@scopeToProps(["widgets"])
-export default class App extends React.Component {
+@scopeToProps("widgets", "appState")
+export default class Settings extends React.Component {
 	state = {};
 	
 	render() {
-		let { widgets = { items: [] }, dispatch } = this.props,
-		    {}                                    = this.state;
+		let { widgets = { items: [] }, $actions, appState } = this.props,
+		    {}                                              = this.state;
 		return <div>
 			<div className={ "desk" }>
 				{
 					widgets.items.map(
 						widget => <Widget key={ widget._id } record={ widget }
-						                  onSelect={ e => dispatch(selectWidget(widget._id)) }
-						                  selected={ widget._id == widgets.selectedWidgetId }>
+						                  onSelect={ e => $actions.selectWidget(widget._id) }
+						                  selected={ widget._id == appState.selectedWidgetId }>
 							<WeatherBlock record={ widget }/>
 						</Widget>
 					)
@@ -42,11 +42,11 @@ export default class App extends React.Component {
 			</div>
 			
 			<Fab aria-label="edit" className={ "newBtn button" }
-			     onClick={ e => dispatch(newWidget()) }>
+			     onClick={ e => $actions.newWidget() }>
 				<CreateIcon/>
 			</Fab>
 			<Fab aria-label="Delete" className={ "saveBtn button" }
-			     onClick={ e => dispatch(saveState()) }>
+			     onClick={ e => $actions.saveState() }>
 				<SaveIcon/>
 			</Fab>
 		</div>
