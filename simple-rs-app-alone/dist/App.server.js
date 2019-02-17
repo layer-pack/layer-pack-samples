@@ -662,22 +662,28 @@ var ctrl = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WeatherSearch; });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "undefined?03c7");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "undefined?20a8");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
-/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rscopes/spells */ "undefined?8ec2");
-/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(rscopes_spells__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! superagent */ "undefined?a026");
-/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "undefined?e108");
+/* harmony import */ var _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "undefined?24b3");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "undefined?36a1");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "undefined?03c7");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "undefined?20a8");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/get */ "undefined?56eb");
+/* harmony import */ var _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "undefined?74ba");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rscopes */ "undefined?05b7");
+/* harmony import */ var rscopes__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rscopes__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rscopes/spells */ "undefined?8ec2");
+/* harmony import */ var rscopes_spells__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rscopes_spells__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! superagent */ "undefined?a026");
+/* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_9__);
+
+
 
 
 
@@ -704,26 +710,40 @@ __webpack_require__.r(__webpack_exports__);
 var WeatherSearch =
 /*#__PURE__*/
 function (_Store) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch, _Store);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(WeatherSearch, _Store);
 
-  function WeatherSearch() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WeatherSearch);
+  function WeatherSearch(_ref) {
+    var _this;
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WeatherSearch).apply(this, arguments));
+    var $actions = _ref.$actions,
+        record = _ref.record;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, WeatherSearch);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch).apply(this, arguments));
+    _this._refreshTm = setInterval(_this.checkUpdate, 1000 * 10);
+    return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WeatherSearch, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(WeatherSearch, [{
+    key: "destroy",
+    value: function destroy() {
+      _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch.prototype), "destroy", this).call(this);
+
+      clearInterval(this._refreshTm);
+    }
+  }, {
     key: "apply",
     value: function apply() {
-      var _this = this;
+      var _this2 = this;
 
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var state = arguments.length > 1 ? arguments[1] : undefined;
 
-      var _ref = arguments.length > 2 ? arguments[2] : undefined,
-          location = _ref.location,
-          results = _ref.results,
-          record = _ref.record;
+      var _ref2 = arguments.length > 2 ? arguments[2] : undefined,
+          location = _ref2.location,
+          results = _ref2.results,
+          record = _ref2.record;
 
       location = location || state.defaultLocation;
       if (location == data.location && data.results) return data; // do query weather if needed
@@ -731,24 +751,24 @@ function (_Store) {
       if (location) {
         this.wait(); // so the whole scope tree will wait for SSR
 
-        superagent__WEBPACK_IMPORTED_MODULE_7___default.a.get(state.src + location).then(function (res) {
-          if (location !== _this.data.location) return; // update the store data
+        superagent__WEBPACK_IMPORTED_MODULE_9___default.a.get(state.src + location).then(function (res) {
+          if (location !== _this2.data.location) return; // update the store data
 
-          _this.push({
+          _this2.push({
             results: res.body,
-            location: location
+            location: location,
+            fetching: false
           }); // update the record location
-          //this.$actions.updateWidget(
-          //	{
-          //		...state.record,
-          //		location
-          //	});
 
+
+          _this2.$actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state.record, {
+            location: location
+          }));
         }) // release anyway
         .then(function (e) {
-          return _this.release();
+          return _this2.release();
         }).catch(function (e) {
-          return _this.release();
+          return _this2.release();
         });
         return {
           location: location,
@@ -761,7 +781,7 @@ function (_Store) {
   }]);
 
   return WeatherSearch;
-}(rscopes__WEBPACK_IMPORTED_MODULE_5__["Store"]);
+}(rscopes__WEBPACK_IMPORTED_MODULE_7__["Store"]);
 
 WeatherSearch.state = {
   // initial state value
@@ -906,7 +926,7 @@ var WeatherBlock = (_dec = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["reScope
   // will keep separate instances for each instance of WeatherWidget
   // WeatherSearch can still require stores in the parents scopes
   WeatherSearch: App_stores_WeatherSearch__WEBPACK_IMPORTED_MODULE_12__["default"]
-}), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["propsToScope"])(["record.location:WeatherSearch.defaultLocation"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["scopeToProps"])("WeatherSearch"), _dec(_class = _dec2(_class = _dec3(_class = (_temp = _class2 =
+}), _dec2 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["propsToScope"])(["record.location:WeatherSearch.defaultLocation", "record:WeatherSearch.record"]), _dec3 = Object(rscopes__WEBPACK_IMPORTED_MODULE_11__["scopeToProps"])("WeatherSearch"), _dec(_class = _dec2(_class = _dec3(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherBlock, _React$Component);
@@ -924,42 +944,19 @@ function (_React$Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WeatherBlock)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {};
-
-    _this.checkUpdate = function () {
-      var _this$props = _this.props,
-          $actions = _this$props.$actions,
-          record = _this$props.record;
-      if (record.location && record.fetched < Date.now() - 1000 * 60) $actions.updateWeatherSearch(record, record.location);
-    };
-
     return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WeatherBlock, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this$props2 = this.props,
-          $actions = _this$props2.$actions,
-          record = _this$props2.record; //if ( record.location && !record.results )
-      //	$actions.updateWeatherSearch(record, record.location)
-
-      this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearInterval(this._refreshTm);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _this$props3 = this.props,
-          record = _this$props3.record,
-          $actions = _this$props3.$actions,
-          disabled = _this$props3.disabled,
-          WeatherSearch = _this$props3.WeatherSearch,
+      var _this$props = this.props,
+          record = _this$props.record,
+          $actions = _this$props.$actions,
+          disabled = _this$props.disabled,
+          WeatherSearch = _this$props.WeatherSearch,
           state = this.state;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "WeatherBlock"
@@ -2015,6 +2012,17 @@ module.exports = require("@material-ui/icons/Edit");
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
+
+/***/ }),
+
+/***/ "undefined?56eb":
+/*!*********************************************!*\
+  !*** external "@babel/runtime/helpers/get" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/helpers/get");
 
 /***/ }),
 

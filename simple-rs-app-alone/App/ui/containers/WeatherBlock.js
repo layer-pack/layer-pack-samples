@@ -30,7 +30,11 @@ import WeatherInfos                          from "App/ui/components/WeatherInfo
 	}
 )
 // map the record location as the default value in the WeatherSearch store state
-@propsToScope(["record.location:WeatherSearch.defaultLocation"])
+@propsToScope(
+	[
+		"record.location:WeatherSearch.defaultLocation",
+		"record:WeatherSearch.record"
+	])
 // finally inject the stores
 @scopeToProps("WeatherSearch")
 export default class WeatherBlock extends React.Component {
@@ -39,24 +43,6 @@ export default class WeatherBlock extends React.Component {
 		disabled: PropTypes.bool,
 	};
 	state            = {};
-	
-	componentWillMount() {
-		let { $actions, record } = this.props;
-		//if ( record.location && !record.results )
-		//	$actions.updateWeatherSearch(record, record.location)
-		
-		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
-	}
-	
-	componentWillUnmount() {
-		clearInterval(this._refreshTm);
-	}
-	
-	checkUpdate = () => {
-		let { $actions, record } = this.props;
-		if ( record.location && record.fetched < (Date.now() - 1000 * 60) )
-			$actions.updateWeatherSearch(record, record.location)
-	}
 	
 	render() {
 		let {

@@ -33,6 +33,16 @@ export default class WeatherSearch extends Store {
 		}
 	};
 	
+	constructor( { $actions, record } ) {
+		super(...arguments);
+		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
+	}
+	
+	destroy() {
+		super.destroy();
+		clearInterval(this._refreshTm);
+	}
+	
 	apply( data = {}, state, { location, results, record } ) {
 		location = location || state.defaultLocation;
 		
@@ -52,14 +62,14 @@ export default class WeatherSearch extends Store {
 						return;
 					
 					// update the store data
-					this.push({ results: res.body, location });
+					this.push({ results: res.body, location, fetching: false });
 					
 					// update the record location
-					//this.$actions.updateWidget(
-					//	{
-					//		...state.record,
-					//		location
-					//	});
+					this.$actions.updateWidget(
+						{
+							...state.record,
+							location
+						});
 				})
 				// release anyway
 				.then(e => this.release())
