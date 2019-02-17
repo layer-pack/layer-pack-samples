@@ -396,10 +396,10 @@ var asStore = rscopes__WEBPACK_IMPORTED_MODULE_4__["spells"].asStore,
         })
       };
     },
-    rmWidget: function rmWidget(widget) {
+    rmWidget: function rmWidget(id) {
       return {
         items: this.nextState.items.filter(function (it) {
-          return it._id !== widget._id;
+          return it._id !== id;
         })
       };
     },
@@ -629,8 +629,8 @@ var ctrl = {
         alias: "App"
       });
 
-      if (!stable && _attempts < 3) {
-        ctrl.renderSSR({}, cb, ++_attempts);
+      if (!stable && _attempts < 0) {
+        ctrl.renderSSR(cfg, cb, ++_attempts);
       } else {
         try {
           html = cfg.tpl.render({
@@ -712,15 +712,25 @@ var WeatherSearch =
 function (_Store) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(WeatherSearch, _Store);
 
-  function WeatherSearch(_ref) {
+  function WeatherSearch() {
     var _this;
-
-    var $actions = _ref.$actions,
-        record = _ref.record;
 
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, WeatherSearch);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(WeatherSearch).apply(this, arguments));
+
+    _this.checkUpdate = function () {
+      var _this$data = _this.data,
+          location = _this$data.location,
+          fetched = _this$data.fetched;
+
+      if (location && fetched < Date.now() - 1000 * 60) {
+        console.log("search ", location);
+
+        _this.doSearch(location);
+      }
+    };
+
     _this._refreshTm = setInterval(_this.checkUpdate, 1000 * 10);
     return _this;
   }
@@ -735,41 +745,19 @@ function (_Store) {
   }, {
     key: "apply",
     value: function apply() {
-      var _this2 = this;
-
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var state = arguments.length > 1 ? arguments[1] : undefined;
 
-      var _ref2 = arguments.length > 2 ? arguments[2] : undefined,
-          location = _ref2.location,
-          results = _ref2.results,
-          record = _ref2.record;
+      var _ref = arguments.length > 2 ? arguments[2] : undefined,
+          location = _ref.location,
+          results = _ref.results,
+          record = _ref.record;
 
       location = location || state.defaultLocation;
       if (location == data.location && data.results) return data; // do query weather if needed
 
       if (location) {
-        this.wait(); // so the whole scope tree will wait for SSR
-
-        superagent__WEBPACK_IMPORTED_MODULE_9___default.a.get(state.src + location).then(function (res) {
-          if (location !== _this2.data.location) return; // update the store data
-
-          _this2.push({
-            results: res.body,
-            location: location,
-            fetching: false
-          }); // update the record location
-
-
-          _this2.$actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state.record, {
-            location: location
-          }));
-        }) // release anyway
-        .then(function (e) {
-          return _this2.release();
-        }).catch(function (e) {
-          return _this2.release();
-        });
+        this.doSearch(location);
         return {
           location: location,
           fetching: true
@@ -777,6 +765,39 @@ function (_Store) {
       }
 
       return data;
+    }
+  }, {
+    key: "doSearch",
+    value: function doSearch(location) {
+      var _this2 = this;
+
+      var state = this.nextState;
+      this.wait(); // so the whole scope tree will wait for SSR
+
+      superagent__WEBPACK_IMPORTED_MODULE_9___default.a.get(state.src + location).then(function (res) {
+        if (location !== _this2.data.location) return; // update the store data
+
+        _this2.push({
+          results: res.body,
+          location: location,
+          fetching: false,
+          fetched: Date.now()
+        }); // update the record location
+
+
+        state.record && _this2.$actions.updateWidget(_babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, state.record, {
+          location: location
+        }));
+      }) // release anyway
+      .then(function (e) {
+        return _this2.release();
+      }).catch(function (e) {
+        return _this2.release();
+      });
+      this.push({
+        location: location,
+        fetching: true
+      });
     }
   }]);
 

@@ -33,9 +33,18 @@ export default class WeatherSearch extends Store {
 		}
 	};
 	
-	constructor( { $actions, record } ) {
+	constructor() {
 		super(...arguments);
 		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
+	}
+	
+	checkUpdate = () => {
+		let { location, fetched } = this.data;
+		if ( location && fetched < (Date.now() - 1000 * 60) ) {
+			
+			console.log("search ", location)
+			this.doSearch(location)
+		}
 	}
 	
 	destroy() {
@@ -51,33 +60,37 @@ export default class WeatherSearch extends Store {
 		
 		// do query weather if needed
 		if ( location ) {
-			
-			this.wait();// so the whole scope tree will wait for SSR
-			
-			superagent
-				.get(state.src + location)
-				.then(( res ) => {
-					
-					if ( location !== this.data.location )
-						return;
-					
-					// update the store data
-					this.push({ results: res.body, location, fetching: false });
-					
-					// update the record location
-					this.$actions.updateWidget(
-						{
-							...state.record,
-							location
-						});
-				})
-				// release anyway
-				.then(e => this.release())
-				.catch(e => this.release())
+			this.doSearch(location)
 			
 			return { location, fetching: true };
 		}
 		
 		return data;
+	}
+	
+	doSearch( location ) {
+		let state = this.nextState;
+		this.wait();// so the whole scope tree will wait for SSR
+		superagent
+			.get(state.src + location)
+			.then(( res ) => {
+				if ( location !== this.data.location )
+					return;
+				
+				// update the store data
+				this.push({ results: res.body, location, fetching: false, fetched: Date.now() });
+				
+				// update the record location
+				state.record && this.$actions.updateWidget(
+					{
+						...state.record,
+						location
+					});
+			})
+			// release anyway
+			.then(e => this.release())
+			.catch(e => this.release())
+		
+		this.push({ location, fetching: true });
 	}
 }

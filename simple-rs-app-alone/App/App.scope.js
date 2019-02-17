@@ -82,11 +82,11 @@ export default {
 				           )
 			}
 		},
-		rmWidget( widget ) {
+		rmWidget( id ) {
 			return {
 				items: this.nextState.items
 				           .filter(
-					           it => (it._id !== widget._id)
+					           it => (it._id !== id)
 				           )
 			}
 		},

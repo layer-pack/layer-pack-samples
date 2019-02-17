@@ -55,8 +55,8 @@ const ctrl = {
 		
 		cScope.onceStableTree(state => {
 			let nstate = cScope.serialize({ alias: "App" });
-			if ( !stable && _attempts < 3 ) {
-				ctrl.renderSSR({}, cb, ++_attempts);
+			if ( !stable && _attempts < 0 ) {
+				ctrl.renderSSR(cfg, cb, ++_attempts);
 			}
 			else {
 				try {
