@@ -1,0 +1,16 @@
+version: '3'
+volumes:
+  node_modules:
+networks:
+  app_network:
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/home/app
+      - node_modules:/home/app/node_modules
+    ports:
+      - "8080:8080"
+    networks:
+      - app_network
