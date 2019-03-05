@@ -19,5 +19,5 @@ RUN apk --no-cache update \
 
 
 
-CMD cd /home/app && npm i && npm run start-dev || bash
+CMD bash
 

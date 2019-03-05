@@ -16,10 +16,10 @@
 import App              from "App/index.js";
 import {renderToString} from "react-dom/server";
 
-const wpiConf = require('App/.wpiConfig.json'),
-      fs      = require('fs'),
-      express = require('express'),
-      tpl     = require('../index.html.tpl');
+const wpiConf  = require('App/.wpiConfig.json'),
+      fs       = require('fs'),
+      express  = require('express'),
+      indexTpl = require('../index.html.tpl');
 
 let currentState;
 
@@ -30,41 +30,29 @@ try {
 	currentState = undefined;
 }
 
+/**
+ * Add the rendering services to the main express instance
+ * @param server {express}
+ */
 export default ( server ) => {
 	
-	server.get(
-		'/',
-		function ( req, res, next ) {
-			App.renderSSR(
-				{
-					location: req.url,
-					state   : currentState,
-					tpl
-				},
-				( err, html, nstate ) => {
-					res.send(200, html)
-				}
-			)
-		}
-	);
-	server.get(
-		'/settings',
-		function ( req, res, next ) {
-			App.renderSSR(
-				{
-					location: req.url,
-					state   : currentState,
-					tpl
-				},
-				( err, html, nstate ) => {
-					res.send(200, html)
-				}
-			)
-		}
-	);
-	server.use(express.static(wpiConf.projectRoot + '/dist'));
+	const servePage = ( req, res, next ) => {
+		App.renderSSR(
+			{
+				location: req.url,
+				state   : currentState,
+				indexTpl
+			},
+			( err, html, nstate ) => {
+				res.send(200, html)
+			}
+		)
+	};
 	
-	server.use("/medias", express.static(wpiConf.projectRoot + '/public'));
+	server.get('/', servePage);
+	server.get('/settings', servePage);
+	
+	server.use(express.static(wpiConf.projectRoot + '/dist'));
 	
 	server.post('/', function ( req, res, next ) {
 		console.log("New state pushed")

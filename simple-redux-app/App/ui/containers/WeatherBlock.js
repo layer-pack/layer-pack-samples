@@ -51,14 +51,16 @@ export default class WeatherBlock extends React.Component {
 	
 	render() {
 		let {
-			    record, dispatch, disabled
-		    }     = this.props,
-		    state = this.state;
+			    record,
+			    dispatch,
+			    disabled
+		    }                      = this.props,
+		    { editing, searching } = this.state;
 		
 		return (
 			<div className={ "WeatherBlock" }>
 				{
-					!this.state.editing &&
+					!editing &&
 					<React.Fragment>
 						{
 							record.results && <WeatherInfos weatherData={ record.results }/>
@@ -84,15 +86,16 @@ export default class WeatherBlock extends React.Component {
 						{
 							<div className={ "search" }>
 								<input type="text"
-								       onChange={ e => {
-									       this.setState({ searching: e.target.value });
-									       if ( e.target.value.length > 2 )
-										       dispatch(weatherSearch(record, e.target.value));
+								       onChange={ ( { target: { value: searching } } ) => {
+									       this.setState({ searching });
+									       if ( searching.length > 2 )
+										       dispatch(weatherSearch(record, searching));
 								       } }
-								       value={ state.searching !== undefined ? state.searching : record.location }
+								       value={ searching !== undefined ? searching : record.location }
 								       onMouseDown={ e => e.stopPropagation() }/>
 							</div>
 						}
+						
 						{
 							record.fetching && "Loading...." ||
 							record.results && <WeatherInfos weatherData={ record.results }/>

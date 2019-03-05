@@ -32,11 +32,14 @@ export default connect(( { widgets, appState } ) => ({ widgets, appState }))(
 				<div className={ "desk" }>
 					{
 						widgets.items.map(
-							widget => <Widget key={ widget._id } record={ widget }
-							                  onSelect={ e => dispatch(selectWidget(widget._id)) }
-							                  selected={ widget._id == widgets.selectedWidgetId }>
-								<WeatherBlock record={ widget }/>
-							</Widget>
+							widget =>
+								<Widget
+									key={ widget._id }
+									record={ widget }
+									onSelect={ e => dispatch(selectWidget(widget._id)) }
+									selected={ widget._id === widgets.selectedWidgetId }>
+									<WeatherBlock record={ widget }/>
+								</Widget>
 						)
 					}
 				</div>
