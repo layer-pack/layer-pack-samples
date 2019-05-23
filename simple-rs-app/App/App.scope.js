@@ -27,6 +27,12 @@ export default {
 		selectedWidgetId: "rkUQHZrqM",
 		selectWidget( selectedWidgetId ) {
 			return { selectedWidgetId };
+		},
+		saveState() {
+			superagent.post('/', this.scopeObj.serialize())
+			          .then(( e, r ) => {
+				          console.log(e, r)
+			          })
 		}
 	},
 	@asStore
@@ -89,12 +95,6 @@ export default {
 					           it => (it._id !== id)
 				           )
 			}
-		},
-		saveState() {
-			superagent.post('/', this.scopeObj.serialize())
-			          .then(( e, r ) => {
-				          console.log(e, r)
-			          })
 		}
 	}
 }

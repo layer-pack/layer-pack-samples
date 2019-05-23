@@ -1,20 +1,6 @@
-/*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
- */
-
 /** wpi externals - add module path **/
 {
-let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\parentProject\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\wp4-react-redux-sass-hmr\\node_modules","G:\\n8tz\\wpi\\webpack-inherit-sample\\shared\\wpi-react-hmr-ssr\\node_modules","node_modules"]);
+let ___wpi_amp = require('webpack-inherit/etc/node/loadModulePaths.js')(["G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject\\node_modules","G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\parentProject\\node_modules","G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\wp4-react-redux-sass-hmr\\node_modules","G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\shared\\wpi-react-hmr-ssr\\node_modules"]);
 }
 
 /*!
@@ -129,62 +115,10 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js":
-/*!**************************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js ***!
-  \**************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var req,
-    _exports = {},
-    root;
-req = __webpack_require__("../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-req = __webpack_require__("../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-/* harmony default export */ __webpack_exports__["default"] = (_exports);
-
-/***/ }),
-
-/***/ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js":
-/*!************************************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js ***!
-  \************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var req,
-    _exports = {},
-    root;
-req = __webpack_require__("../parentProject/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-req = __webpack_require__("../wp4-react-redux-sass-hmr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
-req.keys().forEach(function (key) {
-  var name = key.substr(2);
-  _exports[name] = _exports[name] || req(key);
-});
-/* harmony default export */ __webpack_exports__["default"] = (_exports);
-
-/***/ }),
-
-/***/ "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
-/*!*******************************************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
-  \*******************************************************************************************************************/
+/***/ "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$":
+/*!**********************************************************************************************************!*\
+  !*** G:/n8tz/libs/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api sync ^\.\/([^\\\/]+)\.js$ ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -198,27 +132,26 @@ function webpackContext(req) {
 	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) { // check for number or string
+	if(!__webpack_require__.o(map, req)) {
 		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
-	return id;
+	return map[req];
 }
 webpackContext.keys = function webpackContextKeys() {
 	return Object.keys(map);
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$";
+webpackContext.id = "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$";
 
 /***/ }),
 
 /***/ "../../shared/wpi-react-hmr-ssr/App/api.js":
-/*!******************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api.js ***!
-  \******************************************************************************/
+/*!***********************************************************************************!*\
+  !*** G:/n8tz/libs/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/api.js ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -226,7 +159,7 @@ webpackContext.id = "../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is */ "undefined?63a5");
 /* harmony import */ var is__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(is__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api/**.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_api____js.gen.js");
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api/(*).js */ "./App/MapOf.App_api_____js.gen.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -244,16 +177,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (server, http) {
   return Object.keys(_api_js__WEBPACK_IMPORTED_MODULE_1__["default"]).forEach(function (group) {
-    _api_js__WEBPACK_IMPORTED_MODULE_1__["default"][group].default(server, http);
+    _api_js__WEBPACK_IMPORTED_MODULE_1__["default"][group](server, http);
   });
 });
 
 /***/ }),
 
 /***/ "../../shared/wpi-react-hmr-ssr/App/console.js":
-/*!**********************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/console.js ***!
-  \**********************************************************************************/
+/*!***************************************************************************************!*\
+  !*** G:/n8tz/libs/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/console.js ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -421,9 +354,9 @@ isBrowserSide && !window.consoleHookDone && function () {
 /***/ }),
 
 /***/ "../../shared/wpi-react-hmr-ssr/App/index.server.js":
-/*!***************************************************************************************!*\
-  !*** G:/n8tz/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/index.server.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/n8tz/libs/wpi/webpack-inherit-sample/shared/wpi-react-hmr-ssr/App/index.server.js ***!
+  \********************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -586,10 +519,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$":
-/*!************************************************************************!*\
-  !*** ../parentProject/App/api sync ^\.\/(([^\\\/]+\/)+)?[^\\\/]+\.js$ ***!
-  \************************************************************************/
+/***/ "../parentProject/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$":
+/*!**********************************************************!*\
+  !*** ../parentProject/App/api sync ^\.\/([^\\\/]+)\.js$ ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -603,20 +536,19 @@ function webpackContext(req) {
 	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) { // check for number or string
+	if(!__webpack_require__.o(map, req)) {
 		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
-	return id;
+	return map[req];
 }
 webpackContext.keys = function webpackContextKeys() {
 	return Object.keys(map);
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "../parentProject/App/api sync recursive ^\\.\\/(([^\\\\\\/]+\\/)+)?[^\\\\\\/]+\\.js$";
+webpackContext.id = "../parentProject/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$";
 
 /***/ }),
 
@@ -748,6 +680,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_2__);
 
 
+/*
+ * The MIT License (MIT)
+ * Copyright (c) 2019. Wise Wild Web
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author : Nathanael Braun
+ *  @contact : n8tz.js@gmail.com
+ */
+
 
 var WIDGET_CHANGED = 'WIDGET_CHANGED';
 var WIDGET_NEW = 'WIDGET_NEW';
@@ -822,13 +768,12 @@ function webpackContext(req) {
 	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) { // check for number or string
+	if(!__webpack_require__.o(map, req)) {
 		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
-	return id;
+	return map[req];
 }
 webpackContext.keys = function webpackContextKeys() {
 	return Object.keys(map);
@@ -1372,7 +1317,7 @@ webpackEmptyContext.id = "../wp4-react-redux-sass-hmr/App/store/reducers sync re
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "undefined?d325");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/*.js */ "../../shared/wpi-react-hmr-ssr/App/MapOf.App_store_reducers___js.gen.js");
+/* harmony import */ var _reducers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/*.js */ "./App/MapOf.App_store_reducers___js.gen.js");
 /*
  * The MIT License (MIT)
  * Copyright (c) 2019. Wise Wild Web
@@ -1411,7 +1356,91 @@ var preCombine = function preCombine(items) {
 /*! exports provided: project, projectRoot, vars, allCfg, allModId, default */
 /***/ (function(module) {
 
-module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["parentProject","wp4-react-redux-sass-hmr"]},{"rootFolder":"App","extend":[]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["parentProject","wp4-react-redux-sass-hmr","wpi-react-hmr-ssr"]};
+module.exports = {"project":{"name":"childProject","author":"Nathan Braun <n8tz.js@gmail.com>","version":"1.0.0"},"projectRoot":"G:\\n8tz\\libs\\wpi\\webpack-inherit-sample\\simple-redux-inherit\\childProject","vars":{"rootAlias":"App","externals":true},"allCfg":[{"rootFolder":"App","vars":{"externals":true},"extend":["parentProject","wp4-react-redux-sass-hmr"]},{"rootFolder":"App","extend":[]},{"rootFolder":"App","extend":["wpi-react-hmr-ssr"]},{"rootFolder":"App","config":"./etc/wp/webpack.config.api.js","extend":[]}],"allModId":["parentProject","wp4-react-redux-sass-hmr","wpi-react-hmr-ssr"]};
+
+/***/ }),
+
+/***/ "./App/MapOf.App_api_____js.gen.js":
+/*!*****************************************!*\
+  !*** ./App/MapOf.App_api_____js.gen.js ***!
+  \*****************************************/
+/*! exports provided: renderService, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderService", function() { return renderService; });
+/* This is a virtual file generated by webpack-inherit */
+var req,
+    _exports = {},
+    root;
+req = __webpack_require__("../parentProject/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$");
+req.keys().forEach(function (key) {
+  var mod,
+      name = key.match(/^\.\/([^\\\/]+)\.js$/);
+  name = name && name[1] || key.substr(2);
+
+  if (!_exports[name]) {
+    mod = req(key);
+    _exports[name] = Object.keys(mod).length === 1 && mod.default || mod;
+  }
+});
+req = __webpack_require__("../../shared/wpi-react-hmr-ssr/App/api sync recursive ^\\.\\/([^\\\\\\/]+)\\.js$");
+req.keys().forEach(function (key) {
+  var mod,
+      name = key.match(/^\.\/([^\\\/]+)\.js$/);
+  name = name && name[1] || key.substr(2);
+
+  if (!_exports[name]) {
+    mod = req(key);
+    _exports[name] = Object.keys(mod).length === 1 && mod.default || mod;
+  }
+});
+var renderService = _exports.renderService;
+/* harmony default export */ __webpack_exports__["default"] = (_exports);
+
+/***/ }),
+
+/***/ "./App/MapOf.App_store_reducers___js.gen.js":
+/*!**************************************************!*\
+  !*** ./App/MapOf.App_store_reducers___js.gen.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* This is a virtual file generated by webpack-inherit */
+var req,
+    _exports = {},
+    root;
+req = __webpack_require__("../parentProject/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var mod,
+      name = key.match(/^\.\/[^\\\/]+\.js$/);
+  name = name && name[1] || key.substr(2);
+
+  if (!_exports[name]) {
+    mod = req(key);
+    _exports[name] = Object.keys(mod).length === 1 && mod.default || mod;
+  }
+});
+req = __webpack_require__("../wp4-react-redux-sass-hmr/App/store/reducers sync recursive ^\\.\\/[^\\\\\\/]+\\.js$");
+req.keys().forEach(function (key) {
+  var mod,
+      name = key.match(/^\.\/[^\\\/]+\.js$/);
+  name = name && name[1] || key.substr(2);
+
+  if (!_exports[name]) {
+    mod = req(key);
+    _exports[name] = Object.keys(mod).length === 1 && mod.default || mod;
+  }
+});
+/* export const App/store/reducers/appState.js = _exports.App/store/reducers/appState.js; */
+
+/* export const App/store/reducers/someData.js = _exports.App/store/reducers/someData.js; */
+
+/* harmony default export */ __webpack_exports__["default"] = (_exports);
 
 /***/ }),
 
