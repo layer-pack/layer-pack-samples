@@ -13,9 +13,10 @@
  */
 
 import is  from 'is';
-import api from './api/**.js';
+import api from './api/(*).js';
+
 
 export default ( server, http ) => Object.keys(api).forEach(
 	( group ) => {
-		api[group].default(server, http);
+		api[group](server, http);
 	})
