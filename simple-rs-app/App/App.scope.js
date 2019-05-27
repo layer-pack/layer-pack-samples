@@ -37,64 +37,61 @@ export default {
 	},
 	@asStore
 	widgets : {
-		// initial state
-		items: [{
+		"rkUQHZrqM": {
 			"_id"     : "rkUQHZrqM",
 			"location": "Lisbonne",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 403, "y": 111 },
-		}, {
+		},
+		"YDNiVOf1j": {
 			"_id"     : "YDNiVOf1j",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 21, "y": 108 },
 			"location": "paris"
-		}, {
+		},
+		"FkQ3V9Hcb": {
 			"_id"     : "FkQ3V9Hcb",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 771, "y": 108 },
 			"location": "rome"
-		}, {
+		},
+		"bYNiMYG_0": {
 			"_id"     : "bYNiMYG_0",
 			"size"    : { "width": 514, "height": 329 },
 			"position": { "x": 28, "y": 525 },
 			"location": "marseille"
-		}, {
+		},
+		"5SJehewl2": {
 			"_id"     : "5SJehewl2",
 			"size"    : { "width": 563, "height": 328 },
 			"position": { "x": 558, "y": 526 },
 			"location": "montpellier"
-		}],
-		
+		},
 		// actions
 		newWidget() {
+			let w = {
+				_id     : shortid.generate(),
+				size    : { width: 350, height: 200 },
+				position: {
+					x: 100 + ~~(Math.random() * 600),
+					y: 100 + ~~(Math.random() * 600)
+				},
+			};
 			return {
-				items: [...this.nextState.items, {
-					_id     : shortid.generate(),
-					size    : { width: 350, height: 200 },
-					position: {
-						x: 100 + ~~(Math.random() * 600),
-						y: 100 + ~~(Math.random() * 600)
-					},
-				}]
+				...this.nextState,
+				[w._id]: w
 			}
 		},
-		updateWidget( widget ) {
+		updateWidget( w ) {
 			return {
-				items: this.nextState.items
-				           .map(
-					           it => (it._id === widget._id)
-					                 ? widget
-					                 : it
-				           )
+				...this.nextState,
+				[w._id]: w
 			}
 		},
 		rmWidget( id ) {
-			return {
-				items: this.nextState.items
-				           .filter(
-					           it => (it._id !== id)
-				           )
-			}
+			let ns = this.nextState;
+			delete [id];
+			return ns;
 		}
 	}
 }

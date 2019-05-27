@@ -44,12 +44,40 @@ export default class WeatherBlock extends React.Component {
 	};
 	state            = {};
 	
+	toggleEdit   = () => {
+		this.setState({ editing: !this.state.editing })
+	};
+	updateSearch = ( { target: { value: searching } } ) => {
+		let {
+			    $actions
+		    }     = this.props,
+		    state = this.state;
+		this.setState({ searching });
+		if ( searching.length > 2 )
+			$actions.updateWeatherSearch(searching);
+	};
+	
+	stopPropagation = e => e.stopPropagation();
+	doClose         = e => {
+		let {
+			    record, onClose
+		    } = this.props;
+		onClose && onClose(record);
+	};
+	
+	//componentDidUpdate( prevProps, prevState, snapshot ) {
+	//	console.log(Object.keys(prevProps)
+	//	                  .filter(key => (prevProps[key] !== this.props[key])))
+	//	console.log(Object.keys(prevState)
+	//	                  .filter(key => (prevState[key] !== this.state[key])))
+	//}
+	
 	render() {
 		let {
 			    record, $actions, editable, WeatherSearch
 		    }     = this.props,
 		    state = this.state;
-		
+		//console.log('WeatherBlock::render:73: ', record._id);
 		return (
 			<div className={ "WeatherBlock" }>
 				{
@@ -64,11 +92,11 @@ export default class WeatherBlock extends React.Component {
 							editable &&
 							<React.Fragment>
 								<Fab aria-label="edit" className={ "edit" }
-								     onClick={ e => this.setState({ editing: true }) }>
+								     onClick={ this.toggleEdit }>
 									<EditIcon/>
 								</Fab>
 								<Fab aria-label="Delete" className={ "delete" }
-								     onClick={ e => $actions.rmWidget(record._id) }>
+								     onClick={ this.doClose }>
 									<DeleteIcon/>
 								</Fab>
 							</React.Fragment>
@@ -79,13 +107,9 @@ export default class WeatherBlock extends React.Component {
 						{
 							<div className={ "search" }>
 								<input type="text"
-								       onChange={ e => {
-									       this.setState({ searching: e.target.value });
-									       if ( e.target.value.length > 2 )
-										       $actions.updateWeatherSearch(e.target.value);
-								       } }
+								       onChange={ this.updateSearch }
 								       value={ state.searching !== undefined ? state.searching : record.location }
-								       onMouseDown={ e => e.stopPropagation() }/>
+								       onMouseDown={ this.stopPropagation }/>
 							</div>
 						}
 						{
@@ -95,7 +119,7 @@ export default class WeatherBlock extends React.Component {
 						
 						<Fab aria-label="Save" className={ "save" }
 						     editable={ record.fetching }
-						     onClick={ e => this.setState({ editing: false }) }>
+						     onClick={ this.toggleEdit }>
 							<SaveIcon/>
 						</Fab>
 					</React.Fragment>

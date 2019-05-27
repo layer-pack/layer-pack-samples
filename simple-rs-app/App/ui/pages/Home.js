@@ -33,21 +33,26 @@ export default class Home extends React.Component {
 		$actions.selectWidget(record._id)
 	};
 	
+	rmWidget = record => {
+		let { $actions } = this.props;
+		$actions.rmWidget(record)
+	};
+	
 	render() {
 		let { widgets = {}, appState, $actions, editable } = this.props,
 		    {}                                             = this.state;
 		return <div>
 			<div className={ "desk" }>
 				{
-					widgets.items.map(
-						item =>
+					Object.keys(widgets).map(
+						wid =>
 							<Widget
-								key={ item._id }
-								record={ item }
+								key={ wid }
+								record={ widgets[wid] }
 								editable={ editable }
 								onSelect={ this.selectWidget }
-								selected={ item._id === appState.selectedWidgetId }>
-								<WeatherBlock record={ item }
+								selected={ wid === appState.selectedWidgetId }>
+								<WeatherBlock record={ widgets[wid] }
 								              editable={ editable }
 								              onClose={ this.rmWidget }/>
 							</Widget>
