@@ -18,31 +18,35 @@ export default {
 		selectedWidgetId: null
 	},
 	widgets : {
-		items: [{
+		"rkUQHZrqM": {
 			"_id"     : "rkUQHZrqM",
 			"location": "Lisbonne",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 403, "y": 111 },
-		}, {
+		},
+		"YDNiVOf1j": {
 			"_id"     : "YDNiVOf1j",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 21, "y": 108 },
 			"location": "paris"
-		}, {
+		},
+		"FkQ3V9Hcb": {
 			"_id"     : "FkQ3V9Hcb",
 			"size"    : { "width": 350, "height": 400 },
 			"position": { "x": 771, "y": 108 },
 			"location": "rome"
-		}, {
+		},
+		"bYNiMYG_0": {
 			"_id"     : "bYNiMYG_0",
 			"size"    : { "width": 514, "height": 329 },
 			"position": { "x": 28, "y": 525 },
 			"location": "marseille"
-		}, {
+		},
+		"5SJehewl2": {
 			"_id"     : "5SJehewl2",
 			"size"    : { "width": 563, "height": 328 },
 			"position": { "x": 558, "y": 526 },
 			"location": "montpellier"
-		}]
+		},
 	},
 }

@@ -12,35 +12,65 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import React                                from 'react';
-import {connect}                            from 'react-redux'
-import {selectWidget, saveState, newWidget} from "App/store/actions/updateWidget";
-import Widget                               from 'App/ui/containers/Widget.js';
-import WeatherBlock                         from 'App/ui/containers/WeatherBlock';
+import PropTypes                 from "prop-types";
+import React                     from 'react';
+import {connect}                 from 'react-redux'
+import {selectWidget, saveState} from "App/store/actions/updateAppState";
+import {newWidget, rmWidget}     from "App/store/actions/updateWidget";
+import {Widget, WeatherBlock}    from 'App/ui/containers/(*).js';
+import Fab                       from '@material-ui/core/Fab';
+import CreateIcon                from '@material-ui/icons/Add';
+import SaveIcon                  from '@material-ui/icons/Save';
 
-
-export default connect(( { widgets } ) => ({ widgets }))(
+export default connect(( { widgets, appState } ) => ({ widgets, appState }))(
 	class App extends React.Component {
-		state = {};
+		static propTypes = {
+			editable: PropTypes.bool,
+		};
+		state            = {};
+		
+		rmWidget = record => {
+			let { widgets = {}, appState, dispatch } = this.props;
+			dispatch(rmWidget(record._id))
+		};
+		
+		selectWidget = record => {
+			let { widgets = {}, appState, dispatch } = this.props;
+			dispatch(selectWidget(record._id))
+		};
 		
 		render() {
-			let { widgets = { items: [] }, dispatch } = this.props;
-			return <div className={ "desk" }>
-				{
-					widgets.items.map(
-						widget =>
-							<Widget
-								key={ widget._id }
-								record={ widget }
-								disabled={ true }
-								selected={ widget._id === widgets.selectedWidgetId }>
-								
-								<WeatherBlock
-									record={ widget }
-									disabled={ true }/>
-							
-							</Widget>
-					)
+			let { widgets = {}, appState, dispatch, editable } = this.props,
+			    {}                                             = this.state;
+			return <div>
+				<div className={ "desk" }>
+					{
+						Object.keys(widgets).map(
+							wid =>
+								<Widget
+									key={ wid }
+									record={ widgets[wid] }
+									editable={ editable }
+									onSelect={ this.selectWidget }
+									selected={ wid === appState.selectedWidgetId }>
+									<WeatherBlock record={ widgets[wid] }
+									              editable={ editable }
+									              onClose={ this.rmWidget }/>
+								</Widget>
+						)
+					}
+				</div>
+				{ editable &&
+				<>
+					<Fab aria-label="edit" className={ "newBtn button" }
+					     onClick={ e => dispatch(newWidget()) }>
+						<CreateIcon/>
+					</Fab>
+					<Fab aria-label="Delete" className={ "saveBtn button" }
+					     onClick={ e => dispatch(saveState()) }>
+						<SaveIcon/>
+					</Fab>
+				</>
 				}
 			</div>
 		}

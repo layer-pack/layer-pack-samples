@@ -20,14 +20,17 @@ import SaveIcon     from '@material-ui/icons/Save';
 import {connect}    from 'react-redux'
 import WeatherInfos from "../components/WeatherInfos.js";
 import {
-	weatherSearch, rmWidget
+	weatherSearch
+}                   from "App/store/actions/updateAppState";
+import {
+	rmWidget
 }                   from "App/store/actions/updateWidget";
 
 @connect()
 export default class WeatherBlock extends React.Component {
 	static propTypes = {
 		record  : PropTypes.object.isRequired,
-		disabled: PropTypes.bool,
+		editable: PropTypes.bool,
 	};
 	state            = {};
 	
@@ -49,14 +52,36 @@ export default class WeatherBlock extends React.Component {
 			dispatch(weatherSearch(record, record.location))
 	}
 	
+	toggleEdit   = () => {
+		this.setState({ editing: !this.state.editing })
+	};
+	updateSearch = ( { target: { value: searching } } ) => {
+		let {
+			    record,
+			    dispatch,
+			    editable
+		    } = this.props;
+		
+		this.setState({ searching });
+		if ( searching.length > 2 )
+			dispatch(weatherSearch(record, searching));
+	};
+	
+	stopPropagation = e => e.stopPropagation();
+	doClose         = e => {
+		let {
+			    record, onClose
+		    } = this.props;
+		onClose && onClose(record);
+	};
+	
 	render() {
 		let {
 			    record,
 			    dispatch,
-			    disabled
+			    editable, onClose
 		    }                      = this.props,
 		    { editing, searching } = this.state;
-		
 		return (
 			<div className={ "WeatherBlock" }>
 				{
@@ -68,14 +93,14 @@ export default class WeatherBlock extends React.Component {
 							|| "Edit me !"
 						}
 						{
-							!disabled &&
+							editable &&
 							<React.Fragment>
 								<Fab aria-label="edit" className={ "edit" }
-								     onClick={ e => this.setState({ editing: true }) }>
+								     onClick={ this.toggleEdit }>
 									<EditIcon/>
 								</Fab>
 								<Fab aria-label="Delete" className={ "delete" }
-								     onClick={ e => dispatch(rmWidget(record._id)) }>
+								     onClick={ this.doClose }>
 									<DeleteIcon/>
 								</Fab>
 							</React.Fragment>
@@ -86,13 +111,9 @@ export default class WeatherBlock extends React.Component {
 						{
 							<div className={ "search" }>
 								<input type="text"
-								       onChange={ ( { target: { value: searching } } ) => {
-									       this.setState({ searching });
-									       if ( searching.length > 2 )
-										       dispatch(weatherSearch(record, searching));
-								       } }
+								       onChange={ this.updateSearch }
 								       value={ searching !== undefined ? searching : record.location }
-								       onMouseDown={ e => e.stopPropagation() }/>
+								       onMouseDown={ this.stopPropagation }/>
 							</div>
 						}
 						
@@ -103,7 +124,7 @@ export default class WeatherBlock extends React.Component {
 						
 						<Fab aria-label="Save" className={ "save" }
 						     disabled={ record.fetching }
-						     onClick={ e => this.setState({ editing: false }) }>
+						     onClick={ this.toggleEdit }>
 							<SaveIcon/>
 						</Fab>
 					</React.Fragment>

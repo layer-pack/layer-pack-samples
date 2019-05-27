@@ -26,6 +26,7 @@ export function selectWidget( wid ) {
 	}
 }
 
+
 export function saveState( then ) {
 	return ( dispatch, getState ) => {
 		return superagent
@@ -35,6 +36,45 @@ export function saveState( then ) {
 			})
 			.catch(e => {
 				console.log('Not Saved')
+			})
+	};
+}
+
+export function weatherSearch( record, location, then ) {
+	
+	return ( dispatch, getState ) => {
+		dispatch(updateWidget(
+			{
+				...record,
+				fetching: location
+			}));
+		
+		
+		return superagent
+			.get(getState().appState.src + location)
+			.then(( res ) => {
+				
+				let current = getState().widgets[record._id];
+				
+				if ( current && current.fetching === location )
+					dispatch(updateWidget(
+						{
+							...record,
+							fetching: false,
+							fetched : Date.now(),
+							results : res.body,
+							location
+						}));
+			})
+			.catch(e => {
+				
+				let current = getState().widgets[record._id];
+				if ( current && current.fetching === location )
+					dispatch(updateWidget(
+						{
+							...record,
+							fetching: false,
+						}));
 			})
 	};
 }

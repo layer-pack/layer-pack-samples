@@ -16,33 +16,20 @@ import {WIDGET_CHANGED, WIDGET_NEW, WIDGET_RM, SELECTED_WIDGET_CHANGED} from '..
 
 export function widgets( state = { right: false }, action ) {
 	switch ( action.type ) {
-		case SELECTED_WIDGET_CHANGED:
-			return {
-				...state,
-				selectedWidgetId: action.wid
-			};
 		case WIDGET_CHANGED:
 			return {
 				...state,
-				items: state.items
-				            .map(
-					            it => (it._id === action.record._id)
-					                  ? action.record
-					                  : it
-				            )
+				[action.record._id]: action.record
 			}
 		case WIDGET_NEW:
 			return {
 				...state,
-				items: [...state.items, action.record]
+				[action.record._id]: action.record
 			}
 		case WIDGET_RM:
-			return {
-				...state,
-				items: state.items.filter(
-					it => (it._id !== action.wid)
-				)
-			}
+			let newState = { ...state };
+			delete newState[action.wid];
+			return newState
 		default:
 			return state
 	}

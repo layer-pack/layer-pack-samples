@@ -15,10 +15,10 @@
 import React                                      from 'react';
 import AppBar                                     from './ui/components/AppBar';
 import Home                                       from './ui/pages/Home';
-import Settings                                   from './ui/pages/Settings';
 import {BrowserRouter, StaticRouter, Route, Link} from "react-router-dom";
 import "./ui/styles/index.scss"
 
+const Settings = props => <Home{ ...props } editable={ true }/>;
 
 export default class App extends React.Component {
 	state = {};
