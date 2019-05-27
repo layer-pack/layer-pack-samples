@@ -12,31 +12,60 @@
  *  @contact : n8tz.js@gmail.com
  */
 
+import PropTypes                             from "prop-types";
 import React                                 from 'react';
 import Widget                                from 'App/ui/containers/Widget.js';
 import WeatherBlock                          from 'App/ui/containers/WeatherBlock';
 import {reScope, scopeToProps, propsToScope} from "rscopes";
-
+import Fab                                   from '@material-ui/core/Fab';
+import CreateIcon                            from '@material-ui/icons/Add';
+import SaveIcon                              from '@material-ui/icons/Save';
 
 @scopeToProps("widgets", "appState")
 export default class Home extends React.Component {
-	state = {};
+	static propTypes = {
+		editable: PropTypes.bool,
+	};
+	state            = {};
+	
+	selectWidget = record => {
+		let { $actions } = this.props;
+		$actions.selectWidget(record._id)
+	};
 	
 	render() {
-		let { widgets = { items: [] }, appState } = this.props;
+		let { widgets = {}, appState, $actions, editable } = this.props,
+		    {}                                             = this.state;
 		return <div>
 			<div className={ "desk" }>
 				{
 					widgets.items.map(
-						widget => <Widget key={ widget._id } record={ widget }
-						                  disabled={ true }
-						                  selected={ widget._id == appState.selectedWidgetId }>
-							<WeatherBlock record={ widget }
-							              disabled={ true }/>
-						</Widget>
+						item =>
+							<Widget
+								key={ item._id }
+								record={ item }
+								editable={ editable }
+								onSelect={ this.selectWidget }
+								selected={ item._id === appState.selectedWidgetId }>
+								<WeatherBlock record={ item }
+								              editable={ editable }
+								              onClose={ this.rmWidget }/>
+							</Widget>
 					)
 				}
 			</div>
+			{ editable &&
+			<>
+				<Fab aria-label="edit" className={ "newBtn button" }
+				     onClick={ $actions.newWidget }>
+					<CreateIcon/>
+				</Fab>
+				<Fab aria-label="Delete" className={ "saveBtn button" }
+				     onClick={ $actions.saveState }>
+					<SaveIcon/>
+				</Fab>
+			</>
+			}
 		</div>
 	}
 }

@@ -14,9 +14,8 @@
 
 import React                                      from 'react';
 import Home                                       from './ui/pages/Home';
-import Settings                                   from './ui/pages/Settings';
+import AppBar                                     from './ui/components/AppBar';
 import {BrowserRouter, StaticRouter, Route, Link} from "react-router-dom";
-import AppBar                                     from '@material-ui/core/AppBar';
 import Toolbar                                    from '@material-ui/core/Toolbar';
 import IconButton                                 from '@material-ui/core/IconButton';
 import Typography                                 from '@material-ui/core/Typography';
@@ -27,6 +26,8 @@ import "./ui/styles/index.scss"
 
 
 
+const Settings = props => <Home{ ...props } editable={ true }/>;
+
 export default class App extends React.Component {
 	state = {};
 	
@@ -34,31 +35,9 @@ export default class App extends React.Component {
 		let Router = BrowserRouter;
 		if ( this.props.location )
 			Router = StaticRouter;
-		return <Router location={ this.props.location }>
+		return <Router location={ this.props.location } context={ {} }>
 			<React.Fragment>
-				<AppBar position="static" className={ "AppBar" }>
-					<Toolbar>
-						<Typography cvariant="h6" color="inherit" noWrap>
-							Weather desk
-						</Typography>
-						<div className={ "tools" }>
-							<Link to={ "/" } className={ "homeBtn" }>
-								<IconButton aria-label="home"
-								            color="inherit">
-									<HomeIcon/>
-								</IconButton>
-							</Link>
-							
-							<Link to={ "/settings" } className={ "settingsBtn" }>
-								<IconButton aria-label="settings"
-								            color="inherit">
-									<SettingsIcon/>
-								</IconButton>
-							</Link>
-						</div>
-					</Toolbar>
-				</AppBar>
-				
+				<AppBar/>
 				
 				<Route path="/" exact component={ Home }/>
 				<Route path="/settings" component={ Settings }/>
@@ -66,3 +45,4 @@ export default class App extends React.Component {
 		</Router>
 	}
 }
+

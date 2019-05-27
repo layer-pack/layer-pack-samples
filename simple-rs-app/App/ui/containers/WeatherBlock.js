@@ -40,13 +40,13 @@ import WeatherInfos                          from "App/ui/components/WeatherInfo
 export default class WeatherBlock extends React.Component {
 	static propTypes = {
 		record  : PropTypes.object.isRequired,
-		disabled: PropTypes.bool,
+		editable: PropTypes.bool,
 	};
 	state            = {};
 	
 	render() {
 		let {
-			    record, $actions, disabled, WeatherSearch
+			    record, $actions, editable, WeatherSearch
 		    }     = this.props,
 		    state = this.state;
 		
@@ -61,7 +61,7 @@ export default class WeatherBlock extends React.Component {
 							|| "Edit me !"
 						}
 						{
-							!disabled &&
+							editable &&
 							<React.Fragment>
 								<Fab aria-label="edit" className={ "edit" }
 								     onClick={ e => this.setState({ editing: true }) }>
@@ -94,7 +94,7 @@ export default class WeatherBlock extends React.Component {
 						}
 						
 						<Fab aria-label="Save" className={ "save" }
-						     disabled={ record.fetching }
+						     editable={ record.fetching }
 						     onClick={ e => this.setState({ editing: false }) }>
 							<SaveIcon/>
 						</Fab>

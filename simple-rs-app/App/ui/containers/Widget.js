@@ -17,11 +17,21 @@ import {Rnd}                                 from "react-rnd";
 import {reScope, scopeToProps, propsToScope} from "rscopes";
 
 
+const resizeHandles = {
+	bottom     : true,
+	bottomLeft : true,
+	bottomRight: true,
+	left       : true,
+	right      : true,
+	top        : true,
+	topLeft    : true,
+	topRight   : true,
+}
 @reScope
 export default class Widget extends React.Component {
 	static propTypes = {
 		selected: PropTypes.bool,
-		disabled: PropTypes.bool,
+		editable: PropTypes.bool,
 		record  : PropTypes.object.isRequired,
 		onSelect: PropTypes.func
 	};
@@ -37,41 +47,48 @@ export default class Widget extends React.Component {
 			});
 	};
 	
+	
+	drag   = ( e, d ) => {
+		let {
+			    record,
+			    dispatch, onSelect, selected
+		    } = this.props;
+		!selected && onSelect(record)
+		this.setState(
+			{
+				position: { x: d.x, y: d.y }
+			});
+	};
+	resize = ( e, direction, ref, delta, position ) => {
+		this.setState(
+			{
+				position,
+				size: {
+					width : ref.offsetWidth,
+					height: ref.offsetHeight
+				}
+			});
+	};
+	
 	render() {
 		let {
 			    record: { position, size } = {},
-			    record, children, disabled,
-			    $actions, onSelect, selected
+			    record, children, editable,
+			    dispatch, onSelect, selected
 		    }     = this.props,
 		    state = this.state;
 		return (
 			<Rnd
 				className={ "Widget" }
-				disableDragging={ !!disabled }
-				enableResizing={ disabled }
-				//dragHandleClassName={ "handle" }
-				style={ selected ? { zIndex: 2000 } : undefined }
+				disableDragging={ !editable }
+				enableResizing={ editable && resizeHandles }
+				style={ { zIndex: selected ? 2000 : 1 } }
 				size={ state.size || size }
 				position={ state.position || position }
 				onDragStop={ this.saveState }
 				onResizeStop={ this.saveState }
-				onDrag={ ( e, d ) => {
-					!selected && onSelect(record)
-					this.setState(
-						{
-							position: { x: d.x, y: d.y }
-						});
-				} }
-				onResize={ ( e, direction, ref, delta, position ) => {
-					this.setState(
-						{
-							position,
-							size: {
-								width : ref.offsetWidth,
-								height: ref.offsetHeight
-							}
-						});
-				} }>
+				onDrag={ this.drag }
+				onResize={ this.resize }>
 				<div className={ " content" }>
 					{ children }
 				</div>
