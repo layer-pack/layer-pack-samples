@@ -65,19 +65,12 @@ export default class WeatherBlock extends React.Component {
 		onClose && onClose(record);
 	};
 	
-	//componentDidUpdate( prevProps, prevState, snapshot ) {
-	//	console.log(Object.keys(prevProps)
-	//	                  .filter(key => (prevProps[key] !== this.props[key])))
-	//	console.log(Object.keys(prevState)
-	//	                  .filter(key => (prevState[key] !== this.state[key])))
-	//}
 	
 	render() {
 		let {
 			    record, $actions, editable, WeatherSearch
 		    }     = this.props,
 		    state = this.state;
-		//console.log('WeatherBlock::render:73: ', record._id);
 		return (
 			<div className={ "WeatherBlock" }>
 				{

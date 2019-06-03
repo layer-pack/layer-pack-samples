@@ -35,14 +35,12 @@ export default class WeatherSearch extends Store {
 	
 	constructor() {
 		super(...arguments);
-		console.log("search ")
 		this._refreshTm = setInterval(this.checkUpdate, 1000 * 10);
 	}
 	
 	checkUpdate = () => {
 		let { location, fetched } = this.data;
 		if ( location && fetched < (Date.now() - 1000 * 60) ) {
-			
 			this.doSearch(location)
 		}
 	}
@@ -61,7 +59,6 @@ export default class WeatherSearch extends Store {
 		// do query weather if needed
 		if ( location ) {
 			this.doSearch(location)
-			console.log("search ", location)
 			
 			return { location, fetching: true };
 		}
