@@ -35,7 +35,7 @@ export default class Home extends React.Component {
 	
 	rmWidget = record => {
 		let { $actions } = this.props;
-		$actions.rmWidget(record)
+		$actions.rmWidget(record._id)
 	};
 	
 	render() {

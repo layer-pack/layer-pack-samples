@@ -83,6 +83,7 @@ export default {
 			}
 		},
 		updateWidget( w ) {
+			console.log(w)
 			return {
 				...this.nextState,
 				[w._id]: w
@@ -90,8 +91,8 @@ export default {
 		},
 		rmWidget( id ) {
 			let ns = this.nextState;
-			delete [id];
-			return ns;
+			ns[id] = undefined;
+			return { ...ns };
 		}
 	}
 }

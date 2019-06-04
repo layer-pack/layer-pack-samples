@@ -11,32 +11,35 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import PropTypes                             from "prop-types";
-import React                                 from "react";
-import Fab                                   from '@material-ui/core/Fab';
-import DeleteIcon                            from '@material-ui/icons/Delete';
-import EditIcon                              from '@material-ui/icons/Edit';
-import SaveIcon                              from '@material-ui/icons/Save';
-import {reScope, scopeToProps, propsToScope} from "rscopes";
-import WeatherSearch                         from "App/stores/WeatherSearch";
-import WeatherInfos                          from "App/ui/components/WeatherInfos";
+import PropTypes                                      from "prop-types";
+import React                                          from "react";
+import Fab                                            from '@material-ui/core/Fab';
+import DeleteIcon                                     from '@material-ui/icons/Delete';
+import EditIcon                                       from '@material-ui/icons/Edit';
+import SaveIcon                                       from '@material-ui/icons/Save';
+import {reScope, scopeToProps, propsToScope, asScope} from "rscopes";
+import WeatherSearch                                  from "App/stores/WeatherSearch";
+import WeatherInfos                                   from "App/ui/components/WeatherInfos";
 
 
 @reScope(
 	{
-		// will keep separate instances for each instance of WeatherWidget
-		// WeatherSearch can still require stores in the parents scopes
-		WeatherSearch
+		@asScope
+		weather: {
+			// will keep separate instances for each instance of WeatherWidget
+			// WeatherSearch can still require stores in the parents scopes
+			WeatherSearch
+		}
 	}
 )
 // map the record location as the default value in the WeatherSearch store state
 @propsToScope(
 	[
-		"record.location:WeatherSearch.defaultLocation",
-		"record:WeatherSearch.record"
+		"record.location:weather.WeatherSearch.defaultLocation",
+		"record:weather.WeatherSearch.record"
 	])
 // finally inject the stores
-@scopeToProps("WeatherSearch")
+@scopeToProps("weather.WeatherSearch")
 export default class WeatherBlock extends React.Component {
 	static propTypes = {
 		record  : PropTypes.object.isRequired,
@@ -54,7 +57,7 @@ export default class WeatherBlock extends React.Component {
 		    state = this.state;
 		this.setState({ searching });
 		if ( searching.length > 2 )
-			$actions.updateWeatherSearch(searching);
+			$actions.weather.updateWeatherSearch(searching);
 	};
 	
 	stopPropagation = e => e.stopPropagation();
@@ -71,6 +74,7 @@ export default class WeatherBlock extends React.Component {
 			    record, $actions, editable, WeatherSearch
 		    }     = this.props,
 		    state = this.state;
+		console.log('WeatherBlock::render:77: ', WeatherSearch.location);
 		return (
 			<div className={ "WeatherBlock" }>
 				{

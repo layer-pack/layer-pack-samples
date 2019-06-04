@@ -79,7 +79,7 @@ export default class WeatherSearch extends Store {
 				this.push({ results: res.body, location, fetching: false, fetched: Date.now() });
 				
 				// update the record location
-				state.record && this.$actions.updateWidget(
+				state.record && this.$actions.$parent.updateWidget(
 					{
 						...state.record,
 						location
