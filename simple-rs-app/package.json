@@ -63,6 +63,7 @@
     "body-parser": "^1.18.2",
     "concurrently": "^4.1.0",
     "debounce": "^1.2.0",
+    "rscopes": "^16.1.0",
     "debug-logger": "^0.4.1",
     "dot-tpl-loader": "^1.2.1",
     "express": "^4.16.3",
