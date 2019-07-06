@@ -5,51 +5,6 @@
   "license": "MIT",
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
-  "wpInherit": {
-    "default": {
-      "rootFolder": "App",
-      "libsPath": "./libs",
-      "vars": {
-        "production": true
-      },
-      "extend": [
-        "wpi-react-redux-sass-ssr"
-      ]
-    },
-    "devClient": {
-      "rootFolder": "App",
-      "basedOn": "default",
-      "libsPath": "./libs",
-      "vars": {
-        "webpackPatch": {
-          "watchOptions": {
-            "aggregateTimeout": 300,
-            "poll": 1000
-          }
-        }
-      },
-      "extend": [
-        "wpi-react-redux-sass-ssr"
-      ]
-    },
-    "api": {
-      "rootFolder": "App",
-      "libsPath": "./libs",
-      "vars": {
-        "externals": true,
-        "webpackPatch": {
-          "devtool": "eval",
-          "watchOptions": {
-            "aggregateTimeout": 300,
-            "poll": 1000
-          }
-        }
-      },
-      "extend": [
-        "wpi-react-redux-sass-ssr"
-      ]
-    }
-  },
   "scripts": {
     "build": "wpi&&wpi :api",
     "dev-api": "wpi :api -w",
