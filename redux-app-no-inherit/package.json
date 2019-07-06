@@ -1,5 +1,5 @@
 {
-  "name": "simple-redux-app",
+  "name": "redux-app-no-inherit",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -28,6 +28,10 @@
     "node-watch": "^0.6.0",
     "nodemon": "^1.18.7",
     "prop-types": "^15.6.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-thunk": "^2.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-rnd": "^9.0.4",

@@ -1,0 +1,44 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.www.js",
+    "libsPath": "./libs",
+    "vars": {
+      "production": true
+    },
+    "extend": [
+    ]
+  },
+  "api": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.api.js",
+    "libsPath": "./libs",
+    "vars": {
+      "externals": true,
+      "webpackPatch": {
+        "devtool": "eval",
+        "watchOptions": {
+          "aggregateTimeout": 300,
+          "poll": 1000
+        }
+      }
+    },
+    "extend": [
+    ]
+  },
+  "devClient": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.www.js",
+    "libsPath": "./libs",
+    "vars": {
+      "webpackPatch": {
+        "watchOptions": {
+          "aggregateTimeout": 300,
+          "poll": 1000
+        }
+      }
+    },
+    "extend": [
+    ]
+  }
+}
