@@ -16,32 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import Actions          from "App/store/actions";
-import React            from 'react';
-import {connect}        from 'react-redux'
-import {AppBar, Widget} from './ui/components/(*).js';
-import {ToolBar}        from './ui/containers/(*).js';
+import SuperApp  from '$super';
+import React     from 'react';
+import {connect} from 'react-redux'
+import {AppBar}  from './ui/components/(*).js';
+import {ToolBar} from './ui/containers/(*).js';
 import "./ui/styles/index.scss"
-import allWidgets       from './ui/widgets/(*).js';
 
 
-@connect(( { widgets, appState } ) => ({ widgets, appState }))
+@connect(( { appState } ) => ({ appState }))
 export default class App extends React.Component {
 	state = {};
-	
-	rmWidget = record => {
-		let { dispatch } = this.props;
-		dispatch(Actions.widgets.rmWidget(record._id))
-	};
-	
-	selectWidget = record => {
-		let { dispatch } = this.props;
-		dispatch(Actions.widgets.selectWidget(record._id))
-	};
-	updateWidget = record => {
-		let { dispatch } = this.props;
-		dispatch(Actions.widgets.updateWidget(record))
-	};
 	
 	render() {
 		let { widgets = {} } = this.props,
@@ -51,22 +36,7 @@ export default class App extends React.Component {
 			<AppBar><ToolBar/></AppBar>
 			
 			<div className={"desk"}>
-				{
-					Object.keys(widgets.items).map(
-						wid => {
-							let WidgetComp = allWidgets[widgets.items[wid].type];
-							return <Widget
-								key={wid}
-								record={widgets.items[wid]}
-								onSelect={this.selectWidget}
-								onWidgetUpdated={this.updateWidget}
-								selected={wid === widgets.selectedWidgetId}>
-								{WidgetComp && <WidgetComp id={wid}
-								                           onClose={this.rmWidget}></WidgetComp>}
-							</Widget>
-						}
-					)
-				}
+				<SuperApp/>
 			</div>
 		</React.Fragment>
 	}

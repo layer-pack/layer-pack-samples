@@ -6,6 +6,7 @@
       "production": true
     },
     "extend": [
+      "widget-management",
       "wpi-react-redux-sass-ssr"
     ]
   },
@@ -22,6 +23,7 @@
       }
     },
     "extend": [
+      "widget-management",
       "wpi-react-redux-sass-ssr"
     ]
   },
@@ -39,6 +41,7 @@
       }
     },
     "extend": [
+      "widget-management",
       "wpi-react-redux-sass-ssr"
     ]
   }

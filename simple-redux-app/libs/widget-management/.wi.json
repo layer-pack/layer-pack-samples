@@ -1,0 +1,24 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "vars": {
+    },
+    "extend": [
+    ]
+  },
+  "devClient": {
+    "rootFolder": "App",
+    "basedOn": "default",
+    "vars": {
+    },
+    "extend": [
+    ]
+  },
+  "api": {
+    "rootFolder": "App",
+    "vars": {
+    },
+    "extend": [
+    ]
+  }
+}
