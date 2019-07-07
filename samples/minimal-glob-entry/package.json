@@ -1,0 +1,23 @@
+{
+  "name": "minimal-redux-app",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./Server.js",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "build": "webpack-cli"
+  },
+  "dependencies": {
+    "is": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-inherit": "^1.6.2"
+  }
+}
