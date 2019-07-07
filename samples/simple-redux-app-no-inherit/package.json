@@ -96,6 +96,6 @@
     "webpack-visualizer-plugin": "^0.1.11",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
-    "webpack-inherit": "^1.6.2"
+    "webpack-inherit": "^1.6.3"
   }
 }
