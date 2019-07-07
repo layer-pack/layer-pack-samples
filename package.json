@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./tests/*.test.js -b"
+    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b"
   },
   "dependencies": {},
   "devDependencies": {
