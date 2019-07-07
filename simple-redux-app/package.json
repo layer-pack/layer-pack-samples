@@ -40,6 +40,6 @@
   },
   "devDependencies": {
     "wpi-react-redux-sass-ssr": "^1.2.0",
-    "webpack-inherit": "^1.5.11"
+    "webpack-inherit": "^1.6.2"
   }
 }
