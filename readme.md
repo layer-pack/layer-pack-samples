@@ -2,6 +2,11 @@
 
 Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
 
+
+<a href="https://travis-ci.org/n8tz/webpack-inherit-samples">
+<img src="https://travis-ci.org/n8tz/webpack-inherit-samples.svg?branch=master" alt="Build Status" /></a>
+
+
 ## Available :
 
 ### [minimal-glob-entry](samples/minimal-glob-entry)

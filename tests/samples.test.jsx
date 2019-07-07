@@ -52,7 +52,6 @@ before(function () {
 						           }
 						);
 						
-						//expect(wrapper.find('.target').text()).to.equal("ok");
 						
 					});
 					it('it build correctly ' + sample, function ( done ) {
@@ -70,7 +69,6 @@ before(function () {
 						           }
 						);
 						
-						//expect(wrapper.find('.target').text()).to.equal("ok");
 						
 					});
 				});
