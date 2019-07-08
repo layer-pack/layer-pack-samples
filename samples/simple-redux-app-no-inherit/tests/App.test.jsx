@@ -31,8 +31,7 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 			
 			exec('npm run build',
 			     {
-				     cwd  : projectDir,
-				     stdio: 'inherit' //feed all child process logging into parent process
+				     cwd: projectDir,
 			     },
 			     function ( code, outLog ) {
 				     code && console.warn('build fail : ' + code + '\n\n');
@@ -47,15 +46,16 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 			
 			appServer = exec('npm run start',
 			                 {
-				                 cwd  : projectDir,
-				                 stdio: 'inherit' //feed all child process logging into parent process
+				                 cwd: projectDir,
 			                 },
 			                 function ( code, outLog ) {
 				                 code && console.warn('Start fail : ' + code + '\n\n' + outLog);
 			                 }
 			);
-			isPortReachable(8080, { host: 'localhost' })
-				.then(e => done())
+			
+			isPortReachable(8080, { host: 'localhost', timeout: 10000 })
+				.then(e => setTimeout(tm => done(), 5000))
+				.catch(e => done(new Error("Can't connect :( " + e)))
 			
 		});
 	});
