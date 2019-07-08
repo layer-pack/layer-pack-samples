@@ -127,9 +127,9 @@ req.keys().forEach(function (key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./index.app1.js": "./App/entryPoints/index.app1.js",
-	"./index.app2.js": "./App/entryPoints/index.app2.js",
-	"./index.app3.js": "./App/entryPoints/index.app3.js"
+	"./index.ep1.js": "./App/entryPoints/index.ep1.js",
+	"./index.ep2.js": "./App/entryPoints/index.ep2.js",
+	"./index.ep3.js": "./App/entryPoints/index.ep3.js"
 };
 
 
@@ -154,10 +154,10 @@ webpackContext.id = "./App/entryPoints sync recursive ^\\.\\/index\\.[^\\\\\\/]+
 
 /***/ }),
 
-/***/ "./App/entryPoints/index.app1.js":
-/*!***************************************!*\
-  !*** ./App/entryPoints/index.app1.js ***!
-  \***************************************/
+/***/ "./App/entryPoints/index.ep1.js":
+/*!**************************************!*\
+  !*** ./App/entryPoints/index.ep1.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -174,14 +174,14 @@ webpackContext.id = "./App/entryPoints sync recursive ^\\.\\/index\\.[^\\\\\\/]+
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-document.getElementById('app1').innerHTML = "ep 1: ok";
+document.getElementById('ep1').innerHTML = "ep 1: ok";
 
 /***/ }),
 
-/***/ "./App/entryPoints/index.app2.js":
-/*!***************************************!*\
-  !*** ./App/entryPoints/index.app2.js ***!
-  \***************************************/
+/***/ "./App/entryPoints/index.ep2.js":
+/*!**************************************!*\
+  !*** ./App/entryPoints/index.ep2.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -198,14 +198,14 @@ document.getElementById('app1').innerHTML = "ep 1: ok";
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-document.getElementById('app2').innerHTML = "ep 2: ok";
+document.getElementById('ep2').innerHTML = "ep 2: ok";
 
 /***/ }),
 
-/***/ "./App/entryPoints/index.app3.js":
-/*!***************************************!*\
-  !*** ./App/entryPoints/index.app3.js ***!
-  \***************************************/
+/***/ "./App/entryPoints/index.ep3.js":
+/*!**************************************!*\
+  !*** ./App/entryPoints/index.ep3.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -222,7 +222,7 @@ document.getElementById('app2').innerHTML = "ep 2: ok";
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-document.getElementById('app3').innerHTML = "ep 3: ok";
+document.getElementById('ep3').innerHTML = "ep 3: ok";
 
 /***/ }),
 

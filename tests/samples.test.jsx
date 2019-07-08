@@ -54,20 +54,21 @@ before(function () {
 						
 						
 					});
-					it('it build correctly ' + sample, function ( done ) {
+					it('it run tests correctly ' + sample, function ( done ) {
 						this.timeout(Infinity);
 						
-						cmd = exec('npm run build',
+						cmd = exec('npm run test',
 						           {
-							           cwd  : samplesDir + "/" + sample,
-							           stdio: 'inherit' //feed all child process logging into parent process
+							           cwd: samplesDir + "/" + sample,
 						           },
 						           function ( code, outLog ) {
 							           code && console.warn('setup fail : ' + code + '\n\n');
-							           //outLog && console.warn('outLog : ' + outLog + '\n\n');
 							           done(code);
 						           }
 						);
+						
+						cmd.stdout.on('data', data => process.stdout.write(data));
+						cmd.stderr.on('data', data => process.stdout.write(data));
 						
 						
 					});
@@ -78,5 +79,4 @@ before(function () {
 	}))
 });
 it('Load all sample tests', function () {
-	//console.log('Mocha should not require this hack IMHO');
 });

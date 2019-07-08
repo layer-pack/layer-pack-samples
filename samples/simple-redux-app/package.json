@@ -6,6 +6,7 @@
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
+    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
     "build": "wpi&&wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "wpi :api&&concurrently \"wpi-dev-server :devClient --hot --host 0.0.0.0\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
@@ -39,6 +40,17 @@
     "url-loader": "^1.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "is-port-reachable": "^2.0.1",
+    "mocha": "^3.5.3",
+    "fkill": "^6.2.0",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "zombie": "^6.1.4",
     "wpi-react-redux-sass-ssr": "^1.2.0",
     "webpack-inherit": "^1.6.3"
   }
