@@ -42,12 +42,10 @@ before(function () {
 						
 						cmd = exec('npm i',
 						           {
-							           cwd  : samplesDir + "/" + sample,
-							           stdio: 'inherit' //feed all child process logging into parent process
+							           cwd: samplesDir + "/" + sample,
 						           },
 						           function ( code, outLog ) {
 							           code && console.warn('setup fail : ' + code + '\n\n');
-							           //outLog && console.warn('outLog : ' + outLog + '\n\n');
 							           done(code);
 						           }
 						);

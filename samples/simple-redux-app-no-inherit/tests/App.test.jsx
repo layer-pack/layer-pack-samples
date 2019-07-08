@@ -71,7 +71,7 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 		
 		after(function () {
 			this.timeout(Infinity);
-			return kill(appServer.pid, { tree: true, force: true });
+			return kill([appServer.pid, ":8080"], { tree: true, force: true, silent: true });
 		});
 		it('should have 5 weather widget infos', function () {
 			browser.assert.elements('.infos > .temp', 5);
