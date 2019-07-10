@@ -1,5 +1,5 @@
 {
-  "name": "minimal-glob-entry",
+  "name": "minimal-lib-with-glob-entry",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -7,7 +7,6 @@
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
     "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
-    "start": "ws -d ./dist -p 8080",
     "build": "webpack-cli"
   },
   "dependencies": {},
