@@ -9,11 +9,20 @@ Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
 
 ## Available :
 
-### [minimal-glob-entry](samples/minimal-glob-entry)
+### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
 
-A minimal webpack-inherit config with glob support
+A minimal lib config multiple entry point using WI pseudo-glob
 
-To test go in the [samples/minimal-glob-entry](samples/minimal-glob-entry) package and exec :
+To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
+
+    npm i
+    npm run build
+    
+### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
+
+A minimal lib config with common-js exports of multiple entry point using WI pseudo-glob  
+
+To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with-glob-entry) package and exec :
 
     npm i
     npm run build
