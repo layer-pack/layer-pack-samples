@@ -156,7 +156,7 @@ req.keys().forEach(function (key) {
 });
 var main = _exports.main;
 var secondary = _exports.secondary;
-var utils = _exports.domUtils;
+var utils = _exports.utils;
 /* harmony default export */ __webpack_exports__["default"] = (_exports);
 
 /***/ }),
