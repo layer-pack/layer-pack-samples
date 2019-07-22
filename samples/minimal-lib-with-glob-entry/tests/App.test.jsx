@@ -54,7 +54,7 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 		it('should have all the ep', function ( done ) {
 			if ( appLib.main !== "mainLibEp"
 				|| appLib.secondary !== "secondaryLibEp"
-				|| appLib.domUtils !== "utils"
+				|| appLib.utils !== "utils"
 			)
 				return done(new Error("Missing ep ! "));
 			
