@@ -30,7 +30,7 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 			
 			exec('npm run build',
 			     {
-				     cwd  : projectDir,
+				     cwd: projectDir,
 			     },
 			     function ( code, outLog ) {
 				     code && console.warn('build fail : ' + code + '\n\n');
@@ -45,16 +45,19 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 			
 			appServer = exec('npm run start',
 			                 {
-				                 cwd  : projectDir,
+				                 cwd: projectDir,
 			                 },
 			                 function ( code, outLog ) {
-				                 code && console.warn('Start fail : ' + code + '\n\n' + outLog);
+				                 //code && console.warn('Start fail : ' + code + '\n\n' + outLog);
 			                 }
 			);
 			
 			isPortReachable(8080, { host: 'localhost', timeout: 10000 })
-				.then(e => setTimeout(tm => done(), 5000))
-				.catch(e => done(new Error("Can't connect :( " + e)))
+				.then(e => setTimeout(tm => done(), 1000))
+				.catch(e => {
+					kill([appServer.pid, ":8080"], { tree: true, force: true, silent: true })
+						.then(e => done(new Error("Can't connect :( " + e)))
+				})
 			
 		});
 	});

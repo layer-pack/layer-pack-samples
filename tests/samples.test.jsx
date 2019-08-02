@@ -70,6 +70,11 @@ before(function () {
 						
 						
 					});
+					// ....
+					after(function () {
+						this.timeout(Infinity);
+						return kill([":8080"], { tree: true, force: true, silent: true });
+					});
 				});
 			}
 			resolve();

@@ -49,13 +49,16 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 				                 cwd: projectDir,
 			                 },
 			                 function ( code, outLog ) {
-				                 code && console.warn('Start fail : ' + code + '\n\n' + outLog);
+				                 //code && console.warn('Start fail : ' + code + '\n\n' + outLog);
 			                 }
 			);
 			
 			isPortReachable(8080, { host: 'localhost', timeout: 10000 })
 				.then(e => setTimeout(tm => done(), 5000))
-				.catch(e => done(new Error("Can't connect :( " + e)))
+				.catch(e => {
+					kill([appServer.pid, ":8080"], { tree: true, force: true, silent: true })
+						.then(e => done(new Error("Can't connect :( " + e)))
+				})
 			
 		});
 	});
