@@ -12,18 +12,12 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-var child_process = require('child_process');
 var fs            = require('fs');
-var shortid       = require('shortid');
 var path          = require('path');
-
-//import Enzyme  from 'enzyme';
-//import Adapter from 'enzyme-adapter-react-16';
-
-//Enzyme.configure({ adapter: new Adapter() });
 
 let util  = require('util'),
     spawn = require('child_process').spawn,
+    kill  = require('fkill'),
     exec  = require('child_process').exec,
     cmd;
 
