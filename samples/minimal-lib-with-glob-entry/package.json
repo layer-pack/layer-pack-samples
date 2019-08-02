@@ -6,7 +6,7 @@
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
+    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
     "build": "webpack-cli"
   },
   "dependencies": {},
@@ -20,7 +20,7 @@
     "is": "^3.3.0",
     "is-port-reachable": "^2.0.1",
     "local-web-server": "^3.0.4",
-    "mocha": "^3.5.3",
+    "mocha": "^6.2.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-inherit": "^1.6.2",

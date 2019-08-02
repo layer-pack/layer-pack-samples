@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b"
+    "test": "mocha --require @babel/register ./tests/*.test.jsx -b"
   },
   "dependencies": {},
   "devDependencies": {
@@ -25,7 +25,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "fast-glob": "^2.2.6",
     "jsdom": "^15.1.1",
-    "mocha": "^3.5.3",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "shortid": "^2.2.14"
   }
