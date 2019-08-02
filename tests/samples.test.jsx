@@ -12,14 +12,13 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-var fs            = require('fs');
-var path          = require('path');
-
-let util  = require('util'),
-    spawn = require('child_process').spawn,
-    kill  = require('fkill'),
-    exec  = require('child_process').exec,
-    cmd;
+const fs    = require('fs'),
+      path  = require('path'),
+      util  = require('util'),
+      spawn = require('child_process').spawn,
+      exec  = require('child_process').exec;
+let
+	cmd;
 
 let samplesDir = path.normalize(__dirname + "/../samples/"),
     scopes     = {};
@@ -63,11 +62,6 @@ before(function () {
 						cmd.stderr.on('data', data => process.stdout.write(data));
 						
 						
-					});
-					// ....
-					after(function () {
-						this.timeout(Infinity);
-						return kill([":8080"], { tree: true, force: true, silent: true });
 					});
 				});
 			}

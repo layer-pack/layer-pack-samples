@@ -72,7 +72,8 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 		});
 		
 		after(function () {
-			this.timeout(Infinity);
+			this.timeout(3000);
+			browser.destroy();
 			return kill([appServer.pid, ":8080"], { tree: true, force: true, silent: true });
 		});
 		
