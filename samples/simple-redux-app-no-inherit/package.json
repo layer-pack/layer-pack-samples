@@ -46,7 +46,6 @@
   "devDependencies": {
     "is-port-reachable": "^2.0.1",
     "mocha": "^6.2.0",
-
     "zombie": "^6.1.4",
     "fkill": "^6.2.0",
     "wpi-react-redux-sass-ssr": "^1.2.0",
