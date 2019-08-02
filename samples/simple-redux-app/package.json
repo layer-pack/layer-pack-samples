@@ -6,8 +6,8 @@
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
-    "build": "wpi&&wpi :api",
+    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
+    "build": "wpi :client&&wpi :api",
     "dev-api": "wpi :api -w",
     "start-dev": "wpi :api&&concurrently \"wpi-dev-server :devClient --hot --host 0.0.0.0\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
     "start": "node ./dist/App.server.js  -p 8080",
@@ -19,14 +19,11 @@
     "body-parser": "^1.18.2",
     "concurrently": "^4.1.0",
     "debounce": "^1.2.0",
-    "debug-logger": "^0.4.1",
-    "dot-tpl-loader": "^1.2.1",
     "express": "^4.16.3",
     "extract-hoc": "0.0.5",
     "is": "^3.3.0",
     "minimist": "^1.2.0",
     "moment": "^2.23.0",
-    "node-watch": "^0.6.0",
     "nodemon": "^1.18.7",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -35,7 +32,6 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "request": "^2.85.0",
-    "shortid": "^2.2.8",
     "superagent": "^3.8.2",
     "url-loader": "^1.1.2"
   },
@@ -44,14 +40,14 @@
     "@babel/preset-env": "^7.5.0",
     "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
-    "html-webpack-plugin": "^3.2.0",
     "is-port-reachable": "^2.0.1",
-    "mocha": "^3.5.3",
     "fkill": "^6.2.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "zombie": "^6.1.4",
-    "wpi-react-redux-sass-ssr": "^1.2.0",
-    "webpack-inherit": "^1.6.3"
+    "mocha": "^6.2.0",
+    "webpack-inherit": "^1.6.9",
+    "wi-layer-react-express": "file:packages/wi-layer-react-express",
+    "wi-layer-redux-thunk": "file:packages/wi-layer-redux-thunk"
   }
 }

@@ -31,7 +31,8 @@ To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with
 
 A simple redux app inheriting :
  - a widget management layer ( ./libs/widget-management ) 
- - npm boilerplate with React, Redux, SSR, sass & hot reload (package "wpi-react-redux-sass-ssr")
+ - a layer with Redux & redux thunk
+ - a layer with React, SSR, sass, hot reload & the webpack configs
 
 To test go in the [samples/simple-redux-app](samples/simple-redux-app) package and exec :
 

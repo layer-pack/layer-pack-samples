@@ -1,0 +1,31 @@
+{
+  "default": {
+    "rootFolder": "App"
+  },
+  "defaultBrowser": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.www.js",
+    "extend": []
+  },
+  "defaultServer": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.api.js",
+    "extend": []
+  },
+  "defaultComponent": {
+    "rootFolder": "Comp",
+    "config": "./etc/wp/webpack.config.comp.js",
+    "vars": {
+    },
+    "extend": []
+  },
+  "defaultSamples": {
+    "rootFolder": "Comp",
+    "config": "./etc/wp/webpack.config.samples.js",
+    "vars": {
+      "targetDir": "samples",
+      "rootAlias": "Comp"
+    },
+    "extend": []
+  }
+}

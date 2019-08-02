@@ -1,19 +1,24 @@
 {
   "default": {
+    "rootFolder": "App"
+  },
+  "client": {
     "rootFolder": "App",
-    "libsPath": "./libs",
+    "libsPath": "./packages",
+    "basedOn": "defaultBrowser",
     "vars": {
       "production": true
     },
     "extend": [
       "widget-management",
-      "wpi-react-redux-sass-ssr"
+      "wi-layer-redux-thunk",
+      "wi-layer-react-express"
     ]
   },
   "devClient": {
     "rootFolder": "App",
-    "basedOn": "default",
-    "libsPath": "./libs",
+    "basedOn": "defaultBrowser",
+    "libsPath": "./packages",
     "vars": {
       "webpackPatch": {
         "watchOptions": {
@@ -24,12 +29,14 @@
     },
     "extend": [
       "widget-management",
-      "wpi-react-redux-sass-ssr"
+      "wi-layer-redux-thunk",
+      "wi-layer-react-express"
     ]
   },
   "api": {
     "rootFolder": "App",
-    "libsPath": "./libs",
+    "basedOn": "defaultServer",
+    "libsPath": "./packages",
     "vars": {
       "externals": true,
       "webpackPatch": {
@@ -42,7 +49,8 @@
     },
     "extend": [
       "widget-management",
-      "wpi-react-redux-sass-ssr"
+      "wi-layer-redux-thunk",
+      "wi-layer-react-express"
     ]
   }
 }
