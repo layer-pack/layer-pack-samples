@@ -9,7 +9,7 @@
     "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
     "build": "wpi :www&&wpi :api",
     "start-dev": "wi-run :dev start",
-    "start": "wi-run :prod start -l",
+    "start": "node ./dist/api/App.server.js -p 8080",
     "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
