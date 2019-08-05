@@ -13,11 +13,9 @@
  */
 
 
-import App from "App/index.js";
+import App     from "App/index.js";
+import express from "express";
 
-const wpiConf = require('App/.wpiConfig.json'),
-      fs      = require('fs'),
-      express = require('express');
 
 let currentState;
 

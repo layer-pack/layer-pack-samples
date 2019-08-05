@@ -28,7 +28,7 @@
       },
       "www": {
         "clearBefore": "dist/www",
-        "run": "wpi-dev-server :www --hot",
+        "run": "wpi-dev-server :www --hot --host 0.0.0.0",
         "vars": {
           "production": false,
           "DefinePluginCfg": {
