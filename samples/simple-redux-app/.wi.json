@@ -2,23 +2,20 @@
   "default": {
     "rootFolder": "App"
   },
-  "client": {
-    "rootFolder": "App",
-    "libsPath": "./packages",
-    "basedOn": "defaultBrowser",
-    "vars": {
-      "production": true
-    },
+  "dev": {// make default dev profile scripts available
     "extend": [
-      "widget-management",
-      "wi-layer-redux-thunk",
       "wi-layer-react-express"
     ]
   },
-  "devClient": {
+  "prod": {// make default prod profile scripts available
+    "extend": [
+      "wi-layer-react-express"
+    ]
+  },
+  "www": {
     "rootFolder": "App",
-    "basedOn": "defaultBrowser",
     "libsPath": "./packages",
+    "basedOn": "defaultBrowser",
     "vars": {
       "webpackPatch": {
         "watchOptions": {

@@ -14,6 +14,7 @@
 
 import SuperApp  from '$super';
 import React     from 'react';
+import {Helmet}  from "react-helmet";
 import {connect} from 'react-redux'
 import {AppBar}  from './ui/components/(*).js';
 import {ToolBar} from './ui/containers/(*).js';
@@ -29,6 +30,10 @@ export default class App extends React.Component {
 		    {}               = this.state;
 		
 		return <React.Fragment>
+			<Helmet>
+				<meta charSet="utf-8"/>
+				<title>simple-redux-app - Weather widgets</title>
+			</Helmet>
 			<AppBar><ToolBar/></AppBar>
 			
 			<div className={"desk"}>

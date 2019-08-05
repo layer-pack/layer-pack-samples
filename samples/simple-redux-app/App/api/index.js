@@ -15,10 +15,9 @@
 
 import App from "App/index.js";
 
-const wpiConf  = require('App/.wpiConfig.json'),
-      fs       = require('fs'),
-      express  = require('express'),
-      indexTpl = require('../index.html.tpl');
+const wpiConf = require('App/.wpiConfig.json'),
+      fs      = require('fs'),
+      express = require('express');
 
 let currentState;
 
@@ -26,25 +25,27 @@ let currentState;
  * Add the rendering services to the main express instance
  * @param server {express}
  */
-export default ( server ) => {
+
+export const name          = "Rendering";
+export const priorityLevel = 100000;
+export const service       = ( server ) => {
 	
 	const servePage = ( req, res, next ) => {
 		App.renderSSR(
 			{
 				location: req.url,
 				state   : currentState,
-				indexTpl
 			},
 			( err, html, nstate ) => {
-				res.send(200, err && ("" + err) || html)
+				res.send(200, err && ("" + err + "\n" + err.stack) || html)
 			}
 		)
 	};
 	
 	server.get('/', servePage);
 	server.get('/settings', servePage);
-	
-	server.use(express.static(wpiConf.projectRoot + '/dist'));
+	console.warn("Renderer")
+	server.use(express.static('dist/www'));
 	
 	server.post('/', function ( req, res, next ) {
 		console.log("New state pushed")

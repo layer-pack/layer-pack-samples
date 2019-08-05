@@ -1,53 +1,67 @@
 /*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
-var cfg           = require('App/.wpiConfig.json')
-	,
-	debug         = require('debug-logger')
-	,
-	isFunction    = require('is').function
-	,
-	isBrowserSide = (new Function("try {return this===window;}catch(e){ return false;}"))(),
-	debounce      = require('debounce'),
-	_console      = !isBrowserSide && function _console( ns, nmFn = v => '' ) {
-		var c  = debug(ns),
-		    fn = ( ns2 ) => (new _console(ns + "::" + ns2));
-		
-		for ( var k in c )
-			if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
-				fn[k] = c[k].bind(c, nmFn(ns));
-		
-		fn.beep = function () {
-			process.stdout.write('\x07');// do a beep
-			this.error(...arguments)
-		};
-		
-		return fn;
-	} || function _console( ns, nmFn = v => '' ) {
-		var c  = console,
-		    fn = ( ns2 ) => (new _console(ns + "::" + ns2));
-		
-		for ( var k in c )
-			if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
-				fn[k] = c[k].bind(console, nmFn(ns));
-		
-		fn.beep = function () {
-			this.error(...arguments)
-		};
-		
-		return fn;
-	};
+/**
+ * console utils
+ */
+
+
+const cfg           = require('App/config').default,
+      debug         = require('debug-logger'),
+      isFunction    = require('is').function,
+      isBrowserSide = (new Function("try {return this===window;}catch(e){ return false;}"))(),
+      debounce      = require('debounce'),
+      _console      = !isBrowserSide && function _console( ns, nmFn = v => '' ) {
+	      var c  = debug(ns),
+	          fn = ( ns2 ) => (new _console(ns + "::" + ns2));
+	
+	      for ( var k in c )
+		      if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
+			      fn[k] = c[k].bind(c, nmFn(ns));
+	
+	      fn.beep = function () {
+		      process.stdout.write('\x07');// do a beep
+		      this.error(...arguments)
+	      };
+	
+	      return fn;
+      } || function _console( ns, nmFn = v => '' ) {
+	      var c  = console,
+	          fn = ( ns2 ) => (new _console(ns + "::" + ns2));
+	
+	      for ( var k in c )
+		      if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
+			      fn[k] = c[k].bind(console, nmFn(ns));
+	
+	      fn.beep = function () {
+		      this.error(...arguments)
+	      };
+	
+	      return fn;
+      };
 
 debug.inspectOptions = {
 	colors: true

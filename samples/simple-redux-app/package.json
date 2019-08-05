@@ -7,10 +7,9 @@
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
     "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
-    "build": "wpi :client&&wpi :api",
-    "dev-api": "wpi :api -w",
-    "start-dev": "wpi :api&&concurrently \"wpi-dev-server :devClient --hot --host 0.0.0.0\" \"wpi :api -w\" \"sleep 3&&nodemon --watch ./dist/App.server.js --inspect=[::]:9229 ./dist/App.server.js  -p 9701\"",
-    "start": "node ./dist/App.server.js  -p 8080",
+    "build": "wpi :www&&wpi :api",
+    "start-dev": "wi-run :dev start",
+    "start": "wi-run :prod start -l",
     "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {

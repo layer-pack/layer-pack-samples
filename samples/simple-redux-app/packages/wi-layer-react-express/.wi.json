@@ -1,31 +1,120 @@
 {
   "default": {
-    "rootFolder": "App"
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    }
   },
+  "dev": {
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    },
+    "commands": {
+      "server": {
+        "watch": "dist/api/App.server.js",
+        "run": "node --inspect=[::]:9229 ./dist/api/App.server.js -p 9701",
+        "forever": true
+      },
+      "api": {
+        "clearBefore": "dist/api",
+        "run": "wpi :api -w",
+        "vars": {
+          "production": false,
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
+        }
+      },
+      "www": {
+        "clearBefore": "dist/www",
+        "run": "wpi-dev-server :www --hot",
+        "vars": {
+          "production": false,
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
+        }
+      }
+    }
+  },
+  "prod": {
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    },
+    "commands": {
+      "www": {
+        "clearBefore": "dist/www",
+        "run": "wpi :www",
+        "vars": {
+        }
+      },
+      "api": {
+        "wait": "www",
+        "clearBefore": "dist/api",
+        "run": "wpi :api"
+      },
+      "server": {
+        "wait": "api",
+        "run": "node ./dist/api/App.server.js -p 8080",
+        "forever": true
+      }
+    }
+  },
+  "www": "defaultBrowser",
   "defaultBrowser": {
     "rootFolder": "App",
     "config": "./etc/wp/webpack.config.www.js",
-    "extend": []
+    "vars": {
+      "targetDir": "dist/www",
+      "DefinePluginCfg": {
+        "__IS_SERVER__": false
+      },
+      "production": true,
+      "babelPreset": {
+        "targets": {
+          "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"
+        },
+        "loose": true
+      }
+    }
   },
+  "api": "defaultServer",
   "defaultServer": {
     "rootFolder": "App",
     "config": "./etc/wp/webpack.config.api.js",
-    "extend": []
+    "vars": {
+      "targetDir": "dist/api",
+      "externals": true,
+      "production": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": false
+      }
+    }
   },
   "defaultComponent": {
     "rootFolder": "Comp",
     "config": "./etc/wp/webpack.config.comp.js",
     "vars": {
-    },
-    "extend": []
+      "production": true,
+      "externals": true,
+      "targetDir": "dist",
+      "rootAlias": "Comp"
+    }
   },
   "defaultSamples": {
     "rootFolder": "Comp",
     "config": "./etc/wp/webpack.config.samples.js",
     "vars": {
-      "targetDir": "samples",
-      "rootAlias": "Comp"
-    },
-    "extend": []
+      "targetDir": "dist/samples",
+      "rootAlias": "Comp",
+      "babelPreset": {
+        "targets": {
+          "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"
+        },
+        "loose": true
+      }
+    }
   }
 }

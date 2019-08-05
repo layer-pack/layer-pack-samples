@@ -11,10 +11,21 @@ Then add build profiles basing this package available profiles :
 - defaultServer    : A generic profile to make backend/cli builds 
 - defaultComponent : A generic profile to build stand alone react component
 
+<h2>Included ( among others ) : </h2>
+<ul>
+    <li>react ^16.8.6</li>
+    <li>express with minimal SSR</li>
+    <li>sass</li>
+    <li>es6 + decorators</li>
+    <li>hot reload with dev server, SSR & api proxying</li>
+    <li>react-helmet ( html header manager )</li>
+</ul>
+
 ## Example :
 
 ```
 {
+
   "www": {
     "basedOn": "defaultBrowser",
     "rootFolder": "App",
@@ -48,42 +59,49 @@ Then add build profiles basing this package available profiles :
         "wi-layer-react-express"
     ]
   },
-  "dev_www": {
-    "basedOn": "defaultBrowser",
+  
+  "dev": {
     "rootFolder": "App",
-    
-    "vars": {
-      "DefinePluginCfg": {
-        "__IS_DEV__": true,
-        "__IS_SERVER__": false
+    // this boilerplate include a minimal tasks manager for running server easily (not well tested)
+    // see this package .wi.json for more infos
+    // here the task run by the default start command : wi-run :dev start
+    "commands": {
+      "server": {
+      
+        // the command
+        "run": "node --inspect=[::]:9229 ./dist/api/App.server.js -p 9701",
+        
+        // watch & restart if updated
+        "watch": "dist/api/App.server.js",
+        
+        // restart if it fail
+        "forever": true
       },
-      "webpackPatch": {
-        "devServer": {
-          "public": "myApp.localhost",
-          "compress": true,
-          "disableHostCheck": true
+      "api": {
+        // rm -rf before running cmd
+        "clearBefore": "dist/api",        
+        
+        "run": "wpi :api -w",
+        
+        // optionnal var overrides ( so for the api profile ) 
+        "vars": {
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
+        }
+      },
+      "www": {
+        // can wait another task 
+        // "wait": "api",
+        "clearBefore": "dist/www",
+        "run": "wpi-dev-server :www --hot --host 0.0.0.0",
+        "vars": {
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
         }
       }
-    },
-    "extend": [
-        "wi-layer-react-express"
-    ]
-  },
-  "dev_api": {
-    "basedOn": "defaultServer",
-    "rootFolder": "App",
-    
-    "vars": {
-      "targetDir": "dist/api",
-      "DefinePluginCfg": {
-        "__IS_DEV__": true,
-        "__IS_SERVER__": true
-      },      
-      "externals": true,
-    },
-    "extend": [
-        "wi-layer-react-express"
-    ]
+    }
   }
 }
 ```
@@ -95,7 +113,8 @@ Then add build profiles basing this package available profiles :
 - production {bool}             : build using production mode
 - extractCss {bool}             : do extract css
 - babelInclude {regexp string}  : optional regexp to force parsing external scripts
-- babelPreset {object}          : option for the babelPreset loader
-- TerserJSPlugin {object}       : option for the TerserJSPlugin
+- babelPreset {object}          : optional options for the babelPreset loader
+- TerserJSPlugin {object}       : optional options for the TerserJSPlugin
+- HtmlWebpackPlugin {object}    : optional options for HtmlWebpackPlugin
 
 

@@ -1,10 +1,15 @@
 {
   "name": "wi-layer-react-express",
-  "version": "1.0.0",
-  "description": "An inheritable boilerplate with webpack 4, react, sass, hmr, SSR, etc",
+  "version": "1.0.2",
+  "description": "An inheritable boilerplate with webpack 4, react, sass, hmr, SSR, express, helmet, etc",
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
+    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
+    "build": "wpi :www&&wpi :api",
+    "start-dev": "wi-run :dev start",
+    "start": "wi-run :prod start",
+    "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
     "@babel/core": "^7.2.0",
@@ -17,6 +22,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.3.1",
+    "@hot-loader/react-dom": "^16.8.6",
     "autoprefixer": "^9.4.1",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
@@ -32,6 +38,7 @@
     "dot-tpl-loader": "^1.2.1",
     "express": "^4.16.3",
     "file-loader": "^2.0.0",
+    "fkill": "^6.2.0",
     "hoist-non-react-methods": "^1.1.0",
     "hoist-non-react-statics": "^3.2.1",
     "html-webpack-plugin": "^3.2.0",
@@ -55,8 +62,9 @@
     "postcss-nested": "^4.1.0",
     "postcss-simple-vars": "^5.0.1",
     "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.6.3",
     "sass-loader": "^7.1.0",
     "shortid": "^2.2.8",
@@ -69,12 +77,13 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "universal-webpack": "^0.6.6",
     "url-loader": "^1.1.2",
+    "wait-on": "^3.3.0",
     "webpack": "^4.27.0",
     "webpack-cli": "^3.0.0",
     "webpack-dev-middleware": "^3.5.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-inherit": "^1.6.7",
+    "webpack-inherit": "^1.6.10",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }
