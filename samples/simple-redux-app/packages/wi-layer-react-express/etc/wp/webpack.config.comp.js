@@ -1,15 +1,27 @@
 /*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
 var wpInherit         = require('webpack-inherit');
@@ -23,14 +35,21 @@ var autoprefixer = require('autoprefixer');
 
 const wpiCfg     = wpInherit.getConfig(),
       isExcluded = wpInherit.isFileExcluded();
-module.exports = [
+module.exports   = [
 	{
 		mode: wpiCfg.vars.production ? "production" : "development",
 		
 		// The jsx App entry point
 		entry: {
-			[wpiCfg.vars.rootAlias]: wpiCfg.vars.rootAlias // default to 'App'
-		},
+			
+			[wpiCfg.vars.rootAlias]: [
+				...(wpiCfg.vars.devServer && ['webpack/hot/dev-server'] || []),
+				
+				wpiCfg.vars.entryPoint ?
+				wpiCfg.vars.entryPoint
+				                       :
+				wpiCfg.vars.rootAlias + "/index" // default to 'App'
+			]		},
 		
 		// The resulting build
 		output: {
@@ -60,6 +79,13 @@ module.exports = [
 			[
 				wpInherit.plugin(),
 				
+				...((wpiCfg.vars.indexTpl || wpiCfg.vars.HtmlWebpackPlugin) && [
+						new HtmlWebpackPlugin({
+							                      template: wpiCfg.vars.indexTpl || (wpiCfg.vars.rootAlias + '/index.html.tpl'),
+							                      ...wpiCfg.vars.HtmlWebpackPlugin
+						                      })
+					] || []
+				),
 				...(fs.existsSync("./LICENCE.HEAD.MD") && [
 						new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
 					] || []
@@ -71,6 +97,15 @@ module.exports = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
+				...(wpiCfg.vars.production && [
+					{
+						test   : /\.jsx?$/,
+						exclude: isExcluded,
+						use    : [
+							'react-hot-loader/webpack'
+						]
+					}
+				] || []),
 				{
 					test   : /\.jsx?$/,
 					exclude: wpiCfg.vars.babelInclude
@@ -90,7 +125,7 @@ module.exports = [
 										{
 											...(wpiCfg.vars.babelPreset || {})
 										}],
-									'@babel/preset-react',
+									'@babel/preset-react'
 								],
 								plugins       : [
 									["@babel/plugin-proposal-decorators", { "legacy": true }],
@@ -98,6 +133,7 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
+									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},
@@ -105,55 +141,117 @@ module.exports = [
 				},
 				{
 					test: /\.(scss|css)$/,
-					use : [
-						"style-loader",
-						{ loader: 'css-loader', options: { importLoaders: 1 } },
-						{
-							loader : 'postcss-loader',
-							options: {
-								plugins: function () {
-									return [
-										autoprefixer({
-											             overrideBrowserslist: [
-												             '>1%',
-												             'last 4 versions',
-												             'Firefox ESR',
-												             'not ie < 9', // React doesn't support IE8 anyway
-											             ]
-										             }),
-									];
-								}
-							}
-						},
-						{
-							loader : "sass-loader",
-							options: {
-								importer  : wpInherit.plugin().sassImporter(),
-								sourceMaps: true
-							}
-						}
-					]
-				},
-				{
-					test: /\.tpl$/,
-					use : { loader: "dot-tpl-loader?append=true" }
+					use : wpiCfg.vars.extractCss ?
+					      [
+						      {
+							      loader : MiniCssExtractPlugin.loader,
+							      options: {
+								      // you can specify a publicPath here
+								      // by default it uses publicPath in webpackOptions.output
+								      publicPath: '../',
+								      hmr       : !wpiCfg.vars.production,
+							      },
+						      },
+						      { loader: 'css-loader', options: { importLoaders: 1 } },
+						      {
+							      loader : 'postcss-loader',
+							      options: {
+								      plugins: function () {
+									      return [
+										      autoprefixer({
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8
+											                   //                  // anyway
+											                   //]
+										                   }),
+									      ];
+								      }
+							      }
+						      },
+						      {
+							      loader : "sass-loader",
+							      options: {
+								      minimize  : true,
+								      importer  : wpInherit.plugin().sassImporter(),
+								      sourceMaps: true,
+							      }
+						      }
+					      ]
+					                             :
+					      [
+						      "style-loader",
+						      { loader: 'css-loader', options: { importLoaders: 1 } },
+						      {
+							      loader : 'postcss-loader',
+							      options: {
+								      plugins: function () {
+									      return [
+										      autoprefixer({
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8 anyway
+											                   //]
+										                   }),
+									      ];
+								      }
+							      }
+						      },
+						      {
+							      loader : "sass-loader",
+							      options: {
+								      importer  : wpInherit.plugin().sassImporter(),
+								      sourceMaps: true
+							      }
+						      }
+					      ]
 				},
 				{
 					test: /\.(png|jpg|gif|svg)(\?.*$|$)$/,
-					use : 'file-loader?limit=8192&name=assets/[hash].[ext]'
-				},
+					use :
+						'file-loader?limit=8192&name=assets/[hash].[ext]'
+				}
+				,
 				{
 					test: /\.woff2?(\?.*$|$)$/,
-					use : "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff&name=assets/[hash].[ext]"
-				},
-				{ test: /\.ttf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
-				{ test: /\.eot(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
+					use :
+						"url-loader?prefix=font/&limit=5000&mimetype=application/font-woff&name=assets/[hash].[ext]"
+				}
+				,
+				{
+					test: /\.ttf(\?.*$|$)$/, use:
+						"file-loader?name=assets/[hash].[ext]"
+				}
+				,
+				{
+					test: /\.eot(\?.*$|$)$/, use:
+						"file-loader?name=assets/[hash].[ext]"
+				}
+				,
+				{
+					test: /\.html$/, use:
+						"file-loader?name=[name].[ext]"
+				}
+				,
+				{
+					test: /\.tpl$/, loader:
+						"dot-tpl-loader?append=true"
+				}
+				,
 				
-				
-				{ test: /\.otf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
+				{
+					test: /\.otf(\?.*$|$)$/, use:
+						"file-loader?name=assets/[hash].[ext]"
+				}
+				,
 				{
 					test  : /\.json?$/,
-					loader: 'strip-json-comments-loader'
+					loader:
+						'strip-json-comments-loader'
 				}
 			],
 		},

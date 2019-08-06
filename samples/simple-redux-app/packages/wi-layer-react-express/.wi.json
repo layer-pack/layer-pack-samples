@@ -30,6 +30,7 @@
         "clearBefore": "dist/www",
         "run": "wpi-dev-server :www --hot --host 0.0.0.0",
         "vars": {
+          "devServer": true,
           "production": false,
           "DefinePluginCfg": {
             "__IS_DEV__": true
@@ -62,8 +63,8 @@
       }
     }
   },
-  "www": "defaultBrowser",
-  "defaultBrowser": {
+  "defaultBrowser": "www",
+  "www": {
     "rootFolder": "App",
     "config": "./etc/wp/webpack.config.www.js",
     "vars": {
@@ -80,8 +81,8 @@
       }
     }
   },
-  "api": "defaultServer",
-  "defaultServer": {
+  "defaultServer": "api",
+  "api": {
     "rootFolder": "App",
     "config": "./etc/wp/webpack.config.api.js",
     "vars": {
@@ -93,7 +94,8 @@
       }
     }
   },
-  "defaultComponent": {
+  "Comp": "component",
+  "component": {
     "rootFolder": "Comp",
     "config": "./etc/wp/webpack.config.comp.js",
     "vars": {
@@ -103,12 +105,15 @@
       "rootAlias": "Comp"
     }
   },
-  "defaultSamples": {
-    "rootFolder": "Comp",
-    "config": "./etc/wp/webpack.config.samples.js",
+  "static": {
+    "rootFolder": "AppStatic",
+    "config": "./etc/wp/webpack.config.static.js",
     "vars": {
-      "targetDir": "dist/samples",
-      "rootAlias": "Comp",
+      "targetDir": "dist/static",
+      "rootAlias": "App",
+      "HtmlWebpackPlugin": {
+        "template": "App/index.html.tpl"
+      },
       "babelPreset": {
         "targets": {
           "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"

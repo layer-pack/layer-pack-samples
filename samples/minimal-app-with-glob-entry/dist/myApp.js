@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./App/MapOf.App_entryPoints_index___js.gen.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -223,18 +223,6 @@ document.getElementById('ep2').innerHTML = "ep 2: ok";
  *  @contact : n8tz.js@gmail.com
  */
 document.getElementById('ep3').innerHTML = "ep 3: ok";
-
-/***/ }),
-
-/***/ 0:
-/*!****************************************!*\
-  !*** multi App/entryPoints/index.*.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! App/entryPoints/index.*.js */"./App/MapOf.App_entryPoints_index___js.gen.js");
-
 
 /***/ })
 

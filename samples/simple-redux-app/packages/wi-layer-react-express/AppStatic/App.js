@@ -23,50 +23,30 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-import "core-js";
-import React            from "react";
-import ReactDom         from 'react-dom';
-import {renderToString} from "react-dom/server";
-import {Helmet}         from "react-helmet";
-import {hot}            from 'react-hot-loader/root'
-import "regenerator-runtime/runtime";
-import Index            from "./index.html";
 
+import React    from 'react';
+import {Helmet} from "react-helmet";
 
-const ctrl = {
-	renderTo( node, initialState = {} ) {
-		const isDev  = process.env.NODE_ENV !== 'production',
-		      App    = require('App/App.js').default,
-		      HMRApp = isDev ? hot(App) : App;
-		
-		ReactDom.render(
-			<HMRApp/>
-			, node);
-		
-		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('./App', m => {
-				let NextApp = hot(require('App/App.js').default);
-				
-				ReactDom.render(
-					<NextApp/>
-					, node);
-			})
-		}
-	},
-	renderSSR( { state, tpl }, cb ) {
-		let content = "",
-		    App     = require('App/App.js').default,
-		    html;
-		
-		try {
-			content = renderToString(<App/>);
-			html    = "<!doctype html>\n" + renderToString(<Index helmet={Helmet.renderStatic()} content={content}/>);
-		} catch ( e ) {
-			return cb(e)
-		}
-		cb(null, html)
+class App extends React.Component {
+	
+	render() {
+		return <React.Fragment>
+			<Helmet>
+				<meta charSet="utf-8"/>
+				<title>wi-layer-react-express boilerplate v1.0</title>
+			</Helmet>
+			<h1>wi-layer-react-express boilerplate v1.0</h1>
+			<h2>Included ( among others ) : </h2>
+			<ul>
+				<li>react ^16.8.6</li>
+				<li>express with minimal SSR</li>
+				<li>sass</li>
+				<li>es6 + decorators</li>
+				<li>hot reload with dev server, SSR & api proxying</li>
+				<li>react-helmet ( html header manager )</li>
+			</ul>
+		</React.Fragment>
 	}
 }
 
-export default ctrl;
-
+export default App

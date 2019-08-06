@@ -24,9 +24,6 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-
-
-
 'use strict';
 
 const program = require('commander'),
@@ -104,25 +101,9 @@ server.use(
 		profile.stop().then(e => process.exit());
 	}
 );
-server.use(
-	"/dbRestore",
-	( req, res ) => {
-		res.header("Access-Control-Allow-Origin", "*");
-		exec(
-			"mongorestore --uri ${mongoUrl}",
-			{
-				cwd  : pDir,
-				stdio: 'inherit'
-			},
-			function ( err, stdout, stderr ) {
-				res.json({ success: !err, stdout, stderr })
-			});
-		
-	}
-);
 
 let server_instance = http.listen(parseInt(port), function () {
-	console.info('Running on ', server_instance.address(), server_instance.address().port)
+	console.info('Build manager running on ', server_instance.address(), server_instance.address().port)
 });
 
 process.on('SIGINT', e => profile.stop()); // catch ctrl-c

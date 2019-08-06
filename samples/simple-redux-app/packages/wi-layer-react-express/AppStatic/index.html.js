@@ -23,50 +23,33 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-import "core-js";
-import React            from "react";
-import ReactDom         from 'react-dom';
-import {renderToString} from "react-dom/server";
-import {Helmet}         from "react-helmet";
-import {hot}            from 'react-hot-loader/root'
-import "regenerator-runtime/runtime";
-import Index            from "./index.html";
 
+import React from 'react';
 
-const ctrl = {
-	renderTo( node, initialState = {} ) {
-		const isDev  = process.env.NODE_ENV !== 'production',
-		      App    = require('App/App.js').default,
-		      HMRApp = isDev ? hot(App) : App;
-		
-		ReactDom.render(
-			<HMRApp/>
-			, node);
-		
-		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('./App', m => {
-				let NextApp = hot(require('App/App.js').default);
-				
-				ReactDom.render(
-					<NextApp/>
-					, node);
-			})
-		}
-	},
-	renderSSR( { state, tpl }, cb ) {
-		let content = "",
-		    App     = require('App/App.js').default,
-		    html;
-		
-		try {
-			content = renderToString(<App/>);
-			html    = "<!doctype html>\n" + renderToString(<Index helmet={Helmet.renderStatic()} content={content}/>);
-		} catch ( e ) {
-			return cb(e)
-		}
-		cb(null, html)
+export default class index extends React.Component {
+	render() {
+		const { helmet, content, state } = this.props,
+		      htmlAttrs                  = helmet.htmlAttributes.toComponent(),
+		      bodyAttrs                  = helmet.bodyAttributes.toComponent();
+		return <React.Fragment>
+			<html {...htmlAttrs}>
+			<head>
+				{helmet.title.toComponent()}
+				{helmet.meta.toComponent()}
+				{helmet.link.toComponent()}
+				{
+					state &&
+					<script dangerouslySetInnerHTML={{ __html: "window.__STATE__  = " + (JSON.stringify(state)) }}/>
+				}
+			</head>
+			<body {...bodyAttrs}>
+			<div id="app" dangerouslySetInnerHTML={{ __html: content }}>
+			</div>
+			
+			<script src="./App.js"></script>
+			<script src="./App.vendors.js"></script>
+			</body>
+			</html>
+		</React.Fragment>
 	}
 }
-
-export default ctrl;
-

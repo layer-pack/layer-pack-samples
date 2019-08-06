@@ -23,19 +23,16 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-const TerserJSPlugin          = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const wpInherit               = require('webpack-inherit');
-const fs                      = require("fs");
-const webpack                 = require("webpack");
-const path                    = require("path");
-const HtmlWebpackPlugin       = require('html-webpack-plugin');
-const Visualizer              = require('webpack-visualizer-plugin');
-const autoprefixer            = require('autoprefixer');
-const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
 
-const wpiCfg     = wpInherit.getConfig(),
-      isExcluded = wpInherit.isFileExcluded();
+const wpInherit            = require('webpack-inherit'),
+      fs                   = require("fs"),
+      webpack              = require("webpack"),
+      path                 = require("path"),
+      HtmlWebpackPlugin    = require('html-webpack-plugin'),
+      autoprefixer         = require('autoprefixer'),
+      wpiCfg               = wpInherit.getConfig(),
+      isExcluded           = wpInherit.isFileExcluded();
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
 	{
@@ -49,57 +46,26 @@ module.exports = [
 				wpiCfg.vars.entryPoint ?
 				wpiCfg.vars.entryPoint
 				                       :
-				wpiCfg.vars.rootAlias + "/index.client" // default to 'App'
+				wpiCfg.vars.rootAlias  // default to 'App'
 			]
 		},
 		devServer: wpiCfg.vars.devServer && {
-			index             : '', //needed to enable root proxying
+			//index             : '', //needed to enable root proxying
 			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
-			//publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			
-			host : 'localhost', // Defaults to `localhost`
-			port : 8080, // Defaults to 8080
-			proxy: [{
-				context: ['/**', '!/sockjs-node/**'],
-				target : 'http://localhost:9701',
-				ws     : true,
-				secure : false                         // proxy websockets
-			}]
+			host: 'localhost', // Defaults to `localhost`
+			port: 8080, // Defaults to 8080
 		} || undefined,
 		
 		// The resulting build
-		output      : {
+		output: {
 			path      : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			filename  : "[name].js",
-			publicPath: "/",
-		},
-		optimization: {
-			minimizer  : wpiCfg.vars.production && [
-				new TerserJSPlugin(wpiCfg.vars.terserOptions || {}),
-				new OptimizeCSSAssetsPlugin({
-					                            //assetNameRegExp          : /\.optimize\.css$/g,
-					                            cssProcessor             : require('cssnano'),
-					                            cssProcessorPluginOptions: {
-						                            preset: ['default', { discardComments: { removeAll: true } }],
-					                            },
-					                            canPrint                 : true
-				                            })] || [],
-			splitChunks: {
-				cacheGroups: {
-					default: false,
-					vendors: {
-						// sync + async chunks
-						chunks  : 'all',
-						filename: wpiCfg.vars.rootAlias + ".vendors.js",
-						test    : ( f ) => {
-							return f.resource && wpInherit.isFileExcluded().test(f.resource)
-						},
-					},
-				}
-			}
+			//publicPath: "/",
 		},
 		
 		// add sourcemap in a dedicated file (.map)
@@ -110,20 +76,17 @@ module.exports = [
 			extensions: [
 				".",
 				".js",
-				".jsx",
 				".json",
 				".scss",
 				".css",
 			],
-			alias     : {
-				'react-dom': '@hot-loader/react-dom'
-			},
 		},
 		
 		// Global build plugin & option
 		plugins: (
 			[
 				wpInherit.plugin(),
+				
 				...(wpiCfg.vars.extractCss && [
 					new MiniCssExtractPlugin({
 						                         // Options similar to the same options in webpackOptions.output
@@ -132,12 +95,11 @@ module.exports = [
 						                         //chunkFilename: '[id].css'
 					                         })
 				] || []),
-				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
-				
 				...(fs.existsSync("./LICENCE.HEAD.MD") && [
 						new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
 					] || []
 				),
+				new webpack.NamedModulesPlugin(),
 				
 				...((wpiCfg.vars.indexTpl || wpiCfg.vars.HtmlWebpackPlugin) && [
 						new HtmlWebpackPlugin({
@@ -146,17 +108,6 @@ module.exports = [
 						                      })
 					] || []
 				),
-				
-				...(wpiCfg.vars.production && [
-					new webpack.DefinePlugin({
-						                         'process.env': {
-							                         'NODE_ENV': JSON.stringify('production')
-						                         }
-					                         }),
-					new Visualizer({
-						               filename: './' + wpiCfg.vars.rootAlias + '.stats.html'
-					               })
-				] || [new webpack.NamedModulesPlugin()])
 			]
 		),
 		
@@ -200,7 +151,7 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
-									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
+									...(!wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},
@@ -226,13 +177,13 @@ module.exports = [
 								      plugins: function () {
 									      return [
 										      autoprefixer({
-											                   overrideBrowserslist: [
-												                   '>1%',
-												                   'last 4 versions',
-												                   'Firefox ESR',
-												                   'not ie < 9', // React doesn't support IE8
-											                                     // anyway
-											                   ]
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8
+											                   //                  // anyway
+											                   //]
 										                   }),
 									      ];
 								      }
@@ -257,12 +208,12 @@ module.exports = [
 								      plugins: function () {
 									      return [
 										      autoprefixer({
-											                   overrideBrowserslist: [
-												                   '>1%',
-												                   'last 4 versions',
-												                   'Firefox ESR',
-												                   'not ie < 9', // React doesn't support IE8 anyway
-											                   ]
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8 anyway
+											                   //]
 										                   }),
 									      ];
 								      }
