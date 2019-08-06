@@ -29,7 +29,7 @@
  */
 
 
-const cfg           = require('./config').default,
+const cfg           = require('App/config').default,
       debug         = require('debug-logger'),
       isFunction    = require('is').function,
       isBrowserSide = (new Function("try {return this===window;}catch(e){ return false;}"))(),

@@ -27,7 +27,7 @@
 import is  from 'is';
 import api from './api/(*).js';
 
-let debug = require('./console').default("server");
+let debug = require('App/console').default("server");
 
 export default ( server, http ) => Object
 	.keys(api)

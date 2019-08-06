@@ -30,7 +30,7 @@ module.exports = [
 		
 		// The jsx App entry point
 		entry: {
-			"myApp": "App/entryPoints/index.*.js"
+			"myApp": ["App/entryPoints/index.*.js"]
 		},
 		
 		// The resulting build
@@ -59,7 +59,7 @@ module.exports = [
 		// Global build plugin & option
 		plugins: [
 			new HtmlWebpackPlugin({
-				                      template: './App/index.html',
+				                      template: 'App/index.html',
 				                      inject  : false
 			                      }),
 			wpInherit.plugin("default"),

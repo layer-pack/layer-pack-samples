@@ -11,7 +11,7 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-import App      from "./index"
+import App      from "App/index"
 
 
 App.renderTo(document.getElementById('app'), window.__STATE__);

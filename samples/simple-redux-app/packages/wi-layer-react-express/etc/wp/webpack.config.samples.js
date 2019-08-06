@@ -1,43 +1,68 @@
 /*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
-var wpInherit         = require('webpack-inherit');
-var fs                = require("fs");
-var webpack           = require("webpack");
-var path              = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const wpInherit         = require('webpack-inherit'),
+      fs                = require("fs"),
+      webpack           = require("webpack"),
+      path              = require("path"),
+      HtmlWebpackPlugin = require('html-webpack-plugin'),
+      autoprefixer      = require('autoprefixer'),
+      wpiCfg            = wpInherit.getConfig(),
+      isExcluded        = wpInherit.isFileExcluded();
 
-var autoprefixer = require('autoprefixer');
-
-
-const wpiCfg     = wpInherit.getConfig(),
-      isExcluded = wpInherit.isFileExcluded();
-module.exports = [
+module.exports          = [
 	{
 		mode: wpiCfg.vars.production ? "production" : "development",
 		
 		// The jsx App entry point
-		entry: {
+		entry    : {
 			[wpiCfg.vars.rootAlias]: wpiCfg.vars.rootAlias // default to 'App'
+			
+			, samples: wpiCfg.vars.production ? [
+				'webpack/hot/dev-server',
+				wpiCfg.vars.rootAlias // default to 'App'
+			] : wpiCfg.vars.rootAlias + '/samples'
 		},
+		devServer: !wpiCfg.vars.production && {
+			//index             : '', //needed to enable root proxying
+			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			historyApiFallback: true,
+			hot               : true,
+			inline            : true,
+			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			
+			host: 'localhost', // Defaults to `localhost`
+			port: 8080, // Defaults to 8080
+		} || undefined,
 		
 		// The resulting build
 		output: {
-			path           : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
-			filename       : "[name].js",
-			publicPath     : "/",
-			"libraryTarget": "commonjs-module"
+			path      : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			filename  : "[name].js",
+			publicPath: "/",
 		},
 		
 		// add sourcemap in a dedicated file (.map)
@@ -63,7 +88,13 @@ module.exports = [
 				...(fs.existsSync("./LICENCE.HEAD.MD") && [
 						new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
 					] || []
-				)
+				),
+				new webpack.NamedModulesPlugin(),
+				new HtmlWebpackPlugin({
+					                      template: wpiCfg.vars.indexTpl || (__dirname + '/../tpl/indexComp.html'),
+					                      inject  : false
+				                      })
+			
 			]
 		),
 		
@@ -71,6 +102,13 @@ module.exports = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
+				{
+					test   : /\.jsx?$/,
+					exclude: isExcluded,
+					use    : [
+						require.resolve('react-hot-loader/webpack')
+					]
+				},
 				{
 					test   : /\.jsx?$/,
 					exclude: wpiCfg.vars.babelInclude
@@ -98,6 +136,7 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
+									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},
@@ -148,7 +187,6 @@ module.exports = [
 				},
 				{ test: /\.ttf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
 				{ test: /\.eot(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
-				
 				
 				{ test: /\.otf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
 				{

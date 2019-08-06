@@ -43,16 +43,12 @@ module.exports = [
 		
 		// The jsx App entry point
 		entry    : {
-			[wpiCfg.vars.rootAlias]: [
-				...(wpiCfg.vars.devServer && ['webpack/hot/dev-server'] || []),
-				
-				wpiCfg.vars.entryPoint ?
-				wpiCfg.vars.entryPoint
-				                       :
+			[wpiCfg.vars.rootAlias]: !wpiCfg.vars.production && [
+				'webpack/hot/dev-server',
 				wpiCfg.vars.rootAlias + "/index.client" // default to 'App'
-			]
+			] || ([wpiCfg.vars.rootAlias + "/index.client"])
 		},
-		devServer: wpiCfg.vars.devServer && {
+		devServer: !wpiCfg.vars.production && {
 			index             : '', //needed to enable root proxying
 			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			historyApiFallback: true,
@@ -139,11 +135,8 @@ module.exports = [
 					] || []
 				),
 				
-				...((wpiCfg.vars.indexTpl || wpiCfg.vars.HtmlWebpackPlugin) && [
-						new HtmlWebpackPlugin({
-							                      template: wpiCfg.vars.indexTpl || (wpiCfg.vars.rootAlias + '/index.html.tpl'),
-							                      ...wpiCfg.vars.HtmlWebpackPlugin
-						                      })
+				...(wpiCfg.vars.HtmlWebpackPlugin && [
+						new HtmlWebpackPlugin(wpiCfg.vars.HtmlWebpackPlugin)
 					] || []
 				),
 				
@@ -164,7 +157,7 @@ module.exports = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
-				...(wpiCfg.vars.devServer && [
+				...(wpiCfg.vars.production && [
 					{
 						test   : /\.jsx?$/,
 						exclude: isExcluded,
@@ -226,13 +219,13 @@ module.exports = [
 								      plugins: function () {
 									      return [
 										      autoprefixer({
-											                   overrideBrowserslist: [
-												                   '>1%',
-												                   'last 4 versions',
-												                   'Firefox ESR',
-												                   'not ie < 9', // React doesn't support IE8
-											                                     // anyway
-											                   ]
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8
+											                   //                  // anyway
+											                   //]
 										                   }),
 									      ];
 								      }
@@ -257,12 +250,12 @@ module.exports = [
 								      plugins: function () {
 									      return [
 										      autoprefixer({
-											                   overrideBrowserslist: [
-												                   '>1%',
-												                   'last 4 versions',
-												                   'Firefox ESR',
-												                   'not ie < 9', // React doesn't support IE8 anyway
-											                   ]
+											                   //overrideBrowserslist: [
+											                   //    '>1%',
+											                   //    'last 4 versions',
+											                   //    'Firefox ESR',
+											                   //    'not ie < 9', // React doesn't support IE8 anyway
+											                   //]
 										                   }),
 									      ];
 								      }

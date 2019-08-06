@@ -25,11 +25,11 @@
  */
 
 
+import config  from "App/config";
+import App     from "App/index.js";
 import express from "express";
-import config  from "../config";
-import App     from "../index.js";
 
-export const name          = "Rendering service";
+export const name          = "Rendering;"
 export const priorityLevel = 100000;
 export const service       = ( server ) => {
 	server.get(
