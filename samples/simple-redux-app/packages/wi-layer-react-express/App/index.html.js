@@ -23,7 +23,7 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-
+debugger
 import React from 'react';
 
 export default class index extends React.Component {
@@ -46,8 +46,8 @@ export default class index extends React.Component {
 			<div id="app" dangerouslySetInnerHTML={{ __html: content }}>
 			</div>
 			
-			<script src="./App.js"></script>
 			<script src="./App.vendors.js"></script>
+			<script src="./App.js"></script>
 			</body>
 			</html>
 		</React.Fragment>

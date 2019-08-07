@@ -9,12 +9,10 @@
     "react-dom": "^16.3.2"
   },
   "dependencies": {
-    "wpi-react-hmr-ssr": "^1.2.1",
-    "concurrently": "^4.1.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
-    "webpack-inherit": "^1.5.11"
+    "webpack-inherit": "^1.7.1"
   }
 }

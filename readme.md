@@ -45,7 +45,7 @@ or
 
 then open http://localhost:8080 or use 'npm run runBrowser'
 
-Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/samples/simple-redux-app/dist/App.stats.html)
+Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/samples/simple-redux-app/dist/www/App.stats.html)
 
 ### [simple-redux-app-no-inherit](samples/simple-redux-app-no-inherit)
 

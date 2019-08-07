@@ -7,9 +7,10 @@ A inheritable boilerplate with webpack4, react, sass, hmr, express & SSR support
 Create a project with https://github.com/n8tz/webpack-inherit,<br/>
 Then add build profiles basing this package available profiles :
 
-- defaultBrowser   : A generic profile to make browser side builds
-- defaultServer    : A generic profile to make backend/cli builds 
-- defaultComponent : A generic profile to build stand alone react component
+- www    : A generic profile to make browser side builds
+- api    : A generic profile to make backend/cli builds 
+- lib    : A generic profile to build stand alone es6/react libs & component
+- static : A generic profile to build stand alone app with html
 
 <h2>Included ( among others ) : </h2>
 <ul>

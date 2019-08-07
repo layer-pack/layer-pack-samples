@@ -1,8 +1,5 @@
 {
   "default": {
-    "rootFolder": "App",
-    "extend": [
-//      "wi-layer-react-express"
-    ]
+    "rootFolder": "App"
   }
 }

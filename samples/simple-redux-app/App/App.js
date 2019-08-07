@@ -12,13 +12,13 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-import SuperApp  from '$super';
 import React     from 'react';
+import SuperApp  from '$super';
 import {Helmet}  from "react-helmet";
 import {connect} from 'react-redux'
 import {AppBar}  from './ui/components/(*).js';
 import {ToolBar} from './ui/containers/(*).js';
-import "./ui/styles/index.scss"
+//import "./ui/styles/index.scss"
 
 
 @connect(( { appState } ) => ({ appState }))

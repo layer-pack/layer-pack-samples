@@ -23,7 +23,7 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-import config from "App/config";
+import config from "./config";
 import React  from "react";
 import api    from "./api";
 
@@ -31,7 +31,7 @@ const express = require("express"),
       server  = express(),
       http    = require('http').Server(server),
       argz    = require('minimist')(process.argv.slice(2)),
-      debug   = require('App/console').default("server");
+      debug   = require('./console').default("server");
 
 process.title = config.project.name + '::server';
 

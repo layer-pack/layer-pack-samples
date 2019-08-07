@@ -12,4 +12,4 @@
  *  @contact : n8tz.js@gmail.com
  */
 
-export default require('App/.wpiConfig.json');
+export default require('./.wpiConfig.json');
