@@ -16,7 +16,7 @@ import React      from 'react';
 import Actions    from "App/store/actions";
 import {connect}  from 'react-redux'
 import {Widget}   from './ui/components/(*).js';
-import "./ui/styles/index.scss"
+//import "./ui/styles/index.scss"
 import allWidgets from './ui/widgets/(*).js';
 
 

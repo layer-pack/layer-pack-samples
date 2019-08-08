@@ -46,12 +46,13 @@ const ctrl = {
 				<HMRApp/>
 			</Provider>
 			, node);
-		
+		//
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
+			module.hot.accept("App/index.html");
 			module.hot.accept(
 				'App/App',
 				m => {
-					var NextApp = hot(require('App/App.js').default);
+					let NextApp = hot(require('App/App.js').default);
 					
 					ReactDom.render(
 						<Provider store={store}>

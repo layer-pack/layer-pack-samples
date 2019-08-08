@@ -23,7 +23,6 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-debugger
 import React from 'react';
 
 export default class index extends React.Component {
