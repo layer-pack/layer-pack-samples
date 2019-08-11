@@ -31,7 +31,7 @@ module.exports = [
 		
 		// The jsx App entry point
 		entry: {
-			"myLib": ["App/(*).js"]
+			"myLib": ["App/(**/*).js"]
 		},
 		
 		// The resulting build

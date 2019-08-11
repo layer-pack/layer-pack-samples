@@ -24,7 +24,7 @@
     "mocha": "^6.2.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
-    "webpack-inherit": "^1.7.1",
+    "webpack-inherit": "^1.7.11",
     "zombie": "^6.1.4"
   }
 }

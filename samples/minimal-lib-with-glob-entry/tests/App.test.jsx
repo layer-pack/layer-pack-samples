@@ -55,6 +55,7 @@ describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 			if ( appLib.main !== "mainLibEp"
 				|| appLib.secondary !== "secondaryLibEp"
 				|| appLib.utils !== "utils"
+				|| appLib.dir.stuff !== "stuffEp"
 			)
 				return done(new Error("Missing ep ! "));
 			
