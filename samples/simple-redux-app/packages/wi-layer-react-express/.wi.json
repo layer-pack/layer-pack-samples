@@ -1,12 +1,12 @@
 {
   "default": {
-    "rootFolder": "App",
+    "rootFolder": "src/App",
     "scripts": {
       "start": "./etc/cli/start"
     }
   },
   "dev": {
-    "rootFolder": "App",
+    "rootFolder": "src/App",
     "scripts": {
       "start": "./etc/cli/start"
     },
@@ -40,7 +40,7 @@
     }
   },
   "prod": {
-    "rootFolder": "App",
+    "rootFolder": "src/App",
     "scripts": {
       "start": "./etc/cli/start"
     },
@@ -65,7 +65,7 @@
   },
   "defaultBrowser": "www",
   "www": {
-    "rootFolder": "App",
+    "rootFolder": "src/App",
     "config": "./etc/wp/webpack.config.www.js",
     "vars": {
       "targetDir": "dist/www",
@@ -83,7 +83,7 @@
   },
   "defaultServer": "api",
   "api": {
-    "rootFolder": "App",
+    "rootFolder": "src/App",
     "config": "./etc/wp/webpack.config.api.js",
     "vars": {
       "targetDir": "dist/api",
@@ -96,7 +96,7 @@
   },
   "Comp": "component",
   "component": {
-    "rootFolder": "Comp",
+    "rootFolder": "src/Comp",
     "config": "./etc/wp/webpack.config.comp.js",
     "vars": {
       "production": true,
@@ -106,13 +106,13 @@
     }
   },
   "static": {
-    "rootFolder": "AppStatic",
+    "rootFolder": "src/AppStatic",
     "config": "./etc/wp/webpack.config.static.js",
     "vars": {
       "targetDir": "dist/static",
       "rootAlias": "App",
       "HtmlWebpackPlugin": {
-        "template": "App/index.html.tpl"
+        "template": "<%packagePath%>/AppStatic/index.html.tpl"
       },
       "babelPreset": {
         "targets": {

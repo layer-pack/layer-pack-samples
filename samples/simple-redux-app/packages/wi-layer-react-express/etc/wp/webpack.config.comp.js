@@ -49,7 +49,8 @@ module.exports   = [
 				wpiCfg.vars.entryPoint
 				                       :
 				wpiCfg.vars.rootAlias + "/index" // default to 'App'
-			]		},
+			]
+		},
 		
 		// The resulting build
 		output: {
@@ -71,7 +72,9 @@ module.exports   = [
 				".scss",
 				".css",
 			],
-			alias     : {},
+			alias     : wpiCfg.vars.devServer && {
+				'react-dom': '@hot-loader/react-dom'
+			},
 		},
 		
 		// Global build plugin & option

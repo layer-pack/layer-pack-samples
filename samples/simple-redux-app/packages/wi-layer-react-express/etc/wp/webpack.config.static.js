@@ -80,6 +80,9 @@ module.exports = [
 				".scss",
 				".css",
 			],
+			alias     : wpiCfg.vars.devServer && {
+				'react-dom': '@hot-loader/react-dom'
+			},
 		},
 		
 		// Global build plugin & option

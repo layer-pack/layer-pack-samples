@@ -1,6 +1,6 @@
 {
   "name": "wi-layer-react-express",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "An inheritable boilerplate with webpack 4, react, sass, hmr, SSR, express, helmet, etc",
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
@@ -84,7 +84,7 @@
     "webpack-dev-middleware": "^3.5.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-inherit": "^1.7.1",
+    "webpack-inherit": "^1.8.0",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }

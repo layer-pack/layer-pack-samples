@@ -45,7 +45,7 @@
     "webpack-cli": "^3.3.5",
     "zombie": "^6.1.4",
     "mocha": "^6.2.0",
-    "webpack-inherit": "^1.7.3",
+    "webpack-inherit": "^1.8.0",
     "wi-layer-react-express": "file:packages/wi-layer-react-express",
     "wi-layer-redux-thunk": "file:packages/wi-layer-redux-thunk"
   }

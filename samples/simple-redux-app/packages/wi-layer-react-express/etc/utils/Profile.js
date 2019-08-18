@@ -1,27 +1,19 @@
 /*
- *   The MIT License (MIT)
- *   Copyright (c) 2019. Wise Wild Web
  *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
+ * Copyright (C) 2019 Nathanael Braun
  *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 const wpi      = require('webpack-inherit'),
@@ -92,7 +84,12 @@ module.exports = function Profile( profileId ) {
 			curSessionNum++;
 			runAfter          = {};
 			onComplete.length = 0;
-			return Promise.all(Object.keys(commands).map(id => this.kill(id, true))).then(e => (killing = {}));
+			return Promise.all(
+				[
+					...Object.keys(commands).map(id => this.kill(id, true)),
+					fkill(":8080", { tree: true, force: true, silent: true })
+				]
+			).then(e => (killing = {}));
 		},
 		kill( cmdId, stopWatching ) {
 			let cmd  = running[cmdId],
@@ -148,8 +145,15 @@ module.exports = function Profile( profileId ) {
 					              }
 					
 					              watchers[cmdId] = chokidar
-						              .watch(task.watch, { ignored: /(^|[\/\\])\../ })
+						              .watch(task.watch, {
+							              ignored           : /(^|[\/\\])\../,
+							              usePolling        : true,
+							              "aggregateTimeout": 300,
+							              "poll"            : 1000
+						              })
 						              .on('all', ( event, path ) => {
+							              console.warn(cmdId + ": '" + task.watch + "' has been updated restarting...", event);
+							
 							              if ( event === 'add' || event === 'change' ) {
 								              console.warn(cmdId + ": '" + task.watch + "' has been updated restarting...");
 								
@@ -181,7 +185,7 @@ module.exports = function Profile( profileId ) {
 					err && this.cmdErr(cmdId, cmdId + ": '" + task.run + "' ended with error : " + err);
 					if ( sessionNum === curSessionNum && task.forever ) {
 						console.warn(cmdId + " restart ...");
-						setTimeout(tm => this.run(cmdId, true, true, true, sessionNum), 1000);
+						setTimeout(tm => this.run(cmdId, true, true, true, sessionNum), 5000);
 					}
 					else {// normal exit
 						if ( sessionNum === curSessionNum ) {

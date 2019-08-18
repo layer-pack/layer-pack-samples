@@ -29,6 +29,7 @@
 const program = require('commander'),
       express = require("express"),
       server  = express(),
+      fkill    = require('fkill'),
       http    = require('http').Server(server),
       exec    = require('child_process').exec,
       argz    = process.argv.slice(2),
@@ -73,13 +74,21 @@ server.use(
 		res.json({ success: true })
 	}
 );
+server.use(
+	"/forceKill8080",
+	( req, res ) => {
+		res.header("Access-Control-Allow-Origin", "*");
+		fkill(":8080", { tree: true, force: true, silent: true })
+		
+		res.json({ success: true })
+	}
+);
 
 server.use(
 	"/switch",
 	( req, res ) => {
 		res.header("Access-Control-Allow-Origin", "*");
 		profileId = req.query.to || "prod";
-		console.log(':::59: ', profileId);
 		profile.stop().then(
 			e => {
 				profile = new Profile(profileId);
