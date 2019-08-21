@@ -165,6 +165,7 @@ module.exports = [
 		module: {
 			rules: [
 				...(wpiCfg.vars.devServer && [
+					{ test: /\.jsx?$/, loader: 'source-map-loader', exclude: /react-hot-loader/ },
 					{
 						test   : /\.jsx?$/,
 						exclude: isExcluded,
@@ -200,7 +201,7 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
-									...(!wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
+									...(wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},

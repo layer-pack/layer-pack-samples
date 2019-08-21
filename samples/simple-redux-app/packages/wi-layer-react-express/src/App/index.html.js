@@ -20,9 +20,9 @@ import React from 'react';
 
 export default class index extends React.Component {
 	render() {
-		const { helmet, content, css, state = {} } = this.props,
-		      htmlAttrs                            = helmet.htmlAttributes.toComponent(),
-		      bodyAttrs                            = helmet.bodyAttributes.toComponent();
+		const { helmet, content, css, state } = this.props,
+		      htmlAttrs                       = helmet.htmlAttributes.toComponent(),
+		      bodyAttrs                       = helmet.bodyAttributes.toComponent();
 		return <React.Fragment>
 			<html {...htmlAttrs}>
 			<head>
@@ -30,6 +30,7 @@ export default class index extends React.Component {
 				{helmet.meta.toComponent()}
 				{helmet.link.toComponent()}
 				{
+					state &&
 					<script dangerouslySetInnerHTML={{ __html: "window.__STATE__  = " + (JSON.stringify(state)) }}/>
 				}
 				{

@@ -100,7 +100,7 @@ module.exports   = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
-				...(wpiCfg.vars.production && [
+				...(wpiCfg.vars.devServer && [
 					{
 						test   : /\.jsx?$/,
 						exclude: isExcluded,
@@ -136,7 +136,7 @@ module.exports   = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
-									...(!wpiCfg.vars.production && [[require.resolve("react-hot-loader/babel"), {}]] || []),
+									...(wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},

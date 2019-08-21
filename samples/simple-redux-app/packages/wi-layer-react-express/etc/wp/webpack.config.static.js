@@ -50,7 +50,7 @@ module.exports = [
 			]
 		},
 		devServer: wpiCfg.vars.devServer && {
-			//index             : '', //needed to enable root proxying
+			index             : '', //needed to enable root proxying
 			contentBase       : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			historyApiFallback: true,
 			hot               : true,
@@ -63,8 +63,8 @@ module.exports = [
 		
 		// The resulting build
 		output: {
-			path      : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
-			filename  : "[name].js",
+			path    : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			filename: "[name].js",
 			//publicPath: "/",
 		},
 		
@@ -154,7 +154,7 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
-									...(!wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
+									...(wpiCfg.vars.devServer && [[require.resolve("react-hot-loader/babel"), {}]] || []),
 								]
 							}
 						},

@@ -1,11 +1,10 @@
 {
   "name": "wi-layer-react-express",
-  "version": "1.1.2",
+  "version": "1.1.7",
   "description": "An inheritable boilerplate with webpack 4, react, sass, hmr, SSR, express, helmet, etc",
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --compilers js:@babel/register ./tests/*.test.jsx -b",
     "build": "wpi :www&&wpi :api",
     "start-dev": "wi-run :dev start",
     "start": "wi-run :prod start",
@@ -76,7 +75,6 @@
     "superagent": "^3.8.2",
     "svg-react-loader": "^0.4.6",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "universal-webpack": "^0.6.6",
     "url-loader": "^1.1.2",
     "wait-on": "^3.3.0",
     "webpack": "^4.27.0",
