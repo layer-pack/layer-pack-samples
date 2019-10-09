@@ -33,6 +33,7 @@ const HtmlWebpackPlugin       = require('html-webpack-plugin');
 const Visualizer              = require('webpack-visualizer-plugin');
 const autoprefixer            = require('autoprefixer');
 const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const wpiCfg     = wpInherit.getConfig(),
       isExcluded = wpInherit.isFileExcluded();
@@ -134,6 +135,7 @@ module.exports = [
 				] || []),
 				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 				
+				new HardSourceWebpackPlugin(),
 				...(fs.existsSync("./LICENCE.HEAD.MD") && [
 						new webpack.BannerPlugin(fs.readFileSync("./LICENCE.HEAD.MD").toString())
 					] || []
@@ -216,8 +218,8 @@ module.exports = [
 							      options: {
 								      // you can specify a publicPath here
 								      // by default it uses publicPath in webpackOptions.output
-								      publicPath: '../',
-								      hmr       : !wpiCfg.vars.production,
+								      //publicPath: '/',
+								      hmr: !wpiCfg.vars.production,
 							      },
 						      },
 						      { loader: 'css-loader', options: { importLoaders: 1 } },

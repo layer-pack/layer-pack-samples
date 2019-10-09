@@ -28,18 +28,22 @@ import React from 'react';
 
 export default class index extends React.Component {
 	render() {
-		const { helmet, content, state } = this.props,
-		      htmlAttrs                  = helmet.htmlAttributes.toComponent(),
-		      bodyAttrs                  = helmet.bodyAttributes.toComponent();
+		const { helmet, content, css, state } = this.props,
+		      htmlAttrs                                  = helmet && helmet.htmlAttributes.toComponent(),
+		      bodyAttrs                                  = helmet && helmet.bodyAttributes.toComponent();
 		return <React.Fragment>
 			<html {...htmlAttrs}>
 			<head>
-				{helmet.title.toComponent()}
-				{helmet.meta.toComponent()}
-				{helmet.link.toComponent()}
+				{helmet && helmet.title.toComponent()}
+				{helmet && helmet.meta.toComponent()}
+				{helmet && helmet.link.toComponent()}
+				{helmet && helmet.script.toComponent()}
 				{
 					state &&
 					<script dangerouslySetInnerHTML={{ __html: "window.__STATE__  = " + (JSON.stringify(state)) }}/>
+				}
+				{
+					css && <style type="text/css" dangerouslySetInnerHTML={{ __html: css + '' }}/>
 				}
 			</head>
 			<body {...bodyAttrs}>

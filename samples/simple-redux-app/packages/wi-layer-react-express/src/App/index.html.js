@@ -20,15 +20,16 @@ import React from 'react';
 
 export default class index extends React.Component {
 	render() {
-		const { helmet, content, css, state } = this.props,
-		      htmlAttrs                       = helmet.htmlAttributes.toComponent(),
-		      bodyAttrs                       = helmet.bodyAttributes.toComponent();
+		const { helmet, content, ssrErrors, css, state } = this.props,
+		      htmlAttrs                                  = helmet && helmet.htmlAttributes.toComponent(),
+		      bodyAttrs                                  = helmet && helmet.bodyAttributes.toComponent();
 		return <React.Fragment>
 			<html {...htmlAttrs}>
 			<head>
-				{helmet.title.toComponent()}
-				{helmet.meta.toComponent()}
-				{helmet.link.toComponent()}
+				{helmet && helmet.title.toComponent()}
+				{helmet && helmet.meta.toComponent()}
+				{helmet && helmet.link.toComponent()}
+				{helmet && helmet.script.toComponent()}
 				{
 					state &&
 					<script dangerouslySetInnerHTML={{ __html: "window.__STATE__  = " + (JSON.stringify(state)) }}/>
@@ -40,6 +41,7 @@ export default class index extends React.Component {
 			<body {...bodyAttrs}>
 			<div id="app" dangerouslySetInnerHTML={{ __html: content }}>
 			</div>
+			{ssrErrors && <div id="ssrErrors" dangerouslySetInnerHTML={{ __html: ssrErrors }}/>}
 			
 			<script src="./App.js"></script>
 			<script src="./App.vendors.js"></script>

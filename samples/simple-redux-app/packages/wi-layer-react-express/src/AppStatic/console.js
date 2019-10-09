@@ -1,45 +1,36 @@
 /*
- *   The MIT License (MIT)
- *   Copyright (c) 2019. Wise Wild Web
  *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
+ * Copyright (C) 2019 Nathanael Braun
  *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
  * console utils
  */
+import config   from "App/config";
+import debounce from "debounce";
+import debug    from "debug-logger";
+import is       from "is";
 
-
-const cfg           = require('./config').default,
-      debug         = require('debug-logger'),
-      isFunction    = require('is').function,
-      isBrowserSide = (new Function("try {return this===window;}catch(e){ return false;}"))(),
-      debounce      = require('debounce'),
-      _console      = !isBrowserSide && function _console( ns, nmFn = v => '' ) {
+const isBrowserSide = !__IS_SERVER__,
+      _console      = __IS_SERVER__ && function _console( ns, nmFn = v => '' ) {
 	      var c  = debug(ns),
 	          fn = ( ns2 ) => (new _console(ns + "::" + ns2));
 	
 	      for ( var k in c )
-		      if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
+		      if ( c.hasOwnProperty(k) && !this[k] && is.fn(c[k]) )
 			      fn[k] = c[k].bind(c, nmFn(ns));
 	
 	      fn.beep = function () {
@@ -53,7 +44,7 @@ const cfg           = require('./config').default,
 	          fn = ( ns2 ) => (new _console(ns + "::" + ns2));
 	
 	      for ( var k in c )
-		      if ( c.hasOwnProperty(k) && !this[k] && isFunction(c[k]) )
+		      if ( c.hasOwnProperty(k) && !this[k] && is.fn(c[k]) )
 			      fn[k] = c[k].bind(console, nmFn(ns));
 	
 	      fn.beep = function () {
@@ -66,7 +57,7 @@ const cfg           = require('./config').default,
 debug.inspectOptions = {
 	colors: true
 };
-debug.debug.enable(cfg.project.name + '*')
+debug.debug.enable(config.project.name + '*')
 console.watch = console.watch || function ( oObj, sProp ) {
 	let sPrivateProp   = "$_" + sProp + "_$"; // to minimize the name clash risk
 	oObj[sPrivateProp] = oObj[sProp];
@@ -103,7 +94,7 @@ isBrowserSide &&
 		    function () {
 			    console.groupCollapsed(" %d %cvendors warns happen%c (%s)", recentWarn.length,
 			                           "color: orange; text-decoration: underline",
-			                           "color: gray; font-style: italic;font-size:.8em",
+			                           "color: gray; font-style: italic;font-size:.7em",
 			                           truncate(recentWarn.map(v => v.join(', ')).join('\t'), 50));
 			    recentWarn.forEach(( [argz, trace] ) => {
 				    console.groupCollapsed(...argz);
@@ -119,7 +110,7 @@ isBrowserSide &&
 		    function () {
 			    console.groupCollapsed(" %d %cvendors errors happen%c (%s)", recentErrors.length,
 			                           "color: red; text-decoration: underline",
-			                           "color: gray; font-style: italic;font-size:.8em",
+			                           "color: gray; font-style: italic;font-size:.7em",
 			                           truncate(recentErrors.map(v => v.join(', ')).join('\t'), 50));
 			    // recentErrors.forEach(argz => hookedWarn.apply(console, argz));
 			    recentErrors.forEach(( [argz, trace] ) => {
@@ -132,28 +123,21 @@ isBrowserSide &&
 		    },
 		    2000
 	    );
-	
-	console.warn  = function ( ...argz ) {
-		if ( !argz[0] && argz[0].startWith(cfg.project.name) )
+	console.warn     = function ( ...argz ) {
+		if ( !argz[0] && argz[0].startWith(config.project.name) )
 			return hookedWarn(...argz);
 		recentWarn.push([argz, (new Error()).stack]);
 		warn();
 	}
-	console.trace = function ( ...argz ) {
-		//if ( /^Caipi/.test(argz[0]) )
-		//    return hookedWarn(...argz);
-		//recentWarn.push([argz, (new Error()).stack]);
-		//warn();
-	}
-	console.error = function ( ...argz ) {
-		if ( argz[0].startWith(cfg.project.name) )
+	console.error    = function ( ...argz ) {
+		if ( is.string(argz[0]) && argz[0].substr(0, config.project.name.length) === config.project.name )
 			return hookedWarn(...argz);
 		recentErrors.push([argz, (new Error()).stack]);
 		error();
 	}
 })
 ();
-const d_console = new _console(cfg.project.name);
+const d_console = new _console(config.project.name);
 
 export {d_console as console};
 

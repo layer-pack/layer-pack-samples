@@ -108,6 +108,15 @@ Then add build profiles basing this package available profiles :
 ```
 
 
+## Init projects :
+
+```
+npm i -g webpack-inherit
+wi-init myProject.com wi-layer-react-express:SSRApp
+wi-init myProject.com wi-layer-react-express:StaticApp
+wi-init myProject.com wi-layer-react-express:RSApp
+```
+
 ## Available config options :
 
 - targetDir {String}            : relative target build directory

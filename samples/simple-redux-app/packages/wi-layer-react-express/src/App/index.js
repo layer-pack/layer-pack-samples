@@ -54,7 +54,7 @@ const ctrl = {
 			content = renderToString(<App/>);
 			html    = "<!doctype html>\n" + renderToString(<Index helmet={Helmet.renderStatic()} content={content}/>);
 		} catch ( e ) {
-			return cb(e)
+			html = "<!doctype html>\n" + renderToString(<Index ssrErrors={`<pre>${e}\n${e.stack}</pre>`}/>);
 		}
 		cb(null, html)
 	}

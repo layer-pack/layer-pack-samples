@@ -3,6 +3,11 @@
     "rootFolder": "src/App",
     "scripts": {
       "start": "./etc/cli/start"
+    },
+    "templates": {
+      "SSRApp": "./templates/SSRApp",
+      "StaticApp": "./templates/StaticApp",
+      "RSApp": "./templates/RSApp"
     }
   },
   "dev": {
@@ -115,7 +120,7 @@
         "__IS_SERVER__": false
       },
       "HtmlWebpackPlugin": {
-        "template": "<%packagePath%>/src/AppStatic/index.html.tpl"
+        "template": "<%&packagePath%>/src/AppStatic/index.html.tpl"
       },
       "babelPreset": {
         "targets": {

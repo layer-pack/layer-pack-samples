@@ -23,9 +23,9 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-import config from "./config";
 import React  from "react";
 import api    from "./api";
+import config from "./config";
 
 const express = require("express"),
       server  = express(),
@@ -36,8 +36,9 @@ const express = require("express"),
 process.title = config.project.name + '::server';
 
 debug.warn("process.env.DEBUG : ", process.env.DEBUG);
-server.use(express.json());       // to support JSON-encoded bodies
-server.use(express.urlencoded()); // to support URL-encoded bodies
+
+server.use(express.json({ limit: '10mb' }));       // to support JSON-encoded bodies
+server.use(express.urlencoded({ extended: true, limit: '10mb' })); // to support URL-encoded bodies
 
 api(server, http);
 

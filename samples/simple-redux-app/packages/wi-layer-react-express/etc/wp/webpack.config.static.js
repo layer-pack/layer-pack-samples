@@ -24,15 +24,16 @@
  *   @contact : n8tz.js@gmail.com
  */
 
-const wpInherit            = require('webpack-inherit'),
-      fs                   = require("fs"),
-      webpack              = require("webpack"),
-      path                 = require("path"),
-      HtmlWebpackPlugin    = require('html-webpack-plugin'),
-      autoprefixer         = require('autoprefixer'),
-      wpiCfg               = wpInherit.getConfig(),
-      isExcluded           = wpInherit.isFileExcluded();
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const wpInherit               = require('webpack-inherit'),
+      fs                      = require("fs"),
+      webpack                 = require("webpack"),
+      path                    = require("path"),
+      HtmlWebpackPlugin       = require('html-webpack-plugin'),
+      autoprefixer            = require('autoprefixer'),
+      wpiCfg                  = wpInherit.getConfig(),
+      isExcluded              = wpInherit.isFileExcluded();
+const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = [
 	{
@@ -55,7 +56,7 @@ module.exports = [
 			historyApiFallback: true,
 			hot               : true,
 			inline            : true,
-			publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
+			//publicPath        : wpInherit.getHeadRoot() + "/" + (wpiCfg.vars.targetDir || 'dist'),
 			
 			host: 'localhost', // Defaults to `localhost`
 			port: 8080, // Defaults to 8080
@@ -90,6 +91,7 @@ module.exports = [
 			[
 				wpInherit.plugin(),
 				
+				new HardSourceWebpackPlugin(),
 				...(wpiCfg.vars.extractCss && [
 					new MiniCssExtractPlugin({
 						                         // Options similar to the same options in webpackOptions.output
