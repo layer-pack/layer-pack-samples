@@ -1,10 +1,10 @@
-# webpack-inherit-sample
+# layer-pack-sample
 
-Simple samples for [webpack-inherit](https://github.com/n8tz/webpack-inherit)
+Simple samples for [layer-pack](https://github.com/n8tz/layer-pack)
 
 
-<a href="https://travis-ci.org/n8tz/webpack-inherit-samples">
-<img src="https://travis-ci.org/n8tz/webpack-inherit-samples.svg?branch=master" alt="Build Status" /></a>
+<a href="https://travis-ci.org/n8tz/layer-pack-samples">
+<img src="https://travis-ci.org/n8tz/layer-pack-samples.svg?branch=master" alt="Build Status" /></a>
 
 
 ## Available :
@@ -45,7 +45,7 @@ or
 
 then open http://localhost:8080 or use 'npm run runBrowser'
 
-Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/samples/simple-redux-app/dist/www/App.stats.html)
+Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/layer-pack-samples/blob/master/samples/simple-redux-app/dist/www/App.stats.html)
 
 ### [simple-redux-app-no-inherit](samples/simple-redux-app-no-inherit)
 
@@ -62,7 +62,7 @@ or
 
 then open http://localhost:8080 or use 'npm run runBrowser'
 
-Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/webpack-inherit-samples/blob/master/samples/simple-redux-app-no-inherit/dist/App.stats.html)
+Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/layer-pack-samples/blob/master/samples/simple-redux-app-no-inherit/dist/App.stats.html)
 
 
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VWKR3TWQ2U2AC" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>

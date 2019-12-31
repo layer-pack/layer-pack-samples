@@ -11,10 +11,10 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-const wpInherit         = require('webpack-inherit');
+const lPack         = require('layer-pack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-wpInherit.loadConfig(
+lPack.loadConfig(
 	{
 		"default": {
 			"rootFolder": "App"
@@ -22,7 +22,7 @@ wpInherit.loadConfig(
 	}
 )
 
-const isExcluded = wpInherit.isFileExcluded("default");
+const isExcluded = lPack.isFileExcluded("default");
 
 module.exports = [
 	{
@@ -62,7 +62,7 @@ module.exports = [
 				                      template: './App/index.html',
 				                      inject  : false
 			                      }),
-			wpInherit.plugin("default"),
+			lPack.plugin("default"),
 		],
 		
 		

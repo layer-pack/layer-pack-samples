@@ -11,19 +11,19 @@
  *  @author : Nathanael Braun
  *  @contact : n8tz.js@gmail.com
  */
-const wpInherit         = require('webpack-inherit');
+const lPack         = require('layer-pack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-wpInherit.loadConfig(
+lPack.loadConfig(
 	{
 		"default": {
 			"rootFolder": "App",
-			externals   : true // directly use wpi to exclude code outside of ./App/**/*.*
+			externals   : true // directly use lpack to exclude code outside of ./App/**/*.*
 		}
 	}
 )
 
-const isExcluded = wpInherit.isFileExcluded("default");
+const isExcluded = lPack.isFileExcluded("default");
 
 module.exports = [
 	{
@@ -60,7 +60,7 @@ module.exports = [
 		
 		// Global build plugin & option
 		plugins: [
-			wpInherit.plugin("default"),
+			lPack.plugin("default"),
 		],
 		
 		

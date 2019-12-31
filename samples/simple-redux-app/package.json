@@ -7,8 +7,8 @@
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
     "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
-    "build": "wpi :www&&wpi :api",
-    "start-dev": "wi-run :dev start",
+    "build": "lpack :www&&lpack :api",
+    "start-dev": "lpack-run :dev start",
     "start": "node ./dist/api/App.server.js -p 8080",
     "runBrowser": "start http://localhost:8080"
   },
@@ -46,8 +46,8 @@
     "webpack-cli": "^3.3.5",
     "zombie": "^6.1.4",
     "mocha": "^6.2.0",
-    "webpack-inherit": "^1.8.0",
-    "wi-layer-react-express": "file:packages/wi-layer-react-express",
-    "wi-layer-redux-thunk": "file:packages/wi-layer-redux-thunk"
+    "layer-pack": "^1.0.0",
+    "lpack-react": "file:packages/lpack-react",
+    "lpack-redux": "file:packages/lpack-redux"
   }
 }

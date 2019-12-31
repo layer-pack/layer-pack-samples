@@ -1,0 +1,55 @@
+{
+  "default": {
+    "rootFolder": "App"
+  },
+  "dev": {
+    // make default dev profile scripts available
+    "extend": [
+      "lpack-react"
+    ]
+  },
+  "prod": {
+    // make default prod profile scripts available
+    "extend": [
+      "lpack-react"
+    ]
+  },
+  "www": {
+    "rootFolder": "App",
+    "libsPath": "./packages",
+    "basedOn": "defaultBrowser",
+    "vars": {
+      "webpackPatch": {
+        "watchOptions": {
+          "aggregateTimeout": 300,
+          "poll": 1000
+        }
+      }
+    },
+    "extend": [
+      "widget-management",
+      "lpack-redux",
+      "lpack-react"
+    ]
+  },
+  "api": {
+    "rootFolder": "App",
+    "basedOn": "defaultServer",
+    "libsPath": "./packages",
+    "vars": {
+      "externals": true,
+      "webpackPatch": {
+        "devtool": "eval",
+        "watchOptions": {
+          "aggregateTimeout": 300,
+          "poll": 1000
+        }
+      }
+    },
+    "extend": [
+      "widget-management",
+      "lpack-redux",
+      "lpack-react"
+    ]
+  }
+}

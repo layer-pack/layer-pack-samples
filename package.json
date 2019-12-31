@@ -1,7 +1,7 @@
 {
-  "name": "webpack-inherit-samples",
+  "name": "layer-pack-samples",
   "version": "1.0.0",
-  "description": "webpack-inherit-samples ",
+  "description": "layer-pack-samples ",
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
