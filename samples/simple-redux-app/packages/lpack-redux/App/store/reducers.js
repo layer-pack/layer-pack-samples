@@ -13,7 +13,7 @@
  */
 
 import {combineReducers} from 'redux'
-import reducers          from './(*/)/reducers.js';
+import reducers          from './(*)/reducers.js';
 
 let store      = combineReducers(
 	    reducers
