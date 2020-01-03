@@ -9,6 +9,15 @@ Simple samples for [layer-pack](https://github.com/n8tz/layer-pack)
 
 ## Available :
 
+### [app-with-minimal-boilerplate](samples/app-with-minimal-boilerplate)
+
+A mini app inheriting a simplified boilerplate with conf & react hmr
+
+To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-boilerplate) package and exec :
+
+    npm i
+    npm run start-dev
+    
 ### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
 
 A minimal lib config multiple entry point using WI pseudo-glob

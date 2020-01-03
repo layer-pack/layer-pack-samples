@@ -1,0 +1,38 @@
+{
+  "name": "app-with-minimal-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./Server.js",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
+    "build": "lpack :prod",
+    "start": "ws -d ./dist/www -p 8080",
+    "start-dev": "lpack-dev-server :dev",
+    "runBrowser": "start http://localhost:8080"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "is": "^3.3.0",
+    "local-web-server": "^3.0.7",
+    "moment": "^2.23.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.12.18"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "is-port-reachable": "^2.0.1",
+    "fkill": "^6.2.0",
+    "zombie": "^6.1.4",
+    "mocha": "^6.2.0",
+    "layer-pack": "^1.0.0",
+    "lpack-minimal-react-boilerplate": "file:packages/lpack-minimal-react-boilerplate"
+  }
+}

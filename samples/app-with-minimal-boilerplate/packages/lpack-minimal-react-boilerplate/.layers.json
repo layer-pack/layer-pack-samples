@@ -1,0 +1,31 @@
+{
+  "default": {
+    "rootFolder": "App"
+  },
+  "prod": {
+    "rootFolder": "App",
+    "config": "./webpack.config.www.prod.js",
+    "vars": {
+      "targetDir": "dist/www",
+      "babelPreset": {
+        "targets": {
+          "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"
+        },
+        "loose": true
+      }
+    }
+  },
+  "dev": {
+    "rootFolder": "App",
+    "config": "./webpack.config.www.dev.js",
+    "vars": {
+      "targetDir": "dist/www",
+      "babelPreset": {
+        "targets": {
+          "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"
+        },
+        "loose": true
+      }
+    }
+  }
+}
