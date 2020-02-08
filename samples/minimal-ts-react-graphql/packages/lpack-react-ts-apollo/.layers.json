@@ -1,0 +1,109 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    }
+  },
+  "dev": {
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    },
+    "commands": {
+      "server": {
+        "watch": "dist/api/App.server.js",
+        "run": "node --inspect=[::]:9229 ./dist/api/App.server.js -p 9701",
+        "forever": true
+      },
+      "api": {
+        "clearBefore": "dist/api",
+        "run": "lpack :api -w",
+        "vars": {
+          "production": false,
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
+        }
+      },
+      "www": {
+        "clearBefore": "dist/www",
+        "run": "lpack-dev-server :www --hot --host 0.0.0.0",
+        "vars": {
+          "devServer": true,
+          "production": false,
+          "DefinePluginCfg": {
+            "__IS_DEV__": true
+          }
+        }
+      }
+    }
+  },
+  "prod": {
+    "rootFolder": "App",
+    "scripts": {
+      "start": "./etc/cli/start"
+    },
+    "commands": {
+      "www": {
+        "clearBefore": "dist/www",
+        "run": "lpack :www",
+        "vars": {
+        }
+      },
+      "api": {
+        "wait": "www",
+        "clearBefore": "dist/api",
+        "run": "lpack :api"
+      },
+      "server": {
+        "wait": "api",
+        "run": "node ./dist/api/App.server.js -p 8080",
+        "forever": true
+      }
+    }
+  },
+  "defaultBrowser": "www",
+  "www": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.www.js",
+    "vars": {
+      "targetDir": "dist/www",
+      "DefinePluginCfg": {
+        "__IS_SERVER__": false,
+        "GRAPHQL": "'http://app.localhost:8080/graphql'",
+        "WS_SUBSCRIPTIONS": 0,
+        "LOCAL_STORAGE_KEY": "'reactql'"
+      },
+      "production": true,
+      "babelPreset": {
+        "targets": {
+          "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"
+        },
+        "loose": true
+      },
+      "webpackPatch": {
+        "watchOptions": {
+          "aggregateTimeout": 300,
+          "poll": 1000
+        }
+      }
+    }
+  },
+  "defaultServer": "api",
+  "api": {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.api.js",
+    "vars": {
+      "targetDir": "dist/api",
+      "externals": true,
+      "production": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": true,
+        "GRAPHQL": "'http://localhost:8080/graphql'",
+        "WS_SUBSCRIPTIONS": 0,
+        "LOCAL_STORAGE_KEY": "'reactql'"
+      }
+    }
+  }
+}
