@@ -17,24 +17,6 @@ To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-
 
     npm i
     npm run start-dev
-    
-### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
-
-A minimal lib config multiple entry point using WI pseudo-glob
-
-To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
-
-    npm i
-    npm run build
-    
-### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
-
-A minimal lib config with common-js exports of multiple entry point using WI pseudo-glob  
-
-To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with-glob-entry) package and exec :
-
-    npm i
-    npm run build
 
 ### [simple-redux-app ( mono repo )](samples/simple-redux-app)
 
@@ -55,6 +37,24 @@ or
 then open http://localhost:8080 or use 'npm run runBrowser'
 
 Check the build stats [here](http://htmlpreview.github.io/?https://github.com/n8tz/layer-pack-samples/blob/master/samples/simple-redux-app/dist/www/App.stats.html)
+    
+### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
+
+A minimal lib config multiple entry point using WI pseudo-glob
+
+To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
+
+    npm i
+    npm run build
+    
+### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
+
+A minimal lib config with common-js exports of multiple entry point using WI pseudo-glob  
+
+To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with-glob-entry) package and exec :
+
+    npm i
+    npm run build
 
 ### [simple-redux-app-no-inherit](samples/simple-redux-app-no-inherit)
 
