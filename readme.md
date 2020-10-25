@@ -36,9 +36,9 @@ To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with
     npm i
     npm run build
 
-### [simple-redux-app](samples/simple-redux-app)
+### [simple-redux-app ( mono repo )](samples/simple-redux-app)
 
-A simple redux app inheriting :
+A simple redux app using monorepo structure with :
  - a widget management layer ( ./libs/widget-management ) 
  - a layer with Redux & redux thunk
  - a layer with React, SSR, sass, hot reload & the webpack configs
