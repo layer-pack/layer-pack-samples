@@ -1,0 +1,10 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "extend": [
+      "my-app-core"
+    ]
+  },
+  "api": "default",
+  "www": "default"
+}

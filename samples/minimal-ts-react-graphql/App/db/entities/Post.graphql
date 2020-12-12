@@ -1,0 +1,18 @@
+
+type Post {
+    _id: String
+    title: String
+    content: String
+}
+
+type Subscription {
+    postAdded: Post
+}
+
+type Query {
+    post(_id: String): Post
+    posts: [Post]
+}
+type Mutation {
+    createPost(title: String, content: String): Post
+}

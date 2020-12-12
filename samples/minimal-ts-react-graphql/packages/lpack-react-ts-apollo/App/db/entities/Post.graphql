@@ -1,0 +1,17 @@
+scalar Image
+
+type Post {
+    _id: String
+    title: String
+    preview: Image
+    content: String
+}
+
+
+type Query {
+    post(_id: String): Post
+    posts: [Post]
+}
+type Mutation {
+    createPost(title: String, content: String): Post
+}
