@@ -1,0 +1,13 @@
+{
+  "name": "my-app-www",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "build": "lpack :www"
+  },
+  "dependencies": {
+    "my-app-core": "file://../my-app-core"
+  }
+}
