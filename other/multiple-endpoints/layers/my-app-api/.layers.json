@@ -6,5 +6,6 @@
     ]
   },
   "api": "default",
-  "www": "default"
+  "www": "default",
+  "wwwProd": "default"
 }

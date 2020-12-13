@@ -71,7 +71,7 @@ module.exports = [
                     exclude: lpackCfg.vars.babelInclude
                              ?
                              (
-                                 includeRE => ( { test: path => ( isExcluded.test(path) && !includeRE.test(path) ) } )
+                                 includeRE => (  path => ( isExcluded(path) && !includeRE.test(path) )  )
                              )(new RegExp(lpackCfg.vars.babelInclude))
                              :
                              isExcluded,
@@ -105,10 +105,10 @@ module.exports = [
                     use : "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff&name=assets/[hash].[ext]"
                 },
                 { test: /\.html$/, use: "file-loader?name=[name].[ext]" },
-                { test: /\.tpl$/, loader: "dot-tpl-loader?append=true" },
+                { test: /\.tpl$/, use: "dot-tpl-loader?append=true" },
                 {
                     test  : /\.(scss|css|less)(\?.*$|$)$/,
-                    loader: 'null-loader'
+                    use: 'null-loader'
                 },
                 
                 { test: /\.otf(\?.*$|$)$/, use: "file-loader?name=assets/[hash].[ext]" },
@@ -136,7 +136,7 @@ module.exports = [
                                                  ...lpackCfg.vars.BundleAnalyzerPlugin
                                              })
                 
-                ] || [new webpack.NamedModulesPlugin()] )
+                ] || [] )
             ],
     }
 ]

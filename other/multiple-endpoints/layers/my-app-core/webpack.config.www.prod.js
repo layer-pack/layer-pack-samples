@@ -60,7 +60,7 @@ module.exports = [
 						chunks  : 'all',
 						filename: lpackCfg.vars.rootAlias + ".vendors.js",
 						test    : ( f ) => {
-							return f.resource && lPack.isFileExcluded().test(f.resource)
+							return f.resource && isExcluded(f.resource)
 						},
 					},
 				}
@@ -185,8 +185,8 @@ module.exports = [
 				}
 				,
 				{
-					test  : /\.json?$/,
-					loader:
+					test: /\.json?$/,
+					use :
 						'strip-json-comments-loader'
 				}
 			],
