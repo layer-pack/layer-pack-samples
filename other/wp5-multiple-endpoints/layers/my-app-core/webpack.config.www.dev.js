@@ -29,8 +29,10 @@ const path                 = require("path");
 const autoprefixer         = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const lpackCfg   = lPack.getConfig(),
-      isExcluded = lPack.isFileExcluded();
+const lpackCfg      = lPack.getConfig(),
+      isExcluded    = lPack.isFileExcluded(),
+      devServerPort = process.env.DEV_SERVER_PORT || 8080,
+      proxyTo       = process.env.API_PORT || 9701;
 
 module.exports = [
 	{
@@ -47,13 +49,44 @@ module.exports = [
 			]
 		},
 		devServer: {
-			//index             : '', //needed to enable root proxying
-			contentBase       : lPack.getHeadRoot() + "/" + (lpackCfg.vars.targetDir || 'dist'),
-			historyApiFallback: true,
 			hot               : true,
-			inline            : true,
-			host              : 'localhost', // Defaults to `localhost`
-			port              : 8080, // Defaults to 8080
+			host              : '127.0.0.1', // Defaults to `localhost`
+			port              : devServerPort, // Defaults to 8080
+			historyApiFallback: {
+				disableDotRule: true,
+			},
+			proxy             : [
+				{
+					context         : ['/**', '!/ws/**'],
+					disableHostCheck: true,
+					target          : 'http://127.0.0.1:' + proxyTo,
+					ws              : true,
+					secure          : false,                         // proxy websockets,
+					
+					onError: ( err, req, res ) => {
+						console.log('wait api... ', req.headers && req.headers.referer);
+						if ( !res.socket )
+							setTimeout(
+								tm => res.redirect(req.headers.referer),
+								3000
+							)
+						else {
+							console.log('wait socket api... ', req.originUrl);
+							//setTimeout(
+							//	tm => {
+							//		res.socket.destroy();
+							//	}, 1000)
+						}
+					}
+				},
+				//{
+				//	context         : ['/**', '!/sockjs-node/**'],
+				//	target          : 'http://127.0.0.1:9090/wait',
+				//	disableHostCheck: true,
+				//	ws              : true,
+				//	secure          : false                         // proxy websockets
+				//}
+			]
 		},
 		
 		// The resulting build
@@ -123,6 +156,7 @@ module.exports = [
 					test   : /\.jsx?$/,
 					exclude: isExcluded,
 					use    : [
+						'react-hot-loader/webpack',
 						{
 							loader : 'babel-loader',
 							options: {
@@ -211,8 +245,8 @@ module.exports = [
 				}
 				,
 				{
-					test  : /\.json?$/,
-					use:
+					test: /\.json?$/,
+					use :
 						'strip-json-comments-loader'
 				}
 			],

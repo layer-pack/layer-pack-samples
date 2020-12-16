@@ -1,0 +1,19 @@
+{
+  "name": "my-app-www",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "build": "lpack :wwwProd&&lpack :api",
+    "run": "node dist/api/App.server.js -p 8080",
+    "dev": "lpack :api -w&nodemon dist/api/App.server.js --exec \"node ./dist/api/App.server.js -p 9001\"&WWW_API_PORT=9001 lpack-dev-server :www"
+  },
+  "dependencies": {
+    "my-app-core": "file://../my-app-core"
+  },
+  "devDependencies": {
+    "layer-pack": "^1.0.11",
+    "nodemon": "^2.0.6"
+  }
+}
