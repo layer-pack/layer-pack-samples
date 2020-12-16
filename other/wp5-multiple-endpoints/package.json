@@ -1,13 +1,11 @@
 {
-  "name": "my-app-www",
+  "name": "wp5-multiple-endpoints",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "build": "lpack :www"
   },
   "dependencies": {
-    "my-app-core": "file://../my-app-core"
   }
 }
