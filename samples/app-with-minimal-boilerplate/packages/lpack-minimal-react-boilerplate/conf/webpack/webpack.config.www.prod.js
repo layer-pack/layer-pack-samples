@@ -60,7 +60,7 @@ module.exports = [
 						chunks  : 'all',
 						filename: lpackCfg.vars.rootAlias + ".vendors.js",
 						test    : ( f ) => {
-							return f.resource && lPack.isFileExcluded().test(f.resource)
+							return f.resource && isExcluded(f.resource)
 						},
 					},
 				}
@@ -128,25 +128,29 @@ module.exports = [
 						{
 							loader : 'postcss-loader',
 							options: {
-								plugins: function () {
-									return [
-										autoprefixer({
-											             overrideBrowserslist: [
-												             '>1%',
-												             'last 4 versions',
-												             'Firefox ESR',
-												             'not ie < 9', // React doesn't support IE8 anyway
-											             ]
-										             }),
-									];
+								postcssOptions: {
+									plugins: [
+										[
+											autoprefixer({
+												             overrideBrowserslist: [
+													             '>1%',
+													             'last 4 versions',
+													             'Firefox ESR',
+													             'not ie < 9', // React doesn't support IE8 anyway
+												             ]
+											             }),
+										]]
+									
 								}
 							}
 						},
 						{
 							loader : "sass-loader",
 							options: {
-								importer  : lPack.plugin().sassImporter(),
-								sourceMaps: true
+								sassOptions: {
+									importer  : lPack.plugin().sassImporter(),
+									sourceMaps: true
+								},
 							}
 						}
 					]
@@ -185,8 +189,8 @@ module.exports = [
 				}
 				,
 				{
-					test  : /\.json?$/,
-					loader:
+					test: /\.json?$/,
+					use :
 						'strip-json-comments-loader'
 				}
 			],

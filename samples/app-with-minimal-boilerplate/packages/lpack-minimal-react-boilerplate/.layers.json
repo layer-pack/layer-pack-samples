@@ -2,9 +2,34 @@
   "default": {
     "rootFolder": "App"
   },
-  "prod": {
+  // api with all libs as externals ( require to keep layers in the same location to keep dependencies )
+  "api": {
     "rootFolder": "App",
-    "config": "./webpack.config.www.prod.js",
+    "config": "./conf/webpack/webpack.config.api.js",
+    "vars": {
+      "targetDir": "dist/api",
+      "externals": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": true
+      }
+    }
+  },
+  // api with all buildable libs built ( require to specify deps that can't be builds )
+  "apiProd": {
+    "rootFolder": "App",
+    "config": "./conf/webpack/webpack.config.api.js",
+    "vars": {
+      "targetDir": "dist/api",
+      "externals": "^(express)(?:\\/.*)?$",
+      "DefinePluginCfg": {
+        "__IS_SERVER__": true
+      }
+    }
+  },
+  // www with dev server & proxying to node build
+  "www": {
+    "rootFolder": "App",
+    "config": "./conf/webpack/webpack.config.www.dev.js",
     "vars": {
       "targetDir": "dist/www",
       "babelPreset": {
@@ -15,11 +40,13 @@
       }
     }
   },
-  "dev": {
+  // www for prod
+  "wwwProd": {
     "rootFolder": "App",
-    "config": "./webpack.config.www.dev.js",
+    "config": "./conf/webpack/webpack.config.www.prod.js",
     "vars": {
       "targetDir": "dist/www",
+      "production": true,
       "babelPreset": {
         "targets": {
           "browsers": "> 0.25%, not dead, safari >= 6, ios >= 6, chrome >= 52"

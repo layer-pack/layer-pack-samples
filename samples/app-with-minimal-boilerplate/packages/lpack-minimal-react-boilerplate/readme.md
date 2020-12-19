@@ -1,3 +1,3 @@
-# lpack-minimal-boilerplate
+# core
 
-A inheritable boilerplate with webpack4, react, sass, hmr
+A inheritable boilerplate with webpack5, react, sass, hmr

@@ -23,22 +23,25 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
+import React  from "react";
+import api    from "./api";
+import config from "./config";
 
-import React from 'react';
+const express = require("express"),
+      server  = express(),
+      http    = require('http').Server(server),
+      argz    = require('minimist')(process.argv.slice(2));
 
-class App extends React.Component {
-	
-	render() {
-		return <React.Fragment>
-			<h1>Core</h1>
-			<h2>Included ( among others ) : </h2>
-			<ul>
-				<li>react ^16.8.6</li>
-				<li>sass</li>
-				<li>es6 + decorators</li>
-			</ul>
-		</React.Fragment>
-	}
-}
+process.title = config.project.name + '::server';
 
-export default App
+server.use(express.json({ limit: '2mb' }));       // to support JSON-encoded bodies
+server.use(express.urlencoded({ extended: true, limit: '2mb' })); // to support URL-encoded bodies
+
+api(server, http);
+
+var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
+	console.info('Running on ', server_instance.address().port)
+});
+
+
+

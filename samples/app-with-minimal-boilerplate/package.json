@@ -6,33 +6,33 @@
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
-    "build": "lpack :prod",
+    "test": "echo \"ok\"",
+    "build": "lpack :wwwProd",
     "start": "ws -d ./dist/www -p 8080",
-    "start-dev": "lpack-dev-server :dev",
+    "start-dev": "lpack-dev-server :www",
     "runBrowser": "start http://localhost:8080"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "is": "^3.3.0",
-    "local-web-server": "^3.0.7",
-    "moment": "^2.23.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.2.0",
-    "react-hot-loader": "^4.12.18"
+    "local-web-server": "^4.2.1",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/preset-env": "^7.5.0",
-    "@babel/register": "^7.4.4",
-    "babel-loader": "^8.0.6",
-    "is-port-reachable": "^2.0.1",
-    "fkill": "^6.2.0",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "is-port-reachable": "^3.0.0",
+    "fkill": "^7.0.1",
     "zombie": "^6.1.4",
-    "mocha": "^6.2.0",
-    "layer-pack": "^1.0.0",
+    "mocha": "^8.2.1",
+    "layer-pack": "^1.1.1",
     "lpack-minimal-react-boilerplate": "file:packages/lpack-minimal-react-boilerplate"
   }
 }

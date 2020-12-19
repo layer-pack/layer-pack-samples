@@ -16,13 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import "core-js";
-import React    from "react";
-import ReactDom from 'react-dom';
-import {hot}    from 'react-hot-loader/root'
+import React            from "react";
+import ReactDom         from 'react-dom';
+import {renderToString} from "react-dom/server";
+import {Helmet}         from "react-helmet";
+import {hot}            from 'react-hot-loader/root'
 import "regenerator-runtime/runtime";
+import Index            from "./index.html";
 
 
-export default {
+const ctrl = {
 	renderTo( node, initialState = {} ) {
 		const isDev  = process.env.NODE_ENV !== 'production',
 		      App    = require('App/App.js').default,
@@ -42,6 +45,20 @@ export default {
 			})
 		}
 	},
+	renderSSR( { state, tpl }, cb ) {
+		let content = "",
+		    App     = require('App/App.js').default,
+		    html;
+		
+		try {
+			content = renderToString(<App/>);
+			html    = "<!doctype html>\n" + renderToString(<Index helmet={Helmet.renderStatic()} content={content}/>);
+		} catch ( e ) {
+			html = "<!doctype html>\n" + renderToString(<Index ssrErrors={`<pre>${e}\n${e.stack}</pre>`}/>);
+		}
+		cb(null, html)
+	}
 }
 
+export default ctrl;
 

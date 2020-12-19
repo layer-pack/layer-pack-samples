@@ -1,6 +1,6 @@
 /*
  *   The MIT License (MIT)
- *   Copyright (c) 2019. Wise Wild Web
+ *   Copyright (c) 2020. Nathanael Braun
  *
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
  *   of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,6 @@
  *   @contact : n8tz.js@gmail.com
  */
 
-import React from 'react';
-
-class App extends React.Component {
-	
-	render() {
-		return <React.Fragment>
-			<h1>Core</h1>
-			<h2>Included ( among others ) : </h2>
-			<ul>
-				<li>react ^16.8.6</li>
-				<li>sass</li>
-				<li>es6 + decorators</li>
-			</ul>
-		</React.Fragment>
-	}
+export default {
+	...require('./.buildInfos.json') // from lpack
 }
-
-export default App

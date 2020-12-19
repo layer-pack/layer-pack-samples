@@ -25,21 +25,21 @@ let appServer,
 describe(packageCfg.name + "@" + packageCfg.version + " : ", () => {
 	
 	describe('Build', function () {
-		it('it build correctly ', function ( done ) {
-			this.timeout(Infinity);
-			
-			exec('npm run build',
-			     {
-				     cwd: projectDir,
-			     },
-			     function ( code, outLog ) {
-				     code && console.warn('build fail : ' + code + '\n\n');
-				     done(code);
-			     }
-			);
-			
-			
-		});
+		//it('it build correctly ', function ( done ) {
+		//	this.timeout(Infinity);
+		//
+		//	exec('npm run build',
+		//	     {
+		//		     cwd: projectDir,
+		//	     },
+		//	     function ( code, outLog ) {
+		//		     code && console.warn('build fail : ' + code + '\n\n');
+		//		     done(code);
+		//	     }
+		//	);
+		//
+		//
+		//});
 		it('it run correctly ', function ( done ) {
 			this.timeout(Infinity);
 			

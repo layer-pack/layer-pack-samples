@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
+    "test": "echo \"ok\""
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

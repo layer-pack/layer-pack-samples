@@ -24,21 +24,32 @@
  *   @contact : n8tz.js@gmail.com
  */
 
-import React from 'react';
+import is  from 'is';
+import api from './api/(*).js';
 
-class App extends React.Component {
-	
-	render() {
-		return <React.Fragment>
-			<h1>Core</h1>
-			<h2>Included ( among others ) : </h2>
-			<ul>
-				<li>react ^16.8.6</li>
-				<li>sass</li>
-				<li>es6 + decorators</li>
-			</ul>
-		</React.Fragment>
-	}
-}
 
-export default App
+export default ( server, http ) => Object
+	.keys(api)
+	.map(
+		( service ) => (
+			is.fn(api[service]) ?
+			{
+				name         : service,
+				priorityLevel: 0,
+				service      : api[service]
+			} : api[service]
+		)
+	)
+	.sort(
+		( a, b ) => (a.priorityLevel > b.priorityLevel ? -1 : 1)
+	)
+	.forEach(
+		( service ) => {
+			try {
+				console.info("Load Api : ", service.name, "\n")
+				
+				service.service(server, http);
+			} catch ( e ) {
+				console.error("Api fail loading service ", service.name, "\n", e)
+			}
+		})

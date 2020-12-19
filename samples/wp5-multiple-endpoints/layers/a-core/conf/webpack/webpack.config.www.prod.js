@@ -23,69 +23,24 @@
  *   @author : Nathanael Braun
  *   @contact : n8tz.js@gmail.com
  */
-const lPack                = require('layer-pack');
-const webpack              = require("webpack");
-const path                 = require("path");
-const autoprefixer         = require('autoprefixer');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const lPack        = require('layer-pack');
+const webpack      = require("webpack");
+const autoprefixer = require('autoprefixer');
 
-const lpackCfg      = lPack.getConfig(),
-      isExcluded    = lPack.isFileExcluded(),
-      devServerPort = process.env.DEV_SERVER_PORT || 8080,
-      proxyTo       = process.env.API_PORT || 9701;
+const lpackCfg   = lPack.getConfig(),
+      isExcluded = lPack.isFileExcluded();
 
 module.exports = [
 	{
-		mode: "development",
+		mode: "production",
 		
 		// The jsx App entry point
-		entry    : {
+		entry: {
 			[lpackCfg.vars.rootAlias]: [
-				'webpack/hot/dev-server',
 				lpackCfg.vars.entryPoint ?
 				lpackCfg.vars.entryPoint
 				                         :
 				lpackCfg.vars.rootAlias + "/index.client" // default to 'App'
-			]
-		},
-		devServer: {
-			hot               : true,
-			host              : '127.0.0.1', // Defaults to `localhost`
-			port              : devServerPort, // Defaults to 8080
-			historyApiFallback: {
-				disableDotRule: true,
-			},
-			proxy             : [
-				{
-					context         : ['/**', '!/ws/**'],
-					disableHostCheck: true,
-					target          : 'http://127.0.0.1:' + proxyTo,
-					ws              : true,
-					secure          : false,                         // proxy websockets,
-					
-					onError: ( err, req, res ) => {
-						console.log('wait api... ', req.headers && req.headers.referer);
-						if ( !res.socket )
-							setTimeout(
-								tm => res.redirect(req.headers.referer),
-								3000
-							)
-						else {
-							console.log('wait socket api... ', req.originUrl);
-							//setTimeout(
-							//	tm => {
-							//		res.socket.destroy();
-							//	}, 1000)
-						}
-					}
-				},
-				//{
-				//	context         : ['/**', '!/sockjs-node/**'],
-				//	target          : 'http://127.0.0.1:9090/wait',
-				//	disableHostCheck: true,
-				//	ws              : true,
-				//	secure          : false                         // proxy websockets
-				//}
 			]
 		},
 		
@@ -125,9 +80,6 @@ module.exports = [
 				".scss",
 				".css",
 			],
-			alias     : {
-				'react-dom': '@hot-loader/react-dom'
-			},
 		},
 		
 		// Global build plugin & option
@@ -135,7 +87,6 @@ module.exports = [
 			[
 				lPack.plugin(),
 				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
-			
 			]
 		),
 		
@@ -143,20 +94,10 @@ module.exports = [
 		// the requirable files and what manage theirs parsing
 		module: {
 			rules: [
-				
-				{ test: /\.jsx?$/, loader: 'source-map-loader', exclude: /react-hot-loader/ },
-				//{
-				//	test   : /\.jsx?$/,
-				//	exclude: isExcluded,
-				//	use    : [
-				//		'react-hot-loader/webpack'
-				//	]
-				//},
 				{
 					test   : /\.jsx?$/,
 					exclude: isExcluded,
 					use    : [
-						'react-hot-loader/webpack',
 						{
 							loader : 'babel-loader',
 							options: {
@@ -174,7 +115,6 @@ module.exports = [
 										"loose": true
 									}],
 									["@babel/plugin-transform-runtime", {}],
-									"react-hot-loader/babel"
 								]
 							}
 						},
@@ -188,25 +128,29 @@ module.exports = [
 						{
 							loader : 'postcss-loader',
 							options: {
-								plugins: function () {
-									return [
-										autoprefixer({
-											             overrideBrowserslist: [
-												             '>1%',
-												             'last 4 versions',
-												             'Firefox ESR',
-												             'not ie < 9', // React doesn't support IE8 anyway
-											             ]
-										             }),
-									];
+								postcssOptions: {
+									plugins: [
+										[
+											autoprefixer({
+												             overrideBrowserslist: [
+													             '>1%',
+													             'last 4 versions',
+													             'Firefox ESR',
+													             'not ie < 9', // React doesn't support IE8 anyway
+												             ]
+											             }),
+										]]
+									
 								}
 							}
 						},
 						{
 							loader : "sass-loader",
 							options: {
-								importer  : lPack.plugin().sassImporter(),
-								sourceMaps: true
+								sassOptions: {
+									importer  : lPack.plugin().sassImporter(),
+									sourceMaps: true
+								},
 							}
 						}
 					]
