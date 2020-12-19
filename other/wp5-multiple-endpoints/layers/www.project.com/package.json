@@ -5,12 +5,12 @@
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "build": "lpack :wwwProd&&lpack :api",
+    "build": "lpack :wwwProd&&lpack :apiProd",
     "run": "node dist/api/App.server.js -p 8080",
     "dev": "lpack :api -w&nodemon dist/api/App.server.js --exec \"node ./dist/api/App.server.js -p 9001\"&WWW_API_PORT=9001 lpack-dev-server :www"
   },
   "dependencies": {
-    "my-app-core": "file://../my-app-core"
+    "my-app-core": "file://../a-core"
   },
   "devDependencies": {
     "layer-pack": "^1.0.11",

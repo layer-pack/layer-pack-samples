@@ -2,9 +2,11 @@
   "default": {
     "rootFolder": "App",
     "extend": [
-      "my-app-core"
+      "a-core"
     ]
   },
   "api": "default",
-  "www": "default"
+  "apiProd": "default",
+  "www": "default",
+  "wwwProd": "default"
 }
