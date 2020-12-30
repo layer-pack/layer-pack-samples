@@ -1,5 +1,5 @@
 {
-  "name": "my-app-api",
+  "name": "api.project.com",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -13,7 +13,7 @@
     "my-app-core": "file://../a-core"
   },
   "devDependencies": {
-    "layer-pack": "^1.0.11",
+    "layer-pack": "^1.2.2",
     "nodemon": "^2.0.6"
   }
 }

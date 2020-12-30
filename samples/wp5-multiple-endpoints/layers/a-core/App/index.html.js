@@ -34,6 +34,9 @@ export default class index extends React.Component {
 				{
 					css && <style type="text/css" dangerouslySetInnerHTML={{ __html: css + '' }}/>
 				}
+				{ <link
+					href="/App.css"
+					rel="stylesheet"/> }
 			</head>
 			<body {...bodyAttrs}>
 			<div id="app" dangerouslySetInnerHTML={{ __html: content }}>

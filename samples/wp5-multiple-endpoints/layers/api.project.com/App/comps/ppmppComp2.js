@@ -1,6 +1,6 @@
 /*
  *   The MIT License (MIT)
- *   Copyright (c) 2019. Wise Wild Web
+ *   Copyright (c) 2020. Nathanael Braun
  *
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
  *   of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,8 @@
  *   @contact : n8tz.js@gmail.com
  */
 
-import React from 'react';
-import Super from '$super';
+import react from "react";
 
-class App extends React.Component {
-	
-	render() {
-		return <React.Fragment>
-			<Super/>
-			<h1>www</h1>
-		</React.Fragment>
-	}
+export default () => {
+	return <div>jhj kjl kj l</div>
 }
-
-export default App

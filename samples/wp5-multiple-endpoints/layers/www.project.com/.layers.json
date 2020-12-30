@@ -8,5 +8,5 @@
   "api": "default",
   "apiProd": "default",
   "www": "default",
-  "www": "default"
+  "wwwProd": "default"
 }

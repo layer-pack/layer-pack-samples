@@ -25,10 +25,14 @@
  */
 
 import React from 'react';
+import Comps from './comps/(**/*).js';
+
+import "./App.scss";
 
 class App extends React.Component {
 	
 	render() {
+		//console.log(require("App/assets/test.jpg"))
 		return <React.Fragment>
 			<h1>api server lkkj</h1>
 		</React.Fragment>

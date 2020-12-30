@@ -6,7 +6,7 @@
   "main": "./Server.js",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "echo \"ok\"",
+    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
     "build": "lpack :wwwProd",
     "start": "ws -d ./dist/www -p 8080",
     "start-dev": "lpack-dev-server :www",
@@ -32,7 +32,7 @@
     "fkill": "^7.0.1",
     "zombie": "^6.1.4",
     "mocha": "^8.2.1",
-    "layer-pack": "^1.1.1",
+    "layer-pack": "^1.2.1",
     "lpack-minimal-react-boilerplate": "file:packages/lpack-minimal-react-boilerplate"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "my-app-www",
+  "name": "www.project.com",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -7,13 +7,13 @@
   "scripts": {
     "build": "lpack :wwwProd&&lpack :apiProd",
     "run": "node dist/api/App.server.js -p 8080",
-    "dev": "lpack :api -w&nodemon dist/api/App.server.js --exec \"node ./dist/api/App.server.js -p 9001\"&WWW_API_PORT=9001 lpack-dev-server :www"
+    "dev": "lpack :api -w&nodemon dist/api/App.server.js --exec \"node ./dist/api/App.server.js -p 9001\"&API_PORT=9001 lpack-dev-server :www"
   },
   "dependencies": {
-    "my-app-core": "file://../a-core"
+    "a-core": "file://../a-core"
   },
   "devDependencies": {
-    "layer-pack": "^1.0.11",
+    "layer-pack": "^1.2.2",
     "nodemon": "^2.0.6"
   }
 }

@@ -17,10 +17,7 @@ A monorepo structure with
 - 1 package with some api service, inheriting the core
 - 1 package with some www service, inheriting the core
 
-To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoints) package and exec :
-
-    npm i
-    npm run start-dev
+To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoints) package and check the readme
 
 ### [app-with-minimal-boilerplate](samples/app-with-minimal-boilerplate)
 
