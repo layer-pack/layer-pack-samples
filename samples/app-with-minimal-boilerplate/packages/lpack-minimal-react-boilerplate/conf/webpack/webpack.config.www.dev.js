@@ -187,19 +187,21 @@ module.exports = [
 						{ loader: 'css-loader', options: { importLoaders: 1 } },
 						{
 							loader : 'postcss-loader',
-							postcssOptions: {
-								plugins: [
-									[
-										autoprefixer({
-											             overrideBrowserslist: [
-												             '>1%',
-												             'last 4 versions',
-												             'Firefox ESR',
-												             'not ie < 9', // React doesn't support IE8 anyway
-											             ]
-										             }),
-									]]
-								
+							options: {
+								postcssOptions: {
+									plugins: [
+										[
+											autoprefixer({
+												             overrideBrowserslist: [
+													             '>1%',
+													             'last 4 versions',
+													             'Firefox ESR',
+													             'not ie < 9', // React doesn't support IE8 anyway
+												             ]
+											             }),
+										]]
+									
+								}
 							}
 						},
 						{

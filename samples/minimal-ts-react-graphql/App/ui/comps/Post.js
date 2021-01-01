@@ -66,7 +66,7 @@ function WatchPosts( { onPostSelected } ) {
 	if ( error ) return `Error! ${error.message}`;
 	return (
 		<div name="post" onChange={onPostSelected}>
-			{data && data.postAdded.title}
+			{data && data.postAdded&& data.postAdded.title}
 		</div>
 	);
 }

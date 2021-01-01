@@ -35,6 +35,13 @@ module.exports = {
 			"lpack-react-ts-apollo"
 		]
 	},
+	"prod"   : {
+		"rootFolder": "App",
+		"libsPath"  : "./packages",
+		"extend"    : [
+			"lpack-react-ts-apollo"
+		]
+	},
 	"dev"    : {
 		"rootFolder": "App",
 		"libsPath"  : "./packages",
@@ -54,7 +61,7 @@ module.exports = {
 		"rootFolder": "App",
 		"libsPath"  : "./packages",
 		
-		"extend"    : [
+		"extend": [
 			"lpack-react-ts-apollo"
 		]
 	},
@@ -62,7 +69,7 @@ module.exports = {
 		"rootFolder": "App",
 		"libsPath"  : "./packages",
 		
-		"extend"    : [
+		"extend": [
 			"lpack-react-ts-apollo"
 		]
 	}

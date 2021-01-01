@@ -31,7 +31,7 @@
     "fkill": "^6.2.0",
     "zombie": "^6.1.4",
     "mocha": "^6.2.0",
-    "layer-pack": "^1.0.0",
+    "layer-pack": "^1.2.2",
     "lpack-react-ts-apollo": "file:packages/lpack-react-ts-apollo"
   }
 }

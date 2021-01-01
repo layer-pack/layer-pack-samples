@@ -10,7 +10,8 @@
     "build": "lpack :wwwProd",
     "start": "ws -d ./dist/www -p 8080",
     "start-dev": "lpack-dev-server :www",
-    "runBrowser": "start http://localhost:8080"
+    "runBrowser": "start http://localhost:8080",
+    "prepare": "lpack-setup :www"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
@@ -24,15 +25,8 @@
     "react-hot-loader": "^4.13.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/register": "^7.12.10",
-    "babel-loader": "^8.2.2",
-    "is-port-reachable": "^3.0.0",
-    "fkill": "^7.0.1",
-    "zombie": "^6.1.4",
-    "mocha": "^8.2.1",
-    "layer-pack": "^1.2.1",
+    "html-webpack-plugin": "^5.0.0-beta.1",
+    "layer-pack": "^1.2.3",
     "lpack-minimal-react-boilerplate": "file:packages/lpack-minimal-react-boilerplate"
   }
 }

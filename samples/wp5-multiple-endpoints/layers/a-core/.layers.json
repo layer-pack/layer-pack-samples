@@ -29,7 +29,7 @@
   // www with dev server & proxying to node build
   "www": {
     "rootFolder": "App",
-    "config": "./conf/webpack/webpack.config.www.js",
+    "config": "./conf/webpack/webpack.config.www.dev.js",
     "vars": {
       "devServer": true,
       "extractCss": true,

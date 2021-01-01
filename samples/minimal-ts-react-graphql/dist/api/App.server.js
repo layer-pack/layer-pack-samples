@@ -1,33 +1,3 @@
-/*
- *   The MIT License (MIT)
- *   Copyright (c) 2019. Wise Wild Web
- *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
- *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
- *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
- *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
- */
-
-/** wi externals **/
-require('layer-pack/etc/node/loadModulePaths.js').loadPaths({allModulePath:["packages","node_modules"],cDir:__dirname+'/..\..'},"dist\\api");/** /wi externals **/
-require('source-map-support').install();
-
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -117,14 +87,209 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./App/.buildInfos.json":
-/*!******************************!*\
-  !*** ./App/.buildInfos.json ***!
-  \******************************/
-/*! exports provided: project, buildDate, profile, projectRoot, vars, allCfg, allModId, default */
-/***/ (function(module) {
+/***/ "../../../layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1!./":
+/*!***********************************************************************************************************************************************!*\
+  !*** D:/shared/n8tz/libs/lpack/layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1 ***!
+  \***********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = JSON.parse("{\"project\":{\"name\":\"minimal-ts-react-graphql\",\"author\":\"Nathan Braun <n8tz.js@gmail.com>\",\"version\":\"1.0.0\"},\"buildDate\":1581173655311,\"profile\":\"api\",\"projectRoot\":\"G:\\\\n8tz\\\\libs\\\\lpack\\\\layer-pack-samples\\\\samples\\\\minimal-ts-react-graphql\",\"vars\":{\"rootAlias\":\"App\",\"targetDir\":\"dist/api\",\"externals\":true,\"production\":false,\"DefinePluginCfg\":{\"__IS_SERVER__\":true,\"GRAPHQL\":\"'http://localhost:8080/graphql'\",\"WS_SUBSCRIPTIONS\":0,\"LOCAL_STORAGE_KEY\":\"'reactql'\",\"__IS_DEV__\":true}},\"allCfg\":[{\"rootFolder\":\"App\",\"libsPath\":\"./packages\",\"extend\":[\"lpack-react-ts-apollo\"]},{\"rootFolder\":\"App\",\"config\":\"./etc/wp/webpack.config.api.js\",\"vars\":{\"targetDir\":\"dist/api\",\"externals\":true,\"production\":true,\"DefinePluginCfg\":{\"__IS_SERVER__\":true,\"GRAPHQL\":\"'http://localhost:8080/graphql'\",\"WS_SUBSCRIPTIONS\":0,\"LOCAL_STORAGE_KEY\":\"'reactql'\"}}}],\"allModId\":[\"lpack-react-ts-apollo\"]}");
+/** layer pack externals modules loader **/
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2020. Nathanael Braun
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+const Module = __webpack_require__(/*! module */ "module").Module,
+      path   = __webpack_require__(/*! path */ "path");
+(function () {
+	let modPath        = [],
+	    allRoots       = [],
+	    baseDir        = false,
+	    rootModule     = require.main,
+	    __initialPaths = [].concat(rootModule.paths),
+	    __oldNMP       = Module._nodeModulePaths;
+	
+	
+	Module._nodeModulePaths = function ( from ) {
+		let paths, rootMod;
+		if (// if require is emited from the build ( doesn't seems to happen anymore ? )
+			from === baseDir
+		) {
+			paths = [].concat(modPath).concat(__oldNMP(from));
+			return paths;
+		}
+		else {
+			paths   = __oldNMP(from).filter(
+				dir => modPath.find(path => (dir.startsWith(path)))
+			);
+			rootMod = paths.pop();// keep inherited order if not sub node_modules
+			paths.push(...modPath, ...__oldNMP(path.resolve(path.join(rootMod, '..'))));// add normal parents node_modules from head
+			return paths;
+		}
+	};
+	
+	return function loadPaths( { allModulePath, cDir }, dist ) {
+		modPath = allModulePath.map(p => path.join(cDir, p));
+		baseDir = path.join(cDir, dist);
+		
+		rootModule.paths.length = 0;
+		rootModule.paths.push(...modPath, ...__initialPaths);
+	}
+})()(
+    {
+        allModulePath:["packages","node_modules","packages/lpack-react-ts-apollo/node_modules"],
+        cDir:path.join(require.main.path,"../..")
+    },
+    "dist/api"
+);/** layer pack externals sourcemaps**/
+__webpack_require__(/*! source-map-support */ "./node_modules/source-map-support/source-map-support.js").install();
+
+
+/***/ }),
+
+/***/ "./App/.___layerPackIndexUtils.js":
+/*!****************************************!*\
+  !*** ./App/.___layerPackIndexUtils.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2020. Nathanael Braun
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+module.exports = {
+  /**
+   * Walk & set executables from globs requires
+   * @param _target
+   * @param path
+   * @param value
+   */
+  walknSetExport(_target, path, value) {
+    let fPath = path.split('/'),
+        target = _target,
+        i,
+        module;
+    i = 0;
+
+    while (i < fPath.length - 1) target = target[fPath[i]] = target[fPath[i]] || {}, i++;
+
+    module = Object.keys(value).length === 1 && value.default || value;
+
+    if (!target[fPath[i]]) {
+      target[fPath[i]] = module;
+    } else if (!target[fPath[i]].__esModule) {
+      // if this is simple path obj write over
+      Object.assign(module, target[fPath[i]]);
+      target[fPath[i]] = module;
+    }
+  }
+
+};
+
+/***/ }),
+
+/***/ "./App/.buildInfos.json.js":
+/*!*********************************!*\
+  !*** ./App/.buildInfos.json.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+module.exports = {
+  project: {
+    name: "minimal-ts-react-graphql",
+    description: undefined,
+    author: "Nathan Braun <n8tz.js@gmail.com>",
+    version: "1.0.0"
+  },
+  buildDate: 1609330065055,
+  profile: "api",
+  projectRoot: __webpack_require__(/*! path */ "path").join(require.main.path, "../.."),
+  vars: {
+    "rootAlias": "App",
+    "targetDir": "dist/api",
+    "externals": true,
+    "production": false,
+    "DefinePluginCfg": {
+      "__IS_SERVER__": true,
+      "GRAPHQL": "'http://localhost:8080/graphql'",
+      "WS_SUBSCRIPTIONS": 0,
+      "LOCAL_STORAGE_KEY": "'reactql'",
+      "__IS_DEV__": true
+    }
+  },
+  allCfg: [{
+    "rootFolder": "App",
+    "libsPath": "./packages",
+    "extend": ["lpack-react-ts-apollo"]
+  }, {
+    "rootFolder": "App",
+    "config": "./etc/wp/webpack.config.api.js",
+    "vars": {
+      "targetDir": "dist/api",
+      "externals": true,
+      "production": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": true,
+        "GRAPHQL": "'http://localhost:8080/graphql'",
+        "WS_SUBSCRIPTIONS": 0,
+        "LOCAL_STORAGE_KEY": "'reactql'"
+      }
+    }
+  }],
+  allModId: ["lpack-react-ts-apollo"]
+};
 
 /***/ }),
 
@@ -143,7 +308,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_loader_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-loader/root */ "undefined?328e");
 /* harmony import */ var react_hot_loader_root__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader_root__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var App_ui_comps_Post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! App/ui/comps/Post */ "./packages/lpack-react-ts-apollo/App/ui/comps/Post.js");
+/* harmony import */ var App_ui_comps_Post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! App/ui/comps/Post */ "./App/ui/comps/Post.js");
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
   enterModule && enterModule(module);
@@ -153,6 +318,31 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
 // Root entry point
 // ----------------------------------------------------------------------------
 // IMPORTS
@@ -180,8 +370,8 @@ const _default = Object(react_hot_loader_root__WEBPACK_IMPORTED_MODULE_2__["hot"
     return;
   }
 
-  reactHotLoader.register(Root, "Root", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\App.tsx");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\App.tsx");
+  reactHotLoader.register(Root, "Root", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\App.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\App.tsx");
 })();
 
 ;
@@ -217,7 +407,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! layer-pack/etc/utils/indexUtils.js */ "undefined?7cef").walknSetExport;
+    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
 
 const _App_api_index_tsx = __webpack_require__(/*! App/api/index.tsx */ "./packages/lpack-react-ts-apollo/App/api/index.tsx");
 
@@ -239,12 +429,12 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
-  reactHotLoader.register(_exports, "_exports", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
-  reactHotLoader.register(graphql, "graphql", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
-  reactHotLoader.register(index, "index", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(graphql, "graphql", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(index, "index", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_api_____tsx.gen.js");
 })();
 
 ;
@@ -279,9 +469,9 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! layer-pack/etc/utils/indexUtils.js */ "undefined?7cef").walknSetExport;
+    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
 
-const _App_db_entities_Post_graphql = __webpack_require__(/*! App/db/entities/Post.graphql */ "./packages/lpack-react-ts-apollo/App/db/entities/Post.graphql");
+const _App_db_entities_Post_graphql = __webpack_require__(/*! App/db/entities/Post.graphql */ "./App/db/entities/Post.graphql");
 
 walknSetExport(_exports, "Post", _App_db_entities_Post_graphql);
 const Post = _exports.Post;
@@ -296,11 +486,11 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
-  reactHotLoader.register(_exports, "_exports", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
-  reactHotLoader.register(Post, "Post", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
+  reactHotLoader.register(Post, "Post", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________graphql.gen.js");
 })();
 
 ;
@@ -335,9 +525,9 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! layer-pack/etc/utils/indexUtils.js */ "undefined?7cef").walknSetExport;
+    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
 
-const _App_db_entities_Post_js = __webpack_require__(/*! App/db/entities/Post.js */ "./packages/lpack-react-ts-apollo/App/db/entities/Post.js");
+const _App_db_entities_Post_js = __webpack_require__(/*! App/db/entities/Post.js */ "./App/db/entities/Post.js");
 
 walknSetExport(_exports, "Post", _App_db_entities_Post_js);
 const Post = _exports.Post;
@@ -352,11 +542,11 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
-  reactHotLoader.register(_exports, "_exports", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
-  reactHotLoader.register(Post, "Post", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
+  reactHotLoader.register(Post, "Post", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_entities________js.gen.js");
 })();
 
 ;
@@ -390,7 +580,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! layer-pack/etc/utils/indexUtils.js */ "undefined?7cef").walknSetExport;
+    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
 
 const _default = _exports;
 /* harmony default export */ __webpack_exports__["default"] = (_default);
@@ -403,10 +593,10 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
-  reactHotLoader.register(_exports, "_exports", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\MapOf.App_db_scalars________js.gen.js");
 })();
 
 ;
@@ -416,6 +606,908 @@ const _default = _exports;
   leaveModule && leaveModule(module);
 })();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./App/db/entities/Post.graphql":
+/*!**************************************!*\
+  !*** ./App/db/entities/Post.graphql ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\r\ntype Post {\r\n    _id: String\r\n    title: String\r\n    content: String\r\n}\r\n\r\ntype Subscription {\r\n    postAdded: Post\r\n}\r\n\r\ntype Query {\r\n    post(_id: String): Post\r\n    posts: [Post]\r\n}\r\ntype Mutation {\r\n    createPost(title: String, content: String): Post\r\n}");
+
+/***/ }),
+
+/***/ "./App/db/entities/Post.js":
+/*!*********************************!*\
+  !*** ./App/db/entities/Post.js ***!
+  \*********************************/
+/*! exports provided: Post, Query, Mutation, Subscription */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Query", function() { return Query; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mutation", function() { return Mutation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Subscription", function() { return Subscription; });
+/* harmony import */ var App_db_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/db/utils */ "./packages/lpack-react-ts-apollo/App/db/utils.js");
+/* harmony import */ var App_db__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! App/db */ "./packages/lpack-react-ts-apollo/App/db/index.api.js");
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+
+
+
+const {
+  PubSub
+} = __webpack_require__(/*! apollo-server-express */ "undefined?22f3");
+
+const pubsub = new PubSub();
+let postList = [{
+  _id: "test",
+  title: "test"
+}];
+const Post = {};
+const Query = {
+  async posts() {
+    console.log("posts");
+    return postList;
+  }
+
+};
+const Mutation = {
+  async createPost(root, args, context, info) {
+    console.log("createPost");
+    postList.push(args);
+    pubsub.publish(POST_ADDED, {
+      postAdded: args
+    });
+    return args;
+  }
+
+};
+const POST_ADDED = 'POST_ADDED';
+const Subscription = {
+  postAdded: {
+    // Additional event labels can be passed to asyncIterator creation
+    subscribe: () => pubsub.asyncIterator([POST_ADDED])
+  }
+};
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(pubsub, "pubsub", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(postList, "postList", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(Post, "Post", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(Query, "Query", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(Mutation, "Mutation", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(POST_ADDED, "POST_ADDED", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+  reactHotLoader.register(Subscription, "Subscription", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\db\\entities\\Post.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./App/ui/comps/Post.js":
+/*!******************************!*\
+  !*** ./App/ui/comps/Post.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Posts; });
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "undefined?f8b7");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "undefined?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apollo */ "undefined?20e6");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @apollo/react-hooks */ "undefined?5a92");
+/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+
+
+
+
+const POST_SUBSCRIPTION = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
+    subscription onPostAdded {
+        postAdded {
+            _id
+            title
+            content
+        }
+    }
+`;
+const ADD_POST = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
+    mutation AddPost($title: String!) {
+        createPost(title: $title) {
+            _id
+            title
+        }
+    }
+`;
+const GetPostsQuery = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
+    query GetPostsQuery {
+        posts {
+            _id
+            title
+            content
+        }
+    }
+`;
+
+function WatchPosts({
+  onPostSelected
+}) {
+  const {
+    data,
+    error,
+    loading
+  } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useSubscription"])(POST_SUBSCRIPTION); //const { loading, data } = useQuery(GetPostsQuery);
+  //const [addTodo, { data }] = useMutation(ADD_POST);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+    name: "post",
+    onChange: onPostSelected
+  }, data && data.postAdded && data.postAdded.title);
+}
+
+__signature__(WatchPosts, "useSubscription{{ data, error, loading }}", () => [_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useSubscription"]]);
+
+function ListPosts({
+  onPostSelected
+}) {
+  const {
+    loading,
+    data,
+    error
+  } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useQuery"])(GetPostsQuery);
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+    name: "post",
+    onChange: onPostSelected
+  }, data.posts.map((post, i) => react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+    key: i
+  }, post.title)));
+}
+
+__signature__(ListPosts, "useQuery{{ loading, data, error }}", () => [_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useQuery"]]);
+
+function Posts({
+  onPostSelected
+}) {
+  const [createPost, {
+    data
+  }] = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useMutation"])(ADD_POST);
+  let ref = react__WEBPACK_IMPORTED_MODULE_1__["createRef"]();
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+    name: "post"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](ListPosts, null), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](WatchPosts, null), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("input", {
+    type: "text",
+    ref: ref
+  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("button", {
+    onClick: e => {
+      e.preventDefault();
+      createPost({
+        variables: {
+          title: ref.current.value
+        }
+      });
+    }
+  }, "new")));
+}
+
+__signature__(Posts, "useMutation{[createPost, { data }]}", () => [_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_3__["useMutation"]]);
+
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(POST_SUBSCRIPTION, "POST_SUBSCRIPTION", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+  reactHotLoader.register(ADD_POST, "ADD_POST", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+  reactHotLoader.register(GetPostsQuery, "GetPostsQuery", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+  reactHotLoader.register(WatchPosts, "WatchPosts", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+  reactHotLoader.register(ListPosts, "ListPosts", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+  reactHotLoader.register(Posts, "Posts", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\App\\ui\\comps\\Post.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./node_modules/source-map-support/source-map-support.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/source-map-support/source-map-support.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var SourceMapConsumer = __webpack_require__(/*! source-map */ "undefined?5516").SourceMapConsumer;
+var path = __webpack_require__(/*! path */ "path");
+
+var fs;
+try {
+  fs = __webpack_require__(/*! fs */ "fs");
+  if (!fs.existsSync || !fs.readFileSync) {
+    // fs doesn't have all methods we need
+    fs = null;
+  }
+} catch (err) {
+  /* nop */
+}
+
+var bufferFrom = __webpack_require__(/*! buffer-from */ "undefined?f776");
+
+// Only install once if called multiple times
+var errorFormatterInstalled = false;
+var uncaughtShimInstalled = false;
+
+// If true, the caches are reset before a stack trace formatting operation
+var emptyCacheBetweenOperations = false;
+
+// Supports {browser, node, auto}
+var environment = "auto";
+
+// Maps a file path to a string containing the file contents
+var fileContentsCache = {};
+
+// Maps a file path to a source map for that file
+var sourceMapCache = {};
+
+// Regex for detecting source maps
+var reSourceMap = /^data:application\/json[^,]+base64,/;
+
+// Priority list of retrieve handlers
+var retrieveFileHandlers = [];
+var retrieveMapHandlers = [];
+
+function isInBrowser() {
+  if (environment === "browser")
+    return true;
+  if (environment === "node")
+    return false;
+  return ((typeof window !== 'undefined') && (typeof XMLHttpRequest === 'function') && !(window.require && window.module && window.process && window.process.type === "renderer"));
+}
+
+function hasGlobalProcessEventEmitter() {
+  return ((typeof process === 'object') && (process !== null) && (typeof process.on === 'function'));
+}
+
+function handlerExec(list) {
+  return function(arg) {
+    for (var i = 0; i < list.length; i++) {
+      var ret = list[i](arg);
+      if (ret) {
+        return ret;
+      }
+    }
+    return null;
+  };
+}
+
+var retrieveFile = handlerExec(retrieveFileHandlers);
+
+retrieveFileHandlers.push(function(path) {
+  // Trim the path to make sure there is no extra whitespace.
+  path = path.trim();
+  if (/^file:/.test(path)) {
+    // existsSync/readFileSync can't handle file protocol, but once stripped, it works
+    path = path.replace(/file:\/\/\/(\w:)?/, function(protocol, drive) {
+      return drive ?
+        '' : // file:///C:/dir/file -> C:/dir/file
+        '/'; // file:///root-dir/file -> /root-dir/file
+    });
+  }
+  if (path in fileContentsCache) {
+    return fileContentsCache[path];
+  }
+
+  var contents = '';
+  try {
+    if (!fs) {
+      // Use SJAX if we are in the browser
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', path, /** async */ false);
+      xhr.send(null);
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        contents = xhr.responseText;
+      }
+    } else if (fs.existsSync(path)) {
+      // Otherwise, use the filesystem
+      contents = fs.readFileSync(path, 'utf8');
+    }
+  } catch (er) {
+    /* ignore any errors */
+  }
+
+  return fileContentsCache[path] = contents;
+});
+
+// Support URLs relative to a directory, but be careful about a protocol prefix
+// in case we are in the browser (i.e. directories may start with "http://" or "file:///")
+function supportRelativeURL(file, url) {
+  if (!file) return url;
+  var dir = path.dirname(file);
+  var match = /^\w+:\/\/[^\/]*/.exec(dir);
+  var protocol = match ? match[0] : '';
+  var startPath = dir.slice(protocol.length);
+  if (protocol && /^\/\w\:/.test(startPath)) {
+    // handle file:///C:/ paths
+    protocol += '/';
+    return protocol + path.resolve(dir.slice(protocol.length), url).replace(/\\/g, '/');
+  }
+  return protocol + path.resolve(dir.slice(protocol.length), url);
+}
+
+function retrieveSourceMapURL(source) {
+  var fileData;
+
+  if (isInBrowser()) {
+     try {
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET', source, false);
+       xhr.send(null);
+       fileData = xhr.readyState === 4 ? xhr.responseText : null;
+
+       // Support providing a sourceMappingURL via the SourceMap header
+       var sourceMapHeader = xhr.getResponseHeader("SourceMap") ||
+                             xhr.getResponseHeader("X-SourceMap");
+       if (sourceMapHeader) {
+         return sourceMapHeader;
+       }
+     } catch (e) {
+     }
+  }
+
+  // Get the URL of the source map
+  fileData = retrieveFile(source);
+  var re = /(?:\/\/[@#][\s]*sourceMappingURL=([^\s'"]+)[\s]*$)|(?:\/\*[@#][\s]*sourceMappingURL=([^\s*'"]+)[\s]*(?:\*\/)[\s]*$)/mg;
+  // Keep executing the search to find the *last* sourceMappingURL to avoid
+  // picking up sourceMappingURLs from comments, strings, etc.
+  var lastMatch, match;
+  while (match = re.exec(fileData)) lastMatch = match;
+  if (!lastMatch) return null;
+  return lastMatch[1];
+};
+
+// Can be overridden by the retrieveSourceMap option to install. Takes a
+// generated source filename; returns a {map, optional url} object, or null if
+// there is no source map.  The map field may be either a string or the parsed
+// JSON object (ie, it must be a valid argument to the SourceMapConsumer
+// constructor).
+var retrieveSourceMap = handlerExec(retrieveMapHandlers);
+retrieveMapHandlers.push(function(source) {
+  var sourceMappingURL = retrieveSourceMapURL(source);
+  if (!sourceMappingURL) return null;
+
+  // Read the contents of the source map
+  var sourceMapData;
+  if (reSourceMap.test(sourceMappingURL)) {
+    // Support source map URL as a data url
+    var rawData = sourceMappingURL.slice(sourceMappingURL.indexOf(',') + 1);
+    sourceMapData = bufferFrom(rawData, "base64").toString();
+    sourceMappingURL = source;
+  } else {
+    // Support source map URLs relative to the source URL
+    sourceMappingURL = supportRelativeURL(source, sourceMappingURL);
+    sourceMapData = retrieveFile(sourceMappingURL);
+  }
+
+  if (!sourceMapData) {
+    return null;
+  }
+
+  return {
+    url: sourceMappingURL,
+    map: sourceMapData
+  };
+});
+
+function mapSourcePosition(position) {
+  var sourceMap = sourceMapCache[position.source];
+  if (!sourceMap) {
+    // Call the (overrideable) retrieveSourceMap function to get the source map.
+    var urlAndMap = retrieveSourceMap(position.source);
+    if (urlAndMap) {
+      sourceMap = sourceMapCache[position.source] = {
+        url: urlAndMap.url,
+        map: new SourceMapConsumer(urlAndMap.map)
+      };
+
+      // Load all sources stored inline with the source map into the file cache
+      // to pretend like they are already loaded. They may not exist on disk.
+      if (sourceMap.map.sourcesContent) {
+        sourceMap.map.sources.forEach(function(source, i) {
+          var contents = sourceMap.map.sourcesContent[i];
+          if (contents) {
+            var url = supportRelativeURL(sourceMap.url, source);
+            fileContentsCache[url] = contents;
+          }
+        });
+      }
+    } else {
+      sourceMap = sourceMapCache[position.source] = {
+        url: null,
+        map: null
+      };
+    }
+  }
+
+  // Resolve the source URL relative to the URL of the source map
+  if (sourceMap && sourceMap.map && typeof sourceMap.map.originalPositionFor === 'function') {
+    var originalPosition = sourceMap.map.originalPositionFor(position);
+
+    // Only return the original position if a matching line was found. If no
+    // matching line is found then we return position instead, which will cause
+    // the stack trace to print the path and line for the compiled file. It is
+    // better to give a precise location in the compiled file than a vague
+    // location in the original file.
+    if (originalPosition.source !== null) {
+      originalPosition.source = supportRelativeURL(
+        sourceMap.url, originalPosition.source);
+      return originalPosition;
+    }
+  }
+
+  return position;
+}
+
+// Parses code generated by FormatEvalOrigin(), a function inside V8:
+// https://code.google.com/p/v8/source/browse/trunk/src/messages.js
+function mapEvalOrigin(origin) {
+  // Most eval() calls are in this format
+  var match = /^eval at ([^(]+) \((.+):(\d+):(\d+)\)$/.exec(origin);
+  if (match) {
+    var position = mapSourcePosition({
+      source: match[2],
+      line: +match[3],
+      column: match[4] - 1
+    });
+    return 'eval at ' + match[1] + ' (' + position.source + ':' +
+      position.line + ':' + (position.column + 1) + ')';
+  }
+
+  // Parse nested eval() calls using recursion
+  match = /^eval at ([^(]+) \((.+)\)$/.exec(origin);
+  if (match) {
+    return 'eval at ' + match[1] + ' (' + mapEvalOrigin(match[2]) + ')';
+  }
+
+  // Make sure we still return useful information if we didn't find anything
+  return origin;
+}
+
+// This is copied almost verbatim from the V8 source code at
+// https://code.google.com/p/v8/source/browse/trunk/src/messages.js. The
+// implementation of wrapCallSite() used to just forward to the actual source
+// code of CallSite.prototype.toString but unfortunately a new release of V8
+// did something to the prototype chain and broke the shim. The only fix I
+// could find was copy/paste.
+function CallSiteToString() {
+  var fileName;
+  var fileLocation = "";
+  if (this.isNative()) {
+    fileLocation = "native";
+  } else {
+    fileName = this.getScriptNameOrSourceURL();
+    if (!fileName && this.isEval()) {
+      fileLocation = this.getEvalOrigin();
+      fileLocation += ", ";  // Expecting source position to follow.
+    }
+
+    if (fileName) {
+      fileLocation += fileName;
+    } else {
+      // Source code does not originate from a file and is not native, but we
+      // can still get the source position inside the source string, e.g. in
+      // an eval string.
+      fileLocation += "<anonymous>";
+    }
+    var lineNumber = this.getLineNumber();
+    if (lineNumber != null) {
+      fileLocation += ":" + lineNumber;
+      var columnNumber = this.getColumnNumber();
+      if (columnNumber) {
+        fileLocation += ":" + columnNumber;
+      }
+    }
+  }
+
+  var line = "";
+  var functionName = this.getFunctionName();
+  var addSuffix = true;
+  var isConstructor = this.isConstructor();
+  var isMethodCall = !(this.isToplevel() || isConstructor);
+  if (isMethodCall) {
+    var typeName = this.getTypeName();
+    // Fixes shim to be backward compatable with Node v0 to v4
+    if (typeName === "[object Object]") {
+      typeName = "null";
+    }
+    var methodName = this.getMethodName();
+    if (functionName) {
+      if (typeName && functionName.indexOf(typeName) != 0) {
+        line += typeName + ".";
+      }
+      line += functionName;
+      if (methodName && functionName.indexOf("." + methodName) != functionName.length - methodName.length - 1) {
+        line += " [as " + methodName + "]";
+      }
+    } else {
+      line += typeName + "." + (methodName || "<anonymous>");
+    }
+  } else if (isConstructor) {
+    line += "new " + (functionName || "<anonymous>");
+  } else if (functionName) {
+    line += functionName;
+  } else {
+    line += fileLocation;
+    addSuffix = false;
+  }
+  if (addSuffix) {
+    line += " (" + fileLocation + ")";
+  }
+  return line;
+}
+
+function cloneCallSite(frame) {
+  var object = {};
+  Object.getOwnPropertyNames(Object.getPrototypeOf(frame)).forEach(function(name) {
+    object[name] = /^(?:is|get)/.test(name) ? function() { return frame[name].call(frame); } : frame[name];
+  });
+  object.toString = CallSiteToString;
+  return object;
+}
+
+function wrapCallSite(frame, state) {
+  // provides interface backward compatibility
+  if (state === undefined) {
+    state = { nextPosition: null, curPosition: null }
+  }
+  if(frame.isNative()) {
+    state.curPosition = null;
+    return frame;
+  }
+
+  // Most call sites will return the source file from getFileName(), but code
+  // passed to eval() ending in "//# sourceURL=..." will return the source file
+  // from getScriptNameOrSourceURL() instead
+  var source = frame.getFileName() || frame.getScriptNameOrSourceURL();
+  if (source) {
+    var line = frame.getLineNumber();
+    var column = frame.getColumnNumber() - 1;
+
+    // Fix position in Node where some (internal) code is prepended.
+    // See https://github.com/evanw/node-source-map-support/issues/36
+    // Header removed in node at ^10.16 || >=11.11.0
+    // v11 is not an LTS candidate, we can just test the one version with it.
+    // Test node versions for: 10.16-19, 10.20+, 12-19, 20-99, 100+, or 11.11
+    var noHeader = /^v(10\.1[6-9]|10\.[2-9][0-9]|10\.[0-9]{3,}|1[2-9]\d*|[2-9]\d|\d{3,}|11\.11)/;
+    var headerLength = noHeader.test(process.version) ? 0 : 62;
+    if (line === 1 && column > headerLength && !isInBrowser() && !frame.isEval()) {
+      column -= headerLength;
+    }
+
+    var position = mapSourcePosition({
+      source: source,
+      line: line,
+      column: column
+    });
+    state.curPosition = position;
+    frame = cloneCallSite(frame);
+    var originalFunctionName = frame.getFunctionName;
+    frame.getFunctionName = function() {
+      if (state.nextPosition == null) {
+        return originalFunctionName();
+      }
+      return state.nextPosition.name || originalFunctionName();
+    };
+    frame.getFileName = function() { return position.source; };
+    frame.getLineNumber = function() { return position.line; };
+    frame.getColumnNumber = function() { return position.column + 1; };
+    frame.getScriptNameOrSourceURL = function() { return position.source; };
+    return frame;
+  }
+
+  // Code called using eval() needs special handling
+  var origin = frame.isEval() && frame.getEvalOrigin();
+  if (origin) {
+    origin = mapEvalOrigin(origin);
+    frame = cloneCallSite(frame);
+    frame.getEvalOrigin = function() { return origin; };
+    return frame;
+  }
+
+  // If we get here then we were unable to change the source position
+  return frame;
+}
+
+// This function is part of the V8 stack trace API, for more info see:
+// https://v8.dev/docs/stack-trace-api
+function prepareStackTrace(error, stack) {
+  if (emptyCacheBetweenOperations) {
+    fileContentsCache = {};
+    sourceMapCache = {};
+  }
+
+  var name = error.name || 'Error';
+  var message = error.message || '';
+  var errorString = name + ": " + message;
+
+  var state = { nextPosition: null, curPosition: null };
+  var processedStack = [];
+  for (var i = stack.length - 1; i >= 0; i--) {
+    processedStack.push('\n    at ' + wrapCallSite(stack[i], state));
+    state.nextPosition = state.curPosition;
+  }
+  state.curPosition = state.nextPosition = null;
+  return errorString + processedStack.reverse().join('');
+}
+
+// Generate position and snippet of original source with pointer
+function getErrorSource(error) {
+  var match = /\n    at [^(]+ \((.*):(\d+):(\d+)\)/.exec(error.stack);
+  if (match) {
+    var source = match[1];
+    var line = +match[2];
+    var column = +match[3];
+
+    // Support the inline sourceContents inside the source map
+    var contents = fileContentsCache[source];
+
+    // Support files on disk
+    if (!contents && fs && fs.existsSync(source)) {
+      try {
+        contents = fs.readFileSync(source, 'utf8');
+      } catch (er) {
+        contents = '';
+      }
+    }
+
+    // Format the line from the original source code like node does
+    if (contents) {
+      var code = contents.split(/(?:\r\n|\r|\n)/)[line - 1];
+      if (code) {
+        return source + ':' + line + '\n' + code + '\n' +
+          new Array(column).join(' ') + '^';
+      }
+    }
+  }
+  return null;
+}
+
+function printErrorAndExit (error) {
+  var source = getErrorSource(error);
+
+  // Ensure error is printed synchronously and not truncated
+  if (process.stderr._handle && process.stderr._handle.setBlocking) {
+    process.stderr._handle.setBlocking(true);
+  }
+
+  if (source) {
+    console.error();
+    console.error(source);
+  }
+
+  console.error(error.stack);
+  process.exit(1);
+}
+
+function shimEmitUncaughtException () {
+  var origEmit = process.emit;
+
+  process.emit = function (type) {
+    if (type === 'uncaughtException') {
+      var hasStack = (arguments[1] && arguments[1].stack);
+      var hasListeners = (this.listeners(type).length > 0);
+
+      if (hasStack && !hasListeners) {
+        return printErrorAndExit(arguments[1]);
+      }
+    }
+
+    return origEmit.apply(this, arguments);
+  };
+}
+
+var originalRetrieveFileHandlers = retrieveFileHandlers.slice(0);
+var originalRetrieveMapHandlers = retrieveMapHandlers.slice(0);
+
+exports.wrapCallSite = wrapCallSite;
+exports.getErrorSource = getErrorSource;
+exports.mapSourcePosition = mapSourcePosition;
+exports.retrieveSourceMap = retrieveSourceMap;
+
+exports.install = function(options) {
+  options = options || {};
+
+  if (options.environment) {
+    environment = options.environment;
+    if (["node", "browser", "auto"].indexOf(environment) === -1) {
+      throw new Error("environment " + environment + " was unknown. Available options are {auto, browser, node}")
+    }
+  }
+
+  // Allow sources to be found by methods other than reading the files
+  // directly from disk.
+  if (options.retrieveFile) {
+    if (options.overrideRetrieveFile) {
+      retrieveFileHandlers.length = 0;
+    }
+
+    retrieveFileHandlers.unshift(options.retrieveFile);
+  }
+
+  // Allow source maps to be found by methods other than reading the files
+  // directly from disk.
+  if (options.retrieveSourceMap) {
+    if (options.overrideRetrieveSourceMap) {
+      retrieveMapHandlers.length = 0;
+    }
+
+    retrieveMapHandlers.unshift(options.retrieveSourceMap);
+  }
+
+  // Support runtime transpilers that include inline source maps
+  if (options.hookRequire && !isInBrowser()) {
+    var Module;
+    try {
+      Module = __webpack_require__(/*! module */ "module");
+    } catch (err) {
+      // NOP: Loading in catch block to convert webpack error to warning.
+    }
+    var $compile = Module.prototype._compile;
+
+    if (!$compile.__sourceMapSupport) {
+      Module.prototype._compile = function(content, filename) {
+        fileContentsCache[filename] = content;
+        sourceMapCache[filename] = undefined;
+        return $compile.call(this, content, filename);
+      };
+
+      Module.prototype._compile.__sourceMapSupport = true;
+    }
+  }
+
+  // Configure options
+  if (!emptyCacheBetweenOperations) {
+    emptyCacheBetweenOperations = 'emptyCacheBetweenOperations' in options ?
+      options.emptyCacheBetweenOperations : false;
+  }
+
+  // Install the error reformatter
+  if (!errorFormatterInstalled) {
+    errorFormatterInstalled = true;
+    Error.prepareStackTrace = prepareStackTrace;
+  }
+
+  if (!uncaughtShimInstalled) {
+    var installHandler = 'handleUncaughtExceptions' in options ?
+      options.handleUncaughtExceptions : true;
+
+    // Provide the option to not install the uncaught exception handler. This is
+    // to support other uncaught exception handlers (in test frameworks, for
+    // example). If this handler is not installed and there are no other uncaught
+    // exception handlers, uncaught exceptions will be caught by node's built-in
+    // exception handler and the process will still be terminated. However, the
+    // generated JavaScript code will be shown above the stack trace instead of
+    // the original source code.
+    if (installHandler && hasGlobalProcessEventEmitter()) {
+      uncaughtShimInstalled = true;
+      shimEmitUncaughtException();
+    }
+  }
+};
+
+exports.resetRetrieveHandlers = function() {
+  retrieveFileHandlers.length = 0;
+  retrieveMapHandlers.length = 0;
+
+  retrieveFileHandlers = originalRetrieveFileHandlers.slice(0);
+  retrieveMapHandlers = originalRetrieveMapHandlers.slice(0);
+
+  retrieveSourceMap = handlerExec(retrieveMapHandlers);
+  retrieveFile = handlerExec(retrieveFileHandlers);
+}
+
 
 /***/ }),
 
@@ -528,8 +1620,8 @@ const _default = (server, http) => Object.keys(_api_tsx__WEBPACK_IMPORTED_MODULE
     return;
   }
 
-  reactHotLoader.register(debug, "debug", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api.tsx");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api.tsx");
+  reactHotLoader.register(debug, "debug", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api.tsx");
 })();
 
 ;
@@ -573,8 +1665,29 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 /*
- * Copyright (c) 2020.  Ernst & Young
- *  @author : Nathan
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *   
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *   
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *   
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *   
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 //import {MongoClient, ObjectId} from 'mongodb'
 //import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
@@ -618,11 +1731,11 @@ const service = app => {
     return;
   }
 
-  reactHotLoader.register(schema, "schema", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
-  reactHotLoader.register(entities, "entities", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
-  reactHotLoader.register(name, "name", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
-  reactHotLoader.register(priorityLevel, "priorityLevel", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
-  reactHotLoader.register(service, "service", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
+  reactHotLoader.register(schema, "schema", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
+  reactHotLoader.register(entities, "entities", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
+  reactHotLoader.register(name, "name", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
+  reactHotLoader.register(priorityLevel, "priorityLevel", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
+  reactHotLoader.register(service, "service", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\graphql.tsx");
 })();
 
 ;
@@ -711,9 +1824,9 @@ const service = server => {
     return;
   }
 
-  reactHotLoader.register(name, "name", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
-  reactHotLoader.register(priorityLevel, "priorityLevel", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
-  reactHotLoader.register(service, "service", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
+  reactHotLoader.register(name, "name", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
+  reactHotLoader.register(priorityLevel, "priorityLevel", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
+  reactHotLoader.register(service, "service", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\api\\index.tsx");
 })();
 
 ;
@@ -752,20 +1865,32 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
-const _default = _objectSpread({}, __webpack_require__(/*! ./.buildInfos.json */ "./App/.buildInfos.json"));
+const _default = _objectSpread({}, __webpack_require__(/*! ./.buildInfos.json */ "./App/.buildInfos.json.js"));
 
 /*
- * The MIT License (MIT)
- * Copyright (c) 2019. Wise Wild Web
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- *  @author : Nathanael Braun
- *  @contact : n8tz.js@gmail.com
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 /* harmony default export */ __webpack_exports__["default"] = (_default);
 ;
@@ -777,7 +1902,7 @@ const _default = _objectSpread({}, __webpack_require__(/*! ./.buildInfos.json */
     return;
   }
 
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\config.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\config.tsx");
 })();
 
 ;
@@ -817,21 +1942,29 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 /*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Copyright (C) 2019 Nathanael Braun
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
 /**
@@ -952,10 +2085,10 @@ const _default = d_console;
     return;
   }
 
-  reactHotLoader.register(isBrowserSide, "isBrowserSide", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
-  reactHotLoader.register(_console, "_console", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
-  reactHotLoader.register(d_console, "d_console", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
+  reactHotLoader.register(isBrowserSide, "isBrowserSide", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
+  reactHotLoader.register(_console, "_console", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
+  reactHotLoader.register(d_console, "d_console", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\console.tsx");
 })();
 
 ;
@@ -965,89 +2098,6 @@ const _default = d_console;
   leaveModule && leaveModule(module);
 })();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
-
-/***/ }),
-
-/***/ "./packages/lpack-react-ts-apollo/App/db/entities/Post.graphql":
-/*!*********************************************************************!*\
-  !*** ./packages/lpack-react-ts-apollo/App/db/entities/Post.graphql ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("scalar Image\r\n\r\ntype Post {\r\n    _id: String\r\n    title: String\r\n    preview: Image\r\n    content: String\r\n}\r\n\r\n\r\ntype Query {\r\n    post(_id: String): Post\r\n    posts: [Post]\r\n}\r\ntype Mutation {\r\n    createPost(title: String, content: String): Post\r\n}");
-
-/***/ }),
-
-/***/ "./packages/lpack-react-ts-apollo/App/db/entities/Post.js":
-/*!****************************************************************!*\
-  !*** ./packages/lpack-react-ts-apollo/App/db/entities/Post.js ***!
-  \****************************************************************/
-/*! exports provided: Post, Query, Mutation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Query", function() { return Query; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mutation", function() { return Mutation; });
-/* harmony import */ var App_db_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! App/db/utils */ "./packages/lpack-react-ts-apollo/App/db/utils.js");
-/* harmony import */ var App_db__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! App/db */ "./packages/lpack-react-ts-apollo/App/db/index.api.js");
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-/*
- * Copyright (c) 2020.  Ernst & Young
- *  @author : Nathan
- */
-
-
-const Post = {};
-const Query = {
-  async posts() {
-    console.log("posts");
-    return [{
-      title: "test"
-    }];
-  }
-
-};
-const Mutation = {
-  async createPost(root, args, context, info) {
-    console.log("createPost");
-    return args;
-  }
-
-};
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(Post, "Post", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\entities\\Post.js");
-  reactHotLoader.register(Query, "Query", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\entities\\Post.js");
-  reactHotLoader.register(Mutation, "Mutation", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\entities\\Post.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
@@ -1085,8 +2135,8 @@ const _default = result;
     return;
   }
 
-  reactHotLoader.register(result, "result", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\graphql\\fragments.tsx");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\graphql\\fragments.tsx");
+  reactHotLoader.register(result, "result", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\graphql\\fragments.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\graphql\\fragments.tsx");
 })();
 
 ;
@@ -1126,8 +2176,29 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 /*
- * Copyright (c) 2020.  Ernst & Young
- *  @author : Nathan
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
 
@@ -1164,7 +2235,7 @@ const graphql = {
     return;
   }
 
-  reactHotLoader.register(graphql, "graphql", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\index.api.js");
+  reactHotLoader.register(graphql, "graphql", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\index.api.js");
 })();
 
 ;
@@ -1213,6 +2284,31 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
 // Apollo GraphQL client
 // ----------------------------------------------------------------------------
 // IMPORTS
@@ -1295,8 +2391,8 @@ function createClient() {
     return;
   }
 
-  reactHotLoader.register(fragmentMatcher, "fragmentMatcher", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\lib\\apollo.ts");
-  reactHotLoader.register(createClient, "createClient", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\lib\\apollo.ts");
+  reactHotLoader.register(fragmentMatcher, "fragmentMatcher", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\lib\\apollo.ts");
+  reactHotLoader.register(createClient, "createClient", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\lib\\apollo.ts");
 })();
 
 ;
@@ -1329,8 +2425,29 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 /*
- * Copyright (c) 2020.  Ernst & Young
- *  @author : Nathan
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 const prepare = o => {
   o._id = o._id.toString();
@@ -1345,7 +2462,7 @@ const prepare = o => {
     return;
   }
 
-  reactHotLoader.register(prepare, "prepare", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\utils.js");
+  reactHotLoader.register(prepare, "prepare", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\db\\utils.js");
 })();
 
 ;
@@ -1379,6 +2496,31 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
 // Server-side HTML render
 // Component to render the full HTML response in React
 // ----------------------------------------------------------------------------
@@ -1439,7 +2581,7 @@ class Html extends react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent {
     return;
   }
 
-  reactHotLoader.register(Html, "Html", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.html.tsx");
+  reactHotLoader.register(Html, "Html", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.html.tsx");
 })();
 
 ;
@@ -1508,11 +2650,11 @@ var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), functio
     return;
   }
 
-  reactHotLoader.register(server, "server", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
-  reactHotLoader.register(http, "http", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
-  reactHotLoader.register(argz, "argz", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
-  reactHotLoader.register(debug, "debug", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
-  reactHotLoader.register(server_instance, "server_instance", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
+  reactHotLoader.register(server, "server", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
+  reactHotLoader.register(http, "http", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
+  reactHotLoader.register(argz, "argz", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
+  reactHotLoader.register(debug, "debug", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
+  reactHotLoader.register(server_instance, "server_instance", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.server.tsx");
 })();
 
 ;
@@ -1564,21 +2706,29 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 /*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
  *
- * Copyright (C) 2019 Nathanael Braun
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
  *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
  */
 
 
@@ -1684,8 +2834,8 @@ const _default = ctrl;
     return;
   }
 
-  reactHotLoader.register(ctrl, "ctrl", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.tsx");
-  reactHotLoader.register(_default, "default", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.tsx");
+  reactHotLoader.register(ctrl, "ctrl", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.tsx");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\index.tsx");
 })();
 
 ;
@@ -1698,95 +2848,27 @@ const _default = ctrl;
 
 /***/ }),
 
-/***/ "./packages/lpack-react-ts-apollo/App/ui/comps/Post.js":
-/*!*************************************************************!*\
-  !*** ./packages/lpack-react-ts-apollo/App/ui/comps/Post.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Posts; });
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "undefined?f8b7");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "undefined?588e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @apollo/react-hooks */ "undefined?5a92");
-/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_2__);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-
-
-
-const GetPostsQuery = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default.a`
-    query GetPostsQuery {
-        posts {
-            _id
-            title
-            content
-        }
-    }
-`;
-function Posts({
-  onPostSelected
-}) {
-  const {
-    loading,
-    error,
-    data
-  } = Object(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_2__["useQuery"])(GetPostsQuery);
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
-    name: "post",
-    onChange: onPostSelected
-  }, data.posts.map(post => react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
-    key: post.title
-  }, post.title)));
-}
-
-__signature__(Posts, "useQuery{{ loading, error, data }}", () => [_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_2__["useQuery"]]);
-
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(GetPostsQuery, "GetPostsQuery", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\ui\\comps\\Post.js");
-  reactHotLoader.register(Posts, "Posts", "G:\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\minimal-ts-react-graphql\\packages\\lpack-react-ts-apollo\\App\\ui\\comps\\Post.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
-
-/***/ }),
-
 /***/ 0:
-/*!**********************************!*\
-  !*** multi App/index.server.tsx ***!
-  \**********************************/
+/*!***********************************************************************************************************************************************************************!*\
+  !*** multi D:/shared/n8tz/libs/lpack/layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader?id=webpack-inject-module-1 App/index.server.tsx ***!
+  \***********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(/*! D:\shared\n8tz\libs\lpack\layer-pack\node_modules\webpack-inject-plugin\dist\webpack-inject-plugin.loader?id=webpack-inject-module-1! */"../../../layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1!./");
 module.exports = __webpack_require__(/*! App/index.server.tsx */"./packages/lpack-react-ts-apollo/App/index.server.tsx");
 
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
 
 /***/ }),
 
@@ -1798,6 +2880,28 @@ module.exports = __webpack_require__(/*! App/index.server.tsx */"./packages/lpac
 /***/ (function(module, exports) {
 
 module.exports = require("http");
+
+/***/ }),
+
+/***/ "module":
+/*!*************************!*\
+  !*** external "module" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("module");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
 
 /***/ }),
 
@@ -1933,6 +3037,17 @@ module.exports = require("debounce");
 
 /***/ }),
 
+/***/ "undefined?5516":
+/*!*****************************!*\
+  !*** external "source-map" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("source-map");
+
+/***/ }),
+
 /***/ "undefined?588e":
 /*!************************!*\
   !*** external "react" ***!
@@ -2032,17 +3147,6 @@ module.exports = require("core-js");
 
 /***/ }),
 
-/***/ "undefined?7cef":
-/*!*****************************************************!*\
-  !*** external "layer-pack/etc/utils/indexUtils.js" ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("layer-pack/etc/utils/indexUtils.js");
-
-/***/ }),
-
 /***/ "undefined?8dc2":
 /*!**************************************************!*\
   !*** external "@graphql-toolkit/schema-merging" ***!
@@ -2117,6 +3221,17 @@ module.exports = require("apollo-utilities");
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-link-ws");
+
+/***/ }),
+
+/***/ "undefined?f776":
+/*!******************************!*\
+  !*** external "buffer-from" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("buffer-from");
 
 /***/ }),
 
