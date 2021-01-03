@@ -1,0 +1,11 @@
+{
+  "name": "wp5-multiple-endpoints",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "test": "echo \"ok\""
+  },
+  "dependencies": {}
+}

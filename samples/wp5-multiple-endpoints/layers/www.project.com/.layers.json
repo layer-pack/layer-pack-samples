@@ -1,6 +1,7 @@
 {
   "default": {
     "rootFolder": "App",
+    "libsPath"  : "..",
     "extend": [
       "a-core"
     ]

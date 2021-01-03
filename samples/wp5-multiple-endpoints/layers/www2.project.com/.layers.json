@@ -3,6 +3,7 @@
     "rootFolder": "App",
     "libsPath"  : "..",
     "extend": [
+      "www.project.com",
       "a-core"
     ]
   },
