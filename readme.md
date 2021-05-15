@@ -30,7 +30,7 @@ To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-
 
 ### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
 
-A minimal lib config multiple entry point using WI pseudo-glob
+A minimal app boilerplate with no layers ( with namspacing + glob requires )
 
 To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
 
