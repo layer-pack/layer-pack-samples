@@ -39,7 +39,7 @@ To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-
     
 ### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
 
-A minimal lib config with common-js exports of multiple entry point using WI pseudo-glob  
+A minimal lib config with common-js exports of multiple entry point via glob in the webpack entrypoint
 
 To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with-glob-entry) package and exec :
 
