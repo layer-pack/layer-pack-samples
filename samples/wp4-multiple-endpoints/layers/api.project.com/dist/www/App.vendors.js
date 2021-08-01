@@ -1,3 +1,11 @@
+/*
+ * Copyright 2021 BRAUN Nathanael
+ *
+ * Use of this source code is governed by an MIT-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/MIT.
+ */
+
 (window.webpackJsonp=window.webpackJsonp||[]).push([[1],[function(e,t,n){"use strict";e.exports=n(18)},function(e,t,n){e.exports=n(24)()},function(e,t,n){"use strict";
 /*
 object-assign

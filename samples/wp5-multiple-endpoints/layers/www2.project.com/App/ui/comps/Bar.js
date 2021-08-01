@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright 2021 BRAUN Nathanael
  *
  * Use of this source code is governed by an MIT-style
@@ -6,6 +6,8 @@
  * https://opensource.org/licenses/MIT.
  */
 
+import React from "react";
 
-body{
+export default () => {
+	return <div>A Comp !</div>
 }

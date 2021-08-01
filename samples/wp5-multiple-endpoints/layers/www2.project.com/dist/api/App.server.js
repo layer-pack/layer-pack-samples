@@ -1,6 +1,101 @@
+/*
+ * Copyright 2021 BRAUN Nathanael
+ *
+ * Use of this source code is governed by an MIT-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/MIT.
+ */
+
 module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "../a-core/App/App.js":
+/*!****************************!*\
+  !*** ../a-core/App/App.js ***!
+  \****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2019. Wise Wild Web
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+
+
+class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  render() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Core"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Included ( among others ) : "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "react ^16.8.6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "sass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "es6 + decorators")));
+  }
+
+  // @ts-ignore
+  __reactstandin__regenerateByEval(key, code) {
+    // @ts-ignore
+    this[key] = eval(code);
+  }
+
+}
+
+const _default = App;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(App, "App", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\a-core\\App\\App.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\a-core\\App\\App.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
 
 /***/ "../a-core/App/api.js":
 /*!****************************!*\
@@ -482,9 +577,9 @@ var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), functio
 
 /***/ }),
 
-/***/ "../api.project.com/App/App.js":
+/***/ "../www.project.com/App/App.js":
 /*!*************************************!*\
-  !*** ../api.project.com/App/App.js ***!
+  !*** ../www.project.com/App/App.js ***!
   \*************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -495,9 +590,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _comps_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comps/(** /*).js */ "./App/MapOf.App_comps________js.gen.js");
-/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.scss */ "../api.project.com/App/App.scss");
-/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_App_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var $super__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $super */ "../a-core/App/App.js");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -536,11 +629,9 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-
 class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    //console.log(require("App/assets/test.jpg"))
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "api server lkkj"));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www"));
   }
 
   // @ts-ignore
@@ -562,248 +653,8 @@ const _default = App;
     return;
   }
 
-  reactHotLoader.register(App, "App", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\App.js");
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\App.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
-/***/ }),
-
-/***/ "../api.project.com/App/api/health.js":
-/*!********************************************!*\
-  !*** ../api.project.com/App/api/health.js ***!
-  \********************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "name": () => /* binding */ name,
-/* harmony export */   "priorityLevel": () => /* binding */ priorityLevel,
-/* harmony export */   "service": () => /* binding */ service
-/* harmony export */ });
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ "?22fe");
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "../a-core/App/config.js");
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index.js */ "../a-core/App/index.js");
-/* module decorator */ module = __webpack_require__.hmd(module);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-/*
- *   The MIT License (MIT)
- *   Copyright (c) 2020. Nathanael Braun
- *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
- *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
- *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
- *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
- */
-
-
-
-const name = "Health service";
-const priorityLevel = 100000;
-const service = server => {
-  server.get('/ping', function (req, res, next) {
-    res.json(200, {
-      ok: true
-    });
-  });
-  server.use(express__WEBPACK_IMPORTED_MODULE_0___default().static(_config__WEBPACK_IMPORTED_MODULE_1__.default.projectRoot + '/dist/www'));
-};
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(name, "name", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\api\\health.js");
-  reactHotLoader.register(priorityLevel, "priorityLevel", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\api\\health.js");
-  reactHotLoader.register(service, "service", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\api\\health.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
-/***/ }),
-
-/***/ "../api.project.com/App/comps/ppmppComp2.js":
-/*!**************************************************!*\
-  !*** ../api.project.com/App/comps/ppmppComp2.js ***!
-  \**************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* module decorator */ module = __webpack_require__.hmd(module);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-/*
- *   The MIT License (MIT)
- *   Copyright (c) 2020. Nathanael Braun
- *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
- *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
- *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
- *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
- */
-
-
-const _default = () => {
-  return /*#__PURE__*/React.createElement("div", null, "jhj kjl kj l");
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\comps\\ppmppComp2.js");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
-/***/ }),
-
-/***/ "../api.project.com/App/comps/pppiComp2.js":
-/*!*************************************************!*\
-  !*** ../api.project.com/App/comps/pppiComp2.js ***!
-  \*************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* module decorator */ module = __webpack_require__.hmd(module);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-/*
- *   The MIT License (MIT)
- *   Copyright (c) 2020. Nathanael Braun
- *
- *   Permission is hereby granted, free of charge, to any person obtaining a copy
- *   of this software and associated documentation files (the "Software"), to deal
- *   in the Software without restriction, including without limitation the rights
- *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *   copies of the Software, and to permit persons to whom the Software is
- *   furnished to do so, subject to the following conditions:
- *
- *   The above copyright notice and this permission notice shall be included in all
- *   copies or substantial portions of the Software.
- *
- *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
- *
- *   @author : Nathanael Braun
- *   @contact : n8tz.js@gmail.com
- */
-
-
-const _default = () => {
-  return /*#__PURE__*/React.createElement("div", null, "jhj kjl kj l ");
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\api.project.com\\App\\comps\\pppiComp2.js");
+  reactHotLoader.register(App, "App", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\App.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\App.js");
 })();
 
 ;
@@ -898,7 +749,7 @@ module.exports = {
     author: "Nathan Braun <n8tz.js@gmail.com>",
     version: "1.0.0"
   },
-  buildDate: 1609423576543,
+  buildDate: 1609689697205,
   profile: "api",
   projectRoot: __webpack_require__(/*! path */ "path").join(require.main.path, "../.."),
   vars: {
@@ -911,9 +762,11 @@ module.exports = {
   },
   allCfg: [{
     "rootFolder": "App",
-    "extend": ["api.project.com", "a-core"]
+    "libsPath": "..",
+    "extend": ["www.project.com", "a-core"]
   }, {
     "rootFolder": "App",
+    "libsPath": "..",
     "extend": ["a-core"]
   }, {
     "rootFolder": "App",
@@ -926,7 +779,7 @@ module.exports = {
       }
     }
   }],
-  allModId: ["api.project.com", "a-core"]
+  allModId: ["www.project.com", "a-core"]
 };
 
 /***/ }),
@@ -944,7 +797,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var $super__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $super */ "../api.project.com/App/App.js");
+/* harmony import */ var $super__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $super */ "../www.project.com/App/App.js");
+/* harmony import */ var _ui_comps_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/comps/(** /*).js */ "./App/MapOf.App_ui_comps________js.gen.js");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -983,9 +837,10 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
+
 class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www"));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__.default.Btn, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__.default.Bar, null));
   }
 
   // @ts-ignore
@@ -1007,8 +862,8 @@ const _default = App;
     return;
   }
 
-  reactHotLoader.register(App, "App", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\App.js");
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\App.js");
+  reactHotLoader.register(App, "App", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\App.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\App.js");
 })();
 
 ;
@@ -1030,7 +885,6 @@ const _default = App;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "html": () => /* binding */ html,
-/* harmony export */   "health": () => /* binding */ health,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* module decorator */ module = __webpack_require__.hmd(module);
@@ -1051,12 +905,7 @@ let req,
 const _App_api_html_js = __webpack_require__(/*! App/api/html.js */ "./App/api/html.js");
 
 walknSetExport(_exports, "html", _App_api_html_js);
-
-const _App_api_health_js = __webpack_require__(/*! App/api/health.js */ "../api.project.com/App/api/health.js");
-
-walknSetExport(_exports, "health", _App_api_health_js);
 const html = _exports.html;
-const health = _exports.health;
 const _default = _exports;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
@@ -1068,12 +917,11 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
-  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
-  reactHotLoader.register(html, "html", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
-  reactHotLoader.register(health, "health", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_api_____js.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_api_____js.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_api_____js.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_api_____js.gen.js");
+  reactHotLoader.register(html, "html", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_api_____js.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_api_____js.gen.js");
 })();
 
 ;
@@ -1085,17 +933,17 @@ const _default = _exports;
 
 /***/ }),
 
-/***/ "./App/MapOf.App_comps________js.gen.js":
-/*!**********************************************!*\
-  !*** ./App/MapOf.App_comps________js.gen.js ***!
-  \**********************************************/
+/***/ "./App/MapOf.App_ui_comps________js.gen.js":
+/*!*************************************************!*\
+  !*** ./App/MapOf.App_ui_comps________js.gen.js ***!
+  \*************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ppmppComp2": () => /* binding */ ppmppComp2,
-/* harmony export */   "pppiComp2": () => /* binding */ pppiComp2,
+/* harmony export */   "Bar": () => /* binding */ Bar,
+/* harmony export */   "Btn": () => /* binding */ Btn,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* module decorator */ module = __webpack_require__.hmd(module);
@@ -1113,15 +961,15 @@ let req,
     _exports = {},
     walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
 
-const _App_comps_pppiComp2_js = __webpack_require__(/*! App/comps/pppiComp2.js */ "../api.project.com/App/comps/pppiComp2.js");
+const _App_ui_comps_Bar_js = __webpack_require__(/*! App/ui/comps/Bar.js */ "./App/ui/comps/Bar.js");
 
-walknSetExport(_exports, "pppiComp2", _App_comps_pppiComp2_js);
+walknSetExport(_exports, "Bar", _App_ui_comps_Bar_js);
 
-const _App_comps_ppmppComp2_js = __webpack_require__(/*! App/comps/ppmppComp2.js */ "../api.project.com/App/comps/ppmppComp2.js");
+const _App_ui_comps_Btn_js = __webpack_require__(/*! App/ui/comps/Btn.js */ "./App/ui/comps/Btn.js");
 
-walknSetExport(_exports, "ppmppComp2", _App_comps_ppmppComp2_js);
-const ppmppComp2 = _exports.ppmppComp2;
-const pppiComp2 = _exports.pppiComp2;
+walknSetExport(_exports, "Btn", _App_ui_comps_Btn_js);
+const Bar = _exports.Bar;
+const Btn = _exports.Btn;
 const _default = _exports;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
@@ -1133,12 +981,12 @@ const _default = _exports;
     return;
   }
 
-  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
-  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
-  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
-  reactHotLoader.register(ppmppComp2, "ppmppComp2", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
-  reactHotLoader.register(pppiComp2, "pppiComp2", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
-  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\MapOf.App_comps________js.gen.js");
+  reactHotLoader.register(req, "req", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
+  reactHotLoader.register(_exports, "_exports", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
+  reactHotLoader.register(walknSetExport, "walknSetExport", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
+  reactHotLoader.register(Bar, "Bar", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
+  reactHotLoader.register(Btn, "Btn", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\MapOf.App_ui_comps________js.gen.js");
 })();
 
 ;
@@ -1226,9 +1074,9 @@ const service = server => {
     return;
   }
 
-  reactHotLoader.register(name, "name", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\api\\html.js");
-  reactHotLoader.register(priorityLevel, "priorityLevel", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\api\\html.js");
-  reactHotLoader.register(service, "service", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www.project.com\\App\\api\\html.js");
+  reactHotLoader.register(name, "name", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\api\\html.js");
+  reactHotLoader.register(priorityLevel, "priorityLevel", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\api\\html.js");
+  reactHotLoader.register(service, "service", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\api\\html.js");
 })();
 
 ;
@@ -1240,13 +1088,155 @@ const service = server => {
 
 /***/ }),
 
-/***/ "../api.project.com/App/App.scss":
-/*!***************************************!*\
-  !*** ../api.project.com/App/App.scss ***!
-  \***************************************/
-/***/ (() => {
+/***/ "./App/ui/comps/Bar.js":
+/*!*****************************!*\
+  !*** ./App/ui/comps/Bar.js ***!
+  \*****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2020. Nathanael Braun
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
 
 
+const _default = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "A Comp !");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\ui\\comps\\Bar.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
+
+/***/ "./App/ui/comps/Btn.js":
+/*!*****************************!*\
+  !*** ./App/ui/comps/Btn.js ***!
+  \*****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?588e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+/*
+ *   The MIT License (MIT)
+ *   Copyright (c) 2020. Nathanael Braun
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ *   @author : Nathanael Braun
+ *   @contact : n8tz.js@gmail.com
+ */
+
+
+const _default = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(_default, "default", "D:\\shared\\n8tz\\libs\\lpack\\layer-pack-samples\\samples\\wp5-multiple-endpoints\\layers\\www2.project.com\\App\\ui\\comps\\Btn.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
 
 /***/ }),
 
@@ -1320,7 +1310,7 @@ const Module = __webpack_require__(/*! module */ "module").Module,
 	}
 })()(
     {
-        allModulePath:["node_modules","../api.project.com/node_modules","../a-core/node_modules"],
+        allModulePath:["..","..","node_modules","../www.project.com/node_modules","../a-core/node_modules"],
         cDir:path.join(require.main.path,"../..")
     },
     "dist/api"
