@@ -29,3 +29,11 @@ node ./dist/api/App.server.js -p 8080
 ```
 
  
+# setup ( from endpoints )
+
+```bash
+npm i
+lpack-setup # or lpack-setup ci ( using package-lock )
+```
+
+ 

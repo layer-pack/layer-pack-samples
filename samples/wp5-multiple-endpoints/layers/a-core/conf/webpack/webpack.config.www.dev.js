@@ -9,7 +9,6 @@ const lPack                = require('layer-pack');
 const webpack              = require("webpack");
 const path                 = require("path");
 const autoprefixer         = require('autoprefixer');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const lpackCfg      = lPack.getConfig(),
       isExcluded    = lPack.isFileExcluded(),
