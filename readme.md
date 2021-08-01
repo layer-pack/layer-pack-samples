@@ -19,6 +19,15 @@ A monorepo structure with
 
 To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoints) package and check the readme
 
+### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
+
+A minimal app boilerplate without any inherited layers ( with namspacing + glob requires )
+
+To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
+
+    npm i
+    npm run build
+    
 ### [app-with-minimal-boilerplate](samples/app-with-minimal-boilerplate)
 
 A mini app inheriting a simplified boilerplate with conf & react hmr
@@ -27,19 +36,10 @@ To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-
 
     npm i
     npm run start-dev
-
-### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
-
-A minimal lib config multiple entry point using WI pseudo-glob
-
-To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry) package and exec :
-
-    npm i
-    npm run build
     
 ### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
 
-A minimal lib config with common-js exports of multiple entry point using WI pseudo-glob  
+A minimal lib config with common-js exports of multiple entry point via glob in the webpack entrypoint
 
 To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with-glob-entry) package and exec :
 
