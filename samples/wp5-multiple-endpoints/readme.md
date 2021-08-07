@@ -7,8 +7,6 @@ A monorepo structure with
 - 1 package with some www service, inheriting the core
 - 1 package with some www service, inheriting the www & core layers
 
-* Npm may fail if installing leafs layers first, npm i the core first don't fail
-
 # Run in dev mode
 
 ```bash
