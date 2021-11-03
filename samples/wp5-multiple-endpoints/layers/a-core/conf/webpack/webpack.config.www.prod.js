@@ -38,6 +38,7 @@ module.exports = [
 			allowCollectingMemory: true,
 			cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
 		},
+		
 		optimization: {
 			splitChunks: {
 				cacheGroups: {

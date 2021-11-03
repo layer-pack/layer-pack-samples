@@ -9,7 +9,6 @@
 const lPack                = require('layer-pack');
 const fs                   = require("fs");
 const webpack              = require("webpack");
-const path                 = require("path");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const lpackCfg   = lPack.getConfig(),
