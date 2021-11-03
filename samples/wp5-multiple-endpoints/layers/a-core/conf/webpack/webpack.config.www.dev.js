@@ -5,10 +5,10 @@
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
-const lPack                = require('layer-pack');
-const webpack              = require("webpack");
-const path                 = require("path");
-const autoprefixer         = require('autoprefixer');
+const lPack        = require('layer-pack');
+const webpack      = require("webpack");
+const path         = require("path");
+const autoprefixer = require('autoprefixer');
 
 const lpackCfg      = lPack.getConfig(),
       isExcluded    = lPack.isFileExcluded(),
@@ -30,10 +30,11 @@ module.exports = [
 			]
 		},
 		devServer: {
-			hot               : true,
-			host              : '127.0.0.1', // Defaults to `localhost`
-			port              : devServerPort, // Defaults to 8080
-			contentBase       : './dist/wwwDev',
+			hot : true,
+			host: '127.0.0.1', // Defaults to `localhost`
+			port: devServerPort, // Defaults to 8080
+			//contentBase       : './dist/wwwDev',
+			allowedHosts      : 'all',
 			historyApiFallback: {
 				disableDotRule: true,
 			},
@@ -78,6 +79,11 @@ module.exports = [
 			publicPath: "/",
 		},
 		
+		cache       : {
+			type                 : "filesystem",
+			allowCollectingMemory: true,
+			cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
+		},
 		optimization: {
 			splitChunks: {
 				cacheGroups: {
@@ -99,6 +105,7 @@ module.exports = [
 		
 		// required files resolving options
 		resolve: {
+			cache     : false,
 			extensions: [
 				".",
 				".js",

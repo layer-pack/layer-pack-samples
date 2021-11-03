@@ -53,7 +53,7 @@ module.exports = [
 		module : {
 			rules: [
 				{
-					test: /\.m?js/,
+					test   : /\.m?js/,
 					resolve: {
 						fullySpecified: false
 					}
@@ -61,14 +61,14 @@ module.exports = [
 				{
 					test   : /\.(j|t)sx?$/i,
 					exclude: lpackCfg.vars.babelInclude
-						?
-						(
-							includeRE => (path => (isExcluded.test(path) && !includeRE.test(path)))
-						)(new RegExp(lpackCfg.vars.babelInclude))
-						:
-						isExcluded
+					         ?
+					         (
+						         includeRE => (path => (isExcluded.test(path) && !includeRE.test(path)))
+					         )(new RegExp(lpackCfg.vars.babelInclude))
+					         :
+					         isExcluded
 					,
-					use    :
+					use:
 						{
 							loader : "babel-loader",
 							options: {
@@ -76,12 +76,11 @@ module.exports = [
 								presets       : ["@babel/react"],
 								plugins       : [
 									["@babel/plugin-proposal-decorators", { "legacy": true }],
-									["@babel/plugin-transform-runtime", {  }],
+									["@babel/plugin-transform-runtime", {}],
 									["@babel/plugin-proposal-optional-chaining", {}],
 									["@babel/proposal-class-properties", { loose: true }],
 									"@babel/proposal-object-rest-spread",
-									"@babel/plugin-syntax-dynamic-import",
-									"react-hot-loader/babel"
+									"@babel/plugin-syntax-dynamic-import"
 								]
 							}
 						}

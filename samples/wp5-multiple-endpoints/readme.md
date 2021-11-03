@@ -17,6 +17,7 @@ nodemon dist/api/App.server.js --exec "node ./dist/api/App.server.js -p 9001"&
 # start dev-server with cfg 
 WWW_API_PORT=9001 lpack-dev-server :www
 ```
+Browser can then open http://127.0.0.1:9001/
 
 # Build & run in prod
 
@@ -26,6 +27,7 @@ lpack :apiProd
 node ./dist/api/App.server.js -p 8080
 ```
 
+Browser can then open http://127.0.0.1:8080/
  
 # setup ( from endpoints )
 

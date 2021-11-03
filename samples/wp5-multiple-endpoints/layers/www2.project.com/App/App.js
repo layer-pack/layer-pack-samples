@@ -9,6 +9,7 @@
 import React from 'react';
 import Super from '$super';
 import Comps from './ui/comps/(**/*).js';
+import Comps2 from './ui/comps2/(**/*).js';
 
 class App extends React.Component {
 	
@@ -18,6 +19,7 @@ class App extends React.Component {
 			<h1>www2</h1>
 			<Comps.Btn/>
 			<Comps.Bar/>
+			<Comps2.FooBar/>
 		</React.Fragment>
 	}
 }

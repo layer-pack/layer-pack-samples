@@ -33,6 +33,11 @@ module.exports = [
 			publicPath: "/",
 		},
 		
+		cache       : {
+			type                 : "filesystem",
+			allowCollectingMemory: true,
+			cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
+		},
 		optimization: {
 			splitChunks: {
 				cacheGroups: {
@@ -54,6 +59,7 @@ module.exports = [
 		
 		// required files resolving options
 		resolve: {
+			cache     : false,
 			extensions: [
 				".",
 				".js",

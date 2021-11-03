@@ -31,6 +31,7 @@
     "rootFolder": "App",
     "config": "./conf/webpack/webpack.config.www.dev.js",
     "vars": {
+      "production": true,
       "devServer": true,
       "extractCss": true,
       "targetDir": "dist/www",

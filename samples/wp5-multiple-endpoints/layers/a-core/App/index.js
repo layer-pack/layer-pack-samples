@@ -5,13 +5,11 @@
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
-//import "core-js";
 import React            from "react";
 import ReactDom         from 'react-dom';
 import {renderToString} from "react-dom/server";
 import {Helmet}         from "react-helmet";
 import {hot}            from 'react-hot-loader/root'
-//import "regenerator-runtime/runtime";
 import Index            from "./index.html";
 
 
