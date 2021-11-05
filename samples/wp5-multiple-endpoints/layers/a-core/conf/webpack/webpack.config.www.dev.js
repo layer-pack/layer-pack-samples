@@ -43,12 +43,12 @@ module.exports = [
 					context         : ['/**', '!/ws/**'],
 					disableHostCheck: true,
 					target          : 'http://127.0.0.1:' + proxyTo,
-					ws              : true,
+					//ws              : true,
 					secure          : false,                         // proxy websockets,
 					
 					onError: ( err, req, res ) => {
 						console.log('wait api... ', req.headers && req.headers.referer);
-						if ( !req.redirect )
+						if ( res.redirect )
 							setTimeout(
 								tm => res.redirect(req.headers.referer),
 								3000

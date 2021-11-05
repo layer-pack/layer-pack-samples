@@ -20,6 +20,9 @@ class App extends React.Component {
 			<Comps.Btn/>
 			<Comps.Bar/>
 			<Comps2.FooBar/>
+			{
+				Object.keys(Comps).join(',')
+			}
 		</React.Fragment>
 	}
 }

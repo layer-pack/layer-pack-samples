@@ -602,7 +602,7 @@ module.exports = {
     author: "Nathan Braun <n8tz.js@gmail.com>",
     version: "1.0.0"
   },
-  buildDate: 1635942388363,
+  buildDate: 1636119659695,
   profile: "api",
   projectRoot: __webpack_require__(/*! path */ "?adb0").join(require.main.path, "../.."),
   vars: {
@@ -667,7 +667,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__["default"].Btn, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__["default"].Bar, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps2_js__WEBPACK_IMPORTED_MODULE_3__["default"].FooBar, null));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__["default"].Btn, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__["default"].Bar, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ui_comps2_js__WEBPACK_IMPORTED_MODULE_3__["default"].FooBar, null), Object.keys(_ui_comps_js__WEBPACK_IMPORTED_MODULE_2__["default"]).join(','));
   }
 
 }
@@ -1132,9 +1132,9 @@ module.exports = require("path");
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-/*!*********************************************************************************************************************!*\
-  !*** ../a-core/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1! ***!
-  \*********************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** ../../../../../layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1! ***!
+  \*************************************************************************************************************************************/
 /** layer pack externals modules loader **/
 /*
  * Copyright 2021 BRAUN Nathanael
