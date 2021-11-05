@@ -13,7 +13,7 @@
     "a-core": "file:../a-core"
   },
   "devDependencies": {
-    "layer-pack": "^2.0.4",
+    "layer-pack": "^2.0.5",
     "nodemon": "^2.0.6",
     "concurrently": "^5.3.0"
   }

@@ -1071,7 +1071,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   var _proto = App.prototype;
 
   _proto.render = function render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement($super__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "www2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_3__["default"].Btn, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_3__["default"].Bar, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps2_js__WEBPACK_IMPORTED_MODULE_4__["default"].FooBar, null));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement($super__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "www2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_3__["default"].Btn, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps_js__WEBPACK_IMPORTED_MODULE_3__["default"].Bar, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_comps2_js__WEBPACK_IMPORTED_MODULE_4__["default"].FooBar, null), Object.keys(_ui_comps_js__WEBPACK_IMPORTED_MODULE_3__["default"]).join(','));
   };
 
   // @ts-ignore
