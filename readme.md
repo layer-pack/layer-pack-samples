@@ -30,15 +30,6 @@ To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-app-with
     npm i
     npm run build
     
-### [app-with-minimal-boilerplate](samples/app-with-minimal-boilerplate)
-
-A mini app inheriting a simplified boilerplate with conf & react hmr
-
-To test go in the [samples/minimal-app-with-glob-entry](samplesapp-with-minimal-boilerplate) package and exec :
-
-    npm i
-    npm run start-dev
-    
 ### [minimal-lib-with-glob-entry](samples/minimal-lib-with-glob-entry)
 
 A minimal lib config with common-js exports of multiple entry point via glob in the webpack entrypoint

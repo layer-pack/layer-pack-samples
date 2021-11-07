@@ -17,7 +17,7 @@ nodemon dist/api/App.server.js --exec "node ./dist/api/App.server.js -p 9001"&
 # start dev-server with cfg 
 WWW_API_PORT=9001 lpack-dev-server :www
 ```
-Browser can then open http://127.0.0.1:9001/
+Browser can then open http://127.0.0.1:8080/
 
 # Build & run in prod
 
@@ -29,11 +29,25 @@ node ./dist/api/App.server.js -p 8080
 
 Browser can then open http://127.0.0.1:8080/
  
-# setup ( from endpoints )
+# setup 
+As NPM will not install "devDependencies" from dependencie layers; 2 methods :
 
+- From endpoints layers ( not the core )
 ```bash
 npm i
+## setup all layers for the default profile
 lpack-setup # or lpack-setup ci ( using package-lock )
 ```
 
+- From the top layers
+```bash
+## from a-core
+npm i
+cd ../www.project.com
+npm i
+cd ../www2.project.com
+npm i
+cd ../api.project.com
+npm i
+```
  
