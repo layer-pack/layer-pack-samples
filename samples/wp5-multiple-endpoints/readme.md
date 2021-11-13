@@ -7,6 +7,8 @@ A monorepo structure with
 - 1 package with some www service, inheriting the core
 - 1 package with some www service, inheriting the www & core layers
 
+* copy/add/delete js & scss files will automatically trigger watch & updates glob includes
+* 
 # Run in dev mode
 
 ```bash
@@ -30,7 +32,7 @@ node ./dist/api/App.server.js -p 8080
 Browser can then open http://127.0.0.1:8080/
  
 # setup 
-As NPM will not install "devDependencies" from dependencie layers; 2 methods :
+As NPM will not install "devDependencies" from dependencies layers; 2 methods :
 
 - From endpoints layers ( not the core )
 ```bash

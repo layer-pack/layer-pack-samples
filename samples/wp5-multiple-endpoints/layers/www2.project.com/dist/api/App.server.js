@@ -201,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 const ctrl = {
   renderTo(node, initialState = {}) {
     const isDev = "development" !== 'production',
-          App = __webpack_require__(/*! App/App.js */ "./App/App.js")["default"],
+          App = (__webpack_require__(/*! App/App.js */ "./App/App.js")["default"]),
           HMRApp = isDev ? (0,react_hot_loader_root__WEBPACK_IMPORTED_MODULE_4__.hot)(App) : App;
 
     react_dom__WEBPACK_IMPORTED_MODULE_1___default().render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(HMRApp, null), node);
@@ -214,7 +214,7 @@ const ctrl = {
     tpl
   }, cb) {
     let content = "",
-        App = __webpack_require__(/*! App/App.js */ "./App/App.js")["default"],
+        App = (__webpack_require__(/*! App/App.js */ "./App/App.js")["default"]),
         html;
 
     try {
@@ -251,6 +251,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var $super__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $super */ "../a-core/App/App.js");
+/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.scss */ "../www.project.com/App/App.scss");
+/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_App_scss__WEBPACK_IMPORTED_MODULE_2__);
 /*
  * Copyright 2021 BRAUN Nathanael
  *
@@ -261,9 +263,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 class App extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www !!!!!"));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement($super__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "www"));
   }
 
 }
@@ -294,7 +297,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "A Comp jhg jhg !");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "FooBar"
+  }, "A Comp jhg jhg !");
 });
 
 /***/ }),
@@ -303,87 +308,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ../www.project.com/App/ui/comps2/FooBtn.js ***!
   \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps2/FooBtn2.js":
-/*!***************************************************!*\
-  !*** ../www.project.com/App/ui/comps2/FooBtn2.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps2/FooBtn22.js":
-/*!****************************************************!*\
-  !*** ../www.project.com/App/ui/comps2/FooBtn22.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps2/bvnbvnb.js":
-/*!***************************************************!*\
-  !*** ../www.project.com/App/ui/comps2/bvnbvnb.js ***!
-  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -438,87 +362,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ../www.project.com/App/ui/comps/FooBtn.js ***!
   \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps/FooBtn2.js":
-/*!**************************************************!*\
-  !*** ../www.project.com/App/ui/comps/FooBtn2.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps/FooBtn22.js":
-/*!***************************************************!*\
-  !*** ../www.project.com/App/ui/comps/FooBtn22.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "?6d61");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/*
- * Copyright 2021 BRAUN Nathanael
- *
- * Use of this source code is governed by an MIT-style
- * license that can be found in the LICENSE file or at
- * https://opensource.org/licenses/MIT.
- */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
-});
-
-/***/ }),
-
-/***/ "../www.project.com/App/ui/comps/bvnbvnb.js":
-/*!**************************************************!*\
-  !*** ../www.project.com/App/ui/comps/bvnbvnb.js ***!
-  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -602,9 +445,9 @@ module.exports = {
     author: "Nathan Braun <n8tz.js@gmail.com>",
     version: "1.0.0"
   },
-  buildDate: 1636119659695,
+  buildDate: 1636791921561,
   profile: "api",
-  projectRoot: __webpack_require__(/*! path */ "?adb0").join(require.main.path, "../.."),
+  projectRoot: (__webpack_require__(/*! path */ "?adb0").join)(require.main.path, "../.."),
   vars: {
     "rootAlias": "App",
     "targetDir": "dist/api",
@@ -691,7 +534,7 @@ __webpack_require__.r(__webpack_exports__);
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
+    walknSetExport = (__webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport);
 
 const _App_api_html_js = __webpack_require__(/*! App/api/html.js */ "./App/api/html.js");
 
@@ -710,17 +553,14 @@ const html = _exports.html;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "bvnbvnb": () => (/* binding */ bvnbvnb),
 /* harmony export */   "FooBar": () => (/* binding */ FooBar),
 /* harmony export */   "FooBtn": () => (/* binding */ FooBtn),
-/* harmony export */   "FooBtn2": () => (/* binding */ FooBtn2),
-/* harmony export */   "FooBtn22": () => (/* binding */ FooBtn22),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
+    walknSetExport = (__webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport);
 
 const _App_ui_comps2_FooBar_js = __webpack_require__(/*! App/ui/comps2/FooBar.js */ "../www.project.com/App/ui/comps2/FooBar.js");
 
@@ -729,23 +569,8 @@ walknSetExport(_exports, "FooBar", _App_ui_comps2_FooBar_js);
 const _App_ui_comps2_FooBtn_js = __webpack_require__(/*! App/ui/comps2/FooBtn.js */ "../www.project.com/App/ui/comps2/FooBtn.js");
 
 walknSetExport(_exports, "FooBtn", _App_ui_comps2_FooBtn_js);
-
-const _App_ui_comps2_bvnbvnb_js = __webpack_require__(/*! App/ui/comps2/bvnbvnb.js */ "../www.project.com/App/ui/comps2/bvnbvnb.js");
-
-walknSetExport(_exports, "bvnbvnb", _App_ui_comps2_bvnbvnb_js);
-
-const _App_ui_comps2_FooBtn2_js = __webpack_require__(/*! App/ui/comps2/FooBtn2.js */ "../www.project.com/App/ui/comps2/FooBtn2.js");
-
-walknSetExport(_exports, "FooBtn2", _App_ui_comps2_FooBtn2_js);
-
-const _App_ui_comps2_FooBtn22_js = __webpack_require__(/*! App/ui/comps2/FooBtn22.js */ "../www.project.com/App/ui/comps2/FooBtn22.js");
-
-walknSetExport(_exports, "FooBtn22", _App_ui_comps2_FooBtn22_js);
-const bvnbvnb = _exports.bvnbvnb;
 const FooBar = _exports.FooBar;
 const FooBtn = _exports.FooBtn;
-const FooBtn2 = _exports.FooBtn2;
-const FooBtn22 = _exports.FooBtn22;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_exports);
 
 /***/ }),
@@ -761,17 +586,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Bar": () => (/* binding */ Bar),
 /* harmony export */   "Btn": () => (/* binding */ Btn),
-/* harmony export */   "bvnbvnb": () => (/* binding */ bvnbvnb),
 /* harmony export */   "FooBar": () => (/* binding */ FooBar),
 /* harmony export */   "FooBtn": () => (/* binding */ FooBtn),
-/* harmony export */   "FooBtn2": () => (/* binding */ FooBtn2),
-/* harmony export */   "FooBtn22": () => (/* binding */ FooBtn22),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* This is a virtual file generated by layer-pack */
 let req,
     _exports = {},
-    walknSetExport = __webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport;
+    walknSetExport = (__webpack_require__(/*! App/.___layerPackIndexUtils */ "./App/.___layerPackIndexUtils.js").walknSetExport);
 
 const _App_ui_comps_Bar_js = __webpack_require__(/*! App/ui/comps/Bar.js */ "./App/ui/comps/Bar.js");
 
@@ -788,25 +610,10 @@ walknSetExport(_exports, "FooBar", _App_ui_comps_FooBar_js);
 const _App_ui_comps_FooBtn_js = __webpack_require__(/*! App/ui/comps/FooBtn.js */ "../www.project.com/App/ui/comps/FooBtn.js");
 
 walknSetExport(_exports, "FooBtn", _App_ui_comps_FooBtn_js);
-
-const _App_ui_comps_bvnbvnb_js = __webpack_require__(/*! App/ui/comps/bvnbvnb.js */ "../www.project.com/App/ui/comps/bvnbvnb.js");
-
-walknSetExport(_exports, "bvnbvnb", _App_ui_comps_bvnbvnb_js);
-
-const _App_ui_comps_FooBtn2_js = __webpack_require__(/*! App/ui/comps/FooBtn2.js */ "../www.project.com/App/ui/comps/FooBtn2.js");
-
-walknSetExport(_exports, "FooBtn2", _App_ui_comps_FooBtn2_js);
-
-const _App_ui_comps_FooBtn22_js = __webpack_require__(/*! App/ui/comps/FooBtn22.js */ "../www.project.com/App/ui/comps/FooBtn22.js");
-
-walknSetExport(_exports, "FooBtn22", _App_ui_comps_FooBtn22_js);
 const Bar = _exports.Bar;
 const Btn = _exports.Btn;
-const bvnbvnb = _exports.bvnbvnb;
 const FooBar = _exports.FooBar;
 const FooBtn = _exports.FooBtn;
-const FooBtn2 = _exports.FooBtn2;
-const FooBtn22 = _exports.FooBtn22;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_exports);
 
 /***/ }),
@@ -875,7 +682,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "A Comp !");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "Bar"
+  }, "A Comp !");
 });
 
 /***/ }),
@@ -902,8 +711,18 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "jhj kjl kj l1234 ");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "(Btn comp)");
 });
+
+/***/ }),
+
+/***/ "../www.project.com/App/App.scss":
+/*!***************************************!*\
+  !*** ../www.project.com/App/App.scss ***!
+  \***************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
@@ -1132,9 +951,9 @@ module.exports = require("path");
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-/*!*************************************************************************************************************************************!*\
-  !*** ../../../../../layer-pack/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1! ***!
-  \*************************************************************************************************************************************/
+/*!*********************************************************************************************************************!*\
+  !*** ../a-core/node_modules/webpack-inject-plugin/dist/webpack-inject-plugin.loader.js?id=webpack-inject-module-1! ***!
+  \*********************************************************************************************************************/
 /** layer pack externals modules loader **/
 /*
  * Copyright 2021 BRAUN Nathanael
@@ -1143,7 +962,7 @@ var __webpack_exports__ = {};
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
-const Module = __webpack_require__(/*! module */ "module").Module,
+const Module = (__webpack_require__(/*! module */ "module").Module),
       path   = __webpack_require__(/*! path */ "path");
 (function () {
 	let modPath        = [],
@@ -1213,7 +1032,7 @@ const Module = __webpack_require__(/*! module */ "module").Module,
 							},
 							"dist/api"
 							);/** layer pack externals sourcemaps**/
-__webpack_require__(/*! source-map-support */ "?123b").install();
+(__webpack_require__(/*! source-map-support */ "?123b").install)();
 
 })();
 
@@ -1241,7 +1060,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const express = __webpack_require__(/*! express */ "?c4a6"),
       server = express(),
-      http = __webpack_require__(/*! http */ "?e3e5").Server(server),
+      http = (__webpack_require__(/*! http */ "?e3e5").Server)(server),
       argz = __webpack_require__(/*! minimist */ "?b829")(process.argv.slice(2));
 
 process.title = _config__WEBPACK_IMPORTED_MODULE_2__["default"].project.name + '::server';

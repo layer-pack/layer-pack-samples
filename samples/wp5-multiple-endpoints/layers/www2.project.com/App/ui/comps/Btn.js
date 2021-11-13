@@ -9,5 +9,5 @@
 import React from "react";
 
 export default () => {
-	return <div>jhj kjl kj l1234 </div>
+	return <div>(Btn comp)</div>
 }

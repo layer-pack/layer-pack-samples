@@ -9,5 +9,5 @@
 import React from "react";
 
 export default () => {
-	return <div>A Comp !</div>
+	return <div className={"Bar"}>A Comp !</div>
 }
