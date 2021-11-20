@@ -21,6 +21,15 @@ A monorepo structure with
 
 To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoints) package and check the readme
 
+### [TinderLike](samples/TinderLike)
+
+A React-Voodoo Sample inheriting dependencies ( even react ), webpack conf & bootstrap from an NPM package
+
+To test go in the [samples/TinderLike](samples/TinderLike) package and exec :
+
+    npm i
+    npm run start-dev
+
 ### [minimal-app-with-glob-entry](samples/minimal-app-with-glob-entry)
 
 A minimal app boilerplate without any inherited layers ( with namspacing + glob requires )
@@ -38,6 +47,7 @@ To test go in the [samples/minimal-app-with-glob-entry](samples/minimal-lib-with
 
     npm i
     npm run build
+
 
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VWKR3TWQ2U2AC" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 
