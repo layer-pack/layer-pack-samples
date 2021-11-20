@@ -48,7 +48,7 @@ module.exports = [
 					
 					onError: ( err, req, res ) => {
 						console.log('wait api... ', req.headers && req.headers.referer);
-						if ( res.redirect )
+						if ( !res.redirect )
 							setTimeout(
 								tm => res.redirect(req.headers.referer),
 								3000
