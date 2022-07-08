@@ -16,7 +16,7 @@
     "@material-ui/icons": "^3.0.2",
     "is": "^3.3.0",
     "local-web-server": "^3.0.7",
-    "moment": "^2.23.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.2.0",
