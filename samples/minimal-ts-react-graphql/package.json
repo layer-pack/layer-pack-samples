@@ -30,7 +30,7 @@
     "is-port-reachable": "^2.0.1",
     "fkill": "^6.2.0",
     "zombie": "^6.1.4",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "layer-pack": "^1.2.2",
     "lpack-react-ts-apollo": "file:packages/lpack-react-ts-apollo"
   }
