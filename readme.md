@@ -9,14 +9,13 @@ Simple samples for [layer-pack](https://github.com/n8tz/layer-pack)
 
 ## Available :
 
-### [wp5-multiple-endpoints](samples/wp5-multiple-endpoints)
+### [wp5-multiple-endpoints](samples/wp5-multiple-endpoints) 
 
 A monorepo structure with
 
 - 1 shared core package with webpack configs & React client / SSR bootstrap
 - 1 package with some api service, inheriting the core
 - 1 package with some www service, inheriting the core
-- 1 package with some other www endpoint, inheriting the www & core layers
 
 
 To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoints) package and check the readme

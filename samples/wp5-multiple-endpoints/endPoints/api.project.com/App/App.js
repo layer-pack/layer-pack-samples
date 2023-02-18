@@ -8,17 +8,12 @@
 
 import React from 'react';
 
+
 class App extends React.Component {
 	
 	render() {
 		return <React.Fragment>
-			<h1>Core Layer</h1>
-			<h2>Include ( among others ) : </h2>
-			<ul>
-				<li>react 17</li>
-				<li>sass</li>
-				<li>es6 + decorators</li>
-			</ul>
+			<h1>api server</h1>
 		</React.Fragment>
 	}
 }

@@ -1,0 +1,21 @@
+{
+  "name": "api.project.com",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Nathan Braun <n8tz.js@gmail.com>",
+  "scripts": {
+    "build": "lpack :api",
+    "run": "node dist/api/App.server.js -p 9000",
+    "dev": "concurrently \"lpack :api -w\" \"nodemon dist/api/App.server.js --exec \\\"node ./dist/api/App.server.js -p 9000\\\"\"",
+    "postinstall": "lpack-setup"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "layer-pack": "2.2.2",
+    "webpack-dev-server": "^4.1.0",
+    "nodemon": "^2.0.6",
+    "concurrently": "^5.3.0"
+  }
+}

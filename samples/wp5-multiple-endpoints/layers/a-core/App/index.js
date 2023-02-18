@@ -24,12 +24,14 @@ const ctrl = {
 			, node);
 		
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('App/App.js', m => {
-				let NextApp = hot(require('App/App.js').default);
+			module.hot.accept('App/App', m => {
+				let NextApp = hot(require('App/App').default);
 				
-				ReactDom.render(
-					<NextApp/>
-					, node);
+				ReactDom[node.innerHTML ? "hydrate" : "render"](
+								<NextApp/>
+					,
+					node
+				);
 			})
 		}
 	},

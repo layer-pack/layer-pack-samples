@@ -36,7 +36,7 @@ module.exports = [
 		cache       : {
 			type                 : "filesystem",
 			allowCollectingMemory: true,
-			cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
+			//cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
 		},
 		
 		optimization: {
@@ -75,6 +75,10 @@ module.exports = [
 		plugins: (
 			[
 				lPack.plugin(),
+				// Add global variables
+				new webpack.DefinePlugin({
+					                         __IS_SERVER__: false,
+				                         }),
 				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 			]
 		),

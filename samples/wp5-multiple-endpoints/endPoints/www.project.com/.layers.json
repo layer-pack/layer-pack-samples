@@ -1,0 +1,16 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "libsPath": [
+      "../../layers",
+      "../../endpoints"
+    ],
+    "extend": [
+      "a-core"
+    ]
+  },
+  "api": "default",
+  "apiProd": "default",
+  "www": "default",
+  "wwwProd": "default"
+}

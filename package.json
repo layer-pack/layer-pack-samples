@@ -5,28 +5,8 @@
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --require @babel/register ./tests/*.test.jsx -b"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.0",
-    "@babel/node": "^7.5.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.0",
-    "@babel/plugin-proposal-decorators": "^7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.5.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.4.4",
-    "@babel/runtime": "^7.3.1",
-    "chai": "^4.2.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "fast-glob": "^2.2.6",
-    "jsdom": "^15.1.1",
-    "mocha": "^6.2.0",
-    "nodemon": "^1.19.1",
-    "shortid": "^2.2.14"
   }
 }

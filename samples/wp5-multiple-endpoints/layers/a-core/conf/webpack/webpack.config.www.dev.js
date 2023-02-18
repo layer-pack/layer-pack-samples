@@ -5,10 +5,11 @@
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
-const lPack        = require('layer-pack');
-const webpack      = require("webpack");
-const path         = require("path");
-const autoprefixer = require('autoprefixer');
+const lPack                = require('layer-pack');
+const webpack              = require("webpack");
+const path                 = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer         = require('autoprefixer');
 
 const lpackCfg      = lPack.getConfig(),
       isExcluded    = lPack.isFileExcluded(),
@@ -44,7 +45,7 @@ module.exports = [
 					disableHostCheck: true,
 					target          : 'http://127.0.0.1:' + proxyTo,
 					//ws              : true,
-					secure          : false,                         // proxy websockets,
+					secure: false,                         // proxy websockets,
 					
 					onError: ( err, req, res ) => {
 						console.log('wait api... ', req.headers && req.headers.referer);
@@ -82,7 +83,7 @@ module.exports = [
 		cache       : {
 			type                 : "filesystem",
 			allowCollectingMemory: true,
-			cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
+			//cacheDirectory       : lPack.getHeadRoot() + "/dist/cache",
 		},
 		optimization: {
 			splitChunks: {
@@ -123,6 +124,11 @@ module.exports = [
 		plugins: (
 			[
 				lPack.plugin(),
+				
+				// Add global variables
+				new webpack.DefinePlugin({
+					                         __IS_SERVER__: false,
+				                         }),
 				new webpack.ContextReplacementPlugin(/moment[\/\\](lang|locale)$/, /^\.\/(fr|en|us)$/),
 			
 			]

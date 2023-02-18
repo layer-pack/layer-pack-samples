@@ -1,55 +1,46 @@
 # wp5-multiple-endpoints
 
-A monorepo structure with
+A monorepo structure with :
 
 - 1 shared core package with webpack configs & React client / SSR bootstrap
 - 1 package with some api service, inheriting the core
 - 1 package with some www service, inheriting the core
-- 1 package with some www service, inheriting the www & core layers
 
-* copy/add/delete js & scss files will automatically trigger watch & updates glob includes
-* 
-# Run in dev mode
+# setup
+
+_NPM will call lpack-setup at postinstall which will install core layer_
+
+- From endpoints layers ( not the core )
 
 ```bash
-# auto rebuild on change api
-lpack :api -w & 
-# auto reload api on rebuild
-nodemon dist/api/App.server.js --exec "node ./dist/api/App.server.js -p 9001"&
-# start dev-server with cfg 
-WWW_API_PORT=9001 lpack-dev-server :www
+npm i
 ```
+
+# Run in dev mode
+
+_copy/add/delete js & scss files will automatically trigger watch & updates glob includes_
+
+From the endpoints directories :
+
+```bash
+npm run dev
+```
+
 Browser can then open http://127.0.0.1:8080/
+
+# Run in prod mode
+
+```bash
+npm run run
+```
 
 # Build & run in prod
 
 ```bash
-lpack :wwwProd
-lpack :apiProd
-node ./dist/api/App.server.js -p 8080
+npm run build
+npm run run
 ```
 
 Browser can then open http://127.0.0.1:8080/
  
-# setup 
-As NPM will not install "devDependencies" from dependencies layers; 2 methods :
 
-- From endpoints layers ( not the core )
-```bash
-npm i
-## setup all layers for the default profile
-lpack-setup # or lpack-setup ci ( using package-lock )
-```
-
-- From the top layers
-```bash
-## from a-core
-npm i
-cd ../www.project.com
-npm i
-cd ../www2.project.com
-npm i
-cd ../api.project.com
-npm i
-```
- 
