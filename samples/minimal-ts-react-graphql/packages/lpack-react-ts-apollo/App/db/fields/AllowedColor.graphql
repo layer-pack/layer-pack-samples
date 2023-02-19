@@ -1,5 +1,0 @@
-enum AllowedColor {
-    RED
-    GREEN
-    BLUE
-}
