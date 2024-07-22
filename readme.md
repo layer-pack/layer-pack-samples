@@ -22,7 +22,7 @@ To test go in the [samples/wp5-multiple-endpoints](samples/wp5-multiple-endpoint
 
 ### [TinderLike](samples/TinderLike)
 
-A React-Voodoo Sample inheriting dependencies ( even react ), webpack conf & bootstrap from an NPM package
+A React 18 / React-Voodoo Sample inheriting dependencies ( even react & wp ), webpack conf & bootstrap from an NPM package
 
 To test go in the [samples/TinderLike](samples/TinderLike) package and exec :
 
