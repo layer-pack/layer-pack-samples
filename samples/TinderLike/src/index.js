@@ -24,6 +24,14 @@
  *   @contact : n8tz.js@gmail.com
  */
 
+/**
+ * @file Entry point for the TinderLike sample.
+ *
+ * The glob import `"./comps/(*).js"` auto-discovers all top-level component
+ * files in src/comps/ and makes them available as named exports (e.g.,
+ * {SwipeCard, GithubCorner}). This avoids manually maintaining an import list.
+ */
+
 import React                     from "react";
 import ReactDom                  from "react-dom";
 import Voodoo                    from "react-voodoo";
@@ -58,12 +66,12 @@ import "./index.scss";
 
 
 const Sample = () => {
-	
+
 	let [cardIndex, setCardIndex] = React.useState(0),
 	    next                      = ( card ) => {
-		
+
 		    setCardIndex((cardIndex + 1) % allCards.length);
-		
+
 		    // preload next
 		    let i = (cardIndex + 2) % allCards.length;
 		    if ( !allCards[i].loaded )
@@ -95,11 +103,11 @@ const Sample = () => {
 document.body.innerHTML = '<div id="app"></div>';
 
 async function renderSample() {
-	
+
 	ReactDom.render(
 		<Sample/>
 		, document.getElementById('app'));
-	
+
 }
 
 renderSample()

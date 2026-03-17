@@ -5,6 +5,9 @@
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
+
+/** @file Node.js server entry point. Boots Express, loads API services, and starts listening. */
+
 import React  from "react";
 import api    from "./api";
 import config from "./config";
@@ -24,6 +27,3 @@ api(server, http);
 var server_instance = http.listen(parseInt(argz.p || argz.port || 8000), function () {
 	console.info('Running on ', server_instance.address().port)
 });
-
-
-

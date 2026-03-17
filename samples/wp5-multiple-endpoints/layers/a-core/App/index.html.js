@@ -6,6 +6,8 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file HTML shell component used by SSR to wrap rendered content with <head> tags, scripts, and styles. */
+
 import React from 'react';
 
 export default class index extends React.Component {
@@ -20,7 +22,7 @@ export default class index extends React.Component {
 				{helmet && helmet.meta.toComponent()}
 				{helmet && helmet.link.toComponent()}
 				{helmet && helmet.script.toComponent()}
-				
+
 				{
 					css && <style type="text/css" dangerouslySetInnerHTML={{ __html: css + '' }}/>
 				}
@@ -29,7 +31,7 @@ export default class index extends React.Component {
 			<div id="app" dangerouslySetInnerHTML={{ __html: content }}>
 			</div>
 			{ssrErrors && <div id="ssrErrors" dangerouslySetInnerHTML={{ __html: ssrErrors }}/>}
-			
+
 			<script src="./App.js"></script>
 			<script src="./App.vendors.js"></script>
 			</body>

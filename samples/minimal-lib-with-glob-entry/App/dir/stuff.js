@@ -24,5 +24,6 @@
  *   @contact : n8tz.js@gmail.com
  */
 
+/** @file Auto-bundled by the recursive glob entry "App/(**\/*).js" -- demonstrates subdirectory inclusion. */
 
 export default "stuffEp";

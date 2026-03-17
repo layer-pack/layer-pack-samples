@@ -6,6 +6,7 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file SSR rendering service -- auto-discovered by the glob import in api.js. Serves HTML and static assets. */
 
 import express from "express";
 import config  from "../config";

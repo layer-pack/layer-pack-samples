@@ -5,33 +5,38 @@
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
+
+/**
+ * @file Client/SSR controller for the core layer.
+ *
+ * Provides renderTo() for client-side mounting and renderSSR() for
+ * server-side rendering. Uses React 18 createRoot/hydrateRoot APIs.
+ * The "App/App.js" import resolves through the layer chain, so
+ * endpoint layers can override App.js via layer-pack inheritance.
+ */
 import React            from "react";
-import ReactDom         from 'react-dom';
+import {createRoot, hydrateRoot} from 'react-dom/client';
 import {renderToString} from "react-dom/server";
 import {Helmet}         from "react-helmet";
-import {hot}            from 'react-hot-loader/root'
 import Index            from "./index.html";
 
 
 const ctrl = {
 	renderTo( node, initialState = {} ) {
-		const isDev  = process.env.NODE_ENV !== 'production',
-		      App    = require('App/App.js').default,
-		      HMRApp = isDev ? hot(App) : App;
-		
-		ReactDom.render(
-			<HMRApp/>
-			, node);
-		
+		const App = require('App/App.js').default;
+
+		if ( node.innerHTML ) {
+			hydrateRoot(node, <App/>);
+		} else {
+			const root = createRoot(node);
+			root.render(<App/>);
+		}
+
 		if ( process.env.NODE_ENV !== 'production' && module.hot ) {
-			module.hot.accept('App/App', m => {
-				let NextApp = hot(require('App/App').default);
-				
-				ReactDom[node.innerHTML ? "hydrate" : "render"](
-								<NextApp/>
-					,
-					node
-				);
+			module.hot.accept('App/App', () => {
+				const NextApp = require('App/App').default;
+				const root = createRoot(node);
+				root.render(<NextApp/>);
 			})
 		}
 	},
@@ -39,7 +44,7 @@ const ctrl = {
 		let content = "",
 		    App     = require('App/App.js').default,
 		    html;
-		
+
 		try {
 			content = renderToString(<App/>);
 			html    = "<!doctype html>\n" + renderToString(<Index helmet={Helmet.renderStatic()} content={content}/>);
@@ -51,4 +56,3 @@ const ctrl = {
 }
 
 export default ctrl;
-

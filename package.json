@@ -1,12 +1,10 @@
 {
   "name": "layer-pack-samples",
-  "version": "1.0.0",
-  "description": "layer-pack-samples ",
+  "version": "2.0.0",
+  "description": "Sample projects for layer-pack",
   "license": "MIT",
   "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-  },
-  "dependencies": {},
-  "devDependencies": {
+    "test": "node --test --test-timeout 120000 test/*.test.js"
   }
 }

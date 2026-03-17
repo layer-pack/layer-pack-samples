@@ -1,20 +1,18 @@
 {
-  "name": "voodoo-TinderLike",
-  "version": "1.0.0",
+  "name": "tinder-like-sample",
+  "version": "2.0.0",
+  "description": "layer-pack sample: React animation app with glob imports, extending lpack-react",
   "private": true,
-  "license": "MIT",
-  "main": "./Server.js",
-  "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
     "build": "lpack :www",
-    "start-dev": "lpack-dev-server :wwwDev --host 0.0.0.0",
-    "postinstall": "lpack-setup :www"
+    "dev": "lpack-dev-server :wwwDev --hot"
   },
   "dependencies": {
-    "react-voodoo": "^2.5.8"
+    "react-voodoo": "^2.5.8",
+    "tween-axis": "^2.0.3"
   },
   "devDependencies": {
-    "layer-pack": "^2.3.9",
-    "lpack-react": "2.1.0"
+    "layer-pack": "^3.0.9",
+    "lpack-react": "^2.3.0"
   }
 }

@@ -6,6 +6,8 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file Exposes build-time configuration from layer-pack's generated .buildInfos.json. */
+
 export default {
 	...require('./.buildInfos.json') // from lpack
 }

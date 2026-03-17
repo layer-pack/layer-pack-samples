@@ -1,0 +1,14 @@
+{
+  "name": "hello-world-sample",
+  "version": "1.0.0",
+  "description": "Simplest possible layer-pack project",
+  "private": true,
+  "scripts": {
+    "build": "lpack"
+  },
+  "devDependencies": {
+    "layer-pack": "^3.0.9",
+    "webpack": "^5.97.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

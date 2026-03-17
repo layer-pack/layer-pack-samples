@@ -1,0 +1,29 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "config": "./webpack.config.js"
+  },
+  "www": {
+    "basedOn": "default",
+    "config": "./webpack.config.js",
+    "vars": {
+      "targetDir": "dist/www",
+      "production": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": false
+      }
+    }
+  },
+  "api": {
+    "basedOn": "default",
+    "config": "./webpack.config.js",
+    "vars": {
+      "targetDir": "dist/api",
+      "production": true,
+      "externals": true,
+      "DefinePluginCfg": {
+        "__IS_SERVER__": true
+      }
+    }
+  }
+}

@@ -6,16 +6,18 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file Core layer's root App component. Endpoint layers can override this via layer-pack inheritance. */
+
 import React from 'react';
 
 class App extends React.Component {
-	
+
 	render() {
 		return <React.Fragment>
 			<h1>Core Layer</h1>
 			<h2>Include ( among others ) : </h2>
 			<ul>
-				<li>react 17</li>
+				<li>react 18+</li>
 				<li>sass</li>
 				<li>es6 + decorators</li>
 			</ul>

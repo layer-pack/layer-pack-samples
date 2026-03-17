@@ -1,0 +1,7 @@
+{
+  "default": {
+    "rootFolder": "App",
+    "extend": ["base-ui"],
+    "libsPath": ["../layers"]
+  }
+}

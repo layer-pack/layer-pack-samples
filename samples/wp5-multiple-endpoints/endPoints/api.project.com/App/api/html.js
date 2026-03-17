@@ -6,6 +6,7 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file Fallback rendering service for the API endpoint -- auto-discovered by the glob import in api.js. */
 
 export const name          = "Rendering service";
 export const priorityLevel = 100000;

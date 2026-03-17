@@ -1,33 +1,19 @@
 {
   "name": "minimal-app-with-glob-entry",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "Minimal layer-pack sample: multiple entry points discovered via glob pattern",
   "private": true,
-  "license": "MIT",
-  "main": "./Server.js",
-  "author": "Nathan Braun <n8tz.js@gmail.com>",
   "scripts": {
-    "test": "mocha --require @babel/register ./tests/*.test.jsx -b",
-    "start": "ws -d ./dist -p 8080",
-    "build": "webpack-cli"
+    "build": "npx webpack --mode production",
+    "dev": "npx webpack --mode development --watch"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.0",
-    "@babel/preset-react": "^7.16.0",
-    "@babel/register": "^7.16.0",
-    "@babel/helper-compilation-targets": "^7.16.0",
-    "babel-loader": "^8.0.6",
-    "fkill": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
-    "is": "^3.3.0",
-    "is-port-reachable": "^2.0.1",
-    "local-web-server": "^3.0.4",
-    "mocha": "^6.2.0",
-    "webpack": "^5.62.1",
-    "webpack-cli": "^4.9.1",
-    "layer-pack": "^2.2.2",
-    "zombie": "^6.1.4",
-    "ws": "^7.4.1"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^8.4.1",
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.97.0",
+    "webpack-cli": "^5.1.4",
+    "layer-pack": "^3.0.9"
   }
 }

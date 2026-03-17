@@ -6,11 +6,13 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file API endpoint's App component -- overrides the core layer's App.js via layer-pack inheritance. */
+
 import React from 'react';
 
 
 class App extends React.Component {
-	
+
 	render() {
 		return <React.Fragment>
 			<h1>api server</h1>

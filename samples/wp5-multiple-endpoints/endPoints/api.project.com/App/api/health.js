@@ -6,6 +6,8 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/** @file Health check endpoint -- auto-discovered by the glob import in api.js. */
+
 import express from "express";
 import config  from "../config";
 import App     from "../index.js";

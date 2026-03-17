@@ -6,6 +6,17 @@
  * https://opensource.org/licenses/MIT.
  */
 
+/**
+ * @file WWW endpoint's App component -- overrides the core layer's App.js.
+ *
+ * `import Super from '$super'` loads the parent layer's version of this file
+ * (a-core/App/App.js) so it can be rendered alongside the WWW-specific content.
+ *
+ * `import Comps from 'App/ui/comps/(**\/*).js'` is a recursive glob import that
+ * discovers all UI components across all layers (core + www) and makes them
+ * available as a keyed object.
+ */
+
 import React from 'react';
 import Super from '$super';
 import Comps from 'App/ui/comps/(**/*).js';
@@ -46,5 +57,3 @@ export default ( {} ) => {
 		<Super/>
 	</React.Fragment>
 }
-
-
